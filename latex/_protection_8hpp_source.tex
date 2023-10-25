@@ -1,0 +1,61 @@
+\doxysection{Protection.\+hpp}
+\hypertarget{_protection_8hpp_source}{}\label{_protection_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Protections/Protection.hpp@{Inc/ST-\/LIB\_HIGH/Protections/Protection.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Boundary.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }Protections\{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum}\ FaultType\{}
+\DoxyCodeLine{00009\ \ \ \ \ FAULT\ =\ 0,}
+\DoxyCodeLine{00010\ \ \ \ \ WARNING}
+\DoxyCodeLine{00011\ \};}
+\DoxyCodeLine{00012\ \}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_protection}{Protection}}\{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}protection\(\backslash\)"{}\ :\ \{\(\backslash\)"{}name\(\backslash\)"{}:\(\backslash\)"{}\%s\(\backslash\)"{},\ \%s\}"{}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{char}*\ name\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<unique\_ptr<BoundaryInterface>}}>\ boundaries;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}*\ jumped\_protection\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Protections::FaultType\ fault\_type\ =\ Protections::FaultType::FAULT;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Type}},\ ProtectionType...\ Protector,\ \textcolor{keyword}{template}<\textcolor{keyword}{class},ProtectionType>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Boundaries}}>}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_protection}{Protection}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundaries<Type,Protector>}}...\ \mbox{\hyperlink{class_packet_value}{protectors}})\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ (boundaries.push\_back(\mbox{\hyperlink{class_packet_value}{unique\_ptr<BoundaryInterface>}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_packet_value}{Boundary<Type,Protector>}}(src,\mbox{\hyperlink{class_packet_value}{protectors}}))),\ ...);}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_name(\textcolor{keywordtype}{char}*\ name)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ this-\/>name\ =\ name;}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{char}*\ get\_name()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ name;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_state()\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_packet_value}{unique\_ptr<BoundaryInterface>}}\&\ bound:\ boundaries)\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{not}}\ bound.get()-\/>check\_bounds())\{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ jumped\_protection\ =\ bound.get();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},format,name,\textcolor{keywordtype}{string}(jumped\_protection-\/>serialize(\mbox{\hyperlink{class_packet_value}{dst}})).c\_str());}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ jumped\_protection-\/>get\_string\_size()\ +\ snprintf(\textcolor{keyword}{nullptr},0,format,\ name,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_protection_manager}{ProtectionManager}};}
+\DoxyCodeLine{00055\ \};}
+
+\end{DoxyCode}

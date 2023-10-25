@@ -1,0 +1,51 @@
+\doxysection{PWMSensor.\+hpp}
+\hypertarget{_p_w_m_sensor_8hpp_source}{}\label{_p_w_m_sensor_8hpp_source}\index{Inc/ST-\/LIB\_LOW/Sensors/PWMSensor/PWMSensor.hpp@{Inc/ST-\/LIB\_LOW/Sensors/PWMSensor/PWMSensor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ SensorInterrupt.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ Created\ on:\ June\ 21,\ 2023}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Alejandro}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}EXTI/EXTI.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ *duty\_cycle;}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ *frequency;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&frequency,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&duty\_cycle);}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *frequency,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *duty\_cycle);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ read();}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ get\_id();}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00029\ \mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor<Type>::PWMSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&frequency,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&duty\_cycle)\ :}
+\DoxyCodeLine{00030\ \ \ \ \ frequency(\&frequency),\ duty\_cycle(\&duty\_cycle)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ InputCapture::inscribe(pin);}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00035\ \mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor<Type>::PWMSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *frequency,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *duty\_cycle)\ :}
+\DoxyCodeLine{00036\ \ \ \ \ duty\_cycle(duty\_cycle),\ frequency(frequency)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ InputCapture::inscribe(pin);}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_p_w_m_sensor}{PWMSensor<Type>::read}}()\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ *duty\_cycle\ =\ InputCapture::read\_duty\_cycle(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00043\ \ \ \ \ *frequency\ =\ InputCapture::read\_frequency(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+
+\end{DoxyCode}

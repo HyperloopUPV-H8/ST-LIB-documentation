@@ -1,0 +1,281 @@
+\doxysection{State\+Machine.\+hpp}
+\hypertarget{_state_machine_8hpp_source}{}\label{_state_machine_8hpp_source}\index{Inc/ST-\/LIB\_LOW/StateMachine/StateMachine.hpp@{Inc/ST-\/LIB\_LOW/StateMachine/StateMachine.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Created\ by\ Alejandro}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Time/Time.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}StateMachine/StateOrder.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifdef\ HAL\_TIM\_MODULE\_ENABLED}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ std::chrono::milliseconds\ \mbox{\hyperlink{class_packet_value}{ms}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ std::chrono::microseconds\ \mbox{\hyperlink{class_packet_value}{us}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ std::chrono::seconds\ \mbox{\hyperlink{class_packet_value}{s}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{AlarmType}}\{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{LOW\_PRECISION}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{MID\_PRECISION}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{HIGH\_PRECISION}}}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{TimedAction}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ function<\mbox{\hyperlink{class_packet_value}{void}}()>\ \mbox{\hyperlink{class_packet_value}{action}};}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period;}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{AlarmType}}\ \mbox{\hyperlink{class_packet_value}{alarm\_precision}};}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id}\ =\ -\/1;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_on}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{State}}\ \{}
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<TimedAction>}}\ \mbox{\hyperlink{class_packet_value}{cyclic\_actions}};}
+\DoxyCodeLine{00039\ \ \ \ \ vector<function<\mbox{\hyperlink{class_packet_value}{void}}()>>\ \mbox{\hyperlink{class_packet_value}{on\_enter\_actions}}\ =\ \{\};}
+\DoxyCodeLine{00040\ \ \ \ \ vector<function<\mbox{\hyperlink{class_packet_value}{void}}()>>\ \mbox{\hyperlink{class_packet_value}{on\_exit\_actions}}\ =\ \{\};}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<uint16\_t>}}\ state\_orders\_ids\ =\ \{\};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{enter}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{exit}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_new\_timed\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{AlarmType}}\ \mbox{\hyperlink{class_packet_value}{precision\_type}});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{register\_new\_timed\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{AlarmType}}\ \mbox{\hyperlink{class_packet_value}{precision\_type}});}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{unregister\_all\_timed\_actions}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{register\_all\_timed\_actions}}();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{unregister\_timed\_action}}(\mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{erase\_timed\_action}}(\mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_state\_order}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00057\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ State::register\_new\_timed\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{AlarmType}}\ \mbox{\hyperlink{class_packet_value}{precision\_type}})\{}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}\ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \{\};}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.alarm\_precision\ =\ \mbox{\hyperlink{class_packet_value}{precision\_type}};}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.action\ =\ \mbox{\hyperlink{class_packet_value}{action}};}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{miliseconds}}\ =\ chrono::duration\_cast<chrono::milliseconds>(period).count();}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{microseconds}}\ =\ chrono::duration\_cast<chrono::microseconds>(period).count();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{class_packet_value}{precision\_type}})\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_packet_value}{LOW\_PRECISION}}:}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.period\ =\ \mbox{\hyperlink{class_packet_value}{miliseconds}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.id\ =\ Time::register\_low\_precision\_alarm(\mbox{\hyperlink{class_packet_value}{miliseconds}},\ \mbox{\hyperlink{class_packet_value}{action}});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_packet_value}{MID\_PRECISION}}:}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.period\ =\ \mbox{\hyperlink{class_packet_value}{microseconds}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.id\ =\ Time::register\_mid\_precision\_alarm(\mbox{\hyperlink{class_packet_value}{microseconds}},\ \mbox{\hyperlink{class_packet_value}{action}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_packet_value}{HIGH\_PRECISION}}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.period\ =\ \mbox{\hyperlink{class_packet_value}{microseconds}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.id\ =\ Time::register\_high\_precision\_alarm(\mbox{\hyperlink{class_packet_value}{microseconds}},\ \mbox{\hyperlink{class_packet_value}{action}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Alarm\ Precision\ Type\ does\ not\ exist,\ AlarmType:\ \%d"{}},\ \mbox{\hyperlink{class_packet_value}{precision\_type}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.is\_on\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{cyclic\_actions}}.push\_back(\mbox{\hyperlink{class_packet_value}{timed\_action}});}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{class_packet_value}{cyclic\_actions}}.back();}
+\DoxyCodeLine{00083\ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00086\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ State::add\_new\_timed\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{AlarmType}}\ \mbox{\hyperlink{class_packet_value}{precision\_type}})\{}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}\ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \{\};}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.alarm\_precision\ =\ \mbox{\hyperlink{class_packet_value}{precision\_type}};}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.action\ =\ \mbox{\hyperlink{class_packet_value}{action}};}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{miliseconds}}\ =\ chrono::duration\_cast<chrono::milliseconds>(period).count();}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{microseconds}}\ =\ chrono::duration\_cast<chrono::microseconds>(period).count();}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{class_packet_value}{precision\_type}})\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_packet_value}{LOW\_PRECISION}}:}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.period\ =\ \mbox{\hyperlink{class_packet_value}{miliseconds}};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_packet_value}{MID\_PRECISION}}:}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.period\ =\ \mbox{\hyperlink{class_packet_value}{microseconds}};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_packet_value}{HIGH\_PRECISION}}:}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}.period\ =\ \mbox{\hyperlink{class_packet_value}{microseconds}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Alarm\ Precision\ Type\ does\ not\ exist,\ AlarmType:\ \%d"{}},\ \mbox{\hyperlink{class_packet_value}{precision\_type}});}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{cyclic\_actions}}.push\_back(\mbox{\hyperlink{class_packet_value}{timed\_action}});}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{class_packet_value}{cyclic\_actions}}.back();}
+\DoxyCodeLine{00109\ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{StateMachine}}\ \{}
+\DoxyCodeLine{00113\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ state\_id;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ state\_id\ \mbox{\hyperlink{class_packet_value}{initial\_state}}\ =\ 0;}
+\DoxyCodeLine{00117\ \ \ \ \ state\_id\ \mbox{\hyperlink{class_packet_value}{current\_state}}\ =\ 0;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_on}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{StateMachine}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{StateMachine}}(state\_id\ \mbox{\hyperlink{class_packet_value}{initial\_state}});}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_state}}(state\_id\ state);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_transition}}(state\_id\ \mbox{\hyperlink{class_packet_value}{old\_state}},\ state\_id\ \mbox{\hyperlink{class_packet_value}{new\_state}},\ function<\textcolor{keywordtype}{bool}()>\ \mbox{\hyperlink{class_packet_value}{transition}});}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_low\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ state\_id\ state);}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_low\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{vector<state\_id>}}\ \mbox{\hyperlink{class_packet_value}{states}});}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_low\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_mid\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ state\_id\ state);}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_mid\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{vector<state\_id>}}\ \mbox{\hyperlink{class_packet_value}{states}});}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_mid\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_high\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period);}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_high\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ state\_id\ state);}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{add\_high\_precision\_cyclic\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{vector<state\_id>}}\ \mbox{\hyperlink{class_packet_value}{states}});}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{remove\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}});}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{remove\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}},\ state\_id\ state);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_enter\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}});}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_enter\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ state\_id\ state);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_exit\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}});}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_exit\_action}}(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ state\_id\ state);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{force\_change\_state}}(state\_id\ \mbox{\hyperlink{class_packet_value}{new\_state}});}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{check\_transitions}}();}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{add\_state\_machine}}(\mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ state\_machine,\ state\_id\ state);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{refresh\_state\_orders}}();}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{unordered\_map<state\_id,\ State>}}\&\ \mbox{\hyperlink{class_packet_value}{get\_states}}();}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{unordered\_map<state\_id,\ State>}}\ \mbox{\hyperlink{class_packet_value}{states}};}
+\DoxyCodeLine{00170\ \ \ \ \ unordered\_map<state\_id,\ unordered\_map<state\_id,\ function<\mbox{\hyperlink{class_packet_value}{bool}}()>>>\ \mbox{\hyperlink{class_packet_value}{transitions}};}
+\DoxyCodeLine{00171\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{unordered\_map<state\_id,\ StateMachine*>}}\ \mbox{\hyperlink{class_packet_value}{nested\_state\_machine}};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{enter\_state}}(state\_id\ \mbox{\hyperlink{class_packet_value}{new\_state}});}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{exit\_state}}(state\_id\ \mbox{\hyperlink{class_packet_value}{old\_state}});}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{register\_all\_timed\_actions}}(state\_id\ state);}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{unregister\_all\_timed\_actions}}(state\_id\ state);}
+\DoxyCodeLine{00177\ \};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00180\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_low\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ state\_id\ state)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_packet_value}{not}}\ \mbox{\hyperlink{class_packet_value}{states}}.contains(state))\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}The\ state\ \%d\ is\ not\ added\ to\ the\ state\ machine"{}},\ state);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{microseconds}}\ =\ (\mbox{\hyperlink{class_packet_value}{uint32\_t}})chrono::duration\_cast<chrono::microseconds>(period).count();}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{microseconds}}\ \%\ 1000\ !=\ 0)\{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Low\ precision\ cyclic\ action\ does\ not\ have\ enough\ resolution\ for\ the\ desired\ period,\ Desired\ period:\ \%d\ uS"{}},\ \mbox{\hyperlink{class_packet_value}{microseconds}});}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{if}(state\ ==\ \mbox{\hyperlink{class_packet_value}{current\_state}}\ \&\&\ \mbox{\hyperlink{class_packet_value}{is\_on}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{states}}[state].register\_new\_timed\_action(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ \mbox{\hyperlink{class_packet_value}{LOW\_PRECISION}});}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{states}}[state].add\_new\_timed\_action(\mbox{\hyperlink{class_packet_value}{action}},\ period,\mbox{\hyperlink{class_packet_value}{LOW\_PRECISION}});}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00198\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_low\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{vector<state\_id>}}\ \mbox{\hyperlink{class_packet_value}{states}})\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{for}\ (state\_id\ state\ :\ \mbox{\hyperlink{class_packet_value}{states}})\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \mbox{\hyperlink{class_packet_value}{add\_low\_precision\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ state);}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{timed\_action}};}
+\DoxyCodeLine{00204\ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00207\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_low\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period)\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{add\_low\_precision\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ \mbox{\hyperlink{class_packet_value}{current\_state}});}
+\DoxyCodeLine{00209\ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00212\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_mid\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ state\_id\ state)\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_packet_value}{not}}\ \mbox{\hyperlink{class_packet_value}{states}}.contains(state))\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}The\ state\ \%d\ is\ not\ added\ to\ the\ state\ machine"{}},\ state);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00216\ \ \ \ \ \}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{microseconds}}\ =\ (\mbox{\hyperlink{class_packet_value}{uint32\_t}})chrono::duration\_cast<chrono::microseconds>(period).count();}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{microseconds}}\ \%\ 50\ !=\ 0)\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Mid\ precision\ cyclic\ action\ does\ not\ have\ enough\ resolution\ for\ the\ desired\ period,\ Desired\ period:\ \%d\ uS"{}},\ \mbox{\hyperlink{class_packet_value}{microseconds}});}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordflow}{if}(state\ ==\ \mbox{\hyperlink{class_packet_value}{current\_state}}\ \&\&\ \mbox{\hyperlink{class_packet_value}{is\_on}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{states}}[state].register\_new\_timed\_action(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ \mbox{\hyperlink{class_packet_value}{MID\_PRECISION}});}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{states}}[state].add\_new\_timed\_action(\mbox{\hyperlink{class_packet_value}{action}},\ period,\mbox{\hyperlink{class_packet_value}{MID\_PRECISION}});}
+\DoxyCodeLine{00227\ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00230\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_mid\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{vector<state\_id>}}\ \mbox{\hyperlink{class_packet_value}{states}})\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{for}\ (state\_id\ state\ :\ \mbox{\hyperlink{class_packet_value}{states}})\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \mbox{\hyperlink{class_packet_value}{add\_mid\_precision\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ state);}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{timed\_action}};}
+\DoxyCodeLine{00236\ \}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00239\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_mid\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period)\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{add\_mid\_precision\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ \mbox{\hyperlink{class_packet_value}{current\_state}});}
+\DoxyCodeLine{00241\ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00244\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_high\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ state\_id\ state)\ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_packet_value}{not}}\ \mbox{\hyperlink{class_packet_value}{states}}.contains(state))\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}The\ state\ \%d\ is\ not\ added\ to\ the\ state\ machine"{}},\ state);}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00248\ \ \ \ \ \}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{microseconds}}\ =\ (\mbox{\hyperlink{class_packet_value}{uint32\_t}})chrono::duration\_cast<chrono::microseconds>(period).count();}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{microseconds}}\ <\ 1)\{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}High\ precision\ cyclic\ action\ does\ not\ have\ enough\ resolution\ for\ the\ desired\ period,\ Desired\ period:\ \%d\ uS"{}},\ \mbox{\hyperlink{class_packet_value}{microseconds}});}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{if}(state\ ==\ \mbox{\hyperlink{class_packet_value}{current\_state}}\ \&\&\ \mbox{\hyperlink{class_packet_value}{is\_on}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{states}}[state].register\_new\_timed\_action(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ \mbox{\hyperlink{class_packet_value}{HIGH\_PRECISION}});}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{states}}[state].add\_new\_timed\_action(\mbox{\hyperlink{class_packet_value}{action}},\ period,\mbox{\hyperlink{class_packet_value}{HIGH\_PRECISION}});}
+\DoxyCodeLine{00259\ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00262\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_high\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period,\ \mbox{\hyperlink{class_packet_value}{vector<state\_id>}}\ \mbox{\hyperlink{class_packet_value}{states}})\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordflow}{for}\ (state\_id\ state\ :\ \mbox{\hyperlink{class_packet_value}{states}})\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{timed\_action}}\ =\ \mbox{\hyperlink{class_packet_value}{add\_high\_precision\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ state);}
+\DoxyCodeLine{00266\ \ \ \ \ \}}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{timed\_action}};}
+\DoxyCodeLine{00268\ \}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ TimeUnit>}
+\DoxyCodeLine{00271\ \mbox{\hyperlink{class_packet_value}{TimedAction}}*\ StateMachine::add\_high\_precision\_cyclic\_action(function<\textcolor{keywordtype}{void}()>\ \mbox{\hyperlink{class_packet_value}{action}},\ chrono::duration<int64\_t,\ TimeUnit>\ period)\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{add\_high\_precision\_cyclic\_action}}(\mbox{\hyperlink{class_packet_value}{action}},\ period,\ \mbox{\hyperlink{class_packet_value}{current\_state}});}
+\DoxyCodeLine{00273\ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

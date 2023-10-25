@@ -1,0 +1,32 @@
+\doxysection{Phased\+PWM.\+hpp}
+\hypertarget{_phased_p_w_m_8hpp_source}{}\label{_phased_p_w_m_8hpp_source}\index{Inc/HALAL/Services/PWM/PhasedPWM/PhasedPWM.hpp@{Inc/HALAL/Services/PWM/PhasedPWM/PhasedPWM.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ PhasedPWMInstance.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 27,\ 2023}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ aleja}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PWM/PWM/PWM.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_phased_p_w_m}{PhasedPWM}}\ :\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ PWM\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{float}\ phase;}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_phased_p_w_m}{PhasedPWM}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_duty\_cycle(\textcolor{keywordtype}{float}\ duty\_cycle);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_frequency(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ frequency);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_phase(\textcolor{keywordtype}{float}\ phase);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_phased_p_w_m}{PhasedPWM}}(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dual_phased_p_w_m}{DualPhasedPWM}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_half_bridge}{HalfBridge}};}
+\DoxyCodeLine{00026\ \};}
+
+\end{DoxyCode}

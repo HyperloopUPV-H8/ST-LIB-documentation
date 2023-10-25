@@ -1,0 +1,51 @@
+\doxysection{Encoder\+Sensor.\+hpp}
+\hypertarget{_encoder_sensor_8hpp_source}{}\label{_encoder_sensor_8hpp_source}\index{Inc/ST-\/LIB\_LOW/Sensors/EncoderSensor/EncoderSensor.hpp@{Inc/ST-\/LIB\_LOW/Sensors/EncoderSensor/EncoderSensor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ AnalogSensor.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ Created\ on:\ Nov\ 9,\ 2022}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ ricardo}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Encoder/Encoder.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Time/Time.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ COUNTER\_DISTANCE\_IN\_METERS\ 0.025}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ NANO\_SECOND\ 1000000000.0}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ N\_FRAMES\ 8}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ FRAME\_SIZE\_IN\_SECONDS\ 0.01}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ START\_COUNTER\ UINT16\_MAX\ /\ 2}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ CLOCK\_MAX\_VALUE\ 4294967295\ }\textcolor{comment}{//here\ goes\ the\ tim2\ counter\ period}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_encoder_sensor}{EncoderSensor}}\{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_encoder_sensor}{EncoderSensor}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_encoder_sensor}{EncoderSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{pin1}},\ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{pin2}},\ \textcolor{keywordtype}{double}*\ position,\ \textcolor{keywordtype}{double}*\ direction,\ \textcolor{keywordtype}{double}*\ speed,\ \textcolor{keywordtype}{double}*\ acceleration);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ read();}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ get\_id();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ get\_arrays(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_packet_value}{ret}}[][N\_FRAMES]);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{double}*\ position;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}*\ direction;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}*\ speed;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}*\ acceleration;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{double}\ time;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}\ positions[N\_FRAMES];}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ times[N\_FRAMES];}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}\ speeds[N\_FRAMES];}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ last\_clock\_time;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ update\_arrays();}
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}

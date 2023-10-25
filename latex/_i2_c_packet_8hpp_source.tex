@@ -1,0 +1,71 @@
+\doxysection{I2\+CPacket.\+hpp}
+\hypertarget{_i2_c_packet_8hpp_source}{}\label{_i2_c_packet_8hpp_source}\index{Inc/HALAL/Models/Packets/I2CPacket.hpp@{Inc/HALAL/Models/Packets/I2CPacket.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ SPI.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 5\ nov.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Pablo}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ uint32\_t\ size;\ }
+\DoxyCodeLine{00018\ \ \ \ \ uint16\_t\ id;\ }
+\DoxyCodeLine{00019\ \ \ \ \ uint8\_t*\ data;\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}()\{\};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_i2_c_packet_a4909446255773eef822e50cea8083ac5}{I2CPacket}}(uint32\_t\ size)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ this-\/>size\ =\ size;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ this-\/>\textcolor{keywordtype}{id}\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ this-\/>data\ =\ (uint8\_t*)malloc(this-\/>size);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_i2_c_packet_afce000cccb615d1f1c81bf57fcc3c273}{I2CPacket}}(uint16\_t\ \textcolor{keywordtype}{id},\ Type\ data)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ this-\/>size\ =\ \textcolor{keyword}{sizeof}(Type);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ this-\/>\textcolor{keywordtype}{id}\ =\ id;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ this-\/>data\ =\ (uint8\_t*)malloc(this-\/>size);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ memcpy(this-\/>data,\ \&data,\ this-\/>size);}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_i2_c_packet_a0cf18093505e1f8182c29b81d342706f}{I2CPacket}}(uint8\_t\ \textcolor{keywordtype}{id},\ Type*\ data,\ uint32\_t\ size)\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ this-\/>size\ =\ size\ *\ \textcolor{keyword}{sizeof}(Type);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ this-\/>\textcolor{keywordtype}{id}\ =\ id;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ this-\/>data\ =\ (uint8\_t*)malloc(this-\/>size);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ memcpy(this-\/>data,\ data,\ this-\/>size);}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_i2_c_packet_ae5961538b63f21adac9de7c7289810b9}{\string~I2CPacket}}()\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data)}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ free(data);}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_i2_c_packet_a147c9fee8338d6f91d272473b3eb93e3}{get\_size}}()\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{class_i2_c_packet_af60a639917e7686629a690cb4c0647ff}{get\_id}}()\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{class_i2_c_packet_aae71fb6e97de0cbaa28adb94b3dde9b7}{get\_data}}()\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i2_c_packet_a5bb98e309f74f6c3e27c6e3e4d5c80ed}{set\_data}}(uint8\_t*\ data)\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ this-\/>data\ =\ data;}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \};}
+
+\end{DoxyCode}

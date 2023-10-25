@@ -1,0 +1,215 @@
+\doxysection{Packet\+Value.\+hpp}
+\hypertarget{_packet_value_8hpp_source}{}\label{_packet_value_8hpp_source}\index{Inc/HALAL/Models/Packets/PacketValue.hpp@{Inc/HALAL/Models/Packets/PacketValue.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Concepts/Concepts.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structempty__type}{empty\_type}}\ \{\};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{Types}}>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<>\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structempty__type}{value\_type}}\ =\ \mbox{\hyperlink{structempty__type}{empty\_type}};}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}*\ get\_pointer()\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ get\_size()\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\ =\ 0;}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_not_container}{NotContainer<Type>}}\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<\mbox{\hyperlink{class_packet_value}{Type}}>:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_packet_value}{PacketValue}}<>\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_packet_value}{value\_type}}\ =\ \mbox{\hyperlink{class_packet_value}{Type}};}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src):\ src(src)\ \{\}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ src\ =\ (\mbox{\hyperlink{class_packet_value}{Type}}*)\mbox{\hyperlink{class_packet_value}{pointer}};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ *src\ =\ *((\mbox{\hyperlink{class_packet_value}{Type}}*)data);}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ *((\mbox{\hyperlink{class_packet_value}{Type}}*)data)\ =\ *src;}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<\mbox{\hyperlink{class_packet_value}{double}}>:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_packet_value}{PacketValue}}<>\ \{}
+\DoxyCodeLine{00053\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_packet_value}{value\_type}}\ =\ \mbox{\hyperlink{class_packet_value}{double}};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\textcolor{keywordtype}{double}*\ src):\ src(src)\ \{\}}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ src\ =\ (\textcolor{keywordtype}{double}*)\mbox{\hyperlink{class_packet_value}{pointer}};}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{double}});}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ *src\ =\ *((\textcolor{keywordtype}{double}*)data);}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(data,src,get\_size());}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00079\ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\textcolor{keywordtype}{double}*)\ -\/>\ \mbox{\hyperlink{class_packet_value}{PacketValue<double>}};}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_container}{Container<Type>}}}
+\DoxyCodeLine{00083\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<\mbox{\hyperlink{class_packet_value}{Type}}>:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_packet_value}{PacketValue}}<>\ \{}
+\DoxyCodeLine{00084\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ \mbox{\hyperlink{class_packet_value}{Type}};}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src):\ src(src)\ \{\}}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src-\/>data();}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ src\ =\ (\mbox{\hyperlink{class_packet_value}{Type}}*)\mbox{\hyperlink{class_packet_value}{pointer}};}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src-\/>size()*\textcolor{keyword}{sizeof}(\textcolor{keyword}{typename}\ Type::value\_type);}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(src-\/>data(),\ data,\ get\_size());}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(data,\ src-\/>data(),\ get\_size());}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00110\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00111\ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}*)-\/>PacketValue<\mbox{\hyperlink{class_packet_value}{Type}}>;}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00115\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<string>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_packet_value}{PacketValue}}<>\{}
+\DoxyCodeLine{00116\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ string;}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{string}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\textcolor{keywordtype}{string}*\ src):\ src(src)\ \{\}}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src-\/>data();}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ src\ =\ (\textcolor{keywordtype}{string}*)\mbox{\hyperlink{class_packet_value}{pointer}};}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{strlen}}(src-\/>c\_str())\ +\ 1;}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(src-\/>data(),\ data,\ get\_size());}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(data,\ src-\/>data(),\ get\_size());}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type,\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00142\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<\mbox{\hyperlink{class_packet_value}{Type}}(\&)[N]>:\ \mbox{\hyperlink{class_packet_value}{public}}\ \mbox{\hyperlink{class_packet_value}{PacketValue}}<>\ \{}
+\DoxyCodeLine{00143\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_packet_value}{value\_type}}\ =\ \mbox{\hyperlink{class_packet_value}{Type}};}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}(*src\ )[N]\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}(*src)[N]):\ src(src)\ \{\}}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src;}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ src\ =\ (\mbox{\hyperlink{class_packet_value}{Type}}(*)[N])\mbox{\hyperlink{class_packet_value}{pointer}};}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ N*\textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(src,\ data,\ get\_size());}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(data,\ src,\ get\_size());}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00169\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type,\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00170\ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}(*)[N])-\/>PacketValue<\mbox{\hyperlink{class_packet_value}{Type}}(\&)[N]>;}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type,\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00174\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{PacketValue}}<\mbox{\hyperlink{class_packet_value}{Type}}*(\&)[N]>:\ \mbox{\hyperlink{class_packet_value}{public}}\ \mbox{\hyperlink{class_packet_value}{PacketValue}}<>\ \{}
+\DoxyCodeLine{00175\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_packet_value}{value\_type}}\ =\ \mbox{\hyperlink{class_packet_value}{Type}}*;}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*(*src\ )[N]\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}*(*src)[N]):\ src(src)\ \{\}}
+\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~PacketValue}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ src;}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ src\ =\ (\mbox{\hyperlink{class_packet_value}{Type}}*(*)[N])\mbox{\hyperlink{class_packet_value}{pointer}};}
+\DoxyCodeLine{00187\ \ \ \ \ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ N*\textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_packet_value}{Type}}*\ \mbox{\hyperlink{class_packet_value}{i}}\ :\ *src)\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{class_packet_value}{i}}\ =\ *(\mbox{\hyperlink{class_packet_value}{Type}}*)data;}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ data\ +=\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ copy\_to(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_packet_value}{Type}}*\ \mbox{\hyperlink{class_packet_value}{i}}\ :\ *src)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ *(\mbox{\hyperlink{class_packet_value}{Type}}*)data\ =\ *\mbox{\hyperlink{class_packet_value}{i}};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ data\ +=\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \};}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606\ }}
+\DoxyCodeLine{00207\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type,\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00208\ \mbox{\hyperlink{class_packet_value}{PacketValue}}(\mbox{\hyperlink{class_packet_value}{Type}}*(*)[N])-\/>PacketValue<\mbox{\hyperlink{class_packet_value}{Type}}*(\&)[N]>;}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

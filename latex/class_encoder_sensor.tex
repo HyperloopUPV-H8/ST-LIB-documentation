@@ -1,0 +1,58 @@
+\doxysection{Encoder\+Sensor Class Reference}
+\hypertarget{class_encoder_sensor}{}\label{class_encoder_sensor}\index{EncoderSensor@{EncoderSensor}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_encoder_sensor_a8e3f396a509e7047b8e988763709b134}\label{class_encoder_sensor_a8e3f396a509e7047b8e988763709b134} 
+{\bfseries Encoder\+Sensor} (\mbox{\hyperlink{class_pin}{Pin}} \mbox{\hyperlink{class_packet_value}{pin1}}, \mbox{\hyperlink{class_pin}{Pin}} \mbox{\hyperlink{class_packet_value}{pin2}}, \mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*}position, \mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*}direction, \mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*}speed, \mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*}acceleration)
+\item 
+\Hypertarget{class_encoder_sensor_a8d61e9b221243e7c453c28d04d18ad0f}\label{class_encoder_sensor_a8d61e9b221243e7c453c28d04d18ad0f} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\item 
+\Hypertarget{class_encoder_sensor_a638629f0e62e7fb37642beae899cad6b}\label{class_encoder_sensor_a638629f0e62e7fb37642beae899cad6b} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries read} ()
+\item 
+\Hypertarget{class_encoder_sensor_afef17c5195b4b7c07a4f4ca15a4410a8}\label{class_encoder_sensor_afef17c5195b4b7c07a4f4ca15a4410a8} 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries get\+\_\+id} ()
+\item 
+\Hypertarget{class_encoder_sensor_ad5b0010814fba9e4266420b3597568b9}\label{class_encoder_sensor_ad5b0010814fba9e4266420b3597568b9} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries get\+\_\+arrays} (\mbox{\hyperlink{class_packet_value}{double}} \mbox{\hyperlink{class_packet_value}{ret}}\mbox{[}$\,$\mbox{]}\mbox{[}N\+\_\+\+FRAMES\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_encoder_sensor_aa569635cc660d466f786386c22109f30}\label{class_encoder_sensor_aa569635cc660d466f786386c22109f30} 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries id}
+\item 
+\Hypertarget{class_encoder_sensor_a6215e6a3a32015753fcf7b623d636a75}\label{class_encoder_sensor_a6215e6a3a32015753fcf7b623d636a75} 
+\mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*} {\bfseries position}
+\item 
+\Hypertarget{class_encoder_sensor_a06e69d6fe2c5d39ec790857fec342fbb}\label{class_encoder_sensor_a06e69d6fe2c5d39ec790857fec342fbb} 
+\mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*} {\bfseries direction}
+\item 
+\Hypertarget{class_encoder_sensor_a4a79914e14a54673f69cad9a2ffb6f33}\label{class_encoder_sensor_a4a79914e14a54673f69cad9a2ffb6f33} 
+\mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*} {\bfseries speed}
+\item 
+\Hypertarget{class_encoder_sensor_a2d26ac7d278f7801abd18d425d15520b}\label{class_encoder_sensor_a2d26ac7d278f7801abd18d425d15520b} 
+\mbox{\hyperlink{class_packet_value}{double}} \texorpdfstring{$\ast$}{*} {\bfseries acceleration}
+\item 
+\Hypertarget{class_encoder_sensor_a0715f59b4f57a7caf93dcf58ad696055}\label{class_encoder_sensor_a0715f59b4f57a7caf93dcf58ad696055} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries time}
+\item 
+\Hypertarget{class_encoder_sensor_a8830e926fea6ee4e260e1fe4524323ef}\label{class_encoder_sensor_a8830e926fea6ee4e260e1fe4524323ef} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries positions} \mbox{[}N\+\_\+\+FRAMES\mbox{]}
+\item 
+\Hypertarget{class_encoder_sensor_a73688f5298669180771b948fbb340bc7}\label{class_encoder_sensor_a73688f5298669180771b948fbb340bc7} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries times} \mbox{[}N\+\_\+\+FRAMES\mbox{]}
+\item 
+\Hypertarget{class_encoder_sensor_a6ee193bbbdfee99063851d8e1d02f09c}\label{class_encoder_sensor_a6ee193bbbdfee99063851d8e1d02f09c} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries speeds} \mbox{[}N\+\_\+\+FRAMES\mbox{]}
+\item 
+\Hypertarget{class_encoder_sensor_a6277bd3fce390e36f03c9441268044c8}\label{class_encoder_sensor_a6277bd3fce390e36f03c9441268044c8} 
+\mbox{\hyperlink{class_packet_value}{uint64\+\_\+t}} {\bfseries last\+\_\+clock\+\_\+time}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+Sensors/\+Encoder\+Sensor/Encoder\+Sensor.\+hpp\end{DoxyCompactItemize}

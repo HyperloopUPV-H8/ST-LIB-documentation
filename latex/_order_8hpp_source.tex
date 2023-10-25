@@ -1,0 +1,116 @@
+\doxysection{Order.\+hpp}
+\hypertarget{_order_8hpp_source}{}\label{_order_8hpp_source}\index{Inc/HALAL/Models/Packets/Order.hpp@{Inc/HALAL/Models/Packets/Order.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Order.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 14\ nov.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ stefa}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Packet.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}OrderProtocol.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order}{Order}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_packet}{Packet}}\{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ set\_callback(\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}))\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ process()\ =\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ parse(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ socket,\ \textcolor{keywordtype}{void}*\ data)\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ parse(\textcolor{keyword}{nullptr},\ data);}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ process\_by\_id(uint16\_t\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orders.find(\textcolor{keywordtype}{id})\ !=\ orders.end())\ orders[id]-\/>process();}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ process\_data(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ socket,\ \textcolor{keywordtype}{void}*\ data)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ uint16\_t\ \textcolor{keywordtype}{id}\ =\ Packet::get\_id(data);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orders.contains(\textcolor{keywordtype}{id}))\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ orders[id]-\/>parse(socket,\ data);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ orders[id]-\/>process();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ map<uint16\_t,Order*>\ orders;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ BufferLength,\textcolor{keyword}{class}...\ Types>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_not_callable_pack}{NotCallablePack}}<Types*...>}
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stack_order}{StackOrder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_stack_packet}{StackPacket}}<BufferLength,Types...>,\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order}{Order}}\{}
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_stack_order}{StackOrder}}(uint16\_t\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ Types*...\ values)\ :\ \mbox{\hyperlink{class_stack_packet}{StackPacket}}<BufferLength,Types...>(id,values...),\ callback(callback)\ \{orders[id]\ =\ \textcolor{keyword}{this};\}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_stack_order}{StackOrder}}(uint16\_t\ \textcolor{keywordtype}{id},\ Types*...\ values)\ :\ \mbox{\hyperlink{class_stack_packet}{StackPacket}}<BufferLength,Types...>(id,values...)\ \{orders[id]\ =\ \textcolor{keyword}{this};\}}
+\DoxyCodeLine{00040\ \ \ \ \ void(*callback)(void)\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_callback(\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}))\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ this-\/>callback\ =\ callback;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ process()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (callback\ !=\ \textcolor{keyword}{nullptr})\ callback();}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ uint8\_t*\ build()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_stack_packet}{StackPacket<BufferLength,Types...>::build}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stack_packet}{StackPacket<BufferLength,Types...>::parse}}(data);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ socket,\ \textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ parse(data);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_stack_packet}{StackPacket<BufferLength,Types...>::get\_size}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ uint16\_t\ get\_id()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_stack_packet}{StackPacket<BufferLength,Types...>::get\_id}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ pointer)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stack_packet}{StackPacket<BufferLength,Types...>::set\_pointer}}(index,\ pointer);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00069\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_not_callable_pack}{NotCallablePack}}<Types*...>}
+\DoxyCodeLine{00070\ \mbox{\hyperlink{class_stack_order}{StackOrder}}(uint16\_t\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ Types*...\ values)-\/>StackOrder<(!\mbox{\hyperlink{structhas__container}{has\_container}}<Types...>::value)*\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof<Types...>::value}},\ Types...>;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_not_callable_pack}{NotCallablePack}}<Types*...>}
+\DoxyCodeLine{00073\ \mbox{\hyperlink{class_stack_order}{StackOrder}}(uint16\_t\ \textcolor{keywordtype}{id},\ Types*...\ values)-\/>StackOrder<(!\mbox{\hyperlink{structhas__container}{has\_container}}<Types...>::value)*\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof<Types...>::value}},\ Types...>;}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_heap_order}{HeapOrder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_heap_packet}{HeapPacket}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order}{Order}}\{}
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_heap_order}{HeapOrder}}(uint16\_t\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ Types*...\ values)\ :\ \mbox{\hyperlink{class_heap_packet}{HeapPacket}}(\textcolor{keywordtype}{id},values...),\ callback(callback)\ \{orders[id]\ =\ \textcolor{keyword}{this};\}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{class_heap_order}{HeapOrder}}(uint16\_t\ \textcolor{keywordtype}{id},\ Types*...\ values)\ :\ \mbox{\hyperlink{class_heap_packet}{HeapPacket}}(\textcolor{keywordtype}{id},values...)\ \{orders[id]\ =\ \textcolor{keyword}{this};\}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ void(*callback)(void)\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_callback(\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}))\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ this-\/>callback\ =\ callback;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ process()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (callback\ !=\ \textcolor{keyword}{nullptr})\ callback();}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ uint8\_t*\ build()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ HeapPacket::build();}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ HeapPacket::parse(data);}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ socket,\ \textcolor{keywordtype}{void}*\ data)\{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ parse(data);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ HeapPacket::get\_size();}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ uint16\_t\ get\_id()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ HeapPacket::get\_id();}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ pointer)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ HeapPacket::set\_pointer(index,\ pointer);}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \};}
+
+\end{DoxyCode}

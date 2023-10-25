@@ -1,0 +1,132 @@
+\doxysection{Integrator.\+hpp}
+\hypertarget{_integrator_8hpp_source}{}\label{_integrator_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/Integrator.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/Integrator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../ControlBlock.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{enum\ class}\ IntegratorType\{}
+\DoxyCodeLine{00007\ \ \ \ \ ForwardEuler,}
+\DoxyCodeLine{00008\ \ \ \ \ BackwardEuler,}
+\DoxyCodeLine{00009\ \ \ \ \ Trapezoidal}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{template}<IntegratorType\ T>}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_integrator}{Integrator}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_integrator}{Integrator}}<IntegratorType::Trapezoidal>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ N\ =\ 2;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ period;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ buffer[N]\ =\ \{0.0\};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ integral\ =\ 0.0;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ki;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ first\_execution\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_integrator}{Integrator}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_integrator}{Integrator}}(\textcolor{keywordtype}{double}\ period,\ \textcolor{keywordtype}{double}\ ki):\mbox{\hyperlink{class_packet_value}{ControlBlock<double,double>}}(0.0),\ period(period),\ ki(ki)\{output\_value\ =\ 0.0;\}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ buffer[index]\ =\ input\_value;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first\_execution)\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_execution\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\ \%=\ N;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ 0.0;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ integral\ +=\ ki*period*(buffer[index]\ +\ buffer[((index-\/1)\%(N)\ +\ (N))\%(N)])/2.0;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ integral;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ index\ \%=\ N;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ first\_execution\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ integral\ =\ 0.0;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ index\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ N;\ \mbox{\hyperlink{class_packet_value}{i}}++)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[\mbox{\hyperlink{class_packet_value}{i}}]\ =\ 0.0;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00055\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_integrator}{Integrator}}<IntegratorType::ForwardEuler>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ N\ =\ 2;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ period;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ buffer[N]\ =\ \{0.0\};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ integral\ =\ 0.0;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ki;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ first\_execution\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_integrator}{Integrator}}(\textcolor{keywordtype}{double}\ period,\ \textcolor{keywordtype}{double}\ ki):\mbox{\hyperlink{class_packet_value}{ControlBlock<double,double>}}(0.0),\ period(period),\ ki(ki)\ \{this-\/>output\_value\ =\ 0.0;\}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ buffer[index]\ =\ input\_value;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first\_execution)\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_execution\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\ \%=\ N;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ 0.0;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ integral\ +=\ ki*period*buffer[((index-\/1)\%(N)\ +\ (N))\%(N)];}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ integral;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ index\ \%=\ N;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ first\_execution\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ integral\ =\ 0.0;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ index\ =\ 0;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ N;\ \mbox{\hyperlink{class_packet_value}{i}}++)\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[\mbox{\hyperlink{class_packet_value}{i}}]\ =\ 0.0;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00092\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_integrator}{Integrator}}<IntegratorType::BackwardEuler>:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\{}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ N\ =\ 2;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ period;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ buffer[N]\ =\ \{0.0\};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ integral\ =\ 0.0;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ki;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ first\_execution\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_integrator}{Integrator}}(\textcolor{keywordtype}{double}\ period,\ \textcolor{keywordtype}{double}\ ki):\mbox{\hyperlink{class_packet_value}{ControlBlock<double,double>}}(0.0),\ period(period),\ ki(ki)\ \{output\_value\ =\ 0.0;\}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ buffer[index]\ =\ input\_value;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first\_execution)\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_execution\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\ \%=\ N;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ 0.0;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ integral\ +=\ ki*period*buffer[index];}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ integral;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ index\ \%=\ N;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ first\_execution\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ integral\ =\ 0.0;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ index\ =\ 0;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ N;\ \mbox{\hyperlink{class_packet_value}{i}}++)\{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[\mbox{\hyperlink{class_packet_value}{i}}]\ =\ 0.0;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \};}
+
+\end{DoxyCode}

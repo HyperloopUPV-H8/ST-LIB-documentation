@@ -1,0 +1,47 @@
+\doxysection{PWM.\+hpp}
+\hypertarget{_p_w_m_8hpp_source}{}\label{_p_w_m_8hpp_source}\index{Inc/HALAL/Services/PWM/PWM/PWM.hpp@{Inc/HALAL/Services/PWM/PWM/PWM.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ PWM.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 27,\ 2023}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ aleja}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PinModel/Pin.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TimerPeripheral/TimerPeripheral.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ HAL\_TIM\_MODULE\_ENABLED}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }PWM\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimerPeripheral}}*\ \mbox{\hyperlink{class_packet_value}{peripheral}};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{float}\ duty\_cycle;}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ frequency;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_on}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ PWM()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ \ \ \ \ PWM(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ turn\_on();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ turn\_off();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_duty\_cycle(\textcolor{keywordtype}{float}\ duty\_cycle);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_frequency(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ frequency);}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_frequency}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{get\_duty\_cycle}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dual_p_w_m}{DualPWM}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_phased_p_w_m}{PhasedPWM}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_dual_phased_p_w_m}{DualPhasedPWM}};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

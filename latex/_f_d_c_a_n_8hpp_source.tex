@@ -1,0 +1,113 @@
+\doxysection{FDCAN.\+hpp}
+\hypertarget{_f_d_c_a_n_8hpp_source}{}\label{_f_d_c_a_n_8hpp_source}\index{Inc/HALAL/Services/Communication/FDCAN/FDCAN.hpp@{Inc/HALAL/Services/Communication/FDCAN/FDCAN.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ \ FDCAN.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 5\ nov.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Pablo}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ HAL\_FDCAN\_MODULE\_ENABLED}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ }std::unordered\_map;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ }std::vector;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ }std::queue;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{FDCAN}}\{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{DLC}}\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_0}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_0}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_1}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_1}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_2}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_2}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_3}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_3}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_4}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_4}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_5}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_5}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_6}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_6}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_7}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_7}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_8}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_8}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_12}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_12}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_16}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_16}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_20}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_20}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_24}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_24}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_32}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_32}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_48}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_48}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BYTES\_64}}\ =\ \mbox{\hyperlink{class_packet_value}{FDCAN\_DLC\_BYTES\_64}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DEFAULT}}\ =\ \mbox{\hyperlink{class_packet_value}{UINT32\_MAX}},}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet}{Packet}}\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{rx\_data}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{identifier}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DLC}}\ \mbox{\hyperlink{class_packet_value}{data\_length}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{Instance}}\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{TX}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{RX}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{FDCAN\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{hfdcan}};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{FDCAN\_GlobalTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{instance}};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DLC}}\ \mbox{\hyperlink{class_packet_value}{dlc}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{FDCAN\_TxHeaderTypeDef}}\ \mbox{\hyperlink{class_packet_value}{tx\_header}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{rx\_location}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{queue<FDCAN::Packet>}}\ \mbox{\hyperlink{class_packet_value}{rx\_queue}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{rx\_queue\_max\_size}}\ =\ 64;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{tx\_data}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{fdcan\_number}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ start\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \};}
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{Peripheral}}\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral1}}\ =\ 0,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral2}}\ =\ 1,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral3}}\ =\ 2,}
+\DoxyCodeLine{00082\ \ \ \ \ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ id\_counter;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ FDCAN::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{registered\_fdcan}};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<FDCAN::Peripheral,\ FDCAN::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{available\_fdcans}};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<FDCAN\_HandleTypeDef*,\ FDCAN::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{handle\_to\_fdcan}};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<FDCAN::DLC,\ uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{dlc\_to\_len}};}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ FDCAN::Peripheral\ \mbox{\hyperlink{class_packet_value}{fdcan1}};}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ FDCAN::Peripheral\ \mbox{\hyperlink{class_packet_value}{fdcan2}};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ FDCAN::Peripheral\ \mbox{\hyperlink{class_packet_value}{fdcan3}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{static}\ FDCAN::Instance\ \mbox{\hyperlink{class_packet_value}{instance1}};}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{static}\ FDCAN::Instance\ \mbox{\hyperlink{class_packet_value}{instance2}};}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{static}\ FDCAN::Instance\ \mbox{\hyperlink{class_packet_value}{instance3}};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(FDCAN::Peripheral\&\ \mbox{\hyperlink{class_packet_value}{fdcan}});}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{message\_id}},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data,\ FDCAN::DLC\ \mbox{\hyperlink{class_packet_value}{dlc}}\ =\ FDCAN::DLC::DEFAULT);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ read(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ FDCAN::Packet*\ data);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{received\_test}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}(FDCAN::Instance*\ \mbox{\hyperlink{class_packet_value}{fdcan}});}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,42 @@
+\doxysection{Half\+Bridge.\+hpp}
+\hypertarget{_half_bridge_8hpp_source}{}\label{_half_bridge_8hpp_source}\index{Inc/ST-\/LIB\_LOW/HalfBridge/HalfBridge.hpp@{Inc/ST-\/LIB\_LOW/HalfBridge/HalfBridge.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ HalfBridge.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Dec\ 1,\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ aleja}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Time/Time.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}DigitalOutputService/DigitalOutputService.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}PWM/PhasedPWM/PhasedPWM.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}PWM/DualPhasedPWM/DualPhasedPWM.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_half_bridge}{HalfBridge}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_half_bridge}{HalfBridge}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_half_bridge}{HalfBridge}}(\mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{positive\_pwm\_pin}},\ \mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{positive\_pwm\_negated\_pin}},\ \mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{negative\_pwm\_pin}},\ \mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{negative\_pwm\_negated\_pin}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{enable\_pin}});}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ turn\_on();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ turn\_off();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_duty\_cycle(\textcolor{keywordtype}{float}\ duty\_cycle);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_frequency(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ frequency);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_phase(\textcolor{keywordtype}{float}\ phase);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ get\_phase();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_dual_phased_p_w_m}{DualPhasedPWM}}\ positive\_pwm;}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_dual_phased_p_w_m}{DualPhasedPWM}}\ negative\_pwm;}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_dual;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ enable;}
+\DoxyCodeLine{00036\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,152 @@
+\doxysection{I2\+CPacket Class Reference}
+\hypertarget{class_i2_c_packet}{}\label{class_i2_c_packet}\index{I2CPacket@{I2CPacket}}
+
+
+I2C data packet class. Contains a pointer to the data stored in bytes and the number of bytes.  
+
+
+
+
+{\ttfamily \#include $<$I2\+CPacket.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_i2_c_packet_a4909446255773eef822e50cea8083ac5}{I2\+CPacket}} (\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em Construct a new I2C \doxylink{class_packet}{Packet} object. The constructor will create an empty packet of the specified size. This constructor is intended for receive packets. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{typename}} \mbox{\hyperlink{class_packet_value}{Type}} $>$ }\\\mbox{\hyperlink{class_i2_c_packet_afce000cccb615d1f1c81bf57fcc3c273}{I2\+CPacket}} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{Type}} data)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_i2_c_packet}{I2\+CPacket} object. The constructor will handle automatically the data type and size. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{typename}} \mbox{\hyperlink{class_packet_value}{Type}} $>$ }\\\mbox{\hyperlink{class_i2_c_packet_a0cf18093505e1f8182c29b81d342706f}{I2\+CPacket}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{Type}} \texorpdfstring{$\ast$}{*}data, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_i2_c_packet}{I2\+CPacket} object by passing an array of any type and length. \end{DoxyCompactList}\item 
+\Hypertarget{class_i2_c_packet_ae5961538b63f21adac9de7c7289810b9}\label{class_i2_c_packet_ae5961538b63f21adac9de7c7289810b9} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+I2\+CPacket} ()
+\begin{DoxyCompactList}\small\item\em Deletes a \doxylink{class_i2_c_packet}{I2\+CPacket} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_i2_c_packet_a147c9fee8338d6f91d272473b3eb93e3}{get\+\_\+size}} ()
+\begin{DoxyCompactList}\small\item\em Gets the data size in bytes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_i2_c_packet_af60a639917e7686629a690cb4c0647ff}{get\+\_\+id}} ()
+\begin{DoxyCompactList}\small\item\em Gets the id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_i2_c_packet_aae71fb6e97de0cbaa28adb94b3dde9b7}{get\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Get the pointer to the data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_i2_c_packet_a5bb98e309f74f6c3e27c6e3e4d5c80ed}{set\+\_\+data}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+I2C data packet class. Contains a pointer to the data stored in bytes and the number of bytes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_i2_c_packet_a4909446255773eef822e50cea8083ac5}\label{class_i2_c_packet_a4909446255773eef822e50cea8083ac5} 
+\index{I2CPacket@{I2CPacket}!I2CPacket@{I2CPacket}}
+\index{I2CPacket@{I2CPacket}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{I2CPacket()}{I2CPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily I2\+CPacket\+::\+I2\+CPacket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new I2C \doxylink{class_packet}{Packet} object. The constructor will create an empty packet of the specified size. This constructor is intended for receive packets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size in bytes of the packet data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_i2_c_packet_afce000cccb615d1f1c81bf57fcc3c273}\label{class_i2_c_packet_afce000cccb615d1f1c81bf57fcc3c273} 
+\index{I2CPacket@{I2CPacket}!I2CPacket@{I2CPacket}}
+\index{I2CPacket@{I2CPacket}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{I2CPacket()}{I2CPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_packet_value}{typename}} \mbox{\hyperlink{class_packet_value}{Type}} $>$ \\
+I2\+CPacket\+::\+I2\+CPacket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_packet_value}{Type}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{class_i2_c_packet}{I2\+CPacket} object. The constructor will handle automatically the data type and size. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Generic data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to be stored in the packet. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_i2_c_packet_a0cf18093505e1f8182c29b81d342706f}\label{class_i2_c_packet_a0cf18093505e1f8182c29b81d342706f} 
+\index{I2CPacket@{I2CPacket}!I2CPacket@{I2CPacket}}
+\index{I2CPacket@{I2CPacket}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{I2CPacket()}{I2CPacket()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_packet_value}{typename}} \mbox{\hyperlink{class_packet_value}{Type}} $>$ \\
+I2\+CPacket\+::\+I2\+CPacket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_packet_value}{Type}} \texorpdfstring{$\ast$}{*}}]{data,  }\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a new \doxylink{class_i2_c_packet}{I2\+CPacket} object by passing an array of any type and length. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & Generic data type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the data to be store. \\
+\hline
+{\em size} & Size of the array. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i2_c_packet_aae71fb6e97de0cbaa28adb94b3dde9b7}\label{class_i2_c_packet_aae71fb6e97de0cbaa28adb94b3dde9b7} 
+\index{I2CPacket@{I2CPacket}!get\_data@{get\_data}}
+\index{get\_data@{get\_data}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{get\_data()}{get\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} I2\+CPacket\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the pointer to the data. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} Returns a pointer to the packet data. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_packet_af60a639917e7686629a690cb4c0647ff}\label{class_i2_c_packet_af60a639917e7686629a690cb4c0647ff} 
+\index{I2CPacket@{I2CPacket}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} I2\+CPacket\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the id. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t Returns the data size in bytes. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_packet_a147c9fee8338d6f91d272473b3eb93e3}\label{class_i2_c_packet_a147c9fee8338d6f91d272473b3eb93e3} 
+\index{I2CPacket@{I2CPacket}!get\_size@{get\_size}}
+\index{get\_size@{get\_size}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{get\_size()}{get\_size()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} I2\+CPacket\+::get\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the data size in bytes. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t Returns the data size in bytes. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_packet_a5bb98e309f74f6c3e27c6e3e4d5c80ed}\label{class_i2_c_packet_a5bb98e309f74f6c3e27c6e3e4d5c80ed} 
+\index{I2CPacket@{I2CPacket}!set\_data@{set\_data}}
+\index{set\_data@{set\_data}!I2CPacket@{I2CPacket}}
+\doxysubsubsection{\texorpdfstring{set\_data()}{set\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} I2\+CPacket\+::set\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyVerb}   @brief Set new data to the packet.
+\end{DoxyVerb}
+ ¡ ~\newline
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+HALAL/\+Models/\+Packets/I2\+CPacket.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,72 @@
+\doxysection{Flash.\+hpp}
+\hypertarget{_flash_8hpp_source}{}\label{_flash_8hpp_source}\index{Inc/HALAL/Services/Flash/Flash.hpp@{Inc/HALAL/Services/Flash/Flash.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Flash.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 19\ oct.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Pablo}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifdef\ HAL\_FLASH\_MODULE\_ENABLED}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ FLASH\_32BITS\_WORLD\ \ \ \ \ \ \ \ \ \ ((uint8\_t)\ 4U)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ FLASHWORD\ 8}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ FLASH\_START\_ADDRESS\ 0x08000000}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR0\_START\_ADDRESS\ 0x08000000}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR1\_START\_ADDRESS\ 0x08020000}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR2\_START\_ADDRESS\ 0x08040000}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR3\_START\_ADDRESS\ 0x08060000}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR4\_START\_ADDRESS\ 0x08080000}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR5\_START\_ADDRESS\ 0x080A0000}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR6\_START\_ADDRESS\ 0x080C0000}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ FLASH\_SECTOR7\_START\_ADDRESS\ 0x080E0000}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ FLASH\_END\_ADDRESS\ 0x080FFFFF}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ SECTOR\_SIZE\_IN\_WORDS\ 32768}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ SECTOR\_SIZE\_IN\_BYTES\ \ \ \ \ \ \ \ ((uint32\_t)131072U)}}
+\DoxyCodeLine{00031\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ **IMPORTANT**}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ \ We\ need\ to\ reserve\ memory\ in\ the\ linker\ script\ to\ avoid\ overwriting:}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ \ MEMORY\ \{\ }}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ \ \ \ \ ......\ }}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ \ \ \ \ DATA\ (xrw)\ :\ ORIGIN\ =\ 0x8080000,\ LENGTH\ =\ 512K\ //Allocated\ half\ of\ the\ flash\ }}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ \ \ \ \ \ ......}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00039\ \textcolor{comment}{}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ To\ create\ variables\ in\ the\ flash\ we\ need\ to\ first\ create\ a\ section:}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ \ \ \ .user\_data\ :}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \{\ .\ =\ ALIGN(4);}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ *(.user\_data)}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ .\ =\ ALIGN(4);}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ >DATA}}
+\DoxyCodeLine{00046\ \textcolor{comment}{}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ Then\ on\ the\ c\ script\ we\ declare:}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ \ \ \ \ \ attribute((section("{}.user\_data"{})))\ const\ uint8\_t\ userConfig[64]}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ \ Then\ we\ can\ write\ on\ the\ variable\ using\ HAL:}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ \ \ \ \ HAL\_FLASH\_Program(FLASH\_TYPEPROGRAM\_DOUBLEWORD,\ (uint32\_t)\&userConfig[index],\ someData);}}
+\DoxyCodeLine{00052\ \textcolor{comment}{}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ More\ info:\ https://github.com/HyperloopUPV-\/H8/ST-\/LIB/wiki/All-\/about-\/Flash-\/module}}
+\DoxyCodeLine{00054\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Flash}}\{}
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ read(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{source\_addr}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}*\ result,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{write}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}*\ \mbox{\hyperlink{class_packet_value}{source}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{dest\_addr}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{size\_in\_words}});}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{erase}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{start\_sector}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{end\_sector}});}
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_sector}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{address}});}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_sector\_starting\_address}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{sector}});}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

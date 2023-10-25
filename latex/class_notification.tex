@@ -1,0 +1,143 @@
+\doxysection{Notification Class Reference}
+\hypertarget{class_notification}{}\label{class_notification}\index{Notification@{Notification}}
+Inheritance diagram for Notification\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_notification}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_notification_a6219fcae7a5f9f21ed5924bc2d9eddf7}\label{class_notification_a6219fcae7a5f9f21ed5924bc2d9eddf7} 
+{\bfseries Notification} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{packet\+\_\+id}}, \mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(), string message)
+\item 
+\Hypertarget{class_notification_a050e9a4a2521a01484b5266d9a655978}\label{class_notification_a050e9a4a2521a01484b5266d9a655978} 
+{\bfseries Notification} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{packet\+\_\+id}}, \mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)())
+\item 
+\Hypertarget{class_notification_af1e31c48b791c385ab083c23d842e245}\label{class_notification_af1e31c48b791c385ab083c23d842e245} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)()) \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_notification_a7bcd0bbfc9279a790dbe722024cfeb79}{process}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_notification_a4e1fe1bc51f86ce0085b4f99c67f9d0d}{build}} ()
+\item 
+\Hypertarget{class_notification_af5c8e3917b73930321b9564e7083e891}\label{class_notification_af5c8e3917b73930321b9564e7083e891} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries notify} (string message)
+\item 
+\Hypertarget{class_notification_a03ef3114976316fd1b3f15c61b21457c}\label{class_notification_a03ef3114976316fd1b3f15c61b21457c} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries notify} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_notification_a18a30f68ab972d5030108ad96d76e6ff}{parse}} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} \mbox{\hyperlink{class_notification_a9bd990bed8b8966ae632cf9c3ccec7f7}{get\+\_\+size}} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_notification_a270f09b8fb9be87da8448f4142f06b02}{get\+\_\+id}} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_notification_ab302b0f442ddf1ec503d29d7a05e6fcf}{set\+\_\+pointer}} (\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} index, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{pointer}}) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(\mbox{\hyperlink{class_packet_value}{void}}))=0
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_order_a0a0051a8b895251147182cbf9e91baf8}{parse}} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+by\+\_\+id} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+data} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse\+\_\+data} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries size}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries orders}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_packet}{Packet}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries packets}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_notification_a4e1fe1bc51f86ce0085b4f99c67f9d0d}\label{class_notification_a4e1fe1bc51f86ce0085b4f99c67f9d0d} 
+\index{Notification@{Notification}!build@{build}}
+\index{build@{build}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} Notification\+::build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_notification_a270f09b8fb9be87da8448f4142f06b02}\label{class_notification_a270f09b8fb9be87da8448f4142f06b02} 
+\index{Notification@{Notification}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} Notification\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_notification_a9bd990bed8b8966ae632cf9c3ccec7f7}\label{class_notification_a9bd990bed8b8966ae632cf9c3ccec7f7} 
+\index{Notification@{Notification}!get\_size@{get\_size}}
+\index{get\_size@{get\_size}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{get\_size()}{get\_size()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{size\+\_\+t}} Notification\+::get\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_notification_a18a30f68ab972d5030108ad96d76e6ff}\label{class_notification_a18a30f68ab972d5030108ad96d76e6ff} 
+\index{Notification@{Notification}!parse@{parse}}
+\index{parse@{parse}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} Notification\+::parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}}]{socket,  }\item[{\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_order}{Order}}.
+
+\Hypertarget{class_notification_a7bcd0bbfc9279a790dbe722024cfeb79}\label{class_notification_a7bcd0bbfc9279a790dbe722024cfeb79} 
+\index{Notification@{Notification}!process@{process}}
+\index{process@{process}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} Notification\+::process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_order}{Order}}.
+
+\Hypertarget{class_notification_ab302b0f442ddf1ec503d29d7a05e6fcf}\label{class_notification_ab302b0f442ddf1ec503d29d7a05e6fcf} 
+\index{Notification@{Notification}!set\_pointer@{set\_pointer}}
+\index{set\_pointer@{set\_pointer}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{set\_pointer()}{set\_pointer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} Notification\+::set\+\_\+pointer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{size\+\_\+t}}}]{index,  }\item[{\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}}]{pointer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+HIGH/\+Protections/Notification.\+hpp\end{DoxyCompactItemize}

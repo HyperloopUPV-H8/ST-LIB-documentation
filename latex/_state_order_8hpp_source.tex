@@ -1,0 +1,50 @@
+\doxysection{State\+Order.\+hpp}
+\hypertarget{_state_order_8hpp_source}{}\label{_state_order_8hpp_source}\index{Inc/ST-\/LIB\_LOW/StateMachine/StateOrder.hpp@{Inc/ST-\/LIB\_LOW/StateMachine/StateOrder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Packets/Order.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_state_order}{StateOrder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order}{Order}}\{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{enum}\ StateOrdersID\{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ ADD\_STATE\_ORDERS\ =\ 5,}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ REMOVE\_STATE\_ORDERS\ =\ 6}
+\DoxyCodeLine{00010\ \ \ \ \ \};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ informer\_socket;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ state\_orders\_ids\_size;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{vector<uint16\_t>}}*\ state\_orders\_ids;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{StackOrder<0,uint8\_t,\ vector<uint16\_t>}}>\ add\_state\_orders\_order;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{StackOrder<0,uint8\_t,\ vector<uint16\_t>}}>\ remove\_state\_orders\_order;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ set\_socket(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}\&\ \mbox{\hyperlink{class_packet_value}{socket}})\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ informer\_socket\ =\ \&\mbox{\hyperlink{class_packet_value}{socket}};}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ add\_state\_orders(\mbox{\hyperlink{class_packet_value}{vector<uint16\_t>}}\&\ \mbox{\hyperlink{class_packet_value}{new\_ids}})\{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(informer\_socket\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Informer\ Socket\ has\ not\ been\ set"{}});}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ add\_state\_orders\_order.set\_pointer(1,\ \&\mbox{\hyperlink{class_packet_value}{new\_ids}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ state\_orders\_ids\_size\ =\ \mbox{\hyperlink{class_packet_value}{new\_ids}}.size();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ informer\_socket-\/>send\_order(add\_state\_orders\_order);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ remove\_state\_orders(\mbox{\hyperlink{class_packet_value}{vector<uint16\_t>}}\&\ \mbox{\hyperlink{class_packet_value}{old\_ids}})\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(informer\_socket\ ==\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Informer\ Socket\ has\ not\ been\ set"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ remove\_state\_orders\_order.set\_pointer(1,\ \&\mbox{\hyperlink{class_packet_value}{old\_ids}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ state\_orders\_ids\_size\ =\ \mbox{\hyperlink{class_packet_value}{old\_ids}}.size();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ informer\_socket-\/>send\_order(remove\_state\_orders\_order);}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+
+\end{DoxyCode}

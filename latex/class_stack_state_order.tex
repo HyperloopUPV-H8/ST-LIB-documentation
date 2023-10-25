@@ -1,0 +1,139 @@
+\doxysection{Stack\+State\+Order\texorpdfstring{$<$}{<} Buffer\+Length, Types \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_stack_state_order}{}\label{class_stack_state_order}\index{StackStateOrder$<$ BufferLength, Types $>$@{StackStateOrder$<$ BufferLength, Types $>$}}
+Inheritance diagram for Stack\+State\+Order\texorpdfstring{$<$}{<} Buffer\+Length, Types \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_stack_state_order}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_stack_state_order_aad5d48b8379a7ad3afaa112fa41b8998}\label{class_stack_state_order_aad5d48b8379a7ad3afaa112fa41b8998} 
+{\bfseries Stack\+State\+Order} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(\mbox{\hyperlink{class_packet_value}{void}}), \mbox{\hyperlink{class_packet_value}{State\+Machine}} \&state\+\_\+machine, State\+Machine\+::state\+\_\+id state, \mbox{\hyperlink{class_packet_value}{Types}} \texorpdfstring{$\ast$}{*}... values)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_state_order_aa1ef54bd5744eb2bc5ef0d78ce9c5820}{process}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_state_order_a92ef1bb2fafee84794e52eeadc57aca9}{parse}} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_stack_order}{Stack\+Order$<$ Buffer\+Length, Types... $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Stack\+Order} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(\mbox{\hyperlink{class_packet_value}{void}}), \mbox{\hyperlink{class_packet_value}{Types}} \texorpdfstring{$\ast$}{*}... values)
+\item 
+{\bfseries Stack\+Order} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{Types}} \texorpdfstring{$\ast$}{*}... values)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_order_a4dde46214d8963b3f77bb1ed2a5a37ba}{set\+\_\+callback}} (\mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(\mbox{\hyperlink{class_packet_value}{void}})) \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stack_order_aee6c0fe3b13e4fcb6b704a9410e5289d}{build}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_order_ac96276fef0ca3559287a56d3bc718895}{parse}} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} \mbox{\hyperlink{class_stack_order_ad1f6bb4d573698d52b2c281b19b82e8f}{get\+\_\+size}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_stack_order_a03c3c051207c25e951bd482e51843cd1}{get\+\_\+id}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_order_a76b886a2b070aa077f989e8f0ce95bf6}{set\+\_\+pointer}} (\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} index, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{pointer}}) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_stack_packet}{Stack\+Packet$<$ Buffer\+Length, Types... $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Stack\+Packet} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{Types}} \texorpdfstring{$\ast$}{*}... values)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_packet_aaa00d3c8912152f909995178dcc93553}{parse}} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} \mbox{\hyperlink{class_stack_packet_a7e4b6f323ab64c4f2e74670a8883661d}{get\+\_\+size}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stack_packet_a79166646327db4c7e05e04762c416782}{build}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_stack_packet_a24a958e0e5c10df8a3c8cc3e33305bcd}{get\+\_\+id}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_packet_a709d4726b1b5d6a1dac47ca179dcd88d}{set\+\_\+pointer}} (\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} index, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{pointer}}) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_stack_state_order_a1e68c564e397a9e87c2de9b5d8ec7f47}\label{class_stack_state_order_a1e68c564e397a9e87c2de9b5d8ec7f47} 
+\mbox{\hyperlink{class_packet_value}{State\+Machine}} \& {\bfseries state\+\_\+machine}
+\item 
+\Hypertarget{class_stack_state_order_ad41160e3202cd731c05bb8ab01b22699}\label{class_stack_state_order_ad41160e3202cd731c05bb8ab01b22699} 
+State\+Machine\+::state\+\_\+id {\bfseries state}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_stack_order}{Stack\+Order$<$ Buffer\+Length, Types... $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*} {\bfseries callback} )(\mbox{\hyperlink{class_packet_value}{void}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_stack_packet}{Stack\+Packet$<$ Buffer\+Length, Types... $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries id}
+\item 
+\mbox{\hyperlink{class_packet_value}{Packet\+Value}} \texorpdfstring{$\ast$}{*} {\bfseries values} \mbox{[}sizeof...(\mbox{\hyperlink{class_packet_value}{Types}})\mbox{]}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries buffer} \mbox{[}\mbox{\hyperlink{class_packet_value}{Buffer\+Length}}+\mbox{\hyperlink{class_packet_value}{sizeof}}(id)\mbox{]}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} \& {\bfseries size}
+\item 
+\mbox{\hyperlink{classstack__tuple}{stack\+\_\+tuple}}$<$ \mbox{\hyperlink{class_packet_value}{Packet\+Value}}$<$ \mbox{\hyperlink{class_packet_value}{Types}} $>$... $>$ {\bfseries packetvalue\+\_\+warehouse}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries size}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse\+\_\+data} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+by\+\_\+id} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+data} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_packet}{Packet}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries packets}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries orders}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stack_state_order_a92ef1bb2fafee84794e52eeadc57aca9}\label{class_stack_state_order_a92ef1bb2fafee84794e52eeadc57aca9} 
+\index{StackStateOrder$<$ BufferLength, Types $>$@{StackStateOrder$<$ BufferLength, Types $>$}!parse@{parse}}
+\index{parse@{parse}!StackStateOrder$<$ BufferLength, Types $>$@{StackStateOrder$<$ BufferLength, Types $>$}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} Buffer\+Length, class... Types$>$ \\
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_state_order}{Stack\+State\+Order}}$<$ \mbox{\hyperlink{class_packet_value}{Buffer\+Length}}, \mbox{\hyperlink{class_packet_value}{Types}} $>$\+::parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}}]{socket,  }\item[{\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_stack_order}{Stack\+Order$<$ Buffer\+Length, Types... $>$}}.
+
+\Hypertarget{class_stack_state_order_aa1ef54bd5744eb2bc5ef0d78ce9c5820}\label{class_stack_state_order_aa1ef54bd5744eb2bc5ef0d78ce9c5820} 
+\index{StackStateOrder$<$ BufferLength, Types $>$@{StackStateOrder$<$ BufferLength, Types $>$}!process@{process}}
+\index{process@{process}!StackStateOrder$<$ BufferLength, Types $>$@{StackStateOrder$<$ BufferLength, Types $>$}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} Buffer\+Length, class... Types$>$ \\
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_state_order}{Stack\+State\+Order}}$<$ \mbox{\hyperlink{class_packet_value}{Buffer\+Length}}, \mbox{\hyperlink{class_packet_value}{Types}} $>$\+::process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_stack_order}{Stack\+Order$<$ Buffer\+Length, Types... $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+State\+Machine/Stack\+State\+Order.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\doxysection{ADC.\+hpp}
+\hypertarget{_a_d_c_8hpp_source}{}\label{_a_d_c_8hpp_source}\index{Inc/HALAL/Services/ADC/ADC.hpp@{Inc/HALAL/Services/ADC/ADC.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ADC.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 20\ oct.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ alejandro}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}PinModel/Pin.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}LowPowerTimer/LowPowerTimer.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}DMA/DMA.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#if\ defined(HAL\_ADC\_MODULE\_ENABLED)\ \&\&\ defined(HAL\_LPTIM\_MODULE\_ENABLED)}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ }std::string;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ADC\_BUF\_LEN\ 16}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ LPTIM1\_PERIOD\ 6875}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ LPTIM2\_PERIOD\ 6875}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ LPTIM3\_PERIOD\ 6875}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ ADC\_MAX\_VOLTAGE\ 3.3}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ MAX\_12BIT\ 4095.0}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ MAX\_16BIT\ 65535.0}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{ADC}}\ \{}
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{InitData}}\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ADC\_TypeDef}}*\ \mbox{\hyperlink{class_packet_value}{adc}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{resolution}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{external\_trigger}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<uint32\_t>}}\ \mbox{\hyperlink{class_packet_value}{channels}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ DMA::Stream\ \mbox{\hyperlink{class_packet_value}{dma\_stream}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{InitData}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{InitData}}(\mbox{\hyperlink{class_packet_value}{ADC\_TypeDef}}*\ \mbox{\hyperlink{class_packet_value}{adc}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{resolution}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{external\_trigger}},\ \mbox{\hyperlink{class_packet_value}{vector<uint32\_t>}}\&\ \mbox{\hyperlink{class_packet_value}{channels}},\ DMA::Stream\ \mbox{\hyperlink{class_packet_value}{dma\_stream}},\ \textcolor{keywordtype}{string}\ name);}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Peripheral}}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ADC\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{handle}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}*\ \mbox{\hyperlink{class_packet_value}{dma\_stream}};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{LowPowerTimer}}\ \mbox{\hyperlink{class_packet_value}{timer}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{InitData}}\ \mbox{\hyperlink{class_packet_value}{init\_data}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_on}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Peripheral}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Peripheral}}(\mbox{\hyperlink{class_packet_value}{ADC\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{handle}},\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}*\ \mbox{\hyperlink{class_packet_value}{dma\_stream}},\ \mbox{\hyperlink{class_packet_value}{LowPowerTimer}}\&\ \mbox{\hyperlink{class_packet_value}{timer}},\ \mbox{\hyperlink{class_packet_value}{InitData}}\&\ \mbox{\hyperlink{class_packet_value}{init\_data}});}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_registered}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Instance}}\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Peripheral}}*\ \mbox{\hyperlink{class_packet_value}{peripheral}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{rank}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Instance}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Instance}}(\mbox{\hyperlink{class_packet_value}{Peripheral}}*\ \mbox{\hyperlink{class_packet_value}{peripheral}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel}});}
+\DoxyCodeLine{00074\ \ \ \ \ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(\mbox{\hyperlink{class_pin}{Pin}}\ pin);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ turn\_on(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{get\_value}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_int\_value}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{Peripheral}}\ \mbox{\hyperlink{class_packet_value}{peripherals}}[3];}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{ranks}}[16];}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<Pin,\ Instance>}}\ \mbox{\hyperlink{class_packet_value}{available\_instances}};}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ Instance>}}\ \mbox{\hyperlink{class_packet_value}{active\_instances}};}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id\_counter;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}(\mbox{\hyperlink{class_packet_value}{Peripheral}}\&\ \mbox{\hyperlink{class_packet_value}{peripheral}});}
+\DoxyCodeLine{00137\ \};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

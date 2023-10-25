@@ -1,0 +1,74 @@
+\doxysection{Error\+Handler\+Model Class Reference}
+\hypertarget{class_error_handler_model}{}\label{class_error_handler_model}\index{ErrorHandlerModel@{ErrorHandlerModel}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_error_handler_model_a08f6e267241340886b605bc43dd55c57}{Error\+Handler\+Trigger}} (string format,...)
+\begin{DoxyCompactList}\small\item\em Triggers Error\+Handler and format the error message. The format works exactly like printf format. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_error_handler_model_a9c63c968cbacab14ea09e2baeeea6faf}{Set\+Meta\+Data}} (\mbox{\hyperlink{class_packet_value}{int}} line=\mbox{\hyperlink{class_packet_value}{\+\_\+\+\_\+builtin\+\_\+\+LINE}}(), \mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_packet_value}{char}} \texorpdfstring{$\ast$}{*}func=\mbox{\hyperlink{class_packet_value}{\+\_\+\+\_\+builtin\+\_\+\+FUNCTION}}(), \mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_packet_value}{char}} \texorpdfstring{$\ast$}{*}file=\mbox{\hyperlink{class_packet_value}{\+\_\+\+\_\+builtin\+\_\+\+FILE}}())
+\begin{DoxyCompactList}\small\item\em Get all metadata needed for the error message, including the line function and file. The default parameters are not necessary but are there in case the compiler macros stop working because a change of the compiler. \end{DoxyCompactList}\item 
+\Hypertarget{class_error_handler_model_a11eedbc2ab08c61b595decaa7fd92035}\label{class_error_handler_model_a11eedbc2ab08c61b595decaa7fd92035} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries Error\+Handler\+Update} ()
+\begin{DoxyCompactList}\small\item\em Transmit the error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_error_handler_model_abe88d1bdec5a9c4fcbc9fde7d430c7f7}\label{class_error_handler_model_abe88d1bdec5a9c4fcbc9fde7d430c7f7} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{double}} {\bfseries error\+\_\+triggered}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_error_handler_model_aa45e9ec76ec62d51824cc0752463c2a7}\label{class_error_handler_model_aa45e9ec76ec62d51824cc0752463c2a7} 
+\mbox{\hyperlink{class_packet_value}{class}} {\bfseries Boundary\+Interface}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_error_handler_model_a08f6e267241340886b605bc43dd55c57}\label{class_error_handler_model_a08f6e267241340886b605bc43dd55c57} 
+\index{ErrorHandlerModel@{ErrorHandlerModel}!ErrorHandlerTrigger@{ErrorHandlerTrigger}}
+\index{ErrorHandlerTrigger@{ErrorHandlerTrigger}!ErrorHandlerModel@{ErrorHandlerModel}}
+\doxysubsubsection{\texorpdfstring{ErrorHandlerTrigger()}{ErrorHandlerTrigger()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Error\+Handler\+Model\+::\+Error\+Handler\+Trigger (\begin{DoxyParamCaption}\item[{string}]{format,  }\item[{}]{... }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Triggers Error\+Handler and format the error message. The format works exactly like printf format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & String which will be formated. \\
+\hline
+{\em args} & Arguments specifying data to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Id of the service. 
+\end{DoxyReturn}
+\Hypertarget{class_error_handler_model_a9c63c968cbacab14ea09e2baeeea6faf}\label{class_error_handler_model_a9c63c968cbacab14ea09e2baeeea6faf} 
+\index{ErrorHandlerModel@{ErrorHandlerModel}!SetMetaData@{SetMetaData}}
+\index{SetMetaData@{SetMetaData}!ErrorHandlerModel@{ErrorHandlerModel}}
+\doxysubsubsection{\texorpdfstring{SetMetaData()}{SetMetaData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Error\+Handler\+Model\+::\+Set\+Meta\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{int}}}]{line = {\ttfamily \mbox{\hyperlink{class_packet_value}{\+\_\+\+\_\+builtin\+\_\+\+LINE}}()},  }\item[{\mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_packet_value}{char}} \texorpdfstring{$\ast$}{*}}]{func = {\ttfamily \mbox{\hyperlink{class_packet_value}{\+\_\+\+\_\+builtin\+\_\+\+FUNCTION}}()},  }\item[{\mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_packet_value}{char}} \texorpdfstring{$\ast$}{*}}]{file = {\ttfamily \mbox{\hyperlink{class_packet_value}{\+\_\+\+\_\+builtin\+\_\+\+FILE}}()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get all metadata needed for the error message, including the line function and file. The default parameters are not necessary but are there in case the compiler macros stop working because a change of the compiler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Line where the error occurred \\
+\hline
+{\em func} & Function where the error occurred \\
+\hline
+{\em file} & File where the file occurred \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Id of the service. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+Error\+Handler/Error\+Handler.\+hpp\end{DoxyCompactItemize}

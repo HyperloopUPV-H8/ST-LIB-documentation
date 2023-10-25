@@ -1,0 +1,47 @@
+\doxysection{DMA.\+hpp}
+\hypertarget{_d_m_a_8hpp_source}{}\label{_d_m_a_8hpp_source}\index{Inc/HALAL/Models/DMA/DMA.hpp@{Inc/HALAL/Models/DMA/DMA.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ DMA.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 10\ dic.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ aleja}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_d_m_a}{DMA}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{enum}\ Stream\ :\ uint8\_t\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ DMA1Stream0\ =\ 11,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ DMA1Stream1\ =\ 12,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ DMA1Stream2\ =\ 13,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ DMA1Stream3\ =\ 14,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ DMA1Stream4\ =\ 15,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ DMA1Stream5\ =\ 16,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ DMA1Stream6\ =\ 17,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ DMA2Stream0\ =\ 56,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ DMA2Stream1\ =\ 57,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ DMA2Stream2\ =\ 58,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ DMA2Stream3\ =\ 59,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ DMA2Stream4\ =\ 60,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ DMA2Stream5\ =\ 68,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ DMA2Stream6\ =\ 69,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ DMA2Stream7\ =\ 70,}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ inscribe\_stream();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ inscribe\_stream(Stream\ dma\_stream);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ vector<Stream>\ available\_streams;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ vector<Stream>\ inscribed\_streams;}
+\DoxyCodeLine{00041\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,106 @@
+\doxysection{Concepts.\+hpp}
+\hypertarget{_concepts_8hpp_source}{}\label{_concepts_8hpp_source}\index{Inc/HALAL/Models/Concepts/Concepts.hpp@{Inc/HALAL/Models/Concepts/Concepts.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00005\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_integral}{Integral}}\ =\ is\_integral<Type>::value;}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00008\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_not_integral}{NotIntegral}}\ =\ !is\_integral<Type>::value;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00011\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_callable}{Callable}}\ =\ \textcolor{keyword}{requires}(T\ a)}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \{\ a()\ \};}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00017\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_not_callable}{NotCallable}}\ =\ !\mbox{\hyperlink{concept_callable}{Callable<T>}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhas__callable}{has\_callable}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class\ }Type,\ \textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhas__callable}{has\_callable}}<Type,Types...>\{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ \mbox{\hyperlink{concept_callable}{Callable<Type>}}\ ||\ \mbox{\hyperlink{structhas__callable}{has\_callable}}<Types...>::value;}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhas__callable}{has\_callable}}<>\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00033\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_callable_pack}{CallablePack}}\ =\ \mbox{\hyperlink{structhas__callable}{has\_callable}}<Types...>::value;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00036\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_not_callable_pack}{NotCallablePack}}\ =\ !\mbox{\hyperlink{concept_callable_pack}{CallablePack}}<Types...>;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00039\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_container}{Container}}\ =\ \textcolor{keyword}{requires}(T\ a,\ \textcolor{keyword}{const}\ T\ b)}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{requires}\ std::regular<T>;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{requires}\ std::swappable<T>;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::reference,\ typename\ T::value\_type\ \&>;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::const\_reference,\ const\ typename\ T::value\_type\ \&>;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{requires}\ std::forward\_iterator<typename\ T::iterator>;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{requires}\ std::forward\_iterator<typename\ T::const\_iterator>;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{requires}\ std::signed\_integral<typename\ T::difference\_type>;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::difference\_type,\ typename\ std::iterator\_traits<typename\ T::iterator>::difference\_type>;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::difference\_type,\ typename\ std::iterator\_traits<typename\ T::const\_iterator>::difference\_type>;}
+\DoxyCodeLine{00050\ \ \ \ \ \{\ a.begin()\ \}\ -\/>\ std::same\_as<typename\ T::iterator>;}
+\DoxyCodeLine{00051\ \ \ \ \ \{\ a.end()\ \}\ -\/>\ std::same\_as<typename\ T::iterator>;}
+\DoxyCodeLine{00052\ \ \ \ \ \{\ b.begin()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{00053\ \ \ \ \ \{\ b.end()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{00054\ \ \ \ \ \{\ a.cbegin()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{00055\ \ \ \ \ \{\ a.cend()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{00056\ \ \ \ \ \{\ a.size()\ \}\ -\/>\ std::same\_as<typename\ T::size\_type>;}
+\DoxyCodeLine{00057\ \ \ \ \ \{\ a.max\_size()\ \}\ -\/>\ std::same\_as<typename\ T::size\_type>;}
+\DoxyCodeLine{00058\ \ \ \ \ \{\ a.empty()\ \}\ -\/>\ std::convertible\_to<bool>;}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00062\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_not_container}{NotContainer}}\ =\ !\mbox{\hyperlink{concept_container}{Container<T>}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class\ }T,\ \textcolor{keyword}{class}...\ U>}
+\DoxyCodeLine{00065\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_pack_derives_from}{PackDerivesFrom}}\ =\ (std::derived\_from<T,\ U>\ \&\&\ ...);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhas__container}{has\_container}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Type,\ \textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00071\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhas__container}{has\_container}}<Type,\ Types...>\{}
+\DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ \mbox{\hyperlink{concept_container}{Container<Type>}}\ ||\ \mbox{\hyperlink{structhas__container}{has\_container}}<Types...>::value;}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00077\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structhas__container}{has\_container}}<>\{}
+\DoxyCodeLine{00078\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Type,\ \textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00085\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof}}<Type,Types...>\{}
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ value\ =\ \textcolor{keyword}{sizeof}(Type)\ +\ \mbox{\hyperlink{structtotal__sizeof}{total\_sizeof<Types...>::value}};}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00091\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof}}<>\{}
+\DoxyCodeLine{00092\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ value\ =\ 0;}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00097\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_array}{Array}}\ =\ std::is\_array<Type>::value;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00100\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_not_array}{NotArray}}\ =\ not\ \mbox{\hyperlink{concept_array}{Array<Type>}};}
+
+\end{DoxyCode}

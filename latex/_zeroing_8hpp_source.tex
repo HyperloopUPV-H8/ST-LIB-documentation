@@ -1,0 +1,30 @@
+\doxysection{Zeroing.\+hpp}
+\hypertarget{_zeroing_8hpp_source}{}\label{_zeroing_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/Zeroing.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/Zeroing.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../ControlBlock.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}MeanCalculator.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Sensors/LinearSensor/LinearSensor.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type,\ \textcolor{keywordtype}{size\_t}\ Order>}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zeroing}{Zeroing}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<Type,Type>\{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{MeanCalculator<Order>}}\ mean\_calculator;}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{LinearSensor<Type>}}\&\ sensor;}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ max\_value\_offset;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{bool}\ has\_max\_value\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_zeroing}{Zeroing}}(\mbox{\hyperlink{class_packet_value}{LinearSensor<Type>}}\&\ sensor)\ :\ sensor(sensor),\ mean\_calculator()\{\};}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_zeroing}{Zeroing}}(\mbox{\hyperlink{class_packet_value}{LinearSensor<Type>}}\&\ sensor,\ \mbox{\hyperlink{class_packet_value}{Type}}\ max\_value\_offset)\ :\ mean\_calculator(),\ sensor(sensor),\ max\_value\_offset(max\_value\_offset),\ has\_max\_value(\textcolor{keyword}{true})\{\};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(mean\_calculator.output\_value\ ==\ 0)\{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ sensor.read();}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ mean\_calculator.input(*sensor.get\_value\_pointer());}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ mean\_calculator.execute();}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_max\_value\ \&\&\ \mbox{\hyperlink{class_packet_value}{abs}}(mean\_calculator.output\_value)\ >\ max\_value\_offset)\ ErrorHandler(\textcolor{stringliteral}{"{}Zeroing\ offset\ is\ calculated\ to\ be\ above\ specified\ maximum"{}});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ sensor.set\_offset(sensor.get\_offset()\ -\/\ mean\_calculator.output\_value);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ mean\_calculator.reset();}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \};}
+
+\end{DoxyCode}

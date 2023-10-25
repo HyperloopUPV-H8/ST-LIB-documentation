@@ -1,0 +1,19 @@
+\doxysection{Order\+Protocol.\+hpp}
+\hypertarget{_order_protocol_8hpp_source}{}\label{_order_protocol_8hpp_source}\index{Inc/HALAL/Models/Packets/OrderProtocol.hpp@{Inc/HALAL/Models/Packets/OrderProtocol.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Packets/Packet.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order}{Order}};}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}\{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ send\_order(\mbox{\hyperlink{class_order}{Order}}\&\ order)\ =\ 0;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{static}\ vector<OrderProtocol*>\ sockets;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }ServerSocket;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Socket;}
+\DoxyCodeLine{00013\ \};}
+
+\end{DoxyCode}

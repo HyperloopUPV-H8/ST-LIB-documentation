@@ -1,0 +1,86 @@
+\doxysection{Integrator\texorpdfstring{$<$}{<} Integrator\+Type\+::Forward\+Euler \texorpdfstring{$>$}{>} Class Reference}
+\hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4}{}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4}\index{Integrator$<$ IntegratorType::ForwardEuler $>$@{Integrator$<$ IntegratorType::ForwardEuler $>$}}
+Inheritance diagram for Integrator\texorpdfstring{$<$}{<} Integrator\+Type\+::Forward\+Euler \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a0aec5d560306682724ad7e19b38c66c6}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a0aec5d560306682724ad7e19b38c66c6} 
+{\bfseries Integrator} (\mbox{\hyperlink{class_packet_value}{double}} period, \mbox{\hyperlink{class_packet_value}{double}} ki)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a6bafd0fbc0a317120584c39c075e029d}{execute}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a7212448a64d6024c873756220a3e39d9}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a7212448a64d6024c873756220a3e39d9} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries reset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Control\+Block} (\mbox{\hyperlink{class_packet_value}{double}} \mbox{\hyperlink{class_packet_value}{default\+\_\+input}})
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries input} (\mbox{\hyperlink{class_packet_value}{double}} input)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a3f3db6fa244c57e241e734094e0c7f54}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a3f3db6fa244c57e241e734094e0c7f54} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries period}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_ab3d3c1d95d5ded49f541bf9883a39191}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_ab3d3c1d95d5ded49f541bf9883a39191} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries buffer} \mbox{[}N\mbox{]} = \{0.\+0\}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_ae48dc08d9ba15faf81b3c0c96e467dd9}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_ae48dc08d9ba15faf81b3c0c96e467dd9} 
+\mbox{\hyperlink{class_packet_value}{int}} {\bfseries index} = 0
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a1b796873f44b72b8dec2144c92d79c40}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a1b796873f44b72b8dec2144c92d79c40} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries integral} = 0.\+0
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a000e5e410b2af55871c6ea384e9af604}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a000e5e410b2af55871c6ea384e9af604} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries ki}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a273ada33c2b0e34aa7621aeaf6685ac4}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a273ada33c2b0e34aa7621aeaf6685ac4} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries first\+\_\+execution} = \mbox{\hyperlink{class_packet_value}{true}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries input\+\_\+value}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries output\+\_\+value}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_af31027563811bad1d79bb94a1abaed0e}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_af31027563811bad1d79bb94a1abaed0e} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{constexpr}} \mbox{\hyperlink{class_packet_value}{int}} {\bfseries N} = 2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Input} = \mbox{\hyperlink{class_packet_value}{double}}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Output} = \mbox{\hyperlink{class_packet_value}{double}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a6bafd0fbc0a317120584c39c075e029d}\label{class_integrator_3_01_integrator_type_1_1_forward_euler_01_4_a6bafd0fbc0a317120584c39c075e029d} 
+\index{Integrator$<$ IntegratorType::ForwardEuler $>$@{Integrator$<$ IntegratorType::ForwardEuler $>$}!execute@{execute}}
+\index{execute@{execute}!Integrator$<$ IntegratorType::ForwardEuler $>$@{Integrator$<$ IntegratorType::ForwardEuler $>$}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_integrator}{Integrator}}$<$ Integrator\+Type\+::\+Forward\+Euler $>$\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+HIGH/\+Control/\+Blocks/Integrator.\+hpp\end{DoxyCompactItemize}

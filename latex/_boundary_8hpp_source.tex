@@ -1,0 +1,303 @@
+\doxysection{Boundary.\+hpp}
+\hypertarget{_boundary_8hpp_source}{}\label{_boundary_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Protections/Boundary.hpp@{Inc/ST-\/LIB\_HIGH/Protections/Boundary.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROTECTIONTYPE\_LENGTH\ 7}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Control/Blocks/MeanCalculator.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{enum}\ ProtectionType\ :\ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ BELOW\ =\ std::numeric\_limits<uint64\_t>::max()\ -\/\ PROTECTIONTYPE\_LENGTH\ +\ 1,}
+\DoxyCodeLine{00008\ \ \ \ \ ABOVE,}
+\DoxyCodeLine{00009\ \ \ \ \ OUT\_OF\_RANGE,}
+\DoxyCodeLine{00010\ \ \ \ \ EQUALS,}
+\DoxyCodeLine{00011\ \ \ \ \ NOT\_EQUALS,}
+\DoxyCodeLine{00012\ \ \ \ \ ERROR\_HANDLER,}
+\DoxyCodeLine{00013\ \ \ \ \ TIME\_ACCUMULATION}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ check\_bounds()\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ get\_string\_size()\ =\ 0;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ get\_error\_handler\_string\_size()\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ErrorHandlerModel::description.size();}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ get\_error\_handler\_string()\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ErrorHandlerModel::description;}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type,\ ProtectionType\ Protector>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{Type}},\ BELOW>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ BELOW;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}LOWER\_BOUND\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s,\ \(\backslash\)"{}bound\(\backslash\)"{}:\ \%s\ \}"{}};}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary;}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ boundary(boundary)\{\};}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<Type,\ Protector>}}\ boundary):\ src(src),boundary(boundary.boundary)\{\}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ src(src),boundary(boundary)\{\}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*src\ <\ boundary)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{Type}},\ ABOVE>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ ABOVE;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}UPPER\_BOUND\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s,\ \(\backslash\)"{}bound\(\backslash\)"{}:\ \%s\ \}"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary;}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ boundary(boundary)\{\};}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<Type,\ Protector>}}\ boundary):\ src(src),boundary(boundary.boundary)\{\}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ src(src),boundary(boundary)\{\}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*src\ >\ boundary)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00078\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{Type}},\ EQUALS>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ EQUALS;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}EQUALS\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s\ \}"{}};}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary;}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ boundary(boundary)\{\};}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<Type,\ Protector>}}\ boundary):\ src(src),boundary(boundary.boundary)\{\}}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ src(src),boundary(boundary)\{\}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*src\ ==\ boundary)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00100\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{Type}},\ NOT\_EQUALS>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ NOT\_EQUALS;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}NOT\_EQUALS\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s,\ \(\backslash\)"{}want\(\backslash\)"{}:\ \%s\ \}"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary;}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ boundary(boundary)\{\};}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<Type,\ Protector>}}\ boundary):\ src(src),boundary(boundary.boundary)\{\}}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Type}}\ boundary):\ src(src),boundary(boundary)\{\}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*src\ !=\ boundary)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),\ to\_string(boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00122\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{Type}},\ OUT\_OF\_RANGE>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ OUT\_OF\_RANGE;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}OUT\_OF\_BOUNDS\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s,\ \(\backslash\)"{}bounds\(\backslash\)"{}:\ [\%s,\ \%s]\ \}"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ lower\_boundary,\ upper\_boundary;}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}\ lower\_boundary,\ \mbox{\hyperlink{class_packet_value}{Type}}\ upper\_boundary):\ lower\_boundary(lower\_boundary),\ upper\_boundary(upper\_boundary)\{\};}
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<Type,\ Protector>}}\ boundary):\ src(src),lower\_boundary(boundary.lower\_boundary),upper\_boundary(boundary.upper\_boundary)\{\}}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Type}}\ lower\_boundary,\ \mbox{\hyperlink{class_packet_value}{Type}}\ upper\_boundary):\ src(src),\ lower\_boundary(lower\_boundary),\ upper\_boundary(upper\_boundary)\{\}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*\mbox{\hyperlink{class_packet_value}{src\ <\ lower\_boundary\ ||\ *src\ >}}\ upper\_boundary)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(lower\_boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}(),\ to\_string(upper\_boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),\ to\_string(lower\_boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}(),\ to\_string(upper\_boundary).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00144\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{void}},\ ERROR\_HANDLER>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ ERROR\_HANDLER;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}ERROR\_HANDLER\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \(\backslash\)"{}\%s\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{void}*)\{\}}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{void}*,\ \mbox{\hyperlink{class_packet_value}{Boundary<void,ERROR\_HANDLER>}})\{\}}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{not}}\ ErrorHandlerModel::error\_triggered;}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,BoundaryInterface::get\_error\_handler\_string().\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},format,BoundaryInterface::get\_error\_handler\_string().\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00163\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{double}},\ TIME\_ACCUMULATION>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\{}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ TIME\_ACCUMULATION;}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}TIME\_ACCUMULATION\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s,\ \(\backslash\)"{}bound\(\backslash\)"{}:\ \%s,\(\backslash\)"{}timelimit\(\backslash\)"{}:\ \%s\ \}"{}};}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{double}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{double}\ bound;}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{float}\ time\_limit;}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{float}\ frequency;}
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{double}\ bound,\ \textcolor{keywordtype}{float}\ time\_limit,\ \textcolor{keywordtype}{float}\ frequency,\ \mbox{\hyperlink{class_packet_value}{Boundary<double,\ Protector>}}*\&\ external\_pointer):\ bound(bound),time\_limit(time\_limit),frequency(frequency),\ moving\_order(frequency*time\_limit/100),}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ external\_pointer(\&external\_pointer)\{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ external\_pointer\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00173\ \ \ \ \ \};}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{double}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<double,\ Protector>}}\ boundary):\ src(src),bound(boundary.bound),time\_limit(boundary.time\_limit),frequency(boundary.frequency),moving\_order(frequency*time\_limit/100),\ external\_pointer(boundary.external\_pointer)\{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ *external\_pointer\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{double}*\ src,\ \textcolor{keywordtype}{double}\ bound\ ,\textcolor{keywordtype}{float}\ time\_limit,\ \textcolor{keywordtype}{float}\ frequency):\ src(src),bound(bound)\ ,time\_limit(time\_limit),\ frequency(frequency),moving\_order(frequency*time\_limit/100),\ external\_pointer(\textcolor{keyword}{nullptr})\{\}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Boundary<double,Protector>}}**\ external\_pointer;}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{MeanCalculator<100>}}\ mean\_calculator;}
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<double>}}\ mean\_moving\_average;}
+\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_order\ =\ 0;}
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_last\ =\ -\/1;}
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_first\ =\ 0;}
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_counter\ =\ 0;}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{double}\ accumulator\ =\ 0;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{bool}\ still\_good\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00190\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_accumulation(\textcolor{keywordtype}{double}\ value)\{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!still\_good)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ mean\_calculator.input(\mbox{\hyperlink{class_packet_value}{abs}}(value));}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(mean\_calculator.output\_value\ ==\ 0)\{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ mean\_calculator.reset();}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(moving\_counter\ <\ moving\_order)\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ moving\_last++;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ mean\_moving\_average[moving\_last]\ =\ mean\_calculator.output\_value;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ +=\ mean\_calculator.output\_value;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ moving\_counter++;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ accumulator\ -\/=\ mean\_moving\_average[moving\_first]\ /\ moving\_order;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ moving\_first\ =\ (moving\_first\ +\ 1)\ \%\ moving\_order;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ moving\_last\ =\ (moving\_last\ +\ 1)\ \%\ moving\_counter;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ mean\_moving\_average[moving\_last]\ =\ mean\_calculator.output\_value;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ accumulator\ +=\ mean\_moving\_average[moving\_last]\ /\ moving\_order;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(accumulator\ >\ bound)\{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ still\_good\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00214\ \ \ \ \ \}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ still\_good;}
+\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(time\_limit).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),\ to\_string(time\_limit).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \};}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00230\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_boundary}{Boundary}}<\mbox{\hyperlink{class_packet_value}{float}},\ TIME\_ACCUMULATION>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}}\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ ProtectionType\ Protector\ =\ TIME\_ACCUMULATION;}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format\ =\ \textcolor{stringliteral}{"{}\(\backslash\)"{}type\(\backslash\)"{}:\ \(\backslash\)"{}TIME\_ACCUMULATION\(\backslash\)"{},\ \(\backslash\)"{}data\(\backslash\)"{}:\ \{\ \(\backslash\)"{}value\(\backslash\)"{}:\ \%s,\ \(\backslash\)"{}bound\(\backslash\)"{}:\ \%s,\(\backslash\)"{}timelimit\(\backslash\)"{}:\ \%s\ \}"{}};}
+\DoxyCodeLine{00233\ \ \ \ \ }
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{float}\ bound,\ \textcolor{keywordtype}{float}\ time\_limit,\ \textcolor{keywordtype}{float}\ frequency,\ \mbox{\hyperlink{class_packet_value}{Boundary<float,\ Protector>}}*\&\ external\_pointer):\ bound(bound),time\_limit(time\_limit)\ ,frequency(frequency),\ moving\_order(frequency*time\_limit/100),}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ external\_pointer(\&external\_pointer)\{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ external\_pointer\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00237\ \ \ \ \ \};}
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{float}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundary<float,\ Protector>}}\ boundary):\ src(src),bound(boundary.bound),time\_limit(boundary.time\_limit),frequency(boundary.frequency),moving\_order(frequency*time\_limit/100),\ external\_pointer(boundary.external\_pointer)\{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ *external\_pointer\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \mbox{\hyperlink{struct_boundary}{Boundary}}(\textcolor{keywordtype}{float}*\ src,\ \textcolor{keywordtype}{float}\ bound\ ,\textcolor{keywordtype}{float}\ time\_limit,\ \textcolor{keywordtype}{float}\ frequency):\ src(src),bound(bound)\ ,time\_limit(time\_limit),\ frequency(frequency),moving\_order(frequency*time\_limit/100),\ external\_pointer(\textcolor{keyword}{nullptr})\{\}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{float}*\ src\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{float}\ bound;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{float}\ time\_limit;}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{float}\ frequency;}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{bool}\ still\_good\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Boundary<float,Protector>}}**\ external\_pointer;}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{MeanCalculator<100>}}\ mean\_calculator;}
+\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<float>}}\ mean\_moving\_average;}
+\DoxyCodeLine{00252\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_order\ =\ 0;}
+\DoxyCodeLine{00253\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_last\ =\ -\/1;}
+\DoxyCodeLine{00254\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_first\ =\ 0;}
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ moving\_counter\ =\ 0;}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{float}\ accumulator\ =\ 0;}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_accumulation(\textcolor{keywordtype}{float}\ value)\{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!still\_good)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ mean\_calculator.input(\mbox{\hyperlink{class_packet_value}{abs}}(value));}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ mean\_calculator.execute();}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(mean\_calculator.output\_value\ ==\ 0)\{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ mean\_calculator.reset();}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(moving\_counter\ <\ moving\_order)\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ moving\_last++;}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ mean\_moving\_average[moving\_last]\ =\ mean\_calculator.output\_value;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ +=\ mean\_calculator.output\_value/moving\_order;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ moving\_counter++;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ accumulator\ -\/=\ mean\_moving\_average[moving\_first]\ /\ moving\_order;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ moving\_first\ =\ (moving\_first\ +\ 1)\ \%\ moving\_order;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ moving\_last\ =\ (moving\_last\ +\ 1)\ \%\ moving\_counter;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ mean\_moving\_average[moving\_last]\ =\ mean\_calculator.output\_value;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ accumulator\ +=\ mean\_moving\_average[moving\_last]\ /\ moving\_order;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(accumulator\ >\ bound)\{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ still\_good\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordtype}{bool}\ check\_bounds()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ still\_good;}
+\DoxyCodeLine{00287\ \ \ \ \ \}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{int}\ get\_string\_size()\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,to\_string(*src).c\_str(),\ to\_string(bound).\mbox{\hyperlink{class_packet_value}{c\_str}}()\ ,to\_string(time\_limit).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00291\ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keywordtype}{char}*\ serialize(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{dst}})\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(\mbox{\hyperlink{class_packet_value}{dst}},\ format,\ to\_string(*src).c\_str(),to\_string(bound).\mbox{\hyperlink{class_packet_value}{c\_str}}()\ ,to\_string(time\_limit).\mbox{\hyperlink{class_packet_value}{c\_str}}());}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{dst}};}
+\DoxyCodeLine{00295\ \ \ \ \ \}}
+\DoxyCodeLine{00296\ \};}
+\DoxyCodeLine{00297\ }
+
+\end{DoxyCode}

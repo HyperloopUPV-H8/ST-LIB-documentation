@@ -1,0 +1,39 @@
+\doxysection{Ethernet.\+hpp}
+\hypertarget{_ethernet_8hpp_source}{}\label{_ethernet_8hpp_source}\index{Inc/HALAL/Services/Communication/Ethernet/Ethernet.hpp@{Inc/HALAL/Services/Communication/Ethernet/Ethernet.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ EthernetNode.cpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Nov\ 23,\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ stefa}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}PinModel/Pin.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}EthernetNode.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}lwip.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}ethernetif.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifdef\ HAL\_ETH\_MODULE\_ENABLED}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ ETHERNET\_POOLS\_BASE\_ADDRESS\ 0x30000000}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Ethernet}}\{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_ready}};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_running}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ inscribe();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{local\_ip}},\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{subnet\_mask}},\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{gateway}});}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start(\mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{local\_ip}},\ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{subnet\_mask}},\ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{gateway}});}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{mpu\_start}}();}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

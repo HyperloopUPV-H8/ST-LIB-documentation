@@ -1,0 +1,111 @@
+\doxysection{Notification.\+hpp}
+\hypertarget{_notification_8hpp_source}{}\label{_notification_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Protections/Notification.hpp@{Inc/ST-\/LIB\_HIGH/Protections/Notification.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Packets/Order.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}BoardID/BoardID.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Protection.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Time/Time.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Packets/OrderProtocol.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_notification}{Notification}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order}{Order}}\{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{message\_size\_t}};}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ id;}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{void}}(*callback)()\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{string}\ tx\_message;}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{message\_size\_t}}\ tx\_message\_size;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ rx\_message;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}*\ buffer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ received\_socket\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_notification}{Notification}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{packet\_id}},\textcolor{keywordtype}{void}(*callback)()\ ,\textcolor{keywordtype}{string}\ message)\ :\ id(\mbox{\hyperlink{class_packet_value}{packet\_id}}),\ callback(callback),tx\_message(message),\ tx\_message\_size(message.size())\{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ Order::orders[id]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Packet::packets[id]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_notification}{Notification}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{packet\_id}},\textcolor{keywordtype}{void}(*callback)())\ :\ id(\mbox{\hyperlink{class_packet_value}{packet\_id}}),\ callback(callback)\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Order::orders[id]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ Packet::packets[id]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_callback(\textcolor{keywordtype}{void}(*callback)())\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ this-\/>callback\ =\ callback;}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ process()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(callback\ !=\ \textcolor{keyword}{nullptr})\ callback();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{aux}}\ =\ tx\_message;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ tx\_message\ =\ rx\_message;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ \mbox{\hyperlink{class_packet_value}{socket}}\ :\ OrderProtocol::sockets)\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{socket}}\ ==\ received\_socket)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{socket}}-\/>send\_order(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ tx\_message\ =\ \mbox{\hyperlink{class_packet_value}{aux}};}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}*\ build()\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(buffer\ !=\ \textcolor{keyword}{nullptr})\ \mbox{\hyperlink{class_packet_value}{free}}(buffer);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ buffer\ =\ (\mbox{\hyperlink{class_packet_value}{uint8\_t}}*)\mbox{\hyperlink{class_packet_value}{malloc}}(get\_size());}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(buffer,\&\textcolor{keywordtype}{id},\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{id}));}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(buffer\ +\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{id}),\ \&tx\_message\_size,\ \textcolor{keyword}{sizeof}(tx\_message\_size));}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(buffer+\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{id})+\textcolor{keyword}{sizeof}(tx\_message\_size),tx\_message.c\_str(),\ tx\_message.size());}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer;}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ notify(\textcolor{keywordtype}{string}\ message)\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ tx\_message\ =\ message;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ tx\_message\_size\ =\ message.size();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ notify();}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ notify()\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(tx\_message.empty())\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Cannot\ notify\ empty\ notification"{}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ \mbox{\hyperlink{class_packet_value}{socket}}\ :\ OrderProtocol::sockets)\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{socket}}-\/>send\_order(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ \mbox{\hyperlink{class_packet_value}{socket}},\ \textcolor{keywordtype}{void}*\ data)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ received\_socket\ =\ \mbox{\hyperlink{class_packet_value}{socket}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{temp}}\ =\ (\textcolor{keywordtype}{char}*)\mbox{\hyperlink{class_packet_value}{malloc}}(get\_string\_size(data));}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(\mbox{\hyperlink{class_packet_value}{temp}},\ data+\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{id})+\textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{message\_size\_t}}),\ get\_string\_size(data));}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ rx\_message\ =\ string(\mbox{\hyperlink{class_packet_value}{temp}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{free}}(\mbox{\hyperlink{class_packet_value}{temp}});}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size()\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ size\ =\ \textcolor{keyword}{sizeof}(id)\ +\ \ \textcolor{keyword}{sizeof}(tx\_message\_size)\ +\ \ tx\_message\_size;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ get\_id()\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Notification\ does\ not\ suport\ this\ method!"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_notification}{\string~Notification}}()\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(buffer\ !=\ \textcolor{keyword}{nullptr})\ \mbox{\hyperlink{class_packet_value}{free}}(buffer);}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ get\_string\_size(\textcolor{keywordtype}{void}*\ buffer)\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *(\mbox{\hyperlink{class_packet_value}{uint16\_t}}*)(buffer\ +\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{id}));}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+
+\end{DoxyCode}

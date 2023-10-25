@@ -1,0 +1,42 @@
+\doxysection{Error\+Handler.\+hpp}
+\hypertarget{_error_handler_8hpp_source}{}\label{_error_handler_8hpp_source}\index{Inc/ST-\/LIB\_LOW/ErrorHandler/ErrorHandler.hpp@{Inc/ST-\/LIB\_LOW/ErrorHandler/ErrorHandler.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ErrorHandler.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Dec\ 22,\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Pablo}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Time/Time.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Communication/UART/UART.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_error_handler_model}{ErrorHandlerModel}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ description;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ func;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ file;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ error\_triggered;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_error_handler_model_a08f6e267241340886b605bc43dd55c57}{ErrorHandlerTrigger}}(\textcolor{keywordtype}{string}\ format,\ ...);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_error_handler_model_a9c63c968cbacab14ea09e2baeeea6faf}{SetMetaData}}(\ \textcolor{keywordtype}{int}\ line\ =\ \mbox{\hyperlink{class_packet_value}{\_\_builtin\_LINE}}(),\ \textcolor{keyword}{const}\ \ \textcolor{keywordtype}{char}\ *\ func\ =\ \mbox{\hyperlink{class_packet_value}{\_\_builtin\_FUNCTION}}(),\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ file\ =\ \mbox{\hyperlink{class_packet_value}{\_\_builtin\_FILE}}());}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_error_handler_model_a11eedbc2ab08c61b595decaa7fd92035}{ErrorHandlerUpdate}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{struct_boundary_interface}{BoundaryInterface}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ ErrorHandler(x,\ ...)\ do\ \{\ ErrorHandlerModel::SetMetaData(\_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ \_\_FILE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandlerModel::ErrorHandlerTrigger(x,\ \#\#\_\_VA\_ARGS\_\_);\}while(0)}}
+\DoxyCodeLine{00057\ }
+
+\end{DoxyCode}

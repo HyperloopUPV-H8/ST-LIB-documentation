@@ -1,0 +1,34 @@
+\doxysection{Digital\+Sensor.\+hpp}
+\hypertarget{_digital_sensor_8hpp_source}{}\label{_digital_sensor_8hpp_source}\index{Inc/ST-\/LIB\_LOW/Sensors/DigitalSensor/DigitalSensor.hpp@{Inc/ST-\/LIB\_LOW/Sensors/DigitalSensor/DigitalSensor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ DigitalSensor.hpp}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ Created\ on:\ Nov\ 2,\ 2022}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ ricardo}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}DigitalInputService/DigitalInputService.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}EXTI/EXTI.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_digital_sensor}{DigitalSensor}}\{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_digital_sensor}{DigitalSensor}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_digital_sensor}{DigitalSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ PinState\ *value);}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_digital_sensor}{DigitalSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ PinState\ \&value);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ read();}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ get\_id();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
+\DoxyCodeLine{00025\ \ \ \ \ PinState\ *value;}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+
+\end{DoxyCode}

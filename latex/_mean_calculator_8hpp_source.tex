@@ -1,0 +1,32 @@
+\doxysection{Mean\+Calculator.\+hpp}
+\hypertarget{_mean_calculator_8hpp_source}{}\label{_mean_calculator_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/MeanCalculator.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/MeanCalculator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../ControlBlock.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mean_calculator}{MeanCalculator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ 0;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{double}\ mean\ =\ 0.0;}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_mean_calculator}{MeanCalculator}}():\mbox{\hyperlink{class_packet_value}{ControlBlock<double,double>}}(0.0)\{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ output\_value\ =\ 0.0;}
+\DoxyCodeLine{00013\ \ \ \ \ \}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ mean\ +=\ input\_value/N;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ index++;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ >\ N)\ ErrorHandler(\textcolor{stringliteral}{"{}MeanCalculator\ is\ receiving\ just\ 0"{}});}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\ ==\ N)\ output\_value\ =\ mean;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ output\_value\ =\ 0.0;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ mean\ =\ 0.0;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ index\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \};}
+
+\end{DoxyCode}

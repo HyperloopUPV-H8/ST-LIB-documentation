@@ -1,0 +1,42 @@
+\doxysection{Low\+Power\+Timer.\+hpp}
+\hypertarget{_low_power_timer_8hpp_source}{}\label{_low_power_timer_8hpp_source}\index{Inc/HALAL/Models/LowPowerTimer/LowPowerTimer.hpp@{Inc/HALAL/Models/LowPowerTimer/LowPowerTimer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ LowPowerTimer.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Nov\ 23,\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ alejandro}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifdef\ HAL\_LPTIM\_MODULE\_ENABLED}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ }std::reference\_wrapper;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ }std::map;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ }std::string;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }LowPowerTimer\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ LPTIM\_TypeDef\&\ instance;}
+\DoxyCodeLine{00025\ \ \ \ \ LPTIM\_HandleTypeDef\&\ handle;}
+\DoxyCodeLine{00026\ \ \ \ \ uint16\_t\ period;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ LowPowerTimer()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ \ \ \ \ LowPowerTimer(LPTIM\_TypeDef\&\ instance,\ LPTIM\_HandleTypeDef\&\ handle,\ uint16\_t\ period,\ \textcolor{keywordtype}{string}\ name)\ :}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ instance(instance),\ handle(handle),\ period(period),\ name(name)\ \{\};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ init();}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

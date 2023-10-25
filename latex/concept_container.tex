@@ -1,0 +1,29 @@
+\doxysection{Container Concept Reference}
+\hypertarget{concept_container}{}\label{concept_container}\index{Container@{Container}}
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_container}{Container}}\ =\ \ \textcolor{keyword}{requires}(\mbox{\hyperlink{class_packet_value}{T}}\ \mbox{\hyperlink{class_packet_value}{a}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{T}}\ \mbox{\hyperlink{class_packet_value}{b}})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::regular<T>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::swappable<T>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::reference,\ typename\ T::value\_type\ \&>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::const\_reference,\ const\ typename\ T::value\_type\ \&>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::forward\_iterator<typename\ T::iterator>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::forward\_iterator<typename\ T::const\_iterator>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::signed\_integral<typename\ T::difference\_type>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::difference\_type,\ typename\ std::iterator\_traits<typename\ T::iterator>::difference\_type>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{requires}\ std::same\_as<typename\ T::difference\_type,\ typename\ std::iterator\_traits<typename\ T::const\_iterator>::difference\_type>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.begin()\ \}\ -\/>\ std::same\_as<typename\ T::iterator>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.end()\ \}\ -\/>\ std::same\_as<typename\ T::iterator>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{b}}.begin()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{b}}.end()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.cbegin()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.cend()\ \}\ -\/>\ std::same\_as<typename\ T::const\_iterator>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.size()\ \}\ -\/>\ std::same\_as<typename\ T::size\_type>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.max\_size()\ \}\ -\/>\ std::same\_as<typename\ T::size\_type>;}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}.empty()\ \}\ -\/>\ std::convertible\_to<bool>;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

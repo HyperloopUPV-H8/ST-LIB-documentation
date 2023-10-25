@@ -1,0 +1,32 @@
+\doxysection{Splitter\+Block.\+hpp}
+\hypertarget{_splitter_block_8hpp_source}{}\label{_splitter_block_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/SplitterBlock.hpp@{Inc/ST-\/LIB\_HIGH/Control/SplitterBlock.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}FeedbackControlBlock.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_splitter_block}{SplitterBlock}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<InputType,InputType>\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_packet_value}{Input}}\ =\ \mbox{\hyperlink{class_packet_value}{InputType}};}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_packet_value}{Output}}\ =\ \mbox{\hyperlink{class_packet_value}{InputType}};}
+\DoxyCodeLine{00010\ \ \ \ \ function<\mbox{\hyperlink{class_packet_value}{void}}(\mbox{\hyperlink{class_packet_value}{InputType}})>\ feedback\_input;}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_splitter_block}{SplitterBlock}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_splitter_block}{SplitterBlock}}(\mbox{\hyperlink{class_packet_value}{InputType}}\ \mbox{\hyperlink{class_packet_value}{default\_input}}):\ \mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,InputType>}}(\mbox{\hyperlink{class_packet_value}{default\_input}})\{\}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ this-\/>input\_value;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ feedback();}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ feedback()\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(feedback\_input\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ feedback\_input(this-\/>output\_value);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ AdditionalType>}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ connect(\mbox{\hyperlink{class_packet_value}{FeedbackControlBlock<InputType,AdditionalType>}}\&\ \mbox{\hyperlink{class_packet_value}{next}})\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ feedback\_input\ =\ \mbox{\hyperlink{class_packet_value}{bind}}(\&\mbox{\hyperlink{class_feedback_control_block}{FeedbackControlBlock<InputType,AdditionalType>::input\_b}},\ \&\mbox{\hyperlink{class_packet_value}{next}},\ placeholders::\_1);}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,101 @@
+\doxysection{SPI.\+hpp}
+\hypertarget{_s_p_i_8hpp_source}{}\label{_s_p_i_8hpp_source}\index{Inc/HALAL/Services/Communication/SPI/SPI.hpp@{Inc/HALAL/Services/Communication/SPI/SPI.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ SPI.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 5\ nov.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Pablo}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PinModel/Pin.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Packets/RawPacket.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}DigitalOutputService/DigitalOutputService.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifdef\ HAL\_SPI\_MODULE\_ENABLED}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//TODO:\ Hay\ que\ hacer\ el\ Chip\ select\ funcione\ a\ traves\ de\ un\ GPIO\ en\ vez\ de\ a\ traves\ del\ periferico.}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{SPI}}\{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{Instance}}\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}*\ \mbox{\hyperlink{class_packet_value}{SCK}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}*\ \mbox{\hyperlink{class_packet_value}{MOSI}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}*\ \mbox{\hyperlink{class_packet_value}{MISO}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}*\ \mbox{\hyperlink{class_packet_value}{SS}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{SPI\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{hspi}};\ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{SPI\_TypeDef}}*\ \mbox{\hyperlink{class_packet_value}{instance}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{baud\_rate\_prescaler}};\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ mode\ =\ \mbox{\hyperlink{class_packet_value}{SPI\_MODE\_MASTER}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ data\_size\ =\ \mbox{\hyperlink{class_packet_value}{SPI\_DATASIZE\_8BIT}};\ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{first\_bit}}\ =\ \mbox{\hyperlink{class_packet_value}{SPI\_FIRSTBIT\_MSB}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{clock\_polarity}}\ =\ \mbox{\hyperlink{class_packet_value}{SPI\_POLARITY\_LOW}};\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{clock\_phase}}\ =\ \mbox{\hyperlink{class_packet_value}{SPI\_PHASE\_1EDGE}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{nss\_polarity}}\ =\ \mbox{\hyperlink{class_packet_value}{SPI\_NSS\_POLARITY\_LOW}};\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{initialized}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{turn\_on\_chip\_select}}(SPI::Instance*\ \mbox{\hyperlink{class_packet_value}{spi}});}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{turn\_off\_chip\_select}}(SPI::Instance*\ \mbox{\hyperlink{class_packet_value}{spi}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{Peripheral}}\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral1}}\ =\ 0,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral2}}\ =\ 1,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral3}}\ =\ 2,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral4}}\ =\ 3,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral5}}\ =\ 4,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral6}}\ =\ 5,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ id\_counter;}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ SPI::Instance*\ >}}\ \mbox{\hyperlink{class_packet_value}{registered\_spi}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<SPI::Peripheral,\ SPI::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{available\_spi}};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Peripheral\ \mbox{\hyperlink{class_packet_value}{spi1}};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Peripheral\ \mbox{\hyperlink{class_packet_value}{spi2}};}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Peripheral\ \mbox{\hyperlink{class_packet_value}{spi3}};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Peripheral\ \mbox{\hyperlink{class_packet_value}{spi4}};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Peripheral\ \mbox{\hyperlink{class_packet_value}{spi5}};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Peripheral\ \mbox{\hyperlink{class_packet_value}{spi6}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Instance\ \mbox{\hyperlink{class_packet_value}{instance1}};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Instance\ \mbox{\hyperlink{class_packet_value}{instance2}};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Instance\ \mbox{\hyperlink{class_packet_value}{instance3}};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Instance\ \mbox{\hyperlink{class_packet_value}{instance4}};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Instance\ \mbox{\hyperlink{class_packet_value}{instance5}};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ SPI::Instance\ \mbox{\hyperlink{class_packet_value}{instance6}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(SPI::Peripheral\&\ \mbox{\hyperlink{class_packet_value}{spi}});}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ data);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{receive}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit\_and\_receive}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{command\_data}},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{receive\_data}});}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{chip\_select\_on}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{chip\_select\_off}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}(SPI::Instance*\ \mbox{\hyperlink{class_packet_value}{spi}});}
+\DoxyCodeLine{00178\ \};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

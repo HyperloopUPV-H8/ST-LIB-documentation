@@ -1,0 +1,109 @@
+\doxysection{Stack\+Packet\texorpdfstring{$<$}{<} 0 \texorpdfstring{$>$}{>} Class Reference}
+\hypertarget{class_stack_packet_3_010_01_4}{}\label{class_stack_packet_3_010_01_4}\index{StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}}
+Inheritance diagram for Stack\+Packet\texorpdfstring{$<$}{<} 0 \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stack_packet_3_010_01_4}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_stack_packet_3_010_01_4_ad9004353aea732bc2c62db508770a936}\label{class_stack_packet_3_010_01_4_ad9004353aea732bc2c62db508770a936} 
+{\bfseries Stack\+Packet} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_packet_3_010_01_4_acefec0e3d5c5126e0ed0b0caa48a62a0}{parse}} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stack_packet_3_010_01_4_a8e2f9cc6c311e6188d9949b2136aeb76}{build}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_stack_packet_3_010_01_4_a9435ef7e9a257ecb15cf0d1c56a6c7af}{get\+\_\+id}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} \mbox{\hyperlink{class_stack_packet_3_010_01_4_aea22e68311fcd1d0c5c138a9d70b9bd6}{get\+\_\+size}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_packet_3_010_01_4_a543180448d7509ee357ee54abcf8d8ae}{set\+\_\+pointer}} (\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} index, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{pointer}}) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_stack_packet_3_010_01_4_a5f4b9fd2fd9adef811c664f1845c0f70}\label{class_stack_packet_3_010_01_4_a5f4b9fd2fd9adef811c664f1845c0f70} 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries id}
+\item 
+\Hypertarget{class_stack_packet_3_010_01_4_afe93abf1923bb405138ee6fa87b26b48}\label{class_stack_packet_3_010_01_4_afe93abf1923bb405138ee6fa87b26b48} 
+\mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries size} = \mbox{\hyperlink{class_packet_value}{sizeof}}(id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries size}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse\+\_\+data} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_packet}{Packet}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries packets}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stack_packet_3_010_01_4_a8e2f9cc6c311e6188d9949b2136aeb76}\label{class_stack_packet_3_010_01_4_a8e2f9cc6c311e6188d9949b2136aeb76} 
+\index{StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}!build@{build}}
+\index{build@{build}!StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_stack_packet}{Stack\+Packet}}$<$ 0 $>$\+::build (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_stack_packet_3_010_01_4_a9435ef7e9a257ecb15cf0d1c56a6c7af}\label{class_stack_packet_3_010_01_4_a9435ef7e9a257ecb15cf0d1c56a6c7af} 
+\index{StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_stack_packet}{Stack\+Packet}}$<$ 0 $>$\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_stack_packet_3_010_01_4_aea22e68311fcd1d0c5c138a9d70b9bd6}\label{class_stack_packet_3_010_01_4_aea22e68311fcd1d0c5c138a9d70b9bd6} 
+\index{StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}!get\_size@{get\_size}}
+\index{get\_size@{get\_size}!StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}}
+\doxysubsubsection{\texorpdfstring{get\_size()}{get\_size()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{size\+\_\+t}} \mbox{\hyperlink{class_stack_packet}{Stack\+Packet}}$<$ 0 $>$\+::get\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_stack_packet_3_010_01_4_acefec0e3d5c5126e0ed0b0caa48a62a0}\label{class_stack_packet_3_010_01_4_acefec0e3d5c5126e0ed0b0caa48a62a0} 
+\index{StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}!parse@{parse}}
+\index{parse@{parse}!StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_packet}{Stack\+Packet}}$<$ 0 $>$\+::parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+\Hypertarget{class_stack_packet_3_010_01_4_a543180448d7509ee357ee54abcf8d8ae}\label{class_stack_packet_3_010_01_4_a543180448d7509ee357ee54abcf8d8ae} 
+\index{StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}!set\_pointer@{set\_pointer}}
+\index{set\_pointer@{set\_pointer}!StackPacket$<$ 0 $>$@{StackPacket$<$ 0 $>$}}
+\doxysubsubsection{\texorpdfstring{set\_pointer()}{set\_pointer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_stack_packet}{Stack\+Packet}}$<$ 0 $>$\+::set\+\_\+pointer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{size\+\_\+t}}}]{index,  }\item[{\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}}]{pointer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+HALAL/\+Models/\+Packets/Packet.\+hpp\end{DoxyCompactItemize}

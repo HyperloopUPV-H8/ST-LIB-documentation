@@ -1,0 +1,27 @@
+\doxysection{Flash\+Variable.\+hpp}
+\hypertarget{_flash_variable_8hpp_source}{}\label{_flash_variable_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/FlashStorer/FlashVariable.hpp@{Inc/ST-\/LIB\_HIGH/FlashStorer/FlashVariable.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_flash_variable}{FlashVariable}}\{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{void}*\ v\_pointer;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size;}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_flash_variable}{FlashVariable}}(\mbox{\hyperlink{class_packet_value}{T}}\&\ value);}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}*\ get\_pointer();}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ get\_size();}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00018\ FlashVariable::FlashVariable(\mbox{\hyperlink{class_packet_value}{T}}\&\ value)\{}
+\DoxyCodeLine{00019\ \ \ \ \ FlashVariable::v\_pointer\ =\ (\textcolor{keywordtype}{void}*)\&value;}
+\DoxyCodeLine{00020\ \ \ \ \ FlashVariable::size\ =\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{T}});}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,33 @@
+\doxysection{Heap\+State\+Order.\+hpp}
+\hypertarget{_heap_state_order_8hpp_source}{}\label{_heap_state_order_8hpp_source}\index{Inc/ST-\/LIB\_LOW/StateMachine/HeapStateOrder.hpp@{Inc/ST-\/LIB\_LOW/StateMachine/HeapStateOrder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}StateMachine/StateOrder.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_heap_state_order}{HeapStateOrder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_heap_order}{HeapOrder}}\{}
+\DoxyCodeLine{00005\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ state\_machine;}
+\DoxyCodeLine{00007\ \ \ \ \ StateMachine::state\_id\ state;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{Types}}>}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_heap_state_order}{HeapStateOrder}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ \mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ state\_machine,\ StateMachine::state\_id\ state,\mbox{\hyperlink{class_packet_value}{Types}}*...\ values)\ :\ \mbox{\hyperlink{class_heap_order}{HeapOrder}}(\textcolor{keywordtype}{id},callback,values...),}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ state\_machine(state\_machine),\ state(state)\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{not}}\ state\_machine.get\_states().contains(state))\{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}State\ Machine\ does\ not\ contain\ state,\ cannot\ add\ StateOrder"{}});}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ state\_machine.get\_states()[state].add\_state\_order(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ orders[id]\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ process()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (callback\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ state\_machine.is\_on\ \&\&\ state\_machine.current\_state\ ==\ state)\ callback();}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ \mbox{\hyperlink{class_packet_value}{socket}},\ \textcolor{keywordtype}{void}*\ data)\textcolor{keyword}{override}\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(state\_machine.is\_on\ \&\&\ state\_machine.current\_state\ ==\ state)\ HeapOrder::parse(data);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \};}
+
+\end{DoxyCode}

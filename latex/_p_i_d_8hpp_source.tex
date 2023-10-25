@@ -1,0 +1,89 @@
+\doxysection{PID.\+hpp}
+\hypertarget{_p_i_d_8hpp_source}{}\label{_p_i_d_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/PID.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/PID.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../ControlSystem.hpp"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Integrator.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Derivator.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{template}<IntegratorType\ \mbox{\hyperlink{class_packet_value}{IntegratorMethod}},FilterDerivatorType\ \mbox{\hyperlink{class_packet_value}{FilterDerivate}},\ \textcolor{keywordtype}{size\_t}...\ N>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_i_d}{PID}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}<IntegratorType\ IntegratorMethod>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_i_d}{PID}}<\mbox{\hyperlink{class_packet_value}{IntegratorMethod}},FilterDerivatorType::None>\{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ kp,\ ki,\ kd;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ error\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_simple_derivator}{SimpleDerivator}}\ derivator;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Integrator<IntegratorMethod>}}\ integrator;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ output\_value\ =\ 0.0;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_p_i_d}{PID}}(\textcolor{keywordtype}{double}\ kp,\ \textcolor{keywordtype}{double}\ ki,\ \textcolor{keywordtype}{double}\ kd,\ \textcolor{keywordtype}{double}\ period):\ kp(kp),\ ki(ki),\ kd(kd),\ derivator(period),\ integrator(period,ki)\ \{\}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ execute(\textcolor{keywordtype}{double}\ input\_value)\{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ derivator.input(input\_value);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ derivator.execute();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.input(input\_value);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.execute();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ input\_value;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this}\ -\/>\ output\_value\ =\ kp*error\ +\ integrator.output\_value\ +\ kd*derivator.output\_value;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output\_value;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_kp(\textcolor{keywordtype}{double}\ kp)\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>kp\ =\ kp;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ reset();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_ki(\textcolor{keywordtype}{double}\ ki)\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>ki\ =\ ki;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ reset();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_kd(\textcolor{keywordtype}{double}\ kd)\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>kd\ =\ kd;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ reset();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.reset();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ derivator.reset();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<IntegratorType\ IntegratorMethod,\ \textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_i_d}{PID}}<\mbox{\hyperlink{class_packet_value}{IntegratorMethod}},FilterDerivatorType::Moving\_Average,N>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ kp,\ ki,\ kd;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ error\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_simple_derivator}{SimpleDerivator}}\ derivator;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Integrator<IntegratorMethod>}}\ integrator;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{MovingAverage<N>}}\ filter\_derivative;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_p_i_d}{PID}}(\textcolor{keywordtype}{double}\ kp,\ \textcolor{keywordtype}{double}\ ki,\ \textcolor{keywordtype}{double}\ kd,\ \textcolor{keywordtype}{double}\ period):\ kp(kp),\ ki(ki),\ kd(kd),\ derivator(period),\ integrator(period,ki)\ \{\}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ derivator.input(input\_value);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ derivator.execute();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.input(input\_value);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.execute();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ input\_value;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ filter\_derivative.input(kd*derivator.output\_value);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ filter\_derivative.execute();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ kp*error\ +\ integrator.output\_value\ +\ filter\_derivative.output\_value;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_kp(\textcolor{keywordtype}{double}\ kp)\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>kp\ =\ kp;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ reset();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_ki(\textcolor{keywordtype}{double}\ ki)\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>ki\ =\ ki;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ reset();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_kd(\textcolor{keywordtype}{double}\ kd)\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>kd\ =\ kd;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ reset();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.reset();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ derivator.reset();}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ filter\_derivative.reset();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \};}
+
+\end{DoxyCode}

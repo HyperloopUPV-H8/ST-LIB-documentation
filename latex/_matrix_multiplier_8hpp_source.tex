@@ -1,0 +1,129 @@
+\doxysection{Matrix\+Multiplier.\+hpp}
+\hypertarget{_matrix_multiplier_8hpp_source}{}\label{_matrix_multiplier_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/MatrixMultiplier.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/MatrixMultiplier.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}../ControlBlock.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V,\ \textcolor{keywordtype}{size\_t}\ W>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}};}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V,\ \textcolor{keywordtype}{size\_t}\ W>\ \textcolor{keyword}{requires}\ (\mbox{\hyperlink{class_packet_value}{U}}\ >\ 1\ \&\&\ \mbox{\hyperlink{class_packet_value}{V}}\ >\ 1\ \&\&\ \mbox{\hyperlink{class_packet_value}{W}}\ >\ 1)}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class}\ \mbox{\hyperlink{class_packet_value}{MatrixMultiplier<U,V,W>}}\ :\ \mbox{\hyperlink{class_packet_value}{public}}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<\mbox{\hyperlink{class_packet_value}{float}}(*)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \mbox{\hyperlink{class_packet_value}{float}}(*)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{W}}]>\{}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{float}}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ (\&B)[\mbox{\hyperlink{class_packet_value}{V}}][\mbox{\hyperlink{class_packet_value}{W}}],\ (\&result)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{W}}];}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \textcolor{keywordtype}{float}(\&B)[\mbox{\hyperlink{class_packet_value}{V}}][\mbox{\hyperlink{class_packet_value}{W}}],\ \textcolor{keywordtype}{float}(\&result)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{W}}])\ :\ \ A(A),\ B(B),\ result(result)\{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ this-\/>input\_value\ =\ \&A;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ \&result;}
+\DoxyCodeLine{00013\ \ \ \ \ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ \mbox{\hyperlink{class_packet_value}{U}};\ \mbox{\hyperlink{class_packet_value}{i}}++)\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{j}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{j}}\ <\ \mbox{\hyperlink{class_packet_value}{W}};\ \mbox{\hyperlink{class_packet_value}{j}}++)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}][\mbox{\hyperlink{class_packet_value}{j}}]\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ \mbox{\hyperlink{class_packet_value}{V}};\ k++)}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}][\mbox{\hyperlink{class_packet_value}{j}}]\ +=\ A[\mbox{\hyperlink{class_packet_value}{i}}][k]\ *\ B[k][\mbox{\hyperlink{class_packet_value}{j}}];}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ \mbox{\hyperlink{class_packet_value}{U}};\ \mbox{\hyperlink{class_packet_value}{i}}++)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{j}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{j}}\ <\ \mbox{\hyperlink{class_packet_value}{W}};\ \mbox{\hyperlink{class_packet_value}{j}}++)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}][\mbox{\hyperlink{class_packet_value}{j}}]\ =\ 0.0;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//CTAD}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V,\ \textcolor{keywordtype}{size\_t}\ W>\ \textcolor{keyword}{requires}\ (\mbox{\hyperlink{class_packet_value}{U}}\ >\ 1\ \&\&\ \mbox{\hyperlink{class_packet_value}{V}}\ >\ 1\ \&\&\ \mbox{\hyperlink{class_packet_value}{W}}\ >\ 1)}
+\DoxyCodeLine{00036\ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{V}}][\mbox{\hyperlink{class_packet_value}{W}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{W}}])-\/>\mbox{\hyperlink{class_packet_value}{MatrixMultiplier<U,V,W>}};}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V>}
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}<\mbox{\hyperlink{class_packet_value}{U}},\mbox{\hyperlink{class_packet_value}{V}},1>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<float(*)[U][V],\ float(*)[U]>\{}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{float}}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ (\&B)[\mbox{\hyperlink{class_packet_value}{V}}],\ (\&result)[\mbox{\hyperlink{class_packet_value}{U}}];}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \textcolor{keywordtype}{float}(\&B)[\mbox{\hyperlink{class_packet_value}{V}}],\ \textcolor{keywordtype}{float}(\&result)[\mbox{\hyperlink{class_packet_value}{U}}])\ :\ \ A(A),\ B(B),\ result(result)\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ this-\/>input\_value\ =\ \&A;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ \&result;}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ \mbox{\hyperlink{class_packet_value}{U}};\ \mbox{\hyperlink{class_packet_value}{i}}++)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}]\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ \mbox{\hyperlink{class_packet_value}{V}};\ k++)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}]\ +=\ A[\mbox{\hyperlink{class_packet_value}{i}}][k]\ *\ B[k];}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ \mbox{\hyperlink{class_packet_value}{U}};\ \mbox{\hyperlink{class_packet_value}{i}}++)\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}]\ =\ 0.0;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{comment}{//CTAD}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V>\ \textcolor{keyword}{requires}\ (\mbox{\hyperlink{class_packet_value}{U}}\ >\ 1\ \&\&\ \mbox{\hyperlink{class_packet_value}{V}}\ >\ 1)}
+\DoxyCodeLine{00066\ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{V}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{U}}])-\/>\mbox{\hyperlink{class_packet_value}{MatrixMultiplier<U,V,1>}};}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V>}
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}<1,\mbox{\hyperlink{class_packet_value}{U}},\mbox{\hyperlink{class_packet_value}{V}}>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<float(*)[U],\ float(*)[V]>\{}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{float}}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}],\ (\&B)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ (\&result)[\mbox{\hyperlink{class_packet_value}{V}}];}
+\DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}],\ \textcolor{keywordtype}{float}(\&B)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \textcolor{keywordtype}{float}(\&result)[\mbox{\hyperlink{class_packet_value}{V}}])\ :\ \ A(A),\ B(B),\ result(result)\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ this-\/>input\_value\ =\ \&A;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ \&result;}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{j}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{j}}\ <\ \mbox{\hyperlink{class_packet_value}{V}};\ \mbox{\hyperlink{class_packet_value}{j}}++)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{j}}]\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ \mbox{\hyperlink{class_packet_value}{U}};\ k++)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{j}}]\ +=\ A[k]\ *\ B[k][\mbox{\hyperlink{class_packet_value}{j}}];}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{i}}\ =\ 0;\ \mbox{\hyperlink{class_packet_value}{i}}\ <\ \mbox{\hyperlink{class_packet_value}{V}};\ \mbox{\hyperlink{class_packet_value}{i}}++)\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{class_packet_value}{i}}]\ =\ 0.0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{//CTAD}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U,\ \textcolor{keywordtype}{size\_t}\ V>\ \textcolor{keyword}{requires}\ (\mbox{\hyperlink{class_packet_value}{U}}\ >\ 1\ \&\&\ \mbox{\hyperlink{class_packet_value}{V}}\ >\ 1)}
+\DoxyCodeLine{00096\ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&)[\mbox{\hyperlink{class_packet_value}{U}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{U}}][\mbox{\hyperlink{class_packet_value}{V}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{V}}])-\/>\mbox{\hyperlink{class_packet_value}{MatrixMultiplier<1,U,V>}};}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U>}
+\DoxyCodeLine{00100\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}<1,\mbox{\hyperlink{class_packet_value}{U}},1>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<float(*)[U],\ float(*)>\{}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{float}}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}],\ (\&B)[\mbox{\hyperlink{class_packet_value}{U}}],\ \&result;}
+\DoxyCodeLine{00102\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&A)[\mbox{\hyperlink{class_packet_value}{U}}],\ \textcolor{keywordtype}{float}(\&B)[\mbox{\hyperlink{class_packet_value}{U}}],\ \textcolor{keywordtype}{float}(\&result))\ :\ \ A(A),\ B(B),\ result(result)\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ this-\/>input\_value\ =\ \&A;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ \&result;}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ result\ =\ 0;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ \mbox{\hyperlink{class_packet_value}{U}};\ k++)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ A[k]\ *\ B[k];}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ result\ =\ 0;}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{comment}{//CTAD}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00121\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ U>\ \textcolor{keyword}{requires}\ (\mbox{\hyperlink{class_packet_value}{U}}\ >\ 1)}
+\DoxyCodeLine{00122\ \mbox{\hyperlink{class_matrix_multiplier}{MatrixMultiplier}}(\textcolor{keywordtype}{float}(\&)[\mbox{\hyperlink{class_packet_value}{U}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&)[\mbox{\hyperlink{class_packet_value}{U}}],\ \mbox{\hyperlink{class_packet_value}{float}}(\&))-\/>\mbox{\hyperlink{class_packet_value}{MatrixMultiplier<1,U,1>}};}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

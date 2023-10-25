@@ -1,0 +1,38 @@
+\doxysection{Control\+System\texorpdfstring{$<$}{<}\texorpdfstring{$>$}{>} Class Reference}
+\hypertarget{class_control_system_3_4}{}\label{class_control_system_3_4}\index{ControlSystem$<$$>$@{ControlSystem$<$$>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_control_system_3_4_a73cdb3ed79374ffc438aecb3d10f3eab}\label{class_control_system_3_4_a73cdb3ed79374ffc438aecb3d10f3eab} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Output\+Type}} , \mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Input\+Type}} $>$ }\\\mbox{\hyperlink{class_control_system}{Control\+System}}$<$ \mbox{\hyperlink{class_packet_value}{Output\+Type}}, \mbox{\hyperlink{class_packet_value}{Input\+Type}} $>$ {\bfseries connect} (\mbox{\hyperlink{class_control_block}{Control\+Block}}$<$ \mbox{\hyperlink{class_packet_value}{Input\+Type}}, \mbox{\hyperlink{class_packet_value}{Output\+Type}} $>$ \&\mbox{\hyperlink{class_packet_value}{next}})
+\item 
+\Hypertarget{class_control_system_3_4_ada27e2f2b887f3ed0e65f1994193dee1}\label{class_control_system_3_4_ada27e2f2b887f3ed0e65f1994193dee1} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Output\+Type}} , \mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Input\+Type}} $>$ }\\\mbox{\hyperlink{class_packet_value}{void}} {\bfseries execute} (\mbox{\hyperlink{class_control_system}{Control\+System}}$<$ \mbox{\hyperlink{class_packet_value}{Output\+Type}}, \mbox{\hyperlink{class_packet_value}{Input\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{parent}})
+\item 
+\Hypertarget{class_control_system_3_4_ade6dedf3be4c4edd3ba65401a6400a8a}\label{class_control_system_3_4_ade6dedf3be4c4edd3ba65401a6400a8a} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Output\+Type}} , \mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Input\+Type}} $>$ }\\\mbox{\hyperlink{class_packet_value}{void}} {\bfseries input} (\mbox{\hyperlink{class_control_system}{Control\+System}}$<$ \mbox{\hyperlink{class_packet_value}{Output\+Type}}, \mbox{\hyperlink{class_packet_value}{Input\+Type}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{parent}}, \mbox{\hyperlink{class_packet_value}{Input\+Type}} input)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_control_system_3_4_a3150ea94bbaf1819b42b12ce27999219}\label{class_control_system_3_4_a3150ea94bbaf1819b42b12ce27999219} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{System}} , \mbox{\hyperlink{class_packet_value}{class}} Input , \mbox{\hyperlink{class_packet_value}{class}} Output , class... Control\+Blocks$>$ \newline
+requires \mbox{\hyperlink{concept_control_system_concept}{Control\+System\+Concept}}$<$\mbox{\hyperlink{class_packet_value}{System}}$>$}\\\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{auto}} {\bfseries create\+\_\+control\+\_\+system} (\mbox{\hyperlink{class_packet_value}{System}} \mbox{\hyperlink{class_packet_value}{base}}, \mbox{\hyperlink{class_control_block}{Control\+Block}}$<$ Input, Output $>$ \&\mbox{\hyperlink{class_packet_value}{block}}, \mbox{\hyperlink{class_packet_value}{Control\+Blocks}} \&... \mbox{\hyperlink{class_packet_value}{blocks}})
+\item 
+\Hypertarget{class_control_system_3_4_a9ee9394ef14be1b0f403f1bb9353a476}\label{class_control_system_3_4_a9ee9394ef14be1b0f403f1bb9353a476} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} Input , \mbox{\hyperlink{class_packet_value}{class}} Output , class... Control\+Blocks$>$ }\\\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{auto}} {\bfseries create\+\_\+control\+\_\+system} (\mbox{\hyperlink{class_control_block}{Control\+Block}}$<$ Input, Output $>$ \&\mbox{\hyperlink{class_packet_value}{block}}, \mbox{\hyperlink{class_packet_value}{Control\+Blocks}} \&... \mbox{\hyperlink{class_packet_value}{blocks}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_control_system_3_4_af484ba1aef16780d7a5b2e5983d84df9}\label{class_control_system_3_4_af484ba1aef16780d7a5b2e5983d84df9} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{constexpr}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries is\+\_\+control\+\_\+system} = \mbox{\hyperlink{class_packet_value}{true}}
+\item 
+\Hypertarget{class_control_system_3_4_afd38a4c6fdb1a187643a4c3c5ce15aa7}\label{class_control_system_3_4_afd38a4c6fdb1a187643a4c3c5ce15aa7} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{constexpr}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries is\+\_\+empty} = \mbox{\hyperlink{class_packet_value}{true}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+HIGH/\+Control/Control\+System.\+hpp\end{DoxyCompactItemize}

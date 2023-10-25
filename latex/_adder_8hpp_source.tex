@@ -1,0 +1,39 @@
+\doxysection{Adder.\+hpp}
+\hypertarget{_adder_8hpp_source}{}\label{_adder_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/Adder.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/Adder.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once\ }}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../FeedbackControlBlock.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U\ =\ T>}
+\DoxyCodeLine{00006\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_sumable}{Sumable}}\ =\ \textcolor{keyword}{requires}(\mbox{\hyperlink{class_packet_value}{T}}\ \mbox{\hyperlink{class_packet_value}{a}},\ \mbox{\hyperlink{class_packet_value}{U}}\ \mbox{\hyperlink{class_packet_value}{b}})\{}
+\DoxyCodeLine{00007\ \ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}\ +\ \mbox{\hyperlink{class_packet_value}{b}}\ \};}
+\DoxyCodeLine{00008\ \ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{b}}\ +\ \mbox{\hyperlink{class_packet_value}{a}}\ \};}
+\DoxyCodeLine{00009\ \};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <Sumable\ SumableType>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_adder}{Adder}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_feedback_control_block}{FeedbackControlBlock}}<SumableType,SumableType>\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sign\ =\ 1;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_adder}{Adder}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_adder}{Adder}}(\mbox{\hyperlink{class_packet_value}{SumableType}}\ \mbox{\hyperlink{class_packet_value}{default\_input}},\ \mbox{\hyperlink{class_packet_value}{SumableType}}\ \mbox{\hyperlink{class_packet_value}{default\_input\_b}}):\ \mbox{\hyperlink{class_packet_value}{FeedbackControlBlock<SumableType,SumableType>}}(\mbox{\hyperlink{class_packet_value}{default\_input}},\ \mbox{\hyperlink{class_packet_value}{default\_input\_b}})\{\}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ this-\/>input\_value\ +\ sign*this-\/>input\_b;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_sign(\textcolor{keywordtype}{char}\ sign)\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (sign)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'+'}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sign\ =\ 1;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'-\/'}:}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sign\ =\ -\/1;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \};}
+
+\end{DoxyCode}

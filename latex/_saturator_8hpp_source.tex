@@ -1,0 +1,41 @@
+\doxysection{Saturator.\+hpp}
+\hypertarget{_saturator_8hpp_source}{}\label{_saturator_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/Saturator.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/Saturator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../ControlBlock.hpp"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U\ =\ T>}
+\DoxyCodeLine{00005\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_comparable}{Comparable}}\ =\ \textcolor{keyword}{requires}(\mbox{\hyperlink{class_packet_value}{T}}\ \mbox{\hyperlink{class_packet_value}{a}},\ \mbox{\hyperlink{class_packet_value}{U}}\ \mbox{\hyperlink{class_packet_value}{b}})\{}
+\DoxyCodeLine{00006\ \ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}\ <\ \mbox{\hyperlink{class_packet_value}{b}}\ \};}
+\DoxyCodeLine{00007\ \ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{b}}\ >\ \mbox{\hyperlink{class_packet_value}{a}}\ \};}
+\DoxyCodeLine{00008\ \};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <Comparable\ ComparableType>}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_saturator}{Saturator}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<ComparableType,ComparableType>\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ ComparableType\ lower\_bound\ =\ 0,\ upper\_bound\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_saturator}{Saturator}}(ComparableType\ \mbox{\hyperlink{class_packet_value}{default\_input}},ComparableType\ lower\_bound,ComparableType\ upper\_bound):\ \mbox{\hyperlink{class_packet_value}{ControlBlock<ComparableType,ComparableType>}}(\mbox{\hyperlink{class_packet_value}{default\_input}}),}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ lower\_bound(lower\_bound),\ upper\_bound(upper\_bound)\{\}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_saturator}{Saturator}}(\mbox{\hyperlink{class_packet_value}{Saturator<ComparableType>}}\&\&\ \mbox{\hyperlink{class_packet_value}{new\_ref}}):\ \mbox{\hyperlink{class_packet_value}{ControlBlock<ComparableType,ComparableType>}}(\mbox{\hyperlink{class_packet_value}{new\_ref}}.default\_input)\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ upper\_bound\ =\ \mbox{\hyperlink{class_packet_value}{new\_ref}}.upper\_bound;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ lower\_bound\ =\ \mbox{\hyperlink{class_packet_value}{new\_ref}}.lower\_bound;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(this-\/>input\_value\ >\ upper\_bound)\{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ upper\_bound;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(this-\/>input\_value\ <\ lower\_bound)\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ lower\_bound;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>output\_value\ =\ this-\/>input\_value;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}<Comparable\ ComparableType>}
+\DoxyCodeLine{00033\ \mbox{\hyperlink{class_saturator}{Saturator}}(ComparableType,ComparableType,ComparableType)\ -\/>\ \mbox{\hyperlink{class_packet_value}{Saturator<ComparableType>}};}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ }
+
+\end{DoxyCode}

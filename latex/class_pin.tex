@@ -1,0 +1,61 @@
+\doxysection{Pin Class Reference}
+\hypertarget{class_pin}{}\label{class_pin}\index{Pin@{Pin}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pin_a96ce82f1dea3f8932d9f64c4616d60d3}\label{class_pin_a96ce82f1dea3f8932d9f64c4616d60d3} 
+{\bfseries Pin} (GPIOPort port, GPIOPin pin)
+\item 
+\Hypertarget{class_pin_a2444575f941fe0e5915c37e1413a68ea}\label{class_pin_a2444575f941fe0e5915c37e1413a68ea} 
+{\bfseries Pin} (GPIOPort port, GPIOPin pin, Alternative\+Function alternative\+\_\+function)
+\item 
+\Hypertarget{class_pin_a7547594029f58fabe1a0c9b1f82c7bcb}\label{class_pin_a7547594029f58fabe1a0c9b1f82c7bcb} 
+\mbox{\hyperlink{class_packet_value}{const}} string {\bfseries to\+\_\+string} () \mbox{\hyperlink{class_packet_value}{const}}
+\item 
+\Hypertarget{class_pin_aba15754a55c473027ff1ac094cf15a96}\label{class_pin_aba15754a55c473027ff1ac094cf15a96} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries operator==} (\mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_pin}{Pin}} \&\mbox{\hyperlink{class_packet_value}{other}}) \mbox{\hyperlink{class_packet_value}{const}}
+\item 
+\Hypertarget{class_pin_ab261aa38a2166031639ffcf92105eb8b}\label{class_pin_ab261aa38a2166031639ffcf92105eb8b} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries operator$<$} (\mbox{\hyperlink{class_packet_value}{const}} \mbox{\hyperlink{class_pin}{Pin}} \&\mbox{\hyperlink{class_packet_value}{other}}) \mbox{\hyperlink{class_packet_value}{const}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pin_af13395802035cf5a8ce78e03c698d178}\label{class_pin_af13395802035cf5a8ce78e03c698d178} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries inscribe} (\mbox{\hyperlink{class_pin}{Pin}} \&pin, Operation\+Mode mode)
+\item 
+\Hypertarget{class_pin_a84ac84847855e93b20219f86c4ba2a04}\label{class_pin_a84ac84847855e93b20219f86c4ba2a04} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pin_a0bcd8f8fc440ddf972fdc90114f6af4f}\label{class_pin_a0bcd8f8fc440ddf972fdc90114f6af4f} 
+\mbox{\hyperlink{class_packet_value}{GPIO\+\_\+\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries port}
+\item 
+\Hypertarget{class_pin_a2bc209d0e26c61b6bc5e2783417699d7}\label{class_pin_a2bc209d0e26c61b6bc5e2783417699d7} 
+GPIOPin {\bfseries gpio\+\_\+pin}
+\item 
+\Hypertarget{class_pin_a0665e353f45a1f73ee2048313f55d40e}\label{class_pin_a0665e353f45a1f73ee2048313f55d40e} 
+Alternative\+Function {\bfseries alternative\+\_\+function}
+\item 
+\Hypertarget{class_pin_a6d1cd86794101004b69274ccfd604be3}\label{class_pin_a6d1cd86794101004b69274ccfd604be3} 
+Operation\+Mode {\bfseries mode} = Operation\+Mode\+::\+NOT\+\_\+\+USED
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_pin_aff9655949b2a610dd4b95f7ba6701306}\label{class_pin_aff9655949b2a610dd4b95f7ba6701306} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{const}} vector$<$ reference\+\_\+wrapper$<$ \mbox{\hyperlink{class_pin}{Pin}} $>$ $>$ {\bfseries pin\+Vector}
+\item 
+\Hypertarget{class_pin_a2fe06dddea0361bbd5e8e91f3b04844e}\label{class_pin_a2fe06dddea0361bbd5e8e91f3b04844e} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{const}} map$<$ \mbox{\hyperlink{class_packet_value}{GPIO\+\_\+\+Type\+Def}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_packet_value}{const}} string $>$ {\bfseries port\+\_\+to\+\_\+string}
+\item 
+\Hypertarget{class_pin_abde664320716f7b595fb6cc405ae4ae9}\label{class_pin_abde664320716f7b595fb6cc405ae4ae9} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{const}} map$<$ GPIOPin, \mbox{\hyperlink{class_packet_value}{const}} string $>$ {\bfseries gpio\+\_\+pin\+\_\+to\+\_\+string}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+HALAL/\+Models/\+Pin\+Model/Pin.\+hpp\end{DoxyCompactItemize}

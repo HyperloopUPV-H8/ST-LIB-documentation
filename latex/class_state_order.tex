@@ -1,0 +1,103 @@
+\doxysection{State\+Order Class Reference}
+\hypertarget{class_state_order}{}\label{class_state_order}\index{StateOrder@{StateOrder}}
+Inheritance diagram for State\+Order\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_state_order}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_order_a5d7362bc3e22e2b29bd1fd299eab1ce5}\label{class_state_order_a5d7362bc3e22e2b29bd1fd299eab1ce5} 
+enum {\bfseries State\+Orders\+ID} \{ {\bfseries ADD\+\_\+\+STATE\+\_\+\+ORDERS} = 5
+, {\bfseries REMOVE\+\_\+\+STATE\+\_\+\+ORDERS} = 6
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_order_a324c54d189ea2649c60d0d9099f961be}\label{class_state_order_a324c54d189ea2649c60d0d9099f961be} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+socket} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \&\mbox{\hyperlink{class_packet_value}{socket}})
+\item 
+\Hypertarget{class_state_order_a2eaf4750a87ee86c927ac7df159c090a}\label{class_state_order_a2eaf4750a87ee86c927ac7df159c090a} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+state\+\_\+orders} (vector$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} $>$ \&\mbox{\hyperlink{class_packet_value}{new\+\_\+ids}})
+\item 
+\Hypertarget{class_state_order_a2e75c024ab0d7f7fea495191c22aaf1a}\label{class_state_order_a2e75c024ab0d7f7fea495191c22aaf1a} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries remove\+\_\+state\+\_\+orders} (vector$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} $>$ \&\mbox{\hyperlink{class_packet_value}{old\+\_\+ids}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+by\+\_\+id} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+data} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse\+\_\+data} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_order_af7048a095f09d35a479dbc747af75da2}\label{class_state_order_af7048a095f09d35a479dbc747af75da2} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*} {\bfseries informer\+\_\+socket}
+\item 
+\Hypertarget{class_state_order_a020cb11a8da023c00cb8fb82d8d38fcb}\label{class_state_order_a020cb11a8da023c00cb8fb82d8d38fcb} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries state\+\_\+orders\+\_\+ids\+\_\+size}
+\item 
+\Hypertarget{class_state_order_a963fd161c2a57daf361395ab85755a28}\label{class_state_order_a963fd161c2a57daf361395ab85755a28} 
+\mbox{\hyperlink{class_packet_value}{static}} vector$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} $>$ \texorpdfstring{$\ast$}{*} {\bfseries state\+\_\+orders\+\_\+ids}
+\item 
+\Hypertarget{class_state_order_ad9ad14a80272e5d0fb085a5d8da071ef}\label{class_state_order_ad9ad14a80272e5d0fb085a5d8da071ef} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_stack_order}{Stack\+Order}}$<$ 0, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, vector$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} $>$ $>$ {\bfseries add\+\_\+state\+\_\+orders\+\_\+order}
+\item 
+\Hypertarget{class_state_order_a98530d6b11b232b3e16617ddd349843b}\label{class_state_order_a98530d6b11b232b3e16617ddd349843b} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_stack_order}{Stack\+Order}}$<$ 0, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, vector$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} $>$ $>$ {\bfseries remove\+\_\+state\+\_\+orders\+\_\+order}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(\mbox{\hyperlink{class_packet_value}{void}}))=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)=0
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_order_a0a0051a8b895251147182cbf9e91baf8}{parse}} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries build} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries get\+\_\+size} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+pointer} (\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} index, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{pointer}})=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries size}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_order}{Order}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries orders}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_packet}{Packet}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries packets}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+State\+Machine/State\+Order.\+hpp\end{DoxyCompactItemize}

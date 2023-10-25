@@ -1,0 +1,32 @@
+\doxysection{Digital\+Output.\+hpp}
+\hypertarget{_digital_output_8hpp_source}{}\label{_digital_output_8hpp_source}\index{Inc/ST-\/LIB\_LOW/DigitalOutput/DigitalOutput.hpp@{Inc/ST-\/LIB\_LOW/DigitalOutput/DigitalOutput.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ DigitalOutput.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 1\ dic.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ aleja}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}DigitalOutputService/DigitalOutputService.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_digital_output}{DigitalOutput}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_digital_output}{DigitalOutput}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_digital_output}{DigitalOutput}}(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ turn\_on();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ turn\_off();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ toggle();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pin\_state(PinState\ state);}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ pin;}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+
+\end{DoxyCode}

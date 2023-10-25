@@ -1,0 +1,131 @@
+\doxysection{Control\+System.\+hpp}
+\hypertarget{_control_system_8hpp_source}{}\label{_control_system_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/ControlSystem.hpp@{Inc/ST-\/LIB\_HIGH/Control/ControlSystem.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once\ }}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}ControlBlock.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{Types}}>}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_control_system}{ControlSystem}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ System>}
+\DoxyCodeLine{00008\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_control_system_concept}{ControlSystemConcept}}\ =\ \textcolor{keyword}{requires}(\mbox{\hyperlink{class_packet_value}{System}}\ \mbox{\hyperlink{class_packet_value}{system}})\{}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{system}}.is\_control\_system;}
+\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_control_system}{ControlSystem}}<>\{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ is\_control\_system\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ is\_empty\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_control_system}{ControlSystem}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ OutputType,\textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,InputType>}}\ connect(\mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,\ OutputType>}}\&\ \mbox{\hyperlink{class_packet_value}{next}});}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ OutputType,\ \textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute(\mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,\ InputType>}}*\ \mbox{\hyperlink{class_packet_value}{parent}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ OutputType,\ \textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ input(\mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,\ InputType>}}*\ \mbox{\hyperlink{class_packet_value}{parent}},\ \mbox{\hyperlink{class_packet_value}{InputType}}\ input);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{System}},\textcolor{keyword}{class\ }Input,\ \textcolor{keyword}{class\ }Output,\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}>}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ create\_control\_system(\mbox{\hyperlink{class_packet_value}{System}}\ \mbox{\hyperlink{class_packet_value}{base}},\ \mbox{\hyperlink{class_packet_value}{ControlBlock<Input,Output>}}\&\ \mbox{\hyperlink{class_packet_value}{block}},\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}\&...\ \mbox{\hyperlink{class_packet_value}{blocks}})\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_control_system_concept}{ControlSystemConcept<System>}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Input,\ \textcolor{keyword}{class\ }Output,\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}>}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ create\_control\_system(\mbox{\hyperlink{class_packet_value}{ControlBlock<Input,Output>}}\&\ \mbox{\hyperlink{class_packet_value}{block}},\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}\&...\ \mbox{\hyperlink{class_packet_value}{blocks}});}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \mbox{\hyperlink{class_control_system}{ControlSystem}}()-\/>ControlSystem<>;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{OutputType}},\ \mbox{\hyperlink{class_packet_value}{InputType}},\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}...>\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_system}{ControlSystem}}<FollowingTypes...>\{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ is\_control\_system\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ is\_empty\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,\ OutputType>}}*\ control\_block;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_control_system}{ControlSystem}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_control_system}{ControlSystem}}(\mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,\ OutputType>}}\&\ control\_block,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<FollowingTypes...>}}\&\ \mbox{\hyperlink{class_packet_value}{following\_system}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ IncomingOutputType,\ \textcolor{keyword}{class}\ IncomingInputType>}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{IncomingOutputType}},\mbox{\hyperlink{class_packet_value}{IncomingInputType}},\mbox{\hyperlink{class_packet_value}{OutputType}},\mbox{\hyperlink{class_packet_value}{InputType}},\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...>\ connect(\mbox{\hyperlink{class_packet_value}{ControlBlock<IncomingInputType,IncomingOutputType>}}\&\ \mbox{\hyperlink{class_packet_value}{next}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ IncomingOutputType,\ \textcolor{keyword}{class}\ IncomingInputType>}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute(\mbox{\hyperlink{class_packet_value}{ControlSystem<IncomingOutputType,IncomingInputType,OutputType,InputType,FollowingTypes...>}}*\ \mbox{\hyperlink{class_packet_value}{parent}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FirstInputType>}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ input(\mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>}}*\ \mbox{\hyperlink{class_packet_value}{parent}},\ \mbox{\hyperlink{class_packet_value}{FirstInputType}}\ input\_value);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FirstInputType>}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ input(\mbox{\hyperlink{class_packet_value}{FirstInputType}}\ input\_value);}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00052\ \mbox{\hyperlink{class_control_system}{ControlSystem}}(\mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,\ OutputType>}}\&,\ ...)-\/>ControlSystem<\mbox{\hyperlink{class_packet_value}{OutputType}},\mbox{\hyperlink{class_packet_value}{InputType}},\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...>;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ OutputType,\textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00055\ \mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,InputType>}}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<>::connect}}(\mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,\ OutputType>}}\&\ \mbox{\hyperlink{class_packet_value}{next}})\{}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,InputType>}}\ \mbox{\hyperlink{class_packet_value}{new\_system}}(\mbox{\hyperlink{class_packet_value}{next}},*\textcolor{keyword}{this});}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{new\_system}};}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{System}},\textcolor{keyword}{class\ }Input,\ \textcolor{keyword}{class\ }Output,\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}>}
+\DoxyCodeLine{00061\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<>::create\_control\_system}}(\mbox{\hyperlink{class_packet_value}{System}}\ \mbox{\hyperlink{class_packet_value}{base}},\ \mbox{\hyperlink{class_packet_value}{ControlBlock<Input,Output>}}\&\ \mbox{\hyperlink{class_packet_value}{block}},\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}\&...\ \mbox{\hyperlink{class_packet_value}{blocks}})\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_control_system_concept}{ControlSystemConcept<System>}}\{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(\textcolor{keyword}{sizeof}...(ControlBlocks)\ <\ 1)\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{base}}.connect(\mbox{\hyperlink{class_packet_value}{block}});}
+\DoxyCodeLine{00064\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ create\_control\_system(\mbox{\hyperlink{class_packet_value}{base}}.connect(\mbox{\hyperlink{class_packet_value}{block}}),\mbox{\hyperlink{class_packet_value}{blocks}}...);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Input,\ \textcolor{keyword}{class\ }Output,\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}>}
+\DoxyCodeLine{00070\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<>::create\_control\_system}}(\mbox{\hyperlink{class_packet_value}{ControlBlock<Input,Output>}}\&\ \mbox{\hyperlink{class_packet_value}{block}},\ \mbox{\hyperlink{class_packet_value}{ControlBlocks}}\&...\ \mbox{\hyperlink{class_packet_value}{blocks}})\{}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_control_system_3_4}{ControlSystem<>}}\ \mbox{\hyperlink{class_packet_value}{base}};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ create\_control\_system(\mbox{\hyperlink{class_packet_value}{base}},\mbox{\hyperlink{class_packet_value}{block}},\mbox{\hyperlink{class_packet_value}{blocks}}...);\ }
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ OutputType,\ \textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<>::execute}}(\mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,\ InputType>}}*\ \mbox{\hyperlink{class_packet_value}{parent}})\{\}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ OutputType,\ \textcolor{keyword}{class}\ InputType>}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<>::input}}(\mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,\ InputType>}}*\ \mbox{\hyperlink{class_packet_value}{parent}},\ \mbox{\hyperlink{class_packet_value}{InputType}}\ input\_value)\{}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{parent}}-\/>control\_block-\/>input(input\_value);}
+\DoxyCodeLine{00081\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00084\ \mbox{\hyperlink{class_control_system}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>::ControlSystem}}(\mbox{\hyperlink{class_packet_value}{ControlBlock<InputType,\ OutputType>}}\&\ control\_block,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{ControlSystem<FollowingTypes...>}}\&\ \mbox{\hyperlink{class_packet_value}{following\_system}})\ :\ \mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...>(\mbox{\hyperlink{class_packet_value}{following\_system}})\{}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{if}(is\_empty\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ this-\/>control\_block\ =\ \&control\_block;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00091\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ IncomingOutputType,\ \textcolor{keyword}{class}\ IncomingInputType>}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_control_system}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>::execute}}(\mbox{\hyperlink{class_packet_value}{ControlSystem<IncomingOutputType,IncomingInputType,OutputType,InputType,FollowingTypes...>}}*\ \mbox{\hyperlink{class_packet_value}{parent}})\{}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(is\_empty\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...\textcolor{keyword}{>}*>(\textcolor{keyword}{this})-\/>execute(\textcolor{keyword}{this});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ control\_block-\/>execute();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{parent}}-\/>control\_block-\/>input(control\_block-\/>output\_value);}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00101\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FirstInputType>}
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_control_system}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>::input}}(\mbox{\hyperlink{class_packet_value}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>}}*\ \mbox{\hyperlink{class_packet_value}{parent}},\ \mbox{\hyperlink{class_packet_value}{FirstInputType}}\ input\_value)\{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}(is\_empty\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...\textcolor{keyword}{>}*>(\textcolor{keyword}{this})-\/>input(\textcolor{keyword}{this},input\_value);}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00109\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FirstInputType>}
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_control_system}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>::input}}(\mbox{\hyperlink{class_packet_value}{FirstInputType}}\ input\_value)\{}
+\DoxyCodeLine{00111\ \ \ \ \ input(\textcolor{keyword}{this},input\_value);}
+\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_control_system}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>::execute}}()\{}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...\textcolor{keyword}{>}*>(\textcolor{keyword}{this})-\/>execute(\textcolor{keyword}{this});}
+\DoxyCodeLine{00117\ \ \ \ \ control\_block-\/>execute();}
+\DoxyCodeLine{00118\ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{OutputType}},\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputType}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{FollowingTypes}}>}
+\DoxyCodeLine{00121\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ IncomingOutputType,\ \textcolor{keyword}{class}\ IncomingInputType>}
+\DoxyCodeLine{00122\ \mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{IncomingOutputType}},\mbox{\hyperlink{class_packet_value}{IncomingInputType}},\mbox{\hyperlink{class_packet_value}{OutputType}},\mbox{\hyperlink{class_packet_value}{InputType}},\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...>\ \mbox{\hyperlink{class_control_system}{ControlSystem<OutputType,\ InputType,\ FollowingTypes...>::connect}}(\mbox{\hyperlink{class_packet_value}{ControlBlock<IncomingInputType,IncomingOutputType>}}\&\ \mbox{\hyperlink{class_packet_value}{next}})\{}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{class_control_system}{ControlSystem}}<\mbox{\hyperlink{class_packet_value}{IncomingOutputType}},\mbox{\hyperlink{class_packet_value}{IncomingInputType}},\mbox{\hyperlink{class_packet_value}{OutputType}},\mbox{\hyperlink{class_packet_value}{InputType}},\mbox{\hyperlink{class_packet_value}{FollowingTypes}}...>\ \mbox{\hyperlink{class_packet_value}{new\_system}}(\mbox{\hyperlink{class_packet_value}{next}},*\textcolor{keyword}{this});}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{new\_system}};}
+\DoxyCodeLine{00125\ \}}
+
+\end{DoxyCode}

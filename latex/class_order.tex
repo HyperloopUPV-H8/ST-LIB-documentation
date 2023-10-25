@@ -1,0 +1,84 @@
+\doxysection{Order Class Reference}
+\hypertarget{class_order}{}\label{class_order}\index{Order@{Order}}
+Inheritance diagram for Order\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.163636cm]{class_order}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_order_a2815930ef97f545b57608e1802bf6cd2}\label{class_order_a2815930ef97f545b57608e1802bf6cd2} 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}callback)(\mbox{\hyperlink{class_packet_value}{void}}))=0
+\item 
+\Hypertarget{class_order_a623bd3ed39fa52b0ef2ed807977f5148}\label{class_order_a623bd3ed39fa52b0ef2ed807977f5148} 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process} ()=0
+\item 
+\Hypertarget{class_order_a5c56bd0c01e9dc1d57a488dac58d232d}\label{class_order_a5c56bd0c01e9dc1d57a488dac58d232d} 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)=0
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_order_a0a0051a8b895251147182cbf9e91baf8}{parse}} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data) \mbox{\hyperlink{class_packet_value}{override}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries build} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries get\+\_\+size} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} ()=0
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+pointer} (\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} index, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{pointer}})=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_order_a9792eedd53e96d1a4a16a57889fbe2d2}\label{class_order_a9792eedd53e96d1a4a16a57889fbe2d2} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+by\+\_\+id} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id)
+\item 
+\Hypertarget{class_order_ab70e8bfba04de19ad3da6831052ffa63}\label{class_order_ab70e8bfba04de19ad3da6831052ffa63} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+data} (\mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{socket}}, \mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries get\+\_\+id} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries parse\+\_\+data} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_order_a4a52d0d457fbc287b1b33771a1a54e76}\label{class_order_a4a52d0d457fbc287b1b33771a1a54e76} 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_order}{Order}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries orders}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_packet}{Packet}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries packets}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_packet}{Packet}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{size\+\_\+t}} {\bfseries size}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_order_a0a0051a8b895251147182cbf9e91baf8}\label{class_order_a0a0051a8b895251147182cbf9e91baf8} 
+\index{Order@{Order}!parse@{parse}}
+\index{parse@{parse}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} Order\+::parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_packet}{Packet}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+HALAL/\+Models/\+Packets/Order.\+hpp\end{DoxyCompactItemize}

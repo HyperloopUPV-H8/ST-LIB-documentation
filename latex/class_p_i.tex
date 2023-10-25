@@ -1,0 +1,78 @@
+\doxysection{PI\texorpdfstring{$<$}{<} Integrator\+Method \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_p_i}{}\label{class_p_i}\index{PI$<$ IntegratorMethod $>$@{PI$<$ IntegratorMethod $>$}}
+Inheritance diagram for PI\texorpdfstring{$<$}{<} Integrator\+Method \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_p_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_p_i_a1d73cc15e1fc6ef84f79e3db2cb8d4da}\label{class_p_i_a1d73cc15e1fc6ef84f79e3db2cb8d4da} 
+{\bfseries PI} (\mbox{\hyperlink{class_packet_value}{double}} kp, \mbox{\hyperlink{class_packet_value}{double}} ki, \mbox{\hyperlink{class_packet_value}{double}} period)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_p_i_ae5bb6b7fab39115b3b1060e790ee90d1}{execute}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\Hypertarget{class_p_i_a80a75003b7ac21dcad374406c39b6c8d}\label{class_p_i_a80a75003b7ac21dcad374406c39b6c8d} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+kp} (\mbox{\hyperlink{class_packet_value}{double}} kp)
+\item 
+\Hypertarget{class_p_i_a36a37b67e0c16c082830b3604438aef4}\label{class_p_i_a36a37b67e0c16c082830b3604438aef4} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+ki} (\mbox{\hyperlink{class_packet_value}{double}} ki)
+\item 
+\Hypertarget{class_p_i_ad2f4e82333e93a865a1d8734aaca0b01}\label{class_p_i_ad2f4e82333e93a865a1d8734aaca0b01} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries reset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Control\+Block} (\mbox{\hyperlink{class_packet_value}{double}} \mbox{\hyperlink{class_packet_value}{default\+\_\+input}})
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries input} (\mbox{\hyperlink{class_packet_value}{double}} input)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_p_i_a7ade9d24fece0f409d607ae6132dc799}\label{class_p_i_a7ade9d24fece0f409d607ae6132dc799} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries kp}
+\item 
+\Hypertarget{class_p_i_a48be51618706508678b6038f818eec93}\label{class_p_i_a48be51618706508678b6038f818eec93} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries error}
+\item 
+\Hypertarget{class_p_i_ab40299db475f7a0660886c2f195dcefa}\label{class_p_i_ab40299db475f7a0660886c2f195dcefa} 
+\mbox{\hyperlink{class_integrator}{Integrator}}$<$ \mbox{\hyperlink{class_packet_value}{Integrator\+Method}} $>$ {\bfseries integrator}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries input\+\_\+value}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries output\+\_\+value}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Input} = \mbox{\hyperlink{class_packet_value}{double}}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Output} = \mbox{\hyperlink{class_packet_value}{double}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_p_i_ae5bb6b7fab39115b3b1060e790ee90d1}\label{class_p_i_ae5bb6b7fab39115b3b1060e790ee90d1} 
+\index{PI$<$ IntegratorMethod $>$@{PI$<$ IntegratorMethod $>$}!execute@{execute}}
+\index{execute@{execute}!PI$<$ IntegratorMethod $>$@{PI$<$ IntegratorMethod $>$}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily template$<$Integrator\+Type Integrator\+Method$>$ \\
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_p_i}{PI}}$<$ \mbox{\hyperlink{class_packet_value}{Integrator\+Method}} $>$\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+HIGH/\+Control/\+Blocks/PI.\+hpp\end{DoxyCompactItemize}

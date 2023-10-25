@@ -1,0 +1,240 @@
+\doxysection{Pin.\+hpp}
+\hypertarget{_pin_8hpp_source}{}\label{_pin_8hpp_source}\index{Inc/HALAL/Models/PinModel/Pin.hpp@{Inc/HALAL/Models/PinModel/Pin.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Pin.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 19\ oct.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ stefan}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ PERIPHERAL\_BASE\ 0x40000000UL}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ PERIPHERAL\_BASE+0x18020000UL}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ GPIOPin\ :\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\{}
+\DoxyCodeLine{00016\ \ \ \ \ PIN\_0\ =\ 0x0001,}
+\DoxyCodeLine{00017\ \ \ \ \ PIN\_1\ =\ 0x0002,}
+\DoxyCodeLine{00018\ \ \ \ \ PIN\_2\ =\ 0x0004,}
+\DoxyCodeLine{00019\ \ \ \ \ PIN\_3\ =\ 0x0008,}
+\DoxyCodeLine{00020\ \ \ \ \ PIN\_4\ =\ 0x0010,}
+\DoxyCodeLine{00021\ \ \ \ \ PIN\_5\ =\ 0x0020,}
+\DoxyCodeLine{00022\ \ \ \ \ PIN\_6\ =\ 0x0040,}
+\DoxyCodeLine{00023\ \ \ \ \ PIN\_7\ =\ 0x0080,}
+\DoxyCodeLine{00024\ \ \ \ \ PIN\_8\ =\ 0x0100,}
+\DoxyCodeLine{00025\ \ \ \ \ PIN\_9\ =\ 0x0200,}
+\DoxyCodeLine{00026\ \ \ \ \ PIN\_10\ =\ 0x0400,}
+\DoxyCodeLine{00027\ \ \ \ \ PIN\_11\ =\ 0x0800,}
+\DoxyCodeLine{00028\ \ \ \ \ PIN\_12\ =\ 0x1000,}
+\DoxyCodeLine{00029\ \ \ \ \ PIN\_13\ =\ 0x2000,}
+\DoxyCodeLine{00030\ \ \ \ \ PIN\_14\ =\ 0x4000,}
+\DoxyCodeLine{00031\ \ \ \ \ PIN\_15\ =\ 0x8000,}
+\DoxyCodeLine{00032\ \ \ \ \ PIN\_ALL\ =\ 0xFFFF}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{enum}\ GPIOPort\ :\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ PORT\_A\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x0000UL,}
+\DoxyCodeLine{00037\ \ \ \ \ PORT\_B\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x0400UL,}
+\DoxyCodeLine{00038\ \ \ \ \ PORT\_C\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x0800UL,}
+\DoxyCodeLine{00039\ \ \ \ \ PORT\_D\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x0C00UL,}
+\DoxyCodeLine{00040\ \ \ \ \ PORT\_E\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x1000UL,}
+\DoxyCodeLine{00041\ \ \ \ \ PORT\_F\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x1400UL,}
+\DoxyCodeLine{00042\ \ \ \ \ PORT\_G\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x1800UL,}
+\DoxyCodeLine{00043\ \ \ \ \ PORT\_H\ =\ DOMAIN3\_ADVANCED\_HIGH\_PERFORMANCE\_BUS1\ +\ 0x1C00UL,}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{enum}\ AlternativeFunction:\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ AF0\ =\ 0x00,}
+\DoxyCodeLine{00048\ \ \ \ \ AF1\ =\ 0x01,}
+\DoxyCodeLine{00049\ \ \ \ \ AF2\ =\ 0x02,}
+\DoxyCodeLine{00050\ \ \ \ \ AF3\ =\ 0x03,}
+\DoxyCodeLine{00051\ \ \ \ \ AF4\ =\ 0x04,}
+\DoxyCodeLine{00052\ \ \ \ \ AF5\ =\ 0x05,}
+\DoxyCodeLine{00053\ \ \ \ \ AF6\ =\ 0x06,}
+\DoxyCodeLine{00054\ \ \ \ \ AF7\ =\ 0x07,}
+\DoxyCodeLine{00055\ \ \ \ \ AF8\ =\ 0x08,}
+\DoxyCodeLine{00056\ \ \ \ \ AF9\ =\ 0x09,}
+\DoxyCodeLine{00057\ \ \ \ \ AF10\ =\ 0x0A,}
+\DoxyCodeLine{00058\ \ \ \ \ AF11\ =\ 0x0B,}
+\DoxyCodeLine{00059\ \ \ \ \ AF12\ =\ 0x0C,}
+\DoxyCodeLine{00060\ \ \ \ \ AF13\ =\ 0x0D,}
+\DoxyCodeLine{00061\ \ \ \ \ AF14\ =\ 0x0E,}
+\DoxyCodeLine{00062\ \ \ \ \ AF15\ =\ 0x0F,}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{enum}\ OperationMode\{}
+\DoxyCodeLine{00066\ \ \ \ \ NOT\_USED,}
+\DoxyCodeLine{00067\ \ \ \ \ INPUT,}
+\DoxyCodeLine{00068\ \ \ \ \ OUTPUT,}
+\DoxyCodeLine{00069\ \ \ \ \ ANALOG,}
+\DoxyCodeLine{00070\ \ \ \ \ EXTERNAL\_INTERRUPT\_RISING,}
+\DoxyCodeLine{00071\ \ \ \ \ EXTERNAL\_INTERRUPT\_FALLING,}
+\DoxyCodeLine{00072\ \ \ \ \ TIMER\_ALTERNATE\_FUNCTION,}
+\DoxyCodeLine{00073\ \ \ \ \ ALTERNATIVE,}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{enum}\ PinState\{}
+\DoxyCodeLine{00077\ \ \ \ \ OFF,}
+\DoxyCodeLine{00078\ \ \ \ \ ON}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pin}{Pin}}\ \{}
+\DoxyCodeLine{00082\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{GPIO\_TypeDef}}\ *\ port;}
+\DoxyCodeLine{00084\ \ \ \ \ GPIOPin\ gpio\_pin;}
+\DoxyCodeLine{00085\ \ \ \ \ AlternativeFunction\ alternative\_function;}
+\DoxyCodeLine{00086\ \ \ \ \ OperationMode\ mode\ =\ OperationMode::NOT\_USED;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{vector<reference\_wrapper<Pin>}}>\ pinVector;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{map<GPIO\_TypeDef*,const\ string>}}\ port\_to\_string;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{map<GPIOPin,const\ string>}}\ gpio\_pin\_to\_string;}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}();}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}(GPIOPort\ port,\ GPIOPin\ pin);}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}(GPIOPort\ port,\ GPIOPin\ pin,\ AlternativeFunction\ alternative\_function);}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ to\_string()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ inscribe(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin,\ OperationMode\ mode);}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{operator==\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_pin}{Pin}}\ \&\mbox{\hyperlink{class_packet_value}{other}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (gpio\_pin\ ==\ \mbox{\hyperlink{class_packet_value}{other}}.gpio\_pin\ \&\&\ port\ ==\ \mbox{\hyperlink{class_packet_value}{other}}.port);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{operator<\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_pin}{Pin}}\ \&\mbox{\hyperlink{class_packet_value}{other}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (port\ ==\ \mbox{\hyperlink{class_packet_value}{other}}.port)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ gpio\_pin\ <\ \mbox{\hyperlink{class_packet_value}{other}}.gpio\_pin;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ port\ <\ \mbox{\hyperlink{class_packet_value}{other}}.port;}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{namespace\ }std\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{struct\ }hash<\mbox{\hyperlink{class_pin}{Pin}}>\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ std::size\_t\ operator()(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_pin}{Pin}}\&\ k)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }std::size\_t;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }std::hash;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }std::string;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((\mbox{\hyperlink{class_packet_value}{hash<uint16\_t>}}()(k.gpio\_pin)\ \string^\ (\mbox{\hyperlink{class_packet_value}{hash<uint32\_t>}}()((\mbox{\hyperlink{class_packet_value}{uint32\_t}})(k.port))\ <<\ 1))\ >>\ 1);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00119\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA0;}
+\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA1;}
+\DoxyCodeLine{00123\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA10;}
+\DoxyCodeLine{00124\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA11;}
+\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA12;}
+\DoxyCodeLine{00126\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA13;}
+\DoxyCodeLine{00127\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA14;}
+\DoxyCodeLine{00128\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA15;}
+\DoxyCodeLine{00129\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA9;}
+\DoxyCodeLine{00130\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB0;}
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB1;}
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB10;}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB11;}
+\DoxyCodeLine{00134\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB12;}
+\DoxyCodeLine{00135\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB13;}
+\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB14;}
+\DoxyCodeLine{00137\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB15;}
+\DoxyCodeLine{00138\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB2;}
+\DoxyCodeLine{00139\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB3;}
+\DoxyCodeLine{00140\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB4;}
+\DoxyCodeLine{00141\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB5;}
+\DoxyCodeLine{00142\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB6;}
+\DoxyCodeLine{00143\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB7;}
+\DoxyCodeLine{00144\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB8;}
+\DoxyCodeLine{00145\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PB9;}
+\DoxyCodeLine{00146\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC0;}
+\DoxyCodeLine{00147\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC1;}
+\DoxyCodeLine{00148\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC10;}
+\DoxyCodeLine{00149\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC11;}
+\DoxyCodeLine{00150\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC12;}
+\DoxyCodeLine{00151\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC13;}
+\DoxyCodeLine{00152\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC14;}
+\DoxyCodeLine{00153\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC15;}
+\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC2;}
+\DoxyCodeLine{00155\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC3;}
+\DoxyCodeLine{00156\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC4;}
+\DoxyCodeLine{00157\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC5;}
+\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC6;}
+\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC7;}
+\DoxyCodeLine{00160\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC8;}
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PC9;}
+\DoxyCodeLine{00162\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD0;}
+\DoxyCodeLine{00163\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD1;}
+\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD10;}
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD11;}
+\DoxyCodeLine{00166\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD12;}
+\DoxyCodeLine{00167\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD13;}
+\DoxyCodeLine{00168\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD14;}
+\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD15;}
+\DoxyCodeLine{00170\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD2;}
+\DoxyCodeLine{00171\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD3;}
+\DoxyCodeLine{00172\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD4;}
+\DoxyCodeLine{00173\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD5;}
+\DoxyCodeLine{00174\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD6;}
+\DoxyCodeLine{00175\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD7;}
+\DoxyCodeLine{00176\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD8;}
+\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PD9;}
+\DoxyCodeLine{00178\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE0;}
+\DoxyCodeLine{00179\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE1;}
+\DoxyCodeLine{00180\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE10;}
+\DoxyCodeLine{00181\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE11;}
+\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE12;}
+\DoxyCodeLine{00183\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE13;}
+\DoxyCodeLine{00184\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE14;}
+\DoxyCodeLine{00185\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE15;}
+\DoxyCodeLine{00186\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE2;}
+\DoxyCodeLine{00187\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE3;}
+\DoxyCodeLine{00188\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE4;}
+\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE5;}
+\DoxyCodeLine{00190\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE6;}
+\DoxyCodeLine{00191\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE7;}
+\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE8;}
+\DoxyCodeLine{00193\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PE9;}
+\DoxyCodeLine{00194\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF0;}
+\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF1;}
+\DoxyCodeLine{00196\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF10;}
+\DoxyCodeLine{00197\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF11;}
+\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF12;}
+\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF13;}
+\DoxyCodeLine{00200\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF14;}
+\DoxyCodeLine{00201\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF15;}
+\DoxyCodeLine{00202\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF2;}
+\DoxyCodeLine{00203\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF3;}
+\DoxyCodeLine{00204\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF4;}
+\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF5;}
+\DoxyCodeLine{00206\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF6;}
+\DoxyCodeLine{00207\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF7;}
+\DoxyCodeLine{00208\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF8;}
+\DoxyCodeLine{00209\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PF9;}
+\DoxyCodeLine{00210\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG0;}
+\DoxyCodeLine{00211\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG1;}
+\DoxyCodeLine{00212\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG10;}
+\DoxyCodeLine{00213\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG11;}
+\DoxyCodeLine{00214\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG12;}
+\DoxyCodeLine{00215\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG13;}
+\DoxyCodeLine{00216\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG14;}
+\DoxyCodeLine{00217\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG15;}
+\DoxyCodeLine{00218\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG2;}
+\DoxyCodeLine{00219\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG3;}
+\DoxyCodeLine{00220\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG4;}
+\DoxyCodeLine{00221\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG5;}
+\DoxyCodeLine{00222\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG6;}
+\DoxyCodeLine{00223\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG7;}
+\DoxyCodeLine{00224\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG8;}
+\DoxyCodeLine{00225\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PG9;}
+\DoxyCodeLine{00226\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PH0;}
+\DoxyCodeLine{00227\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PH1;}
+\DoxyCodeLine{00228\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA2;}
+\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA3;}
+\DoxyCodeLine{00230\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA4;}
+\DoxyCodeLine{00231\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA5;}
+\DoxyCodeLine{00232\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA6;}
+\DoxyCodeLine{00233\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA7;}
+\DoxyCodeLine{00234\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_pin}{Pin}}\ PA8;}
+
+\end{DoxyCode}

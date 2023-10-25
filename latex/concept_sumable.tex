@@ -1,0 +1,12 @@
+\doxysection{Sumable Concept Reference}
+\hypertarget{concept_sumable}{}\label{concept_sumable}\index{Sumable@{Sumable}}
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ U\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concept_sumable}{Sumable}}\ =\ \ \textcolor{keyword}{requires}(\mbox{\hyperlink{class_packet_value}{T}}\ \mbox{\hyperlink{class_packet_value}{a}},\ \mbox{\hyperlink{class_packet_value}{U}}\ \mbox{\hyperlink{class_packet_value}{b}})\{}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{a}}\ +\ \mbox{\hyperlink{class_packet_value}{b}}\ \};}
+\DoxyCodeLine{\ \ \ \ \{\ \mbox{\hyperlink{class_packet_value}{b}}\ +\ \mbox{\hyperlink{class_packet_value}{a}}\ \};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

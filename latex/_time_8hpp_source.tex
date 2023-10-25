@@ -1,0 +1,130 @@
+\doxysection{Time.\+hpp}
+\hypertarget{_time_8hpp_source}{}\label{_time_8hpp_source}\index{Inc/HALAL/Services/Time/Time.hpp@{Inc/HALAL/Services/Time/Time.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Time.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 30\ oct.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Dani}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}stm32h7xx\_hal.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ RTC\_MAX\_COUNTER\ 32767}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ HAL\_TIM\_MODULE\_ENABLED}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ HIGH\ RESOLUTION\ TIMERS}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim2}};\ \ \ \ \ \ \ \textcolor{comment}{//\ Used\ for\ the\ global\ timer\ (3,36nS\ step)}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim5}};\ \ \ \ \ \ \ \textcolor{comment}{//\ Used\ for\ the\ high\ precision\ alarms\ (1uS)}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim24}};\ \textcolor{comment}{//\ Used\ for\ the\ high\ precision\ alarms\ (1uS)}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim23}};\ \ \ \ \textcolor{comment}{//\ Used\ for\ the\ mid\ precision\ alarms\ (50uS)}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ LOW\ RESOLUTION\ TIMERS}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim7}};\ \ \ \ \ \ \ \textcolor{comment}{//\ Used\ for\ the\ low\ precision\ alarms\ (1mS)}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Time}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \mbox{\hyperlink{class_packet_value}{private}}\ :}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{high\_precision\_ids}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{low\_precision\_ids}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_ids}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{Alarm}}\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{tim}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ function<\mbox{\hyperlink{class_packet_value}{void}}()>\ \mbox{\hyperlink{class_packet_value}{alarm}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ offset;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_on}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{HIGH\_PRECISION\_MAX\_ARR}}\ =\ 4294967295;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{MID\_PRECISION\_MAX\_ARR}}\ =\ 4294967295;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_step\_in\_us}}\ =\ 50;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ \mbox{\hyperlink{class_packet_value}{global\_tick}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ \mbox{\hyperlink{class_packet_value}{low\_precision\_tick}};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_tick}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_registered}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ Alarm>}}\ \mbox{\hyperlink{class_packet_value}{high\_precision\_alarms\_by\_id}};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<TIM\_HandleTypeDef*,\ Alarm>}}\ \mbox{\hyperlink{class_packet_value}{high\_precision\_alarms\_by\_timer}};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ Alarm>}}\ \mbox{\hyperlink{class_packet_value}{low\_precision\_alarms\_by\_id}};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ Alarm>}}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_alarms\_by\_id}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{stack<uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{low\_precision\_erasable\_ids}};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{stack<uint8\_t>}}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_erasable\_ids}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{stop\_timer}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{htim}});}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{start\_timer}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{htim}},\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{prescaler}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init\_timer}}(\mbox{\hyperlink{class_packet_value}{TIM\_TypeDef}}*\ \mbox{\hyperlink{class_packet_value}{tim}},\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{htim}},\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{prescaler}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period,\ \mbox{\hyperlink{class_packet_value}{IRQn\_Type}}\ \mbox{\hyperlink{class_packet_value}{interrupt\_channel}});}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{ConfigTimer}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{tim}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{period\_in\_us}});}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_valid\_timer}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{tim}});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \mbox{\hyperlink{class_packet_value}{public}}\ :}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{global\_timer}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{set<TIM\_HandleTypeDef*>}}\ \mbox{\hyperlink{class_packet_value}{high\_precision\_timers}};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{stack<TIM\_HandleTypeDef*>}}\ \mbox{\hyperlink{class_packet_value}{available\_high\_precision\_timers}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{low\_precision\_timer}};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_timer}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{high\_precision\_timer\_callback}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{tim}});}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{global\_timer\_callback}}();}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{low\_precision\_timer\_callback}}();}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{mid\_precision\_timer\_callback}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint64\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_global\_tick}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{register\_high\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{period\_in\_us}},\ function<\textcolor{keywordtype}{void}()>\ func);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{unregister\_high\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{register\_low\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{period\_in\_ms}},\ function<\textcolor{keywordtype}{void}()>\ func);}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{register\_low\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{period\_in\_ms}},\ \textcolor{keywordtype}{void}(*func)());}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{unregister\_low\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{register\_mid\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{period\_in\_us}},\ function<\textcolor{keywordtype}{void}()>\ func);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{unregister\_mid\_precision\_alarm}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{set\_timeout}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_packet_value}{milliseconds}},\ function<\textcolor{keywordtype}{void}()>\ callback);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#ifdef\ HAL\_RTC\_MODULE\_ENABLED}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{RTCData}}\{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ counter;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{second}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{minute}};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{hour}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{day}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{month}};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{year}};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ serialize()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)"{}counter\(\backslash\)"{}:\ "{}}\ +\ to\_string(counter)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}second\(\backslash\)"{}:\ "{}}\ +\ to\_string(\mbox{\hyperlink{class_packet_value}{second}})\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}minute\(\backslash\)"{}:\ "{}}\ +\ to\_string(\mbox{\hyperlink{class_packet_value}{minute}})\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}hour\(\backslash\)"{}:\ "{}}\ +\ to\_string(\mbox{\hyperlink{class_packet_value}{hour}})\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}day\(\backslash\)"{}:\ "{}}\ +\ to\_string(\mbox{\hyperlink{class_packet_value}{day}})\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}month\(\backslash\)"{}:\ "{}}\ +\ to\_string(\mbox{\hyperlink{class_packet_value}{month}})\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}year\(\backslash\)"{}:\ "{}}\ +\ to\_string(\mbox{\hyperlink{class_packet_value}{year}});}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ get\_string\_size(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{RTCData}}\&\ \mbox{\hyperlink{class_packet_value}{to\_serialize}})\{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_packet_value}{to\_serialize}}.serialize().size();}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{start\_rtc}}();}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{RTCData}}\ \mbox{\hyperlink{class_packet_value}{get\_rtc\_data}}();}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{set\_rtc\_data}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ counter,\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{second}},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{minute}},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{hour}},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{day}},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{month}},\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{year}});}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{RTC\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{hrtc}};}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,31 @@
+\doxysection{Template\+Pack\+Filter.\+hpp}
+\hypertarget{_template_pack_filter_8hpp_source}{}\label{_template_pack_filter_8hpp_source}\index{Inc/HALAL/Models/DataStructures/TemplatePackFilter.hpp@{Inc/HALAL/Models/DataStructures/TemplatePackFilter.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00005\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_template_pack}{TemplatePack}}\{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{using\ }Pack\ =\ Types...;}
+\DoxyCodeLine{00007\ \};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }FilterType,\ \textcolor{keyword}{class}...\ ToFilter>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_template_pack_filter}{TemplatePackFilter}};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }FilterType,\ \textcolor{keyword}{class\ }First,\ \textcolor{keyword}{class}...\ ToFilter>\ \textcolor{keyword}{requires}\ \textcolor{keyword}{requires}\ \{\ \textcolor{keyword}{requires}\ !is\_same<FilterType,\ First>::value;\ \}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_template_pack_filter}{TemplatePackFilter}}<FilterType,\ First,\ ToFilter...>\{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{using\ }FilteredPack\ =\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{struct_template_pack_filter}{TemplatePackFilter}}<FilterType,\ ToFilter...>::FilteredPack;}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }FilterType,\ \textcolor{keyword}{class}...\ ToFilter>}
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_template_pack_filter}{TemplatePackFilter}}<FilterType,\ FilterType,\ ToFilter...>\{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ }FilteredPack\ =\ \mbox{\hyperlink{struct_template_pack}{TemplatePack}}<FilterType,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{struct_template_pack_filter}{TemplatePackFilter}}<FilterType,\ ToFilter...>::FilteredPack>::Pack;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FilterType>}
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_template_pack_filter}{TemplatePackFilter}}<FilterType>\{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{using\ }FilteredPack\ =\ TemplatePack<>::Pack;}
+\DoxyCodeLine{00025\ \};}
+
+\end{DoxyCode}

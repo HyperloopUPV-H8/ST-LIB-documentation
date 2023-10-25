@@ -1,0 +1,86 @@
+\doxysection{Integrator\texorpdfstring{$<$}{<} Integrator\+Type\+::Trapezoidal \texorpdfstring{$>$}{>} Class Reference}
+\hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4}{}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4}\index{Integrator$<$ IntegratorType::Trapezoidal $>$@{Integrator$<$ IntegratorType::Trapezoidal $>$}}
+Inheritance diagram for Integrator\texorpdfstring{$<$}{<} Integrator\+Type\+::Trapezoidal \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a7170e5b105aea0c99a919415b46f9c4c}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a7170e5b105aea0c99a919415b46f9c4c} 
+{\bfseries Integrator} (\mbox{\hyperlink{class_packet_value}{double}} period, \mbox{\hyperlink{class_packet_value}{double}} ki)
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_aa0e6a6cc4f2b498c4b4eb711458143d6}{execute}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_abf40ccffc027d0199a9c51ea1d9316de}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_abf40ccffc027d0199a9c51ea1d9316de} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries reset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Control\+Block} (\mbox{\hyperlink{class_packet_value}{double}} \mbox{\hyperlink{class_packet_value}{default\+\_\+input}})
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries input} (\mbox{\hyperlink{class_packet_value}{double}} input)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_adeb69aa5f19a46fc107a3393bbe29273}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_adeb69aa5f19a46fc107a3393bbe29273} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries period}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a18cdd7fc185306f7bb1fd6884d66c878}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a18cdd7fc185306f7bb1fd6884d66c878} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries buffer} \mbox{[}N\mbox{]} = \{0.\+0\}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a75a0566a183bb4e23d23c2bd6f04779b}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a75a0566a183bb4e23d23c2bd6f04779b} 
+\mbox{\hyperlink{class_packet_value}{int}} {\bfseries index} = 0
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a3541eff0f4225d8c34b8585dd34a0090}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a3541eff0f4225d8c34b8585dd34a0090} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries integral} = 0.\+0
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_ad45b1ee2b2ea4483e306054911d503d7}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_ad45b1ee2b2ea4483e306054911d503d7} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries ki}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a9808e2b7d612a0e9c63bad80b4f601ef}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a9808e2b7d612a0e9c63bad80b4f601ef} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries first\+\_\+execution} = \mbox{\hyperlink{class_packet_value}{true}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries input\+\_\+value}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries output\+\_\+value}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a30836edc599008fb1a98b56722c65bb4}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_a30836edc599008fb1a98b56722c65bb4} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{constexpr}} \mbox{\hyperlink{class_packet_value}{int}} {\bfseries N} = 2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Input} = \mbox{\hyperlink{class_packet_value}{double}}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Output} = \mbox{\hyperlink{class_packet_value}{double}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_aa0e6a6cc4f2b498c4b4eb711458143d6}\label{class_integrator_3_01_integrator_type_1_1_trapezoidal_01_4_aa0e6a6cc4f2b498c4b4eb711458143d6} 
+\index{Integrator$<$ IntegratorType::Trapezoidal $>$@{Integrator$<$ IntegratorType::Trapezoidal $>$}!execute@{execute}}
+\index{execute@{execute}!Integrator$<$ IntegratorType::Trapezoidal $>$@{Integrator$<$ IntegratorType::Trapezoidal $>$}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_integrator}{Integrator}}$<$ Integrator\+Type\+::\+Trapezoidal $>$\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+HIGH/\+Control/\+Blocks/Integrator.\+hpp\end{DoxyCompactItemize}

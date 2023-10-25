@@ -1,0 +1,87 @@
+\doxysection{BDFDerivator\texorpdfstring{$<$}{<} N \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_b_d_f_derivator}{}\label{class_b_d_f_derivator}\index{BDFDerivator$<$ N $>$@{BDFDerivator$<$ N $>$}}
+Inheritance diagram for BDFDerivator\texorpdfstring{$<$}{<} N \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_b_d_f_derivator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_b_d_f_derivator_aa0fe2e5a322cb7855b8bf71e7d14f720}\label{class_b_d_f_derivator_aa0fe2e5a322cb7855b8bf71e7d14f720} 
+{\bfseries BDFDerivator} (\mbox{\hyperlink{class_packet_value}{double}} period, \mbox{\hyperlink{class_packet_value}{double}}(\&ks)\mbox{[}order\mbox{]})
+\item 
+\Hypertarget{class_b_d_f_derivator_a942eaa98a9fe1b6126a5d8ecc4c1a53c}\label{class_b_d_f_derivator_a942eaa98a9fe1b6126a5d8ecc4c1a53c} 
+{\bfseries BDFDerivator} (\mbox{\hyperlink{class_packet_value}{double}} period, \mbox{\hyperlink{class_packet_value}{double}}(\&\&ks)\mbox{[}order\mbox{]})
+\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_b_d_f_derivator_a62669d6499b48800ccc76b48b561026e}{execute}} () \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\Hypertarget{class_b_d_f_derivator_abb94c37654bfaf0eb0d0d3d951239d0b}\label{class_b_d_f_derivator_abb94c37654bfaf0eb0d0d3d951239d0b} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries reset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Control\+Block} (\mbox{\hyperlink{class_packet_value}{double}} \mbox{\hyperlink{class_packet_value}{default\+\_\+input}})
+\item 
+\mbox{\hyperlink{class_packet_value}{virtual}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries input} (\mbox{\hyperlink{class_packet_value}{double}} input)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_b_d_f_derivator_a9d0c1393065c40620bc0c26d319a3651}\label{class_b_d_f_derivator_a9d0c1393065c40620bc0c26d319a3651} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries period}
+\item 
+\Hypertarget{class_b_d_f_derivator_a62248c3f0bb4fa442526c477bc474a3c}\label{class_b_d_f_derivator_a62248c3f0bb4fa442526c477bc474a3c} 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries buffer} \mbox{[}N+1\mbox{]} = \{0.\+0\}
+\item 
+\Hypertarget{class_b_d_f_derivator_a6059ced1c8967015a34430db8f03c7e6}\label{class_b_d_f_derivator_a6059ced1c8967015a34430db8f03c7e6} 
+\mbox{\hyperlink{class_packet_value}{double}}(\& {\bfseries ks} )\mbox{[}order\mbox{]}
+\item 
+\Hypertarget{class_b_d_f_derivator_aaf25f29ededf7d1507d4bb62fb0b5223}\label{class_b_d_f_derivator_aaf25f29ededf7d1507d4bb62fb0b5223} 
+\mbox{\hyperlink{class_packet_value}{int}} {\bfseries index} = 0
+\item 
+\Hypertarget{class_b_d_f_derivator_ab91ea575c871b7ec7160dd0ab5dfb6d9}\label{class_b_d_f_derivator_ab91ea575c871b7ec7160dd0ab5dfb6d9} 
+\mbox{\hyperlink{class_packet_value}{uint64\+\_\+t}} {\bfseries counter} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries input\+\_\+value}
+\item 
+\mbox{\hyperlink{class_packet_value}{double}} {\bfseries output\+\_\+value}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_b_d_f_derivator_a7d0b20abec11b602590bce7babac5cfc}\label{class_b_d_f_derivator_a7d0b20abec11b602590bce7babac5cfc} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{constexpr}} \mbox{\hyperlink{class_packet_value}{int}} {\bfseries order} = N-\/1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Input} = \mbox{\hyperlink{class_packet_value}{double}}
+\item 
+\mbox{\hyperlink{class_packet_value}{using}} {\bfseries Output} = \mbox{\hyperlink{class_packet_value}{double}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_d_f_derivator_a62669d6499b48800ccc76b48b561026e}\label{class_b_d_f_derivator_a62669d6499b48800ccc76b48b561026e} 
+\index{BDFDerivator$<$ N $>$@{BDFDerivator$<$ N $>$}!execute@{execute}}
+\index{execute@{execute}!BDFDerivator$<$ N $>$@{BDFDerivator$<$ N $>$}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{class_packet_value}{int}} N$>$ \\
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_b_d_f_derivator}{BDFDerivator}}$<$ N $>$\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_control_block}{Control\+Block$<$ double, double $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\+ST-\/\+LIB\+\_\+\+HIGH/\+Control/\+Blocks/Derivator.\+hpp\end{DoxyCompactItemize}

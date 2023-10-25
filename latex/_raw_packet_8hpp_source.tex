@@ -1,0 +1,57 @@
+\doxysection{Raw\+Packet.\+hpp}
+\hypertarget{_raw_packet_8hpp_source}{}\label{_raw_packet_8hpp_source}\index{Inc/HALAL/Models/Packets/RawPacket.hpp@{Inc/HALAL/Models/Packets/RawPacket.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ SPI.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 5\ nov.\ 2022}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Pablo}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_raw_packet}{RawPacket}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ size;\ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}*\ data;\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_raw_packet}{RawPacket}}()\{\};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_raw_packet_a186b15af0499b0a028e19ce18e08f1ca}{RawPacket}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ size)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ this-\/>size\ =\ size;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ this-\/>data\ =\ (\mbox{\hyperlink{class_packet_value}{uint8\_t}}*)\mbox{\hyperlink{class_packet_value}{malloc}}(this-\/>size);}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_raw_packet_ae1a3893319eeb364f666b10605290c37}{RawPacket}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ data)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ this-\/>size\ =\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ this-\/>data\ =\ (\mbox{\hyperlink{class_packet_value}{uint8\_t}}*)\mbox{\hyperlink{class_packet_value}{malloc}}(this-\/>size);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(this-\/>data,\ data,\ this-\/>size);}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_raw_packet_a89021a645fdd639d32ca5dafcf5e8e1e}{RawPacket}}(\mbox{\hyperlink{class_packet_value}{Type}}*\ data,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ size)\{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ this-\/>size\ =\ size\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_packet_value}{Type}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ this-\/>data\ =\ (\mbox{\hyperlink{class_packet_value}{uint8\_t}}*)\mbox{\hyperlink{class_packet_value}{malloc}}(this-\/>size);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memcpy}}(this-\/>data,\ data,\ this-\/>size);}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_raw_packet_abfe49c19d36380760e435ca7f0d0bd01}{\string~RawPacket}}()\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{free}}(data);}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_raw_packet_a11bbe22e0139a86215d7d63746a146fa}{get\_size}}()\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}*\ \mbox{\hyperlink{class_raw_packet_aefdbe92c52cdc175da2012e254b630eb}{get\_data}}()\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \};}
+
+\end{DoxyCode}

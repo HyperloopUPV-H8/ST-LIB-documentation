@@ -1,0 +1,32 @@
+\doxysection{Stack\+Tuple.\+hpp}
+\hypertarget{_stack_tuple_8hpp_source}{}\label{_stack_tuple_8hpp_source}\index{Inc/HALAL/Models/DataStructures/StackTuple.hpp@{Inc/HALAL/Models/DataStructures/StackTuple.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Types>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstack__tuple}{stack\_tuple}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstack__tuple}{stack\_tuple}}<>\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classstack__tuple}{stack\_tuple}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FunctionType>}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{void}\ for\_each(FunctionType\ function)\ \{\}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Type,\ \textcolor{keyword}{class}...\ Types>}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstack__tuple}{stack\_tuple}}<Type,\ Types...>:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classstack__tuple}{stack\_tuple}}<Types...>\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ Type\ value;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classstack__tuple}{stack\_tuple}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classstack__tuple}{stack\_tuple}}(Type\ value,\ Types...\ values):\ \mbox{\hyperlink{classstack__tuple}{stack\_tuple}}<Types...>(values...),\ value(value)\ \{\}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ FunctionType>}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ for\_each(FunctionType\ function)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ function(value);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstack__tuple}{stack\_tuple<Types...>::for\_each}}(function);}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \};}
+
+\end{DoxyCode}

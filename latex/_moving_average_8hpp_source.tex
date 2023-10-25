@@ -1,0 +1,57 @@
+\doxysection{Moving\+Average.\+hpp}
+\hypertarget{_moving_average_8hpp_source}{}\label{_moving_average_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/MovingAverage.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/MovingAverage.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}stdio.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../ControlSystem.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ N>}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_moving_average}{MovingAverage}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ buffer[N]\ =\ \{0.0\};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ first\ =\ 0,\ last\ =\ -\/1;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ counter\ =\ 0;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ accumulator\ =\ 0.0;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_moving_average}{MovingAverage}}():\ \mbox{\hyperlink{class_packet_value}{ControlBlock<double,double>}}()\{output\_value\ =\ 0.0;\}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(counter\ <\ N)\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last++;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buffer[last]\ =\ input\_value;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ +=\ input\_value/N;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ counter++;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ -\/=\ buffer[first]\ /\ N;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ (first\ +\ 1)\ \%\ N;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ last\ =\ (last\ +\ 1)\ \%\ N;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ buffer[last]\ =\ input\_value;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ +=\ buffer[last]\ /\ N;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ accumulator;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ compute(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_packet_value}{input\_v}})\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>input(\mbox{\hyperlink{class_packet_value}{input\_v}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ execute();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>output\_value;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ last\ =\ -\/1;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ counter\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ accumulator\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ output\_value\ =\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{double}\&\ \mbox{\hyperlink{class_packet_value}{e}}:\ buffer)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{e}}\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+
+\end{DoxyCode}

@@ -1,0 +1,37 @@
+\doxysection{PI.\+hpp}
+\hypertarget{_p_i_8hpp_source}{}\label{_p_i_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/PI.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/PI.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../ControlBlock.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Integrator.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}<IntegratorType\ IntegratorMethod>}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_p_i}{PI}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_control_block}{ControlBlock}}<double,double>\{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ kp;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Integrator<IntegratorMethod>}}\ integrator;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_p_i}{PI}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_p_i}{PI}}(\textcolor{keywordtype}{double}\ kp,\ \textcolor{keywordtype}{double}\ ki,\ \textcolor{keywordtype}{double}\ period):\ kp(kp),\ integrator(period,ki)\ \{\}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ execute()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.input(this-\/>input\_value);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.execute();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ error\ =\ \textcolor{keyword}{this}\ -\/>\ input\_value;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this}\ -\/>\ output\_value\ =\ kp*error\ +\ integrator.output\_value;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_kp(\textcolor{keywordtype}{double}\ kp)\{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>kp\ =\ kp;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ set\_ki(\textcolor{keywordtype}{double}\ ki)\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.ki\ =\ ki;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.reset();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ integrator.reset();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \};}
+
+\end{DoxyCode}
