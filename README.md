@@ -1,1 +1,1 @@
-"DOCUMENTATION"
+contains the doxygen generated documentation for STLIB
