@@ -1,5 +1,5 @@
 \doxysection{Protection\+Manager.\+hpp}
-\hypertarget{_protection_manager_8hpp_source}{}\label{_protection_manager_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Protections/ProtectionManager.hpp@{Inc/ST-\/LIB\_HIGH/Protections/ProtectionManager.hpp}}
+\hypertarget{_protection_manager_8hpp_source}{}\label{_protection_manager_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/Protections/ProtectionManager.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/Protections/ProtectionManager.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -45,7 +45,7 @@
 \DoxyCodeLine{00041\ }
 \DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ set\_id(Boards::ID\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ link\_state\_machine(\mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ general\_state\_machine,\ state\_id\ fault\_id);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ link\_state\_machine(\mbox{\hyperlink{class_state_machine}{StateMachine}}\&\ general\_state\_machine,\ state\_id\ fault\_id);}
 \DoxyCodeLine{00045\ }
 \DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Type}},\ ProtectionType...\ Protector,\ \textcolor{keyword}{template}<\textcolor{keyword}{class},ProtectionType>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Boundaries}}>}
 \DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_protection}{Protection}}\&\ \_add\_protection(\mbox{\hyperlink{class_packet_value}{Type}}*\ src,\ \mbox{\hyperlink{class_packet_value}{Boundaries<Type,Protector>}}...\ \mbox{\hyperlink{class_packet_value}{protectors}})\{}
@@ -75,18 +75,18 @@
 \DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ Boards::ID\ board\_id;}
 \DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{vector<Protection>}}\ low\_frequency\_protections;}
 \DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{vector<Protection>}}\ high\_frequency\_protections;}
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{StateMachine}}*\ general\_state\_machine;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_state_machine}{StateMachine}}*\ general\_state\_machine;}
 \DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ state\_id\ fault\_state\_id;}
 \DoxyCodeLine{00076\ }
 \DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_notification}{Notification}}\ fault\_notification;}
 \DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_notification}{Notification}}\ warning\_notification;}
 \DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{StackOrder<0>}}\ fault\_order;}
 \DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ get\_string\_size(\mbox{\hyperlink{class_protection}{Protection}}\&\ \mbox{\hyperlink{class_packet_value}{prot}}\ ,\textcolor{keyword}{const}\ Time::RTCData\&\ \mbox{\hyperlink{class_packet_value}{timestamp}})\{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ get\_string\_size(\mbox{\hyperlink{class_protection}{Protection}}\&\ \mbox{\hyperlink{class_packet_value}{prot}}\ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_time_1_1_r_t_c_data}{Time::RTCData}}\&\ \mbox{\hyperlink{class_packet_value}{timestamp}})\{}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ snprintf(\textcolor{keyword}{nullptr},0,format,\textcolor{stringliteral}{"{}"{}},\textcolor{stringliteral}{"{}"{}},\textcolor{stringliteral}{"{}"{}})\ +\ \mbox{\hyperlink{class_packet_value}{prot}}.get\_string\_size()\ +\ Time::RTCData::get\_string\_size(\mbox{\hyperlink{class_packet_value}{timestamp}});}
 \DoxyCodeLine{00083\ \ \ \ \ \}}
 \DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}*\ serialize(\mbox{\hyperlink{class_protection}{Protection}}\&\ \mbox{\hyperlink{class_packet_value}{prot}},\ \textcolor{keyword}{const}\ Time::RTCData\&\ \mbox{\hyperlink{class_packet_value}{timestamp}})\{}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}*\ serialize(\mbox{\hyperlink{class_protection}{Protection}}\&\ \mbox{\hyperlink{class_packet_value}{prot}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_time_1_1_r_t_c_data}{Time::RTCData}}\&\ \mbox{\hyperlink{class_packet_value}{timestamp}})\{}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{sprintf}}(message,format,to\_string(board\_id).\mbox{\hyperlink{class_packet_value}{c\_str}}(),\mbox{\hyperlink{class_packet_value}{timestamp}}.serialize().c\_str(),\textcolor{keywordtype}{string}(\mbox{\hyperlink{class_packet_value}{prot}}.serialize(message)).c\_str());}
 \DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ message;}
 \DoxyCodeLine{00088\ \ \ \ \ \}}

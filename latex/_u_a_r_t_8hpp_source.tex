@@ -1,5 +1,5 @@
 \doxysection{UART.\+hpp}
-\hypertarget{_u_a_r_t_8hpp_source}{}\label{_u_a_r_t_8hpp_source}\index{Inc/HALAL/Services/Communication/UART/UART.hpp@{Inc/HALAL/Services/Communication/UART/UART.hpp}}
+\hypertarget{_u_a_r_t_8hpp_source}{}\label{_u_a_r_t_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/UART/UART.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/UART/UART.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -21,94 +21,94 @@
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ RXBUSYMASK\ 0b10}}
 \DoxyCodeLine{00018\ }
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ endl\ "{}\(\backslash\)n\(\backslash\)r"{}}}
-\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{UART}}\{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_a_r_t}{UART}}\{}
 \DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{Instance}}\{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{TX}};\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{RX}};\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{UART\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{huart}};\ \ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{USART\_TypeDef}}*\ \mbox{\hyperlink{class_packet_value}{instance}};}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{baud\_rate}};}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{word\_length}};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{receive\_ready}}\ =\ \textcolor{keyword}{false};\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{initialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }Instance\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ TX;\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ RX;\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{UART\_HandleTypeDef}}*\ huart;\ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{USART\_TypeDef}}*\ instance;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ baud\_rate;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ word\_length;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ receive\_ready\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00041\ }
 \DoxyCodeLine{00042\ \ \ \ \ \};}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{UART\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{get\_handle}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{UART\_HandleTypeDef}}*\ get\_handle(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00045\ }
 \DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{Peripheral}}\{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral1}}\ =\ 0,}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral2}}\ =\ 1,}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral3}}\ =\ 2,}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral4}}\ =\ 3,}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral5}}\ =\ 4,}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral6}}\ =\ 5,}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral7}}\ =\ 6,}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral8}}\ =\ 7,}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral9}}\ =\ 8,}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral10}}\ =\ 9}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{Peripheral}}\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ peripheral1\ =\ 0,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ peripheral2\ =\ 1,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ peripheral3\ =\ 2,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ peripheral4\ =\ 3,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ peripheral5\ =\ 4,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ peripheral6\ =\ 5,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ peripheral7\ =\ 6,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ peripheral8\ =\ 7,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ peripheral9\ =\ 8,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ peripheral10\ =\ 9}
 \DoxyCodeLine{00063\ \ \ \ \ \};}
 \DoxyCodeLine{00064\ }
 \DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ id\_counter;}
 \DoxyCodeLine{00066\ \ \ \ \ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ UART::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{registered\_uart}};}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<UART::Peripheral,\ UART::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{available\_uarts}};}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ UART::Instance*>}}\ registered\_uart;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<UART::Peripheral,\ UART::Instance*>}}\ available\_uarts;}
 \DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{printf\_uart}};}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{printf\_ready}};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ printf\_uart;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ printf\_ready;}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart1}};}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart2}};}
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart3}};}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart4}};}
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart5}};}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart6}};}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart7}};}
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart8}};}
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart9}};}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ UART::Peripheral\ \mbox{\hyperlink{class_packet_value}{uart10}};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ \mbox{\hyperlink{class_u_a_r_t_a5428e4784759f2b04aa80d13f4c47f3c}{uart1}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart2;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart3;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart4;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart5;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart6;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart7;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart8;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart9;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\ uart10;}
 \DoxyCodeLine{00087\ }
 \DoxyCodeLine{00088\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance1}};}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance2}};}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance3}};}
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance4}};}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance5}};}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance6}};}
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance7}};}
-\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance8}};}
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance9}};}
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_packet_value}{instance10}};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ \mbox{\hyperlink{class_u_a_r_t_a899c9caa9baedaec938482b0a63aaa6c}{instance1}};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance2;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance3;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance4;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance5;}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance6;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance7;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance8;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance9;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ UART::Instance\ instance10;}
 \DoxyCodeLine{00103\ }
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(UART::Peripheral\&\ \mbox{\hyperlink{class_packet_value}{uart}});}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_u_a_r_t_a51f65b3257373c8bfb3fcb85f511766e}{inscribe}}(\mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\&\ \mbox{\hyperlink{class_packet_value}{uart}});}
 \DoxyCodeLine{00111\ }
-\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_a_r_t_a1076836d93bf3a8068b9127419068ee0}{start}}();}
 \DoxyCodeLine{00118\ }
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ data);}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_a8574516a96e675c3ea96eedbed81120f}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ data);}
 \DoxyCodeLine{00131\ }
-\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_a1a8d032b0974bc26d968e43fbf0a80ed}{transmit}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
 \DoxyCodeLine{00145\ }
-\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ data);}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_a7b5934d48fa9195ad98399a3759357bd}{transmit\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ data);}
 \DoxyCodeLine{00155\ }
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_af2d0b75cd143f4c06bfb4f9520d80196}{transmit\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
 \DoxyCodeLine{00164\ }
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{receive}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_a3e03037c333f6deea0b613193401a28d}{receive}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
 \DoxyCodeLine{00181\ }
-\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{receive\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_a83d22d782319c0830f94871afa4dd86e}{receive\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_packet_value}{span<uint8\_t>}}\ data);}
 \DoxyCodeLine{00193\ }
-\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{has\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_a96326c5efce0f44024b2b0592ec88364}{has\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00201\ }
-\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_busy}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}{is\_busy}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00209\ }
-\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{set\_up\_printf}}(UART::Peripheral\&\ \mbox{\hyperlink{class_packet_value}{uart}});}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_a_r_t_af4cbf9f35ba082fdb85572290cce993f}{set\_up\_printf}}(\mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\&\ \mbox{\hyperlink{class_packet_value}{uart}});}
 \DoxyCodeLine{00218\ }
-\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{print\_by\_uart}}(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{ptr}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_packet_value}{len}});}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_a_r_t_af59cc81e79d0ca2bf10cbbb83674ecc6}{print\_by\_uart}}(\textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_packet_value}{ptr}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_packet_value}{len}});}
 \DoxyCodeLine{00227\ }
 \DoxyCodeLine{00228\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}(UART::Instance*\ \mbox{\hyperlink{class_packet_value}{uart}});}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ init(UART::Instance*\ \mbox{\hyperlink{class_packet_value}{uart}});}
 \DoxyCodeLine{00235\ }
 \DoxyCodeLine{00236\ \};}
 \DoxyCodeLine{00237\ }

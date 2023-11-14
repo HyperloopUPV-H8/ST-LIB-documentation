@@ -1,0 +1,134 @@
+\doxysection{Rotation\+Computer Class Reference}
+\hypertarget{class_rotation_computer}{}\label{class_rotation_computer}\index{RotationComputer@{RotationComputer}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_rotation_computer_a7eb3307790d25f1ab5371d8be46838af}\label{class_rotation_computer_a7eb3307790d25f1ab5371d8be46838af} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_rotation_computer_a1e1a98d933ef19975077ea463e26573c}{cos}} (\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{angle}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em Cosine function. Receives size angles and output size results. \end{DoxyCompactList}\item 
+\Hypertarget{class_rotation_computer_a2c54886b644b5a4343e4e5060a518e1d}\label{class_rotation_computer_a2c54886b644b5a4343e4e5060a518e1d} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries sin} (\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{angle}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em sine function. virtually the same as the cosine function \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_rotation_computer_a08a806664315cf682b11a35eda40bd06}{cos\+\_\+and\+\_\+sin}} (\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{angle}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{cos\+\_\+out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{sin\+\_\+out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em Cosine and sine function. Does both while only needing the time that one takes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_rotation_computer_a206ba5b3efab4c18eb817ae9a25d4a6f}{phase}} (\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{x}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{y}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{angle\+\_\+out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em Phase function. Calculates the angle between a vector from (0,0) to (x,y) and the vector (1,0) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_rotation_computer_a551998eba55a7d631790719fe49a9b48}{modulus}} (\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{x}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{y}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em modulus function. Calculates the modulus of the vector from (0,0) to (x,y). If the modulus result where to be higher than 2147483392 (\texorpdfstring{$\sim$}{\string~}0.995) it will give aberrant result instead \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_rotation_computer_a17a20ac2f6f8458f60722af7308e060c}{phase\+\_\+and\+\_\+modulus}} (\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{x}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{y}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{angle\+\_\+out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{mod\+\_\+out}}, \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} size)
+\begin{DoxyCompactList}\small\item\em modulus and phase function. Does both while only needing the time that one takes \end{DoxyCompactList}\item 
+\Hypertarget{class_rotation_computer_a8096ab9fb0c1e8b9f6a1423d7587fa7d}\label{class_rotation_computer_a8096ab9fb0c1e8b9f6a1423d7587fa7d} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{float}} {\bfseries q31\+\_\+to\+\_\+radian\+\_\+f32} (\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_packet_value}{in}})
+\begin{DoxyCompactList}\small\item\em Testing function that translates the angle to a float in radians, to make reading easier. Its slow, not intended to use on continous calculations. \end{DoxyCompactList}\item 
+\Hypertarget{class_rotation_computer_a9576b462c0e56079bc8ad0704be3bb35}\label{class_rotation_computer_a9576b462c0e56079bc8ad0704be3bb35} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} {\bfseries radian\+\_\+f32\+\_\+to\+\_\+q31} (\mbox{\hyperlink{class_packet_value}{double}} \mbox{\hyperlink{class_packet_value}{in}})
+\begin{DoxyCompactList}\small\item\em Testing function that translates radians to an angle on int format, to make writting easier. Its slow, not intended to use on continous calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_rotation_computer_a1e1a98d933ef19975077ea463e26573c}\label{class_rotation_computer_a1e1a98d933ef19975077ea463e26573c} 
+\index{RotationComputer@{RotationComputer}!cos@{cos}}
+\index{cos@{cos}!RotationComputer@{RotationComputer}}
+\doxysubsubsection{\texorpdfstring{cos()}{cos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Rotation\+Computer\+::cos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{angle,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Cosine function. Receives size angles and output size results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Angle} & the pointer to the angle array with size "{}size"{}. input \\
+\hline
+{\em Out} & the pointer to the array where the results are saved, with size "{}size"{}. output \\
+\hline
+{\em Size} & the size of both pointers in indexes.\\
+\hline
+\end{DoxyParams}
+The cosine queries on single shot each of the values on the angle array until size index If the angle or the out parameter has less size than the size parameter, it will throw an exception If one or both angle and out parameters have more size than size, it will just calculate until size and leave the rest as it is \Hypertarget{class_rotation_computer_a08a806664315cf682b11a35eda40bd06}\label{class_rotation_computer_a08a806664315cf682b11a35eda40bd06} 
+\index{RotationComputer@{RotationComputer}!cos\_and\_sin@{cos\_and\_sin}}
+\index{cos\_and\_sin@{cos\_and\_sin}!RotationComputer@{RotationComputer}}
+\doxysubsubsection{\texorpdfstring{cos\_and\_sin()}{cos\_and\_sin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Rotation\+Computer\+::cos\+\_\+and\+\_\+sin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{angle,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cos\+\_\+out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{sin\+\_\+out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Cosine and sine function. Does both while only needing the time that one takes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Angle} & the pointer to the angle array with size "{}size"{}. input \\
+\hline
+{\em Cos\+\_\+out} & the pointer to the array where the cosine results are saved, with size "{}size"{}. output \\
+\hline
+{\em Sin\+:out} & the pointer to the array where the sine results are saved, with size "{}size"{}. output \\
+\hline
+{\em Size} & the size of both pointers in indexes.\\
+\hline
+\end{DoxyParams}
+Uses a cosine query but configurating the CORDIC to save the residual results The residual results are values that appear when calculating any function, which are not the return of the function itself The cosine function of the CORDIC gives as residual result the sine function, so if you read twice you will get first cosine then sine If you don t configurate the CORDIC to save its residual result it will not work. The method does it by itself, thats why we don t just use the cosine method. The exact time it takes is around 4 cycles more than the cos function, which is around 30-\/40. So 10\% more as it needs to read one more register. The reads are protected to give the correct result, thats why it needs 4 cycles for the read (on average) and not just one \Hypertarget{class_rotation_computer_a551998eba55a7d631790719fe49a9b48}\label{class_rotation_computer_a551998eba55a7d631790719fe49a9b48} 
+\index{RotationComputer@{RotationComputer}!modulus@{modulus}}
+\index{modulus@{modulus}!RotationComputer@{RotationComputer}}
+\doxysubsubsection{\texorpdfstring{modulus()}{modulus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Rotation\+Computer\+::modulus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{x,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{y,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+modulus function. Calculates the modulus of the vector from (0,0) to (x,y). If the modulus result where to be higher than 2147483392 (\texorpdfstring{$\sim$}{\string~}0.995) it will give aberrant result instead 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x.} & The array of values x of each vector with size "{}size"{}. input. \\
+\hline
+{\em y.} & The array of values y of each vector with size "{}size"{}. input. \\
+\hline
+{\em out.} & The array where the functions puts its output, cannot be higher than 2147483392. output.\\
+\hline
+\end{DoxyParams}
+The modulus function is a bit more fragile than the other functions. If it were to give a value higher than 2147483392, the value that it would return would be absurd. Avoiding to get near the limits of the euclidean space described (no more than 70\% on both of the axis) is advised. \Hypertarget{class_rotation_computer_a206ba5b3efab4c18eb817ae9a25d4a6f}\label{class_rotation_computer_a206ba5b3efab4c18eb817ae9a25d4a6f} 
+\index{RotationComputer@{RotationComputer}!phase@{phase}}
+\index{phase@{phase}!RotationComputer@{RotationComputer}}
+\doxysubsubsection{\texorpdfstring{phase()}{phase()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Rotation\+Computer\+::phase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{x,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{y,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{angle\+\_\+out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Phase function. Calculates the angle between a vector from (0,0) to (x,y) and the vector (1,0) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x.} & The array of values x of each vector with size "{}size"{}. input. \\
+\hline
+{\em y.} & The array of values y of each vector with size "{}size"{}. input. \\
+\hline
+{\em angle\+\_\+out.} & The array where the functions puts its output, which is an angle. output. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_rotation_computer_a17a20ac2f6f8458f60722af7308e060c}\label{class_rotation_computer_a17a20ac2f6f8458f60722af7308e060c} 
+\index{RotationComputer@{RotationComputer}!phase\_and\_modulus@{phase\_and\_modulus}}
+\index{phase\_and\_modulus@{phase\_and\_modulus}!RotationComputer@{RotationComputer}}
+\doxysubsubsection{\texorpdfstring{phase\_and\_modulus()}{phase\_and\_modulus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Rotation\+Computer\+::phase\+\_\+and\+\_\+modulus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{x,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{y,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{angle\+\_\+out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{mod\+\_\+out,  }\item[{\mbox{\hyperlink{class_packet_value}{int32\+\_\+t}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+modulus and phase function. Does both while only needing the time that one takes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x.} & The array of values x of each vector with size "{}size"{}. input. \\
+\hline
+{\em y.} & The array of values y of each vector with size "{}size"{}. input. \\
+\hline
+{\em angle\+\_\+out.} & The array of results of the phase, given as an angle. output. \\
+\hline
+{\em mod\+\_\+out.} & The array of results of the modulus, with same sepcifications. output.\\
+\hline
+\end{DoxyParams}
+This function uses the same trick as the cosine and sine function, as the residual result of the phase is the modulus. The modulus returned by this function shares weaknesses with the modulus function. Avoiding getting near the 70\% of the maximun (\texorpdfstring{$\sim$}{\string~} 1518500000) on both x and y at the same time is advised, unless modulus is handled. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+CORDIC/CORDIC.\+hpp\end{DoxyCompactItemize}

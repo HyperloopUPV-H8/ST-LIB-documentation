@@ -1,5 +1,5 @@
 \doxysection{Notification.\+hpp}
-\hypertarget{_notification_8hpp_source}{}\label{_notification_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Protections/Notification.hpp@{Inc/ST-\/LIB\_HIGH/Protections/Notification.hpp}}
+\hypertarget{_notification_8hpp_source}{}\label{_notification_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/Protections/Notification.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/Protections/Notification.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -66,7 +66,7 @@
 \DoxyCodeLine{00062\ }
 \DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ notify()\{}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(tx\_message.empty())\{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Cannot\ notify\ empty\ notification"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ErrorHandler}}(\textcolor{stringliteral}{"{}Cannot\ notify\ empty\ notification"{}});}
 \DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_order_protocol}{OrderProtocol}}*\ \mbox{\hyperlink{class_packet_value}{socket}}\ :\ OrderProtocol::sockets)\{}
@@ -92,7 +92,7 @@
 \DoxyCodeLine{00088\ \ \ \ \ \}}
 \DoxyCodeLine{00089\ }
 \DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_pointer(\textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{pointer}})\textcolor{keyword}{\ override}\{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Notification\ does\ not\ suport\ this\ method!"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ErrorHandler}}(\textcolor{stringliteral}{"{}Notification\ does\ not\ suport\ this\ method!"{}});}
 \DoxyCodeLine{00092\ \ \ \ \ \}}
 \DoxyCodeLine{00093\ }
 \DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_notification}{\string~Notification}}()\{}

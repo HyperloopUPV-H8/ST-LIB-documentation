@@ -1,0 +1,158 @@
+\doxysection{Encoder Class Reference}
+\hypertarget{class_encoder}{}\label{class_encoder}\index{Encoder@{Encoder}}
+
+
+\doxylink{class_encoder}{Encoder} service class. Abstracts the use of the encoder with the HAL library.  
+
+
+
+
+{\ttfamily \#include $<$Encoder.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_encoder_a787c3864185c79deb37b57af4e074587}{inscribe}} (\mbox{\hyperlink{class_pin}{Pin}} \&\mbox{\hyperlink{class_packet_value}{pin1}}, \mbox{\hyperlink{class_pin}{Pin}} \&\mbox{\hyperlink{class_packet_value}{pin2}})
+\begin{DoxyCompactList}\small\item\em This method registers a new encoder. \end{DoxyCompactList}\item 
+\Hypertarget{class_encoder_a72cd816872f0b4a2cfa2ca784296236a}\label{class_encoder_a72cd816872f0b4a2cfa2ca784296236a} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_encoder_a7e5bc84742b7c23d9d24ba5ac6fbe464}{turn\+\_\+on}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Starts the timer of the encoder. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_encoder_a11ff2bed3c531c0cf0faa46b8c53c1fd}{turn\+\_\+off}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Stop the timer of the encoder. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_encoder_a6428da3ee68b73ea8b84de780825f5a4}{reset}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Resets the encoder by setting the CNT register to 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_encoder_accc99a5c97fac0d8fd36e00bddc00ddf}{get\+\_\+counter}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Get the CNT value of the encoder. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_encoder_ae7a7bb86252ebbf62696d5dc67b66139}{get\+\_\+direction}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Get the encoder direction. \end{DoxyCompactList}\item 
+\Hypertarget{class_encoder_abbbfa31be022c6ed92b0e2cbb481c232}\label{class_encoder_abbbfa31be022c6ed92b0e2cbb481c232} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries init} (\mbox{\hyperlink{class_timer_peripheral}{Timer\+Peripheral}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{encoder}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_encoder_a9ad7b564f9549678301c829484b75e0f}\label{class_encoder_a9ad7b564f9549678301c829484b75e0f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries id\+\_\+counter}
+\item 
+\Hypertarget{class_encoder_a60e5e8c0fd0e497d38a9bd175174f55f}\label{class_encoder_a60e5e8c0fd0e497d38a9bd175174f55f} 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ pair$<$ \mbox{\hyperlink{class_pin}{Pin}}, \mbox{\hyperlink{class_pin}{Pin}} $>$, \mbox{\hyperlink{class_timer_peripheral}{Timer\+Peripheral}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries pin\+\_\+timer\+\_\+map}
+\item 
+\Hypertarget{class_encoder_a4264af8d6ebd1052681ba7b2c9b1decc}\label{class_encoder_a4264af8d6ebd1052681ba7b2c9b1decc} 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, pair$<$ \mbox{\hyperlink{class_pin}{Pin}}, \mbox{\hyperlink{class_pin}{Pin}} $>$ $>$ {\bfseries registered\+\_\+encoder}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_encoder}{Encoder} service class. Abstracts the use of the encoder with the HAL library. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_encoder_accc99a5c97fac0d8fd36e00bddc00ddf}\label{class_encoder_accc99a5c97fac0d8fd36e00bddc00ddf} 
+\index{Encoder@{Encoder}!get\_counter@{get\_counter}}
+\index{get\_counter@{get\_counter}!Encoder@{Encoder}}
+\doxysubsubsection{\texorpdfstring{get\_counter()}{get\_counter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} Encoder\+::get\+\_\+counter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the CNT value of the encoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the encoder \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t CNT value if the id is valid 
+\end{DoxyReturn}
+\Hypertarget{class_encoder_ae7a7bb86252ebbf62696d5dc67b66139}\label{class_encoder_ae7a7bb86252ebbf62696d5dc67b66139} 
+\index{Encoder@{Encoder}!get\_direction@{get\_direction}}
+\index{get\_direction@{get\_direction}!Encoder@{Encoder}}
+\doxysubsubsection{\texorpdfstring{get\_direction()}{get\_direction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} Encoder\+::get\+\_\+direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the encoder direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool \doxylink{class_encoder}{Encoder} direction if id is valid 
+\end{DoxyReturn}
+\Hypertarget{class_encoder_a787c3864185c79deb37b57af4e074587}\label{class_encoder_a787c3864185c79deb37b57af4e074587} 
+\index{Encoder@{Encoder}!inscribe@{inscribe}}
+\index{inscribe@{inscribe}!Encoder@{Encoder}}
+\doxysubsubsection{\texorpdfstring{inscribe()}{inscribe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} Encoder\+::inscribe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pin}{Pin}} \&}]{pin1,  }\item[{\mbox{\hyperlink{class_pin}{Pin}} \&}]{pin2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method registers a new encoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin1} & First pin of the encoder \\
+\hline
+{\em pin2} & Second pin of the encoder\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em uint8\+\_\+t} & Id of the service \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{class_encoder_a6428da3ee68b73ea8b84de780825f5a4}\label{class_encoder_a6428da3ee68b73ea8b84de780825f5a4} 
+\index{Encoder@{Encoder}!reset@{reset}}
+\index{reset@{reset}!Encoder@{Encoder}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Encoder\+::reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Resets the encoder by setting the CNT register to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the encoder \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_encoder_a11ff2bed3c531c0cf0faa46b8c53c1fd}\label{class_encoder_a11ff2bed3c531c0cf0faa46b8c53c1fd} 
+\index{Encoder@{Encoder}!turn\_off@{turn\_off}}
+\index{turn\_off@{turn\_off}!Encoder@{Encoder}}
+\doxysubsubsection{\texorpdfstring{turn\_off()}{turn\_off()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Encoder\+::turn\+\_\+off (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Stop the timer of the encoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the encoder \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_encoder_a7e5bc84742b7c23d9d24ba5ac6fbe464}\label{class_encoder_a7e5bc84742b7c23d9d24ba5ac6fbe464} 
+\index{Encoder@{Encoder}!turn\_on@{turn\_on}}
+\index{turn\_on@{turn\_on}!Encoder@{Encoder}}
+\doxysubsubsection{\texorpdfstring{turn\_on()}{turn\_on()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Encoder\+::turn\+\_\+on (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Starts the timer of the encoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the encoder \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Encoder/Encoder.\+hpp\end{DoxyCompactItemize}

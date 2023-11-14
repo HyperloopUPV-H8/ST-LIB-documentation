@@ -1,5 +1,5 @@
 \doxysection{Zeroing.\+hpp}
-\hypertarget{_zeroing_8hpp_source}{}\label{_zeroing_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/Control/Blocks/Zeroing.hpp@{Inc/ST-\/LIB\_HIGH/Control/Blocks/Zeroing.hpp}}
+\hypertarget{_zeroing_8hpp_source}{}\label{_zeroing_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/Control/Blocks/Zeroing.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/Control/Blocks/Zeroing.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -21,7 +21,7 @@
 \DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ mean\_calculator.input(*sensor.get\_value\_pointer());}
 \DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ mean\_calculator.execute();}
 \DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_max\_value\ \&\&\ \mbox{\hyperlink{class_packet_value}{abs}}(mean\_calculator.output\_value)\ >\ max\_value\_offset)\ ErrorHandler(\textcolor{stringliteral}{"{}Zeroing\ offset\ is\ calculated\ to\ be\ above\ specified\ maximum"{}});}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(has\_max\_value\ \&\&\ \mbox{\hyperlink{class_packet_value}{abs}}(mean\_calculator.output\_value)\ >\ max\_value\_offset)\ \mbox{\hyperlink{class_packet_value}{ErrorHandler}}(\textcolor{stringliteral}{"{}Zeroing\ offset\ is\ calculated\ to\ be\ above\ specified\ maximum"{}});}
 \DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ sensor.set\_offset(sensor.get\_offset()\ -\/\ mean\_calculator.output\_value);}
 \DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ mean\_calculator.reset();}
 \DoxyCodeLine{00023\ \ \ \ \ \}}

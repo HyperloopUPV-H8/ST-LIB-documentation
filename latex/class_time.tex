@@ -1,0 +1,159 @@
+\doxysection{Time Class Reference}
+\hypertarget{class_time}{}\label{class_time}\index{Time@{Time}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_time_1_1_r_t_c_data}{RTCData}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_time_ae6e605abaf03ee4f50e77ad7fb427d94}\label{class_time_ae6e605abaf03ee4f50e77ad7fb427d94} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries high\+\_\+precision\+\_\+timer\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}tim)
+\item 
+\Hypertarget{class_time_a10314eae843c4a0fc90a588993d02938}\label{class_time_a10314eae843c4a0fc90a588993d02938} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries global\+\_\+timer\+\_\+callback} ()
+\item 
+\Hypertarget{class_time_aaf41ecc0e0fb65f7b69fa08e9240ada8}\label{class_time_aaf41ecc0e0fb65f7b69fa08e9240ada8} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries low\+\_\+precision\+\_\+timer\+\_\+callback} ()
+\item 
+\Hypertarget{class_time_a4d9f432f75c1bbc134af17c99ed13a61}\label{class_time_a4d9f432f75c1bbc134af17c99ed13a61} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries mid\+\_\+precision\+\_\+timer\+\_\+callback} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_time_ac0b04d6faba1156407c067c7486875a0}{start}} ()
+\begin{DoxyCompactList}\small\item\em Initializes instances registered with init\+\_\+timer. \end{DoxyCompactList}\item 
+\Hypertarget{class_time_a150650fcea650ea8b266985dd7c14a8f}\label{class_time_a150650fcea650ea8b266985dd7c14a8f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint64\+\_\+t}} {\bfseries get\+\_\+global\+\_\+tick} ()
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_time_ab19bdae1facfd2bd3a4894a2e33cb12a}{register\+\_\+high\+\_\+precision\+\_\+alarm}} (\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_packet_value}{period\+\_\+in\+\_\+us}}, function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ func)
+\begin{DoxyCompactList}\small\item\em Tries to register a high\+\_\+precision\+\_\+alarm that will execute a function cyclically until unregistered. \end{DoxyCompactList}\item 
+\Hypertarget{class_time_a39a80344bf3a2c280820e3606d75fd46}\label{class_time_a39a80344bf3a2c280820e3606d75fd46} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries unregister\+\_\+high\+\_\+precision\+\_\+alarm} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_time_a18800a7dd82dbf44210213a1831196ef}{register\+\_\+low\+\_\+precision\+\_\+alarm}} (\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_packet_value}{period\+\_\+in\+\_\+ms}}, function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ func)
+\begin{DoxyCompactList}\small\item\em Registers a low\+\_\+precision\+\_\+alarm that will execute a function cyclically until unregistered. \end{DoxyCompactList}\item 
+\Hypertarget{class_time_a3bcfc2de78d7a0354c230a25dfab6afa}\label{class_time_a3bcfc2de78d7a0354c230a25dfab6afa} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries register\+\_\+low\+\_\+precision\+\_\+alarm} (\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_packet_value}{period\+\_\+in\+\_\+ms}}, \mbox{\hyperlink{class_packet_value}{void}}(\texorpdfstring{$\ast$}{*}func)())
+\item 
+\Hypertarget{class_time_ab402dac7ad3857f4d0b030badb28fa69}\label{class_time_ab402dac7ad3857f4d0b030badb28fa69} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries unregister\+\_\+low\+\_\+precision\+\_\+alarm} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_time_ab70b99b39fd87cdde4590ad58068fb4b}{register\+\_\+mid\+\_\+precision\+\_\+alarm}} (\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_packet_value}{period\+\_\+in\+\_\+us}}, function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ func)
+\begin{DoxyCompactList}\small\item\em Registers a low\+\_\+precision\+\_\+alarm, executes an action ONLY ONE TIME and unregisters the alarm. \end{DoxyCompactList}\item 
+\Hypertarget{class_time_a7fdcd66efd32c4abc1fc68e6ec766190}\label{class_time_a7fdcd66efd32c4abc1fc68e6ec766190} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries unregister\+\_\+mid\+\_\+precision\+\_\+alarm} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\item 
+\Hypertarget{class_time_a43c26499ef75bd246de7c4ba10a0f3b0}\label{class_time_a43c26499ef75bd246de7c4ba10a0f3b0} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+timeout} (\mbox{\hyperlink{class_packet_value}{int}} \mbox{\hyperlink{class_packet_value}{milliseconds}}, function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ callback)
+\item 
+\Hypertarget{class_time_a99bea4b0b38902b71b148561a5b9e07b}\label{class_time_a99bea4b0b38902b71b148561a5b9e07b} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start\+\_\+rtc} ()
+\item 
+\Hypertarget{class_time_aae1ec709e035b236f2731e869ea97b8b}\label{class_time_aae1ec709e035b236f2731e869ea97b8b} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{struct_time_1_1_r_t_c_data}{RTCData}} {\bfseries get\+\_\+rtc\+\_\+data} ()
+\item 
+\Hypertarget{class_time_a1cc8f340660f7a9a4d398e4231d8602f}\label{class_time_a1cc8f340660f7a9a4d398e4231d8602f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries set\+\_\+rtc\+\_\+data} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} counter, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} second, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} minute, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} hour, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} day, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} month, \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} year)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_time_a4225a898b01a343a6e736cac4b9eefda}\label{class_time_a4225a898b01a343a6e736cac4b9eefda} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries global\+\_\+timer}
+\item 
+\Hypertarget{class_time_a91e4eeb92e9f326cf1b7b16aeaeba8db}\label{class_time_a91e4eeb92e9f326cf1b7b16aeaeba8db} 
+\mbox{\hyperlink{class_packet_value}{static}} set$<$ \mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries high\+\_\+precision\+\_\+timers}
+\item 
+\Hypertarget{class_time_afc28479fc752c94084abe47f0fa47148}\label{class_time_afc28479fc752c94084abe47f0fa47148} 
+\mbox{\hyperlink{class_packet_value}{static}} stack$<$ \mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries available\+\_\+high\+\_\+precision\+\_\+timers}
+\item 
+\Hypertarget{class_time_a74adcef9cc09e2e73251cd7de9be0b66}\label{class_time_a74adcef9cc09e2e73251cd7de9be0b66} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries low\+\_\+precision\+\_\+timer}
+\item 
+\Hypertarget{class_time_acf2eb8a4105c9d2bc5fed4679a1ac155}\label{class_time_acf2eb8a4105c9d2bc5fed4679a1ac155} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries mid\+\_\+precision\+\_\+timer}
+\item 
+\Hypertarget{class_time_a97feeabe1e775fd72760841a8e612942}\label{class_time_a97feeabe1e775fd72760841a8e612942} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{RTC\+\_\+\+Handle\+Type\+Def}} {\bfseries hrtc}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_time_ab19bdae1facfd2bd3a4894a2e33cb12a}\label{class_time_ab19bdae1facfd2bd3a4894a2e33cb12a} 
+\index{Time@{Time}!register\_high\_precision\_alarm@{register\_high\_precision\_alarm}}
+\index{register\_high\_precision\_alarm@{register\_high\_precision\_alarm}!Time@{Time}}
+\doxysubsubsection{\texorpdfstring{register\_high\_precision\_alarm()}{register\_high\_precision\_alarm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} Time\+::register\+\_\+high\+\_\+precision\+\_\+alarm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{period\+\_\+in\+\_\+us,  }\item[{function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Tries to register a high\+\_\+precision\+\_\+alarm that will execute a function cyclically until unregistered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em period\+\_\+in\+\_\+us} & period in microseconds until timeout. \\
+\hline
+{\em func} & function to be executed on timeout. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+optional$<$uint8\+\_\+t$>$ Returns id of the alarm if succesful, nullopt if it is able to register the timer correctly (probably because there aren\textquotesingle{}t any timer available). 
+\end{DoxyReturn}
+\Hypertarget{class_time_a18800a7dd82dbf44210213a1831196ef}\label{class_time_a18800a7dd82dbf44210213a1831196ef} 
+\index{Time@{Time}!register\_low\_precision\_alarm@{register\_low\_precision\_alarm}}
+\index{register\_low\_precision\_alarm@{register\_low\_precision\_alarm}!Time@{Time}}
+\doxysubsubsection{\texorpdfstring{register\_low\_precision\_alarm()}{register\_low\_precision\_alarm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} Time\+::register\+\_\+low\+\_\+precision\+\_\+alarm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{period\+\_\+in\+\_\+ms,  }\item[{function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers a low\+\_\+precision\+\_\+alarm that will execute a function cyclically until unregistered. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em period\+\_\+in\+\_\+ms} & period in milliseconds until timeout. \\
+\hline
+{\em func} & function to be executed on timeout. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Returns id of the alarm. 
+\end{DoxyReturn}
+\Hypertarget{class_time_ab70b99b39fd87cdde4590ad58068fb4b}\label{class_time_ab70b99b39fd87cdde4590ad58068fb4b} 
+\index{Time@{Time}!register\_mid\_precision\_alarm@{register\_mid\_precision\_alarm}}
+\index{register\_mid\_precision\_alarm@{register\_mid\_precision\_alarm}!Time@{Time}}
+\doxysubsubsection{\texorpdfstring{register\_mid\_precision\_alarm()}{register\_mid\_precision\_alarm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} Time\+::register\+\_\+mid\+\_\+precision\+\_\+alarm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{period\+\_\+in\+\_\+us,  }\item[{function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers a low\+\_\+precision\+\_\+alarm, executes an action ONLY ONE TIME and unregisters the alarm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em milliseconds} & time until the action is executed. \\
+\hline
+{\em func} & function to be executed on timeout. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_time_ac0b04d6faba1156407c067c7486875a0}\label{class_time_ac0b04d6faba1156407c067c7486875a0} 
+\index{Time@{Time}!start@{start}}
+\index{start@{start}!Time@{Time}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} Time\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initializes instances registered with init\+\_\+timer. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Time/Time.\+hpp\end{DoxyCompactItemize}

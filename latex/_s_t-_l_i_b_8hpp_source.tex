@@ -1,5 +1,5 @@
 \doxysection{ST-\/\+LIB.hpp}
-\hypertarget{_s_t-_l_i_b_8hpp_source}{}\label{_s_t-_l_i_b_8hpp_source}\index{Inc/ST-\/LIB.hpp@{Inc/ST-\/LIB.hpp}}
+\hypertarget{_s_t-_l_i_b_8hpp_source}{}\label{_s_t-_l_i_b_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -11,12 +11,12 @@
 \DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_s_t_l_i_b}{STLIB}}\ \{}
 \DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start(\mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{ip}},\ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{subnet\_mask}},\ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{gateaway}},\ UART::Peripheral\&\ \mbox{\hyperlink{class_packet_value}{printf\_peripheral}});}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start(\mbox{\hyperlink{class_i_p_v4}{IPV4}}\ ip,\ \mbox{\hyperlink{class_i_p_v4}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{subnet\_mask}},\ \mbox{\hyperlink{class_i_p_v4}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{gateaway}},\ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\&\ \mbox{\hyperlink{class_packet_value}{printf\_peripheral}});}
 \DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start(}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{ip}}\ =\ \textcolor{stringliteral}{"{}192.168.1.4"{}},}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ ip\ =\ \textcolor{stringliteral}{"{}192.168.1.4"{}},}
 \DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{subnet\_mask}}\ =\ \textcolor{stringliteral}{"{}255.255.0.0"{}},}
 \DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{gateway}}\ =\ \textcolor{stringliteral}{"{}192.168.1.1"{}},}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ UART::Peripheral\&\ \mbox{\hyperlink{class_packet_value}{printf\_peripheral}}\ =\ UART::uart2);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART::Peripheral}}\&\ \mbox{\hyperlink{class_packet_value}{printf\_peripheral}}\ =\ UART::uart2);}
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ update();}
 \DoxyCodeLine{00018\ \};}

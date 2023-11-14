@@ -1,5 +1,5 @@
 \doxysection{Flash.\+hpp}
-\hypertarget{_flash_8hpp_source}{}\label{_flash_8hpp_source}\index{Inc/HALAL/Services/Flash/Flash.hpp@{Inc/HALAL/Services/Flash/Flash.hpp}}
+\hypertarget{_flash_8hpp_source}{}\label{_flash_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Flash/Flash.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Flash/Flash.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -57,14 +57,14 @@
 \DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ More\ info:\ https://github.com/HyperloopUPV-\/H8/ST-\/LIB/wiki/All-\/about-\/Flash-\/module}}
 \DoxyCodeLine{00054\ \textcolor{comment}{*/}}
 \DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Flash}}\{}
+\DoxyCodeLine{00056\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_flash}{Flash}}\{}
 \DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ read(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{source\_addr}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}*\ result,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}});}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{write}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}*\ \mbox{\hyperlink{class_packet_value}{source}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{dest\_addr}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{size\_in\_words}});}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{erase}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{start\_sector}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{end\_sector}});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ write(\mbox{\hyperlink{class_packet_value}{uint32\_t}}*\ \mbox{\hyperlink{class_packet_value}{source}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{dest\_addr}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{size\_in\_words}});}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ erase(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{start\_sector}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{end\_sector}});}
 \DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_sector}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{address}});}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_sector\_starting\_address}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{sector}});}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ get\_sector(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ address);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ get\_sector\_starting\_address(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{sector}});}
 \DoxyCodeLine{00064\ \};}
 \DoxyCodeLine{00065\ }
 \DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}

@@ -1,5 +1,5 @@
 \doxysection{Timer\+Peripheral.\+hpp}
-\hypertarget{_timer_peripheral_8hpp_source}{}\label{_timer_peripheral_8hpp_source}\index{Inc/HALAL/Models/TimerPeripheral/TimerPeripheral.hpp@{Inc/HALAL/Models/TimerPeripheral/TimerPeripheral.hpp}}
+\hypertarget{_timer_peripheral_8hpp_source}{}\label{_timer_peripheral_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Models/TimerPeripheral/TimerPeripheral.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Models/TimerPeripheral/TimerPeripheral.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -14,15 +14,15 @@
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifdef\ HAL\_TIM\_MODULE\_ENABLED}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim1}};}
-\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim3}};}
-\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim4}};}
-\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim8}};}
-\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim12}};}
-\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim15}};}
-\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim16}};}
-\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim17}};}
-\DoxyCodeLine{00021\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{htim23}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim1;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim3;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim4;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim8;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim12;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim15;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim16;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim17;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}\ htim23;}
 \DoxyCodeLine{00022\ }
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}C++Utilities/CppUtils.hpp"{}}}
 \DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
@@ -30,63 +30,63 @@
 \DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ PWMmap\ map<Pin,\ pair<reference\_wrapper<TimerPeripheral>,\ TimerPeripheral::PWMData>>}}
 \DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ DualPWMmap\ map<pair<Pin,\ Pin>,\ pair<reference\_wrapper<TimerPeripheral>,\ TimerPeripheral::PWMData>>}}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{TimerPeripheral}}\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}\ \{}
 \DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{PWM\_MODE}}\ :\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{NORMAL}}\ =\ 0,}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PHASED}}\ =\ 1}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum}\ PWM\_MODE\ :\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ NORMAL\ =\ 0,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ PHASED\ =\ 1}
 \DoxyCodeLine{00034\ \ \ \ \ \};}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{TIM\_TYPE}}\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{BASE}},}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ADVANCED}}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{enum}\ TIM\_TYPE\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ BASE,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ ADVANCED}
 \DoxyCodeLine{00039\ \ \ \ \ \};}
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{PWMData}}\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel}};}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PWM\_MODE}}\ mode;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_timer_peripheral_1_1_p_w_m_data}{PWMData}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ channel;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ PWM\_MODE\ mode;}
 \DoxyCodeLine{00044\ }
 \DoxyCodeLine{00045\ \ \ \ \ \};}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{InitData}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{InitData}}\ \{}
 \DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{InitData}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{InitData}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{prescaler}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ prescaler;}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{deadtime}};}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{polarity}};}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{negated\_polarity}};}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TIM\_TYPE}}\ \mbox{\hyperlink{class_packet_value}{type}};}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<PWMData>}}\ \mbox{\hyperlink{class_packet_value}{pwm\_channels}}\ =\ \{\};}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<pair<uint32\_t,\ uint32\_t>}}>\ \mbox{\hyperlink{class_packet_value}{input\_capture\_channels}}\ =\ \{\};}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{InitData}}(\mbox{\hyperlink{class_packet_value}{TIM\_TYPE}}\ \mbox{\hyperlink{class_packet_value}{type}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{prescaler}}\ =\ 5,}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period\ =\ 55000,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{deadtime}}\ =\ 0,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{polarity}}\ =\ \mbox{\hyperlink{class_packet_value}{TIM\_OCPOLARITY\_HIGH}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{negated\_polarity}}\ =\ \mbox{\hyperlink{class_packet_value}{TIM\_OCPOLARITY\_HIGH}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ deadtime;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ polarity;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ negated\_polarity;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ TIM\_TYPE\ type;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<PWMData>}}\ pwm\_channels\ =\ \{\};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{vector<pair<uint32\_t,\ uint32\_t>}}>\ input\_capture\_channels\ =\ \{\};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{InitData}}(TIM\_TYPE\ type,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ prescaler\ =\ 5,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ period\ =\ 55000,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ deadtime\ =\ 0,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ polarity\ =\ \mbox{\hyperlink{class_packet_value}{TIM\_OCPOLARITY\_HIGH}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ negated\_polarity\ =\ \mbox{\hyperlink{class_packet_value}{TIM\_OCPOLARITY\_HIGH}});}
 \DoxyCodeLine{00061\ \ \ \ \ \};}
 \DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{handle}};}
-\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{InitData}}\ \mbox{\hyperlink{class_packet_value}{init\_data}};}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ handle;}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{InitData}}\ init\_data;}
 \DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
 \DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{PWMmap}}\ \mbox{\hyperlink{class_packet_value}{available\_pwm}};}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{DualPWMmap}}\ \mbox{\hyperlink{class_packet_value}{available\_dual\_pwms}};}
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{vector<reference\_wrapper<TimerPeripheral>}}>\ \mbox{\hyperlink{class_packet_value}{timers}};}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{PWMmap}}\ available\_pwm;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{DualPWMmap}}\ available\_dual\_pwms;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{vector<reference\_wrapper<TimerPeripheral>}}>\ timers;}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimerPeripheral}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimerPeripheral}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ \mbox{\hyperlink{class_packet_value}{timer}},\ \mbox{\hyperlink{class_packet_value}{InitData}}\&\&\ \mbox{\hyperlink{class_packet_value}{init\_data}},\ \textcolor{keywordtype}{string}\ name);}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}(\mbox{\hyperlink{class_packet_value}{TIM\_HandleTypeDef}}*\ timer,\ \mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{InitData}}\&\&\ init\_data,\ \textcolor{keywordtype}{string}\ name);}
 \DoxyCodeLine{00073\ }
 \DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
 \DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}();}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_registered}}();}
-\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_prescaler}}();}
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_period}}();}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_occupied}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ init();}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_registered();}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ get\_prescaler();}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ get\_period();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_occupied();}
 \DoxyCodeLine{00081\ }
 \DoxyCodeLine{00082\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<TIM\_HandleTypeDef*,\ TIM\_TypeDef*>}}\ \mbox{\hyperlink{class_packet_value}{handle\_to\_timer}};}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<TIM\_HandleTypeDef*,\ TIM\_TypeDef*>}}\ handle\_to\_timer;}
 \DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Encoder}};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_encoder}{Encoder}};}
 \DoxyCodeLine{00086\ \};}
 \DoxyCodeLine{00087\ }
 \DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif}}

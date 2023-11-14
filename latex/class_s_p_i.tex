@@ -1,0 +1,242 @@
+\doxysection{SPI Class Reference}
+\hypertarget{class_s_p_i}{}\label{class_s_p_i}\index{SPI@{SPI}}
+
+
+\doxylink{class_s_p_i}{SPI} service class. Abstracts the use of the \doxylink{class_s_p_i}{SPI} service of the HAL library.  
+
+
+
+
+{\ttfamily \#include $<$SPI.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}\label{class_s_p_i_a0d3f392b0297359470cce6aab07f323e} 
+enum \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{Peripheral}} \{ \newline
+{\bfseries peripheral1} = 0
+, {\bfseries peripheral2} = 1
+, {\bfseries peripheral3} = 2
+, {\bfseries peripheral4} = 3
+, \newline
+{\bfseries peripheral5} = 4
+, {\bfseries peripheral6} = 5
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that abstracts the use of the Instance struct to facilitate the mocking of the HALAL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_s_p_i_a9e081190b973d2bdbeb04eb206764960}{inscribe}} (\mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} \&\mbox{\hyperlink{class_packet_value}{spi}})
+\begin{DoxyCompactList}\small\item\em Registers a new \doxylink{class_s_p_i}{SPI}. \end{DoxyCompactList}\item 
+\Hypertarget{class_s_p_i_a856b6afa87b4937969069c65eab28acf}\label{class_s_p_i_a856b6afa87b4937969069c65eab28acf} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\begin{DoxyCompactList}\small\item\em Method that initializes all enrolled \doxylink{class_s_p_i}{SPI} peripherals service. The peripherals that you want to use must be enrolled before initializing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_s_p_i_ac71decac1263eb3b89eb87f2d32de60d}{transmit}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} data)
+\begin{DoxyCompactList}\small\item\em Transmits 1 byte by \doxylink{class_s_p_i}{SPI}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_s_p_i_a968c24d1d8ce1412613d555d5b744d25}{transmit}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data)
+\begin{DoxyCompactList}\small\item\em Transmits size bytes by \doxylink{class_s_p_i}{SPI}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_s_p_i_a2ed6f16741a7caff4c275d697ce49d95}{receive}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data)
+\begin{DoxyCompactList}\small\item\em This method requests an array of data. The data will be stored in data parameter. You must make sure you have enough space. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_s_p_i_af7a2d5ee4bc4ab9783f98ecd718c5427}{transmit\+\_\+and\+\_\+receive}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ \mbox{\hyperlink{class_packet_value}{command\+\_\+data}}, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ \mbox{\hyperlink{class_packet_value}{receive\+\_\+data}})
+\begin{DoxyCompactList}\small\item\em This method transmits one order of command\+\_\+size bytes and then stores the data received after that order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_s_p_i_a481f5f7471812f7f744f25a0cde460e7}{chip\+\_\+select\+\_\+on}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method sets chip select to high level. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_s_p_i_aae2b54f8760172dae69497d0d117cb4d}{chip\+\_\+select\+\_\+off}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method sets chip select to low level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_s_p_i_ace4a53e279990b34c345cf016b1d3867}\label{class_s_p_i_ace4a53e279990b34c345cf016b1d3867} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries id\+\_\+counter}
+\item 
+\Hypertarget{class_s_p_i_a683d4155741f6bf5728ebc4ed6c48c20}\label{class_s_p_i_a683d4155741f6bf5728ebc4ed6c48c20} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, SPI\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries registered\+\_\+spi}
+\item 
+\Hypertarget{class_s_p_i_aaf6f8ec0276f97961d64872746d9ab99}\label{class_s_p_i_aaf6f8ec0276f97961d64872746d9ab99} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}}, SPI\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries available\+\_\+spi}
+\item 
+\Hypertarget{class_s_p_i_ac7a79e3edf0603a54fa490c1a16b2f7b}\label{class_s_p_i_ac7a79e3edf0603a54fa490c1a16b2f7b} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} {\bfseries spi1}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_s_p_i}{SPI} 3 wrapper enum of the STM32\+H723. \end{DoxyCompactList}\item 
+\Hypertarget{class_s_p_i_aa5634669e57ef5c1aa4a9ff85122c105}\label{class_s_p_i_aa5634669e57ef5c1aa4a9ff85122c105} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} {\bfseries spi2}
+\item 
+\Hypertarget{class_s_p_i_aab42ab434b17f58ffdf12138710c75d4}\label{class_s_p_i_aab42ab434b17f58ffdf12138710c75d4} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} {\bfseries spi3}
+\item 
+\Hypertarget{class_s_p_i_adf898e786333f720b1666bccad521b25}\label{class_s_p_i_adf898e786333f720b1666bccad521b25} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} {\bfseries spi4}
+\item 
+\Hypertarget{class_s_p_i_a0c5960a2870ccdbd20a51c508de5f58f}\label{class_s_p_i_a0c5960a2870ccdbd20a51c508de5f58f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} {\bfseries spi5}
+\item 
+\Hypertarget{class_s_p_i_ab703401115989f19fd288ce4341dfc96}\label{class_s_p_i_ab703401115989f19fd288ce4341dfc96} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} {\bfseries spi6}
+\item 
+\Hypertarget{class_s_p_i_af0c3531a774f7fd12e80066c0b8f019a}\label{class_s_p_i_af0c3531a774f7fd12e80066c0b8f019a} 
+\mbox{\hyperlink{class_packet_value}{static}} SPI\+::\+Instance {\bfseries instance1}
+\item 
+\Hypertarget{class_s_p_i_a3d5d25859eb6a4768b9ab166d2a204cb}\label{class_s_p_i_a3d5d25859eb6a4768b9ab166d2a204cb} 
+\mbox{\hyperlink{class_packet_value}{static}} SPI\+::\+Instance {\bfseries instance2}
+\item 
+\Hypertarget{class_s_p_i_a99142a67d0fd7c3af1408acdce9d2dfb}\label{class_s_p_i_a99142a67d0fd7c3af1408acdce9d2dfb} 
+\mbox{\hyperlink{class_packet_value}{static}} SPI\+::\+Instance {\bfseries instance3}
+\item 
+\Hypertarget{class_s_p_i_a5ea25e6667f69a4f5c37fa552a958550}\label{class_s_p_i_a5ea25e6667f69a4f5c37fa552a958550} 
+\mbox{\hyperlink{class_packet_value}{static}} SPI\+::\+Instance {\bfseries instance4}
+\item 
+\Hypertarget{class_s_p_i_a00ca42e8ffa046e299f7c65b4f6198fa}\label{class_s_p_i_a00ca42e8ffa046e299f7c65b4f6198fa} 
+\mbox{\hyperlink{class_packet_value}{static}} SPI\+::\+Instance {\bfseries instance5}
+\item 
+\Hypertarget{class_s_p_i_a0138b2f5eb49bbc57ebd2c7a05473262}\label{class_s_p_i_a0138b2f5eb49bbc57ebd2c7a05473262} 
+\mbox{\hyperlink{class_packet_value}{static}} SPI\+::\+Instance {\bfseries instance6}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_s_p_i}{SPI} service class. Abstracts the use of the \doxylink{class_s_p_i}{SPI} service of the HAL library. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_p_i_aae2b54f8760172dae69497d0d117cb4d}\label{class_s_p_i_aae2b54f8760172dae69497d0d117cb4d} 
+\index{SPI@{SPI}!chip\_select\_off@{chip\_select\_off}}
+\index{chip\_select\_off@{chip\_select\_off}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{chip\_select\_off()}{chip\_select\_off()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} SPI\+::chip\+\_\+select\+\_\+off (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method sets chip select to low level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Id of the \doxylink{class_s_p_i}{SPI} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_s_p_i_a481f5f7471812f7f744f25a0cde460e7}\label{class_s_p_i_a481f5f7471812f7f744f25a0cde460e7} 
+\index{SPI@{SPI}!chip\_select\_on@{chip\_select\_on}}
+\index{chip\_select\_on@{chip\_select\_on}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{chip\_select\_on()}{chip\_select\_on()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} SPI\+::chip\+\_\+select\+\_\+on (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method sets chip select to high level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & Id of the \doxylink{class_s_p_i}{SPI} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_s_p_i_a9e081190b973d2bdbeb04eb206764960}\label{class_s_p_i_a9e081190b973d2bdbeb04eb206764960} 
+\index{SPI@{SPI}!inscribe@{inscribe}}
+\index{inscribe@{inscribe}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{inscribe()}{inscribe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} SPI\+::inscribe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_s_p_i_a0d3f392b0297359470cce6aab07f323e}{SPI\+::\+Peripheral}} \&}]{spi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers a new \doxylink{class_s_p_i}{SPI}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spi} & \doxylink{class_s_p_i}{SPI} peripheral to register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Id of the service. 
+\end{DoxyReturn}
+\Hypertarget{class_s_p_i_a2ed6f16741a7caff4c275d697ce49d95}\label{class_s_p_i_a2ed6f16741a7caff4c275d697ce49d95} 
+\index{SPI@{SPI}!receive@{receive}}
+\index{receive@{receive}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} SPI\+::receive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method requests an array of data. The data will be stored in data parameter. You must make sure you have enough space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_s_p_i}{SPI} \\
+\hline
+{\em data} & Pointer where data will be stored \\
+\hline
+{\em size} & Size in bytes to receive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the data have been read successfully. Returns false if a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_s_p_i_a968c24d1d8ce1412613d555d5b744d25}\label{class_s_p_i_a968c24d1d8ce1412613d555d5b744d25} 
+\index{SPI@{SPI}!transmit@{transmit}}
+\index{transmit@{transmit}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{transmit()}{transmit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} SPI\+::transmit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits size bytes by \doxylink{class_s_p_i}{SPI}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_s_p_i}{SPI} \\
+\hline
+{\em data} & Data to be send \\
+\hline
+{\em size} & Size in bytes to be send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the data has been send successfully. Returns false if a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_s_p_i_ac71decac1263eb3b89eb87f2d32de60d}\label{class_s_p_i_ac71decac1263eb3b89eb87f2d32de60d} 
+\index{SPI@{SPI}!transmit@{transmit}}
+\index{transmit@{transmit}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{transmit()}{transmit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} SPI\+::transmit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits 1 byte by \doxylink{class_s_p_i}{SPI}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_s_p_i}{SPI} \\
+\hline
+{\em data} & Data to be send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the data has been send successfully. Returns false if a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_s_p_i_af7a2d5ee4bc4ab9783f98ecd718c5427}\label{class_s_p_i_af7a2d5ee4bc4ab9783f98ecd718c5427} 
+\index{SPI@{SPI}!transmit\_and\_receive@{transmit\_and\_receive}}
+\index{transmit\_and\_receive@{transmit\_and\_receive}!SPI@{SPI}}
+\doxysubsubsection{\texorpdfstring{transmit\_and\_receive()}{transmit\_and\_receive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} SPI\+::transmit\+\_\+and\+\_\+receive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{command\+\_\+data,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{receive\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method transmits one order of command\+\_\+size bytes and then stores the data received after that order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_s_p_i}{SPI} \\
+\hline
+{\em command\+\_\+data} & Command \\
+\hline
+{\em command\+\_\+size} & Command size in bytes to receive \\
+\hline
+{\em receive\+\_\+data} & Pointer where data will be stored \\
+\hline
+{\em receive\+\_\+size} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the data have been read successfully. Returns false if a problem has occurred. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Communication/\+SPI/SPI.\+hpp\end{DoxyCompactItemize}

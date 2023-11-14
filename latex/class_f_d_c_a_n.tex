@@ -1,0 +1,120 @@
+\doxysection{FDCAN Class Reference}
+\hypertarget{class_f_d_c_a_n}{}\label{class_f_d_c_a_n}\index{FDCAN@{FDCAN}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_f_d_c_a_n_1_1_packet}{Packet}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_f_d_c_a_n_a5953ca07fb9707443f8d8e8b8aab5973}\label{class_f_d_c_a_n_a5953ca07fb9707443f8d8e8b8aab5973} 
+enum {\bfseries DLC} \{ \newline
+{\bfseries BYTES\+\_\+0} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+0
+, {\bfseries BYTES\+\_\+1} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+1
+, {\bfseries BYTES\+\_\+2} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+2
+, {\bfseries BYTES\+\_\+3} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+3
+, \newline
+{\bfseries BYTES\+\_\+4} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+4
+, {\bfseries BYTES\+\_\+5} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+5
+, {\bfseries BYTES\+\_\+6} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+6
+, {\bfseries BYTES\+\_\+7} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+7
+, \newline
+{\bfseries BYTES\+\_\+8} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+8
+, {\bfseries BYTES\+\_\+12} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+12
+, {\bfseries BYTES\+\_\+16} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+16
+, {\bfseries BYTES\+\_\+20} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+20
+, \newline
+{\bfseries BYTES\+\_\+24} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+24
+, {\bfseries BYTES\+\_\+32} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+32
+, {\bfseries BYTES\+\_\+48} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+48
+, {\bfseries BYTES\+\_\+64} = FDCAN\+\_\+\+DLC\+\_\+\+BYTES\+\_\+64
+, \newline
+{\bfseries DEFAULT} = UINT32\+\_\+\+MAX
+ \}
+\item 
+\Hypertarget{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}\label{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a} 
+enum \mbox{\hyperlink{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}{Peripheral}} \{ {\bfseries peripheral1} = 0
+, {\bfseries peripheral2} = 1
+, {\bfseries peripheral3} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Enum which abstracts the use of the Instance struct to facilitate the mocking of the HALAL.\+Struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_f_d_c_a_n_af6740fb1fc517660253fd1b0c28aa633}\label{class_f_d_c_a_n_af6740fb1fc517660253fd1b0c28aa633} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries inscribe} (\mbox{\hyperlink{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}{FDCAN\+::\+Peripheral}} \&\mbox{\hyperlink{class_packet_value}{fdcan}})
+\item 
+\Hypertarget{class_f_d_c_a_n_aacae7564181f433cdccd4caeee8ebcff}\label{class_f_d_c_a_n_aacae7564181f433cdccd4caeee8ebcff} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\item 
+\Hypertarget{class_f_d_c_a_n_ab5cb9bb8cafe96327093ad723098ed5f}\label{class_f_d_c_a_n_ab5cb9bb8cafe96327093ad723098ed5f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries transmit} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} \mbox{\hyperlink{class_packet_value}{message\+\_\+id}}, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data, FDCAN\+::\+DLC dlc=FDCAN\+::\+DLC\+::\+DEFAULT)
+\item 
+\Hypertarget{class_f_d_c_a_n_a50f485fed3afdaa590efd32fa8075db7}\label{class_f_d_c_a_n_a50f485fed3afdaa590efd32fa8075db7} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries read} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{struct_f_d_c_a_n_1_1_packet}{FDCAN\+::\+Packet}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_f_d_c_a_n_a5ca38b7b0a99dc3e62b27e75c4c099f0}{received\+\_\+test}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method is used to check if the \doxylink{class_f_d_c_a_n}{FDCAN} have received any new packet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_f_d_c_a_n_a83e419d07bfd68c063076a59a334e075}\label{class_f_d_c_a_n_a83e419d07bfd68c063076a59a334e075} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries id\+\_\+counter}
+\item 
+\Hypertarget{class_f_d_c_a_n_af177271a46a6e7b73582642db9267581}\label{class_f_d_c_a_n_af177271a46a6e7b73582642db9267581} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, FDCAN\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries registered\+\_\+fdcan}
+\item 
+\Hypertarget{class_f_d_c_a_n_aae28e585e1099d958616931cf7b5146a}\label{class_f_d_c_a_n_aae28e585e1099d958616931cf7b5146a} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}{FDCAN\+::\+Peripheral}}, FDCAN\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries available\+\_\+fdcans}
+\item 
+\Hypertarget{class_f_d_c_a_n_ab4049de402ca5848de0053a50945743c}\label{class_f_d_c_a_n_ab4049de402ca5848de0053a50945743c} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{FDCAN\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}, FDCAN\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries handle\+\_\+to\+\_\+fdcan}
+\item 
+\Hypertarget{class_f_d_c_a_n_a5035d3e6e078b10af7ac1425a781b33f}\label{class_f_d_c_a_n_a5035d3e6e078b10af7ac1425a781b33f} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ FDCAN\+::\+DLC, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ {\bfseries dlc\+\_\+to\+\_\+len}
+\item 
+\Hypertarget{class_f_d_c_a_n_af414b664b4259690df4fc83a13c1fe82}\label{class_f_d_c_a_n_af414b664b4259690df4fc83a13c1fe82} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}{FDCAN\+::\+Peripheral}} {\bfseries fdcan1}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_f_d_c_a_n}{FDCAN} wrapper enum of the STM32\+H723. \end{DoxyCompactList}\item 
+\Hypertarget{class_f_d_c_a_n_a1a35cbd8fad8285d3de5927f49e4ca32}\label{class_f_d_c_a_n_a1a35cbd8fad8285d3de5927f49e4ca32} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}{FDCAN\+::\+Peripheral}} {\bfseries fdcan2}
+\item 
+\Hypertarget{class_f_d_c_a_n_a16fa73d70d9d82a0be1c729d33583eba}\label{class_f_d_c_a_n_a16fa73d70d9d82a0be1c729d33583eba} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_f_d_c_a_n_a2a3bc5924ede3bea7d2649b44725ff3a}{FDCAN\+::\+Peripheral}} {\bfseries fdcan3}
+\item 
+\Hypertarget{class_f_d_c_a_n_a3eb1084c96c981458eef57c1d5dff2b5}\label{class_f_d_c_a_n_a3eb1084c96c981458eef57c1d5dff2b5} 
+\mbox{\hyperlink{class_packet_value}{static}} FDCAN\+::\+Instance {\bfseries instance1}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_f_d_c_a_n}{FDCAN} instances of the STM32\+H723. \end{DoxyCompactList}\item 
+\Hypertarget{class_f_d_c_a_n_a322d8efc7e26754d4bed33f7b6d6a26f}\label{class_f_d_c_a_n_a322d8efc7e26754d4bed33f7b6d6a26f} 
+\mbox{\hyperlink{class_packet_value}{static}} FDCAN\+::\+Instance {\bfseries instance2}
+\item 
+\Hypertarget{class_f_d_c_a_n_a274a73c8c112eb1ea66253dbe1dfa461}\label{class_f_d_c_a_n_a274a73c8c112eb1ea66253dbe1dfa461} 
+\mbox{\hyperlink{class_packet_value}{static}} FDCAN\+::\+Instance {\bfseries instance3}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_f_d_c_a_n_a5ca38b7b0a99dc3e62b27e75c4c099f0}\label{class_f_d_c_a_n_a5ca38b7b0a99dc3e62b27e75c4c099f0} 
+\index{FDCAN@{FDCAN}!received\_test@{received\_test}}
+\index{received\_test@{received\_test}!FDCAN@{FDCAN}}
+\doxysubsubsection{\texorpdfstring{received\_test()}{received\_test()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} FDCAN\+::received\+\_\+test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to check if the \doxylink{class_f_d_c_a_n}{FDCAN} have received any new packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_f_d_c_a_n}{FDCAN} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the data queue has any packet. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Communication/\+FDCAN/FDCAN.\+hpp\end{DoxyCompactItemize}

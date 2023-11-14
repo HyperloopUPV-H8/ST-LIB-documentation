@@ -1,5 +1,5 @@
 \doxysection{Input\+Capture.\+hpp}
-\hypertarget{_input_capture_8hpp_source}{}\label{_input_capture_8hpp_source}\index{Inc/HALAL/Services/InputCapture/InputCapture.hpp@{Inc/HALAL/Services/InputCapture/InputCapture.hpp}}
+\hypertarget{_input_capture_8hpp_source}{}\label{_input_capture_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/InputCapture/InputCapture.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/InputCapture/InputCapture.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -15,32 +15,32 @@
 \DoxyCodeLine{00011\ }
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifdef\ HAL\_TIM\_MODULE\_ENABLED}}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{InputCapture}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_capture}{InputCapture}}\ \{}
 \DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Instance}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_capture_1_1_instance}{Instance}}\ \{}
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
 \DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ pin;}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{TimerPeripheral}}*\ \mbox{\hyperlink{class_packet_value}{peripheral}};}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel\_rising}};}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel\_falling}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}*\ peripheral;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ channel\_rising;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ channel\_falling;}
 \DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ frequency;}
 \DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ duty\_cycle;}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Instance}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Instance}}(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin,\ \mbox{\hyperlink{class_packet_value}{TimerPeripheral}}*\ \mbox{\hyperlink{class_packet_value}{peripheral}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel\_rising}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel\_falling}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_capture_1_1_instance}{Instance}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_capture_1_1_instance}{Instance}}(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin,\ \mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}*\ peripheral,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ channel\_rising,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ channel\_falling);}
 \DoxyCodeLine{00028\ \ \ \ \ \};}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<uint8\_t,\ InputCapture::Instance>}}\ \mbox{\hyperlink{class_packet_value}{active\_instances}};}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<Pin,\ InputCapture::Instance>}}\ \mbox{\hyperlink{class_packet_value}{available\_instances}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<uint8\_t,\ InputCapture::Instance>}}\ active\_instances;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<Pin,\ InputCapture::Instance>}}\ available\_instances;}
 \DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id\_counter;}
 \DoxyCodeLine{00033\ }
 \DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin);}
 \DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ turn\_on(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ turn\_off(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{read\_frequency}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{read\_duty\_cycle}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{Instance}}\ \mbox{\hyperlink{class_packet_value}{find\_instance\_by\_channel}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{channel}});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ read\_frequency(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ read\_duty\_cycle(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_input_capture_1_1_instance}{Instance}}\ find\_instance\_by\_channel(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ channel);}
 \DoxyCodeLine{00040\ \};}
 \DoxyCodeLine{00041\ }
 \DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}

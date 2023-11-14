@@ -1,0 +1,144 @@
+\doxysection{Socket Class Reference}
+\hypertarget{class_socket}{}\label{class_socket}\index{Socket@{Socket}}
+Inheritance diagram for Socket\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_socket}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_socket_a7d572f100393bfdb8f748e387562ad60}\label{class_socket_a7d572f100393bfdb8f748e387562ad60} 
+enum {\bfseries Socket\+State} \{ {\bfseries INACTIVE}
+, {\bfseries CONNECTED}
+, {\bfseries CLOSING}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_socket_aa43db7ebf14af61c781da7583c40e33d}\label{class_socket_aa43db7ebf14af61c781da7583c40e33d} 
+{\bfseries Socket} (\mbox{\hyperlink{class_socket}{Socket}} \&\&\mbox{\hyperlink{class_packet_value}{other}})
+\item 
+\Hypertarget{class_socket_a676b20962999f5739efda10e43855ac2}\label{class_socket_a676b20962999f5739efda10e43855ac2} 
+{\bfseries Socket} (\mbox{\hyperlink{class_i_p_v4}{IPV4}} local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port, \mbox{\hyperlink{class_i_p_v4}{IPV4}} remote\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} remote\+\_\+port)
+\item 
+\Hypertarget{class_socket_a428506dd1058bf0621b204935927c9d7}\label{class_socket_a428506dd1058bf0621b204935927c9d7} 
+{\bfseries Socket} (string local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port, string remote\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} remote\+\_\+port)
+\item 
+\Hypertarget{class_socket_a2b108c42bf796391ceee5200eccd42e7}\label{class_socket_a2b108c42bf796391ceee5200eccd42e7} 
+{\bfseries Socket} (\mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}} \mbox{\hyperlink{class_packet_value}{local\+\_\+node}}, \mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}} \mbox{\hyperlink{class_packet_value}{remote\+\_\+node}})
+\item 
+\Hypertarget{class_socket_a527a50c2901204c9a4e448db250811fa}\label{class_socket_a527a50c2901204c9a4e448db250811fa} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries operator=} (\mbox{\hyperlink{class_socket}{Socket}} \&\&\mbox{\hyperlink{class_packet_value}{other}})
+\item 
+\Hypertarget{class_socket_a75ee749264ccbcfc4dfbf5442e55dcb8}\label{class_socket_a75ee749264ccbcfc4dfbf5442e55dcb8} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries close} ()
+\item 
+\Hypertarget{class_socket_a520b5722358e168942512efeb21fbd4d}\label{class_socket_a520b5722358e168942512efeb21fbd4d} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries reconnect} ()
+\item 
+\Hypertarget{class_socket_aeb0279ac9f6aa44d522439efc1328d48}\label{class_socket_aeb0279ac9f6aa44d522439efc1328d48} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries reset} ()
+\item 
+\Hypertarget{class_socket_a83c4568fd1390be36ed00e1e190b2d48}\label{class_socket_a83c4568fd1390be36ed00e1e190b2d48} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries add\+\_\+order\+\_\+to\+\_\+queue} (\mbox{\hyperlink{class_order}{Order}} \&order)
+\item 
+\mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_socket_aed0f1b02d01b4fafd08012d34cd16cdb}{send\+\_\+order}} (\mbox{\hyperlink{class_order}{Order}} \&order) \mbox{\hyperlink{class_packet_value}{override}}
+\item 
+\Hypertarget{class_socket_a534cca6f60d7e8190c7175c4967cf38a}\label{class_socket_a534cca6f60d7e8190c7175c4967cf38a} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries send} ()
+\item 
+\Hypertarget{class_socket_a00f1b912e3c744290e70e8639cd7ce97}\label{class_socket_a00f1b912e3c744290e70e8639cd7ce97} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries process\+\_\+data} ()
+\item 
+\Hypertarget{class_socket_a2983a30bb6ab74726a370f0ac0e92aaa}\label{class_socket_a2983a30bb6ab74726a370f0ac0e92aaa} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries is\+\_\+connected} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_socket_a2b5669a398c7deb5c776b1cf2615222f}\label{class_socket_a2b5669a398c7deb5c776b1cf2615222f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} {\bfseries connect\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*}client\+\_\+control\+\_\+block, \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} error)
+\item 
+\Hypertarget{class_socket_a590bc89e535c3e6900df93207db0162f}\label{class_socket_a590bc89e535c3e6900df93207db0162f} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} {\bfseries receive\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*}client\+\_\+control\+\_\+block, \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{pbuf}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{packet\+\_\+buffer}}, \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} error)
+\item 
+\Hypertarget{class_socket_afed40aa4a0a206904d70f123fa703e87}\label{class_socket_afed40aa4a0a206904d70f123fa703e87} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} {\bfseries poll\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*}client\+\_\+control\+\_\+block)
+\item 
+\Hypertarget{class_socket_a09d93780fe0504d51102c45224a15d96}\label{class_socket_a09d93780fe0504d51102c45224a15d96} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} {\bfseries send\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*}client\+\_\+control\+\_\+block, \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{length}})
+\item 
+\Hypertarget{class_socket_a5faeffa32bc127409aa14f6dceb639c6}\label{class_socket_a5faeffa32bc127409aa14f6dceb639c6} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries error\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} error)
+\item 
+\Hypertarget{class_socket_a07705ae9d7f1bf05183c599a8cb99fdc}\label{class_socket_a07705ae9d7f1bf05183c599a8cb99fdc} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} {\bfseries connection\+\_\+poll\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*}connection\+\_\+control\+\_\+block)
+\item 
+\Hypertarget{class_socket_adcc1b6d3b1954b104b4e2308b1bfb4bc}\label{class_socket_adcc1b6d3b1954b104b4e2308b1bfb4bc} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries connection\+\_\+error\+\_\+callback} (\mbox{\hyperlink{class_packet_value}{void}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{arg}}, \mbox{\hyperlink{class_packet_value}{err\+\_\+t}} error)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_socket_a10fed5eda7d3e8f2881ef6344b12e07b}\label{class_socket_a10fed5eda7d3e8f2881ef6344b12e07b} 
+\mbox{\hyperlink{class_i_p_v4}{IPV4}} {\bfseries local\+\_\+ip}
+\item 
+\Hypertarget{class_socket_acd44b0646c79d284ffe08758389a91b0}\label{class_socket_acd44b0646c79d284ffe08758389a91b0} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries local\+\_\+port}
+\item 
+\Hypertarget{class_socket_a84e4c3d9c32121ae583355c6efbd0622}\label{class_socket_a84e4c3d9c32121ae583355c6efbd0622} 
+\mbox{\hyperlink{class_i_p_v4}{IPV4}} {\bfseries remote\+\_\+ip}
+\item 
+\Hypertarget{class_socket_a3d4d959257982a9d18ba19c208025d43}\label{class_socket_a3d4d959257982a9d18ba19c208025d43} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries remote\+\_\+port}
+\item 
+\Hypertarget{class_socket_a2f119020924d02d107b5b382eafd64ab}\label{class_socket_a2f119020924d02d107b5b382eafd64ab} 
+\mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*} {\bfseries connection\+\_\+control\+\_\+block}
+\item 
+\Hypertarget{class_socket_a272d689e7045ffea0fffcc3dffa70def}\label{class_socket_a272d689e7045ffea0fffcc3dffa70def} 
+\mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*} {\bfseries socket\+\_\+control\+\_\+block}
+\item 
+\Hypertarget{class_socket_ac124dde73ba97e8c88edc8e61d892054}\label{class_socket_ac124dde73ba97e8c88edc8e61d892054} 
+Socket\+State {\bfseries state}
+\item 
+\Hypertarget{class_socket_a29add33bd02dfa665487ff6d2c5584d7}\label{class_socket_a29add33bd02dfa665487ff6d2c5584d7} 
+queue$<$ \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{pbuf}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries tx\+\_\+packet\+\_\+buffer}
+\item 
+\Hypertarget{class_socket_acfc13862bc8c47106db398a1d1fc6423}\label{class_socket_acfc13862bc8c47106db398a1d1fc6423} 
+queue$<$ \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{pbuf}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries rx\+\_\+packet\+\_\+buffer}
+\item 
+\Hypertarget{class_socket_ab549f8d3d3f220fb9f882bf68800ceeb}\label{class_socket_ab549f8d3d3f220fb9f882bf68800ceeb} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries pending\+\_\+connection\+\_\+reset} = \mbox{\hyperlink{class_packet_value}{false}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_socket_a922b1e3cdf2e8931c62fb9a6f2a305c6}\label{class_socket_a922b1e3cdf2e8931c62fb9a6f2a305c6} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}}, \mbox{\hyperlink{class_socket}{Socket}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries connecting\+\_\+sockets}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} vector$<$ \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries sockets}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_socket_aed0f1b02d01b4fafd08012d34cd16cdb}\label{class_socket_aed0f1b02d01b4fafd08012d34cd16cdb} 
+\index{Socket@{Socket}!send\_order@{send\_order}}
+\index{send\_order@{send\_order}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{send\_order()}{send\_order()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{bool}} Socket\+::send\+\_\+order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order}{Order}} \&}]{order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Communication/\+Ethernet/\+TCP/Socket.\+hpp\end{DoxyCompactItemize}

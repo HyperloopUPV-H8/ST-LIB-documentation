@@ -1,0 +1,52 @@
+\doxysection{State Class Reference}
+\hypertarget{class_state}{}\label{class_state}\index{State@{State}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_a25e18b2526acab76eaeda1dceeaced29}\label{class_state_a25e18b2526acab76eaeda1dceeaced29} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries enter} ()
+\item 
+\Hypertarget{class_state_a8f128da15906f10171c27b1e1ac0f1c8}\label{class_state_a8f128da15906f10171c27b1e1ac0f1c8} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries exit} ()
+\item 
+\Hypertarget{class_state_a3362bc73ada3c0fa273e1d6095fad16c}\label{class_state_a3362bc73ada3c0fa273e1d6095fad16c} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+new\+\_\+timed\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, Alarm\+Type \mbox{\hyperlink{class_packet_value}{precision\+\_\+type}})
+\item 
+\Hypertarget{class_state_adf5ee44e914bbccd685300e8030a3b66}\label{class_state_adf5ee44e914bbccd685300e8030a3b66} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries register\+\_\+new\+\_\+timed\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, Alarm\+Type \mbox{\hyperlink{class_packet_value}{precision\+\_\+type}})
+\item 
+\Hypertarget{class_state_a1c7969f55db6fa743d05aea35bcf6ddb}\label{class_state_a1c7969f55db6fa743d05aea35bcf6ddb} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries unregister\+\_\+all\+\_\+timed\+\_\+actions} ()
+\item 
+\Hypertarget{class_state_a9c914384f8fd61b9e0f065905e86f1fc}\label{class_state_a9c914384f8fd61b9e0f065905e86f1fc} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries register\+\_\+all\+\_\+timed\+\_\+actions} ()
+\item 
+\Hypertarget{class_state_a9089c656ebe7b41cd5eae3c6827b1e23}\label{class_state_a9089c656ebe7b41cd5eae3c6827b1e23} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries unregister\+\_\+timed\+\_\+action} (\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{timed\+\_\+action}})
+\item 
+\Hypertarget{class_state_a57de1a4b1cec895a75262aeefff07b3d}\label{class_state_a57de1a4b1cec895a75262aeefff07b3d} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries erase\+\_\+timed\+\_\+action} (\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{timed\+\_\+action}})
+\item 
+\Hypertarget{class_state_a2de546032cc944bc4446a018af119f58}\label{class_state_a2de546032cc944bc4446a018af119f58} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+state\+\_\+order} (\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_a8d032695de49d7302848b4bd2a151fa1}\label{class_state_a8d032695de49d7302848b4bd2a151fa1} 
+vector$<$ \mbox{\hyperlink{class_timed_action}{Timed\+Action}} $>$ {\bfseries cyclic\+\_\+actions}
+\item 
+\Hypertarget{class_state_aaa9ba2c70c3af6bcc4873ecc87e35597}\label{class_state_aaa9ba2c70c3af6bcc4873ecc87e35597} 
+vector$<$ function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ $>$ {\bfseries on\+\_\+enter\+\_\+actions} = \{\}
+\item 
+\Hypertarget{class_state_a45bffd5ccb9baa13868a2dbc6acbe0fa}\label{class_state_a45bffd5ccb9baa13868a2dbc6acbe0fa} 
+vector$<$ function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ $>$ {\bfseries on\+\_\+exit\+\_\+actions} = \{\}
+\item 
+\Hypertarget{class_state_a5f56ff486f7dbdb79e5e87bbb6650165}\label{class_state_a5f56ff486f7dbdb79e5e87bbb6650165} 
+vector$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} $>$ {\bfseries state\+\_\+orders\+\_\+ids} = \{\}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+State\+Machine/State\+Machine.\+hpp\end{DoxyCompactItemize}

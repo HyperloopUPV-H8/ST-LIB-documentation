@@ -1,5 +1,5 @@
 \doxysection{Server\+Socket.\+hpp}
-\hypertarget{_server_socket_8hpp_source}{}\label{_server_socket_8hpp_source}\index{Inc/HALAL/Services/Communication/Ethernet/TCP/ServerSocket.hpp@{Inc/HALAL/Services/Communication/Ethernet/TCP/ServerSocket.hpp}}
+\hypertarget{_server_socket_8hpp_source}{}\label{_server_socket_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/Ethernet/TCP/ServerSocket.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/Ethernet/TCP/ServerSocket.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -19,50 +19,50 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ PBUF\_POOL\_MEMORY\_DESC\_POSITION\ 8}}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }ServerSocket\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order_protocol}{OrderProtocol}}\{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_socket}{ServerSocket}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order_protocol}{OrderProtocol}}\{}
 \DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{ServerState}}\{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{INACTIVE}},}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{LISTENING}},}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ACCEPTED}},}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{CLOSING}}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum}\ ServerState\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ INACTIVE,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ LISTENING,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ ACCEPTED,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ CLOSING}
 \DoxyCodeLine{00029\ \ \ \ \ \};}
 \DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint32\_t,ServerSocket*>}}\ \mbox{\hyperlink{class_packet_value}{listening\_sockets}};}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ \mbox{\hyperlink{class_packet_value}{server\_control\_block}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{queue<struct\ pbuf*>}}\ \mbox{\hyperlink{class_packet_value}{tx\_packet\_buffer}};}
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{queue<struct\ pbuf*>}}\ \mbox{\hyperlink{class_packet_value}{rx\_packet\_buffer}};}
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{local\_ip}};}
-\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{local\_port}};}
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ServerState}}\ state;}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{priority}};}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ \mbox{\hyperlink{class_packet_value}{client\_control\_block}};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint32\_t,ServerSocket*>}}\ listening\_sockets;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ server\_control\_block\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{queue<struct\ pbuf*>}}\ tx\_packet\_buffer;}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{queue<struct\ pbuf*>}}\ rx\_packet\_buffer;}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_i_p_v4}{IPV4}}\ local\_ip;}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ local\_port;}
+\DoxyCodeLine{00037\ \ \ \ \ ServerState\ state;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ priority;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ client\_control\_block;}
 \DoxyCodeLine{00040\ }
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ ServerSocket();}
-\DoxyCodeLine{00043\ \ \ \ \ ServerSocket(ServerSocket\&\&\ \mbox{\hyperlink{class_packet_value}{other}});}
-\DoxyCodeLine{00044\ \ \ \ \ ServerSocket(\mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{local\_ip}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{local\_port}});}
-\DoxyCodeLine{00045\ \ \ \ \ ServerSocket(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_packet_value}{local\_ip}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{local\_port}});}
-\DoxyCodeLine{00046\ \ \ \ \ ServerSocket(\mbox{\hyperlink{class_packet_value}{EthernetNode}}\ \mbox{\hyperlink{class_packet_value}{local\_node}});}
-\DoxyCodeLine{00047\ \ \ \ \ \string~ServerSocket();}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_server_socket}{ServerSocket}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_server_socket}{ServerSocket}}(\mbox{\hyperlink{class_server_socket}{ServerSocket}}\&\&\ \mbox{\hyperlink{class_packet_value}{other}});}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_server_socket}{ServerSocket}}(\mbox{\hyperlink{class_i_p_v4}{IPV4}}\ local\_ip,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ local\_port);}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_server_socket}{ServerSocket}}(\textcolor{keywordtype}{string}\ local\_ip,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ local\_port);}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_server_socket}{ServerSocket}}(\mbox{\hyperlink{struct_ethernet_node}{EthernetNode}}\ \mbox{\hyperlink{class_packet_value}{local\_node}});}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_server_socket}{\string~ServerSocket}}();}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{operator=}}(ServerSocket\&\&\ \mbox{\hyperlink{class_packet_value}{other}});}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_server_socket}{ServerSocket}}\&\&\ \mbox{\hyperlink{class_packet_value}{other}});}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{close}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_socket_a0245d40096ca089255c67303eebf17e6}{close}}();}
 \DoxyCodeLine{00055\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ process\_data();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_socket_a1e5d24e1084ca81008178313eae019a8}{process\_data}}();}
 \DoxyCodeLine{00064\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{add\_order\_to\_queue}}(\mbox{\hyperlink{class_order}{Order}}\&\ order);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_server_socket_affd8f413a7fe7e33d2c8b180b03f58ab}{add\_order\_to\_queue}}(\mbox{\hyperlink{class_order}{Order}}\&\ order);}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ send\_order(\mbox{\hyperlink{class_order}{Order}}\&\ order)\textcolor{keyword}{\ override}\{}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(state\ !=\ \mbox{\hyperlink{class_packet_value}{ACCEPTED}})\{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4}{send\_order}}(\mbox{\hyperlink{class_order}{Order}}\&\ order)\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(state\ !=\ ACCEPTED)\{}
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{memp}}*\ \mbox{\hyperlink{class_packet_value}{next\_memory\_pointer\_in\_packet\_buffer\_pool}}\ =\ (*(\mbox{\hyperlink{class_packet_value}{memp\_pools}}[\mbox{\hyperlink{class_packet_value}{PBUF\_POOL\_MEMORY\_DESC\_POSITION}}]-\/>tab))-\/>next;}
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{next\_memory\_pointer\_in\_packet\_buffer\_pool}}\ ==\ \textcolor{keyword}{nullptr})\{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{client\_control\_block}}-\/>unsent\ !=\ \textcolor{keyword}{nullptr})\{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{tcp\_output}}(\mbox{\hyperlink{class_packet_value}{client\_control\_block}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(client\_control\_block-\/>unsent\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{tcp\_output}}(client\_control\_block);}
 \DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
 \DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{memp\_free\_pool}}(\mbox{\hyperlink{class_packet_value}{memp\_pools}}[\mbox{\hyperlink{class_packet_value}{PBUF\_POOL\_MEMORY\_DESC\_POSITION}}],\ \mbox{\hyperlink{class_packet_value}{next\_memory\_pointer\_in\_packet\_buffer\_pool}});}
 \DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
@@ -70,28 +70,28 @@
 \DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00092\ }
 \DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}*\ \mbox{\hyperlink{class_packet_value}{order\_buffer}}\ =\ order.build();}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(order.get\_size()\ >\ \mbox{\hyperlink{class_packet_value}{tcp\_sndbuf}}(\mbox{\hyperlink{class_packet_value}{client\_control\_block}}))\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(order.get\_size()\ >\ \mbox{\hyperlink{class_packet_value}{tcp\_sndbuf}}(client\_control\_block))\{}
 \DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00097\ }
 \DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{pbuf}}*\ \mbox{\hyperlink{class_packet_value}{packet}}\ =\ \mbox{\hyperlink{class_packet_value}{pbuf\_alloc}}(\mbox{\hyperlink{class_packet_value}{PBUF\_TRANSPORT}},\ order.get\_size(),\ \mbox{\hyperlink{class_packet_value}{PBUF\_POOL}});}
 \DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{pbuf\_take}}(\mbox{\hyperlink{class_packet_value}{packet}},\ \mbox{\hyperlink{class_packet_value}{order\_buffer}},\ order.get\_size());}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{tx\_packet\_buffer}}.push(\mbox{\hyperlink{class_packet_value}{packet}});}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{send}}();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ tx\_packet\_buffer.push(\mbox{\hyperlink{class_packet_value}{packet}});}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_server_socket_a85086cebc9e62f6c211fa6c937d84012}{send}}();}
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00103\ \ \ \ \ \}}
 \DoxyCodeLine{00104\ }
-\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{send}}();}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_socket_a85086cebc9e62f6c211fa6c937d84012}{send}}();}
 \DoxyCodeLine{00109\ }
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_connected}}();}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_server_socket_a3a99a5c9b6f0b8588c43a660fb1f19fb}{is\_connected}}();}
 \DoxyCodeLine{00114\ }
 \DoxyCodeLine{00115\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ \mbox{\hyperlink{class_packet_value}{accept\_callback}}(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ \mbox{\hyperlink{class_packet_value}{incomming\_control\_block}},\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ error);}
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ \mbox{\hyperlink{class_packet_value}{receive\_callback}}(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ \mbox{\hyperlink{class_packet_value}{client\_control\_block}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{pbuf}}*\ \mbox{\hyperlink{class_packet_value}{packet\_buffer}},\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ error);}
-\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{error\_callback}}(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{arg}},\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ error);}
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ \mbox{\hyperlink{class_packet_value}{poll\_callback}}(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}\ *\mbox{\hyperlink{class_packet_value}{client\_control\_block}});}
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ \mbox{\hyperlink{class_packet_value}{send\_callback}}(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}\ *\mbox{\hyperlink{class_packet_value}{client\_control\_block}},\ \mbox{\hyperlink{class_packet_value}{u16\_t}}\ \mbox{\hyperlink{class_packet_value}{len}});}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ accept\_callback(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ \mbox{\hyperlink{class_packet_value}{incomming\_control\_block}},\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ error);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ receive\_callback(\textcolor{keywordtype}{void}*\ \mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}*\ client\_control\_block,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{pbuf}}*\ \mbox{\hyperlink{class_packet_value}{packet\_buffer}},\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ error);}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ error\_callback(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{arg}},\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ error);}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ poll\_callback(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}\ *client\_control\_block);}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{err\_t}}\ send\_callback(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{arg}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{tcp\_pcb}}\ *client\_control\_block,\ \mbox{\hyperlink{class_packet_value}{u16\_t}}\ \mbox{\hyperlink{class_packet_value}{len}});}
 \DoxyCodeLine{00122\ }
 \DoxyCodeLine{00123\ \};}
 \DoxyCodeLine{00124\ }

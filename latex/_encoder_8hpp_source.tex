@@ -1,5 +1,5 @@
 \doxysection{Encoder.\+hpp}
-\hypertarget{_encoder_8hpp_source}{}\label{_encoder_8hpp_source}\index{Inc/HALAL/Services/Encoder/Encoder.hpp@{Inc/HALAL/Services/Encoder/Encoder.hpp}}
+\hypertarget{_encoder_8hpp_source}{}\label{_encoder_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Encoder/Encoder.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Encoder/Encoder.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -19,27 +19,27 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifdef\ HAL\_TIM\_MODULE\_ENABLED}}
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{Encoder}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_encoder}{Encoder}}\ \{}
 \DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id\_counter;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<pair<Pin,\ Pin>}},\ \mbox{\hyperlink{class_packet_value}{TimerPeripheral}}*>\ \mbox{\hyperlink{class_packet_value}{pin\_timer\_map}};}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<uint8\_t,\ pair<Pin,\ Pin>}}>\ \mbox{\hyperlink{class_packet_value}{registered\_encoder}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<pair<Pin,\ Pin>}},\ \mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}*>\ pin\_timer\_map;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<uint8\_t,\ pair<Pin,\ Pin>}}>\ registered\_encoder;}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(\mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{pin1}},\ \mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{pin2}});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_encoder_a787c3864185c79deb37b57af4e074587}{inscribe}}(\mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{pin1}},\ \mbox{\hyperlink{class_pin}{Pin}}\&\ \mbox{\hyperlink{class_packet_value}{pin2}});}
 \DoxyCodeLine{00037\ }
 \DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ turn\_on(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_encoder_a7e5bc84742b7c23d9d24ba5ac6fbe464}{turn\_on}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ turn\_off(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_encoder_a11ff2bed3c531c0cf0faa46b8c53c1fd}{turn\_off}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ reset(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_encoder_a6428da3ee68b73ea8b84de780825f5a4}{reset}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{get\_counter}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_encoder_accc99a5c97fac0d8fd36e00bddc00ddf}{get\_counter}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00068\ }
-\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{get\_direction}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_encoder_ae7a7bb86252ebbf62696d5dc67b66139}{get\_direction}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}(\mbox{\hyperlink{class_packet_value}{TimerPeripheral}}*\ \mbox{\hyperlink{class_packet_value}{encoder}});}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ init(\mbox{\hyperlink{class_timer_peripheral}{TimerPeripheral}}*\ \mbox{\hyperlink{class_packet_value}{encoder}});}
 \DoxyCodeLine{00078\ \};}
 \DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
 

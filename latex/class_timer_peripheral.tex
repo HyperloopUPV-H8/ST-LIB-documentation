@@ -1,0 +1,84 @@
+\doxysection{Timer\+Peripheral Class Reference}
+\hypertarget{class_timer_peripheral}{}\label{class_timer_peripheral}\index{TimerPeripheral@{TimerPeripheral}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{Init\+Data}}
+\item 
+struct \mbox{\hyperlink{struct_timer_peripheral_1_1_p_w_m_data}{PWMData}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_timer_peripheral_a0eb597b652566365df9e1a57d069482b}\label{class_timer_peripheral_a0eb597b652566365df9e1a57d069482b} 
+enum {\bfseries PWM\+\_\+\+MODE} \+: uint8\+\_\+t \{ {\bfseries NORMAL} = 0
+, {\bfseries PHASED} = 1
+ \}
+\item 
+\Hypertarget{class_timer_peripheral_a9eaecdfb672df666b24fc861e7c465cc}\label{class_timer_peripheral_a9eaecdfb672df666b24fc861e7c465cc} 
+enum {\bfseries TIM\+\_\+\+TYPE} \{ {\bfseries BASE}
+, {\bfseries ADVANCED}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_timer_peripheral_a87d71909a014ccf151e2c3db257bcd08}\label{class_timer_peripheral_a87d71909a014ccf151e2c3db257bcd08} 
+{\bfseries Timer\+Peripheral} (\mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}timer, \mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{Init\+Data}} \&\&init\+\_\+data, string name)
+\item 
+\Hypertarget{class_timer_peripheral_a5911af2d644b31e264c43d6c8e5a37c6}\label{class_timer_peripheral_a5911af2d644b31e264c43d6c8e5a37c6} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries init} ()
+\item 
+\Hypertarget{class_timer_peripheral_a9c2aa9aa85623c1ee677a39fdfd97e6f}\label{class_timer_peripheral_a9c2aa9aa85623c1ee677a39fdfd97e6f} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries is\+\_\+registered} ()
+\item 
+\Hypertarget{class_timer_peripheral_a659b4b60cbe129785b952b21d9a6e6cc}\label{class_timer_peripheral_a659b4b60cbe129785b952b21d9a6e6cc} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries get\+\_\+prescaler} ()
+\item 
+\Hypertarget{class_timer_peripheral_a1dbd9dc8ec0e2385c7287395dcababe9}\label{class_timer_peripheral_a1dbd9dc8ec0e2385c7287395dcababe9} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries get\+\_\+period} ()
+\item 
+\Hypertarget{class_timer_peripheral_aee44f4b23977a2df6a8ca69859f6cc86}\label{class_timer_peripheral_aee44f4b23977a2df6a8ca69859f6cc86} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries is\+\_\+occupied} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_timer_peripheral_adb48589e657ea47b5870332e190c9645}\label{class_timer_peripheral_adb48589e657ea47b5870332e190c9645} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_timer_peripheral_a1c6ebdbb344ab744724be832b1603207}\label{class_timer_peripheral_a1c6ebdbb344ab744724be832b1603207} 
+\mbox{\hyperlink{class_packet_value}{TIM\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries handle}
+\item 
+\Hypertarget{class_timer_peripheral_a761de785a65d4ad03f912f91cc16749f}\label{class_timer_peripheral_a761de785a65d4ad03f912f91cc16749f} 
+\mbox{\hyperlink{struct_timer_peripheral_1_1_init_data}{Init\+Data}} {\bfseries init\+\_\+data}
+\item 
+\Hypertarget{class_timer_peripheral_a352bf0d9349a9b9d25075b5376b15af5}\label{class_timer_peripheral_a352bf0d9349a9b9d25075b5376b15af5} 
+string {\bfseries name}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_timer_peripheral_a6b2a3a7a1fe44255e2dc45730fc63c65}\label{class_timer_peripheral_a6b2a3a7a1fe44255e2dc45730fc63c65} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{PWMmap}} {\bfseries available\+\_\+pwm}
+\item 
+\Hypertarget{class_timer_peripheral_a3575564b38035ff234fb48b991c58052}\label{class_timer_peripheral_a3575564b38035ff234fb48b991c58052} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{Dual\+PWMmap}} {\bfseries available\+\_\+dual\+\_\+pwms}
+\item 
+\Hypertarget{class_timer_peripheral_aeb75dcc79118651b1f6e98db2a5a3ed0}\label{class_timer_peripheral_aeb75dcc79118651b1f6e98db2a5a3ed0} 
+\mbox{\hyperlink{class_packet_value}{static}} vector$<$ reference\+\_\+wrapper$<$ \mbox{\hyperlink{class_timer_peripheral}{Timer\+Peripheral}} $>$ $>$ {\bfseries timers}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_timer_peripheral_a9f0ec0ed691ee924e57d5e71c780681a}\label{class_timer_peripheral_a9f0ec0ed691ee924e57d5e71c780681a} 
+\mbox{\hyperlink{class_packet_value}{class}} {\bfseries Encoder}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Models/\+Timer\+Peripheral/Timer\+Peripheral.\+hpp\end{DoxyCompactItemize}

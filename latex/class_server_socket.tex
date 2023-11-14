@@ -1,0 +1,167 @@
+\doxysection{Server\+Socket Class Reference}
+\hypertarget{class_server_socket}{}\label{class_server_socket}\index{ServerSocket@{ServerSocket}}
+
+
+\doxylink{class_server_socket}{Server\+Socket} class.  
+
+
+
+
+{\ttfamily \#include $<$Server\+Socket.\+hpp$>$}
+
+Inheritance diagram for Server\+Socket\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_server_socket}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_socket_a72f889b2ecad78bd159f67bc7cc9e331}\label{class_server_socket_a72f889b2ecad78bd159f67bc7cc9e331} 
+enum {\bfseries Server\+State} \{ {\bfseries INACTIVE}
+, {\bfseries LISTENING}
+, {\bfseries ACCEPTED}
+, {\bfseries CLOSING}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_socket_a4737f4c3ebf195531874af679b556174}\label{class_server_socket_a4737f4c3ebf195531874af679b556174} 
+{\bfseries Server\+Socket} (\mbox{\hyperlink{class_server_socket}{Server\+Socket}} \&\&\mbox{\hyperlink{class_packet_value}{other}})
+\item 
+\Hypertarget{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc}\label{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc} 
+{\bfseries Server\+Socket} (\mbox{\hyperlink{class_i_p_v4}{IPV4}} local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
+\item 
+\Hypertarget{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1}\label{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1} 
+{\bfseries Server\+Socket} (string local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
+\item 
+\Hypertarget{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d}\label{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d} 
+{\bfseries Server\+Socket} (\mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}} \mbox{\hyperlink{class_packet_value}{local\+\_\+node}})
+\item 
+\Hypertarget{class_server_socket_a5188398bd3d29c061fde8046c01758ca}\label{class_server_socket_a5188398bd3d29c061fde8046c01758ca} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries operator=} (\mbox{\hyperlink{class_server_socket}{Server\+Socket}} \&\&\mbox{\hyperlink{class_packet_value}{other}})
+\item 
+\Hypertarget{class_server_socket_a0245d40096ca089255c67303eebf17e6}\label{class_server_socket_a0245d40096ca089255c67303eebf17e6} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries close} ()
+\begin{DoxyCompactList}\small\item\em ends the connection between the server and the client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_server_socket_a1e5d24e1084ca81008178313eae019a8}{process\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em process the data received by the client orders. It is meant to be called only by Lwip on the receive\+\_\+callback \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_server_socket_affd8f413a7fe7e33d2c8b180b03f58ab}{add\+\_\+order\+\_\+to\+\_\+queue}} (\mbox{\hyperlink{class_order}{Order}} \&order)
+\begin{DoxyCompactList}\small\item\em saves the order data into the tx\+\_\+packet\+\_\+buffer so it can be sent when a connection is accepted \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4}{send\+\_\+order}} (\mbox{\hyperlink{class_order}{Order}} \&order) \mbox{\hyperlink{class_packet_value}{override}}
+\begin{DoxyCompactList}\small\item\em puts the order data into the tx\+\_\+packet\+\_\+buffer and sends all the data in the buffer to the client \end{DoxyCompactList}\item 
+\Hypertarget{class_server_socket_a85086cebc9e62f6c211fa6c937d84012}\label{class_server_socket_a85086cebc9e62f6c211fa6c937d84012} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries send} ()
+\begin{DoxyCompactList}\small\item\em sends all the binary data saved in the tx\+\_\+packet\+\_\+buffer to the connected client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_server_socket_a3a99a5c9b6f0b8588c43a660fb1f19fb}{is\+\_\+connected}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_socket_ac8ef346fc3f2f972726cee571ff03595}\label{class_server_socket_ac8ef346fc3f2f972726cee571ff03595} 
+\mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*} {\bfseries server\+\_\+control\+\_\+block} = \mbox{\hyperlink{class_packet_value}{nullptr}}
+\item 
+\Hypertarget{class_server_socket_a7d039f88d92e93ae57c2cc9178de8d47}\label{class_server_socket_a7d039f88d92e93ae57c2cc9178de8d47} 
+queue$<$ \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{pbuf}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries tx\+\_\+packet\+\_\+buffer}
+\item 
+\Hypertarget{class_server_socket_a4b4de07da082548513c75b36f04c9c21}\label{class_server_socket_a4b4de07da082548513c75b36f04c9c21} 
+queue$<$ \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{pbuf}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries rx\+\_\+packet\+\_\+buffer}
+\item 
+\Hypertarget{class_server_socket_a6d8bdb5dc7c0bb50193ac924c2f9f71d}\label{class_server_socket_a6d8bdb5dc7c0bb50193ac924c2f9f71d} 
+\mbox{\hyperlink{class_i_p_v4}{IPV4}} {\bfseries local\+\_\+ip}
+\item 
+\Hypertarget{class_server_socket_a39043d70f2162a168e8c0d8952d1f09c}\label{class_server_socket_a39043d70f2162a168e8c0d8952d1f09c} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries local\+\_\+port}
+\item 
+\Hypertarget{class_server_socket_a61bee3756a6533dfe344b678bb930082}\label{class_server_socket_a61bee3756a6533dfe344b678bb930082} 
+Server\+State {\bfseries state}
+\item 
+\Hypertarget{class_server_socket_ae1235c75a10469707bb09c6e14401b78}\label{class_server_socket_ae1235c75a10469707bb09c6e14401b78} 
+\mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_packet_value}{tcp\+\_\+pcb}} \texorpdfstring{$\ast$}{*} {\bfseries client\+\_\+control\+\_\+block}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_socket_ab3b34c4ba025a7a531edd815954ef95f}\label{class_server_socket_ab3b34c4ba025a7a531edd815954ef95f} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}, \mbox{\hyperlink{class_server_socket}{Server\+Socket}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries listening\+\_\+sockets}
+\item 
+\Hypertarget{class_server_socket_ab7b1776afc8c543d9b736d36d39d604b}\label{class_server_socket_ab7b1776afc8c543d9b736d36d39d604b} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries priority}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} vector$<$ \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries sockets}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_server_socket}{Server\+Socket} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_server_socket_affd8f413a7fe7e33d2c8b180b03f58ab}\label{class_server_socket_affd8f413a7fe7e33d2c8b180b03f58ab} 
+\index{ServerSocket@{ServerSocket}!add\_order\_to\_queue@{add\_order\_to\_queue}}
+\index{add\_order\_to\_queue@{add\_order\_to\_queue}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{add\_order\_to\_queue()}{add\_order\_to\_queue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{bool}} Server\+Socket\+::add\+\_\+order\+\_\+to\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order}{Order}} \&}]{order }\end{DoxyParamCaption})}
+
+
+
+saves the order data into the tx\+\_\+packet\+\_\+buffer so it can be sent when a connection is accepted 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order} & the order to send, which contains the data and id of the message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be allocated in the buffer, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_server_socket_a3a99a5c9b6f0b8588c43a660fb1f19fb}\label{class_server_socket_a3a99a5c9b6f0b8588c43a660fb1f19fb} 
+\index{ServerSocket@{ServerSocket}!is\_connected@{is\_connected}}
+\index{is\_connected@{is\_connected}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{bool}} Server\+Socket\+::is\+\_\+connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true if a connection with the client was established, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_server_socket_a1e5d24e1084ca81008178313eae019a8}\label{class_server_socket_a1e5d24e1084ca81008178313eae019a8} 
+\index{ServerSocket@{ServerSocket}!process\_data@{process\_data}}
+\index{process\_data@{process\_data}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{process\_data()}{process\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} Server\+Socket\+::process\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+process the data received by the client orders. It is meant to be called only by Lwip on the receive\+\_\+callback 
+
+reads all the data received by the server in the ethernet buffer, packet by packet. Then, for each packet, it processes it depending on the order id (default behavior is not process) and removes it from the buffer. This makes so the receive\+\_\+callback (and thus the \doxylink{class_socket}{Socket}) can only process declared orders, and ignores all other packets. \Hypertarget{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4}\label{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4} 
+\index{ServerSocket@{ServerSocket}!send\_order@{send\_order}}
+\index{send\_order@{send\_order}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{send\_order()}{send\_order()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{bool}} Server\+Socket\+::send\+\_\+order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_order}{Order}} \&}]{order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+puts the order data into the tx\+\_\+packet\+\_\+buffer and sends all the data in the buffer to the client 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order} & the order to send, which contains the data and id of the message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data was sent successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_order_protocol}{Order\+Protocol}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Communication/\+Ethernet/\+TCP/Server\+Socket.\+hpp\end{DoxyCompactItemize}

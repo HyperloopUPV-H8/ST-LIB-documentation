@@ -1,5 +1,5 @@
 \doxysection{Linear\+Sensor.\+hpp}
-\hypertarget{_linear_sensor_8hpp_source}{}\label{_linear_sensor_8hpp_source}\index{Inc/ST-\/LIB\_LOW/Sensors/LinearSensor/LinearSensor.hpp@{Inc/ST-\/LIB\_LOW/Sensors/LinearSensor/LinearSensor.hpp}}
+\hypertarget{_linear_sensor_8hpp_source}{}\label{_linear_sensor_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_LOW/Sensors/LinearSensor/LinearSensor.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_LOW/Sensors/LinearSensor/LinearSensor.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -36,7 +36,7 @@
 \DoxyCodeLine{00032\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
 \DoxyCodeLine{00033\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *value)}
 \DoxyCodeLine{00034\ :\ slope(slope),\ offset(offset),\ value(value)\{}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ ADC::inscribe(pin);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_a_d_c_aae06b1594b4fb09236ff4551e053e74c}{ADC::inscribe}}(pin);}
 \DoxyCodeLine{00036\ }
 \DoxyCodeLine{00037\ \ \ \ \ Sensor::adc\_id\_list.push\_back(\textcolor{keywordtype}{id});}
 \DoxyCodeLine{00038\ \}}
@@ -46,7 +46,7 @@
 \DoxyCodeLine{00042\ }
 \DoxyCodeLine{00043\ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ Type>}
 \DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::read}}()\{}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{val}}\ =\ ADC::get\_value(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{val}}\ =\ \mbox{\hyperlink{class_a_d_c_a3ec92984d918de516efc0ebbdc98d95f}{ADC::get\_value}}(\textcolor{keywordtype}{id});}
 \DoxyCodeLine{00046\ }
 \DoxyCodeLine{00047\ \ \ \ \ *value\ =\ slope\ *\ (\mbox{\hyperlink{class_packet_value}{Type}})\ \mbox{\hyperlink{class_packet_value}{val}}\ +\ offset;}
 \DoxyCodeLine{00048\ \}}

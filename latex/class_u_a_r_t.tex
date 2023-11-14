@@ -1,0 +1,363 @@
+\doxysection{UART Class Reference}
+\hypertarget{class_u_a_r_t}{}\label{class_u_a_r_t}\index{UART@{UART}}
+
+
+\doxylink{class_u_a_r_t}{UART} service class. Abstracts the use of the \doxylink{class_u_a_r_t}{UART} service of the HAL library.  
+
+
+
+
+{\ttfamily \#include $<$UART.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}\label{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f} 
+enum \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{Peripheral}} \{ \newline
+{\bfseries peripheral1} = 0
+, {\bfseries peripheral2} = 1
+, {\bfseries peripheral3} = 2
+, {\bfseries peripheral4} = 3
+, \newline
+{\bfseries peripheral5} = 4
+, {\bfseries peripheral6} = 5
+, {\bfseries peripheral7} = 6
+, {\bfseries peripheral8} = 7
+, \newline
+{\bfseries peripheral9} = 8
+, {\bfseries peripheral10} = 9
+ \}
+\begin{DoxyCompactList}\small\item\em Enum which abstracts the use of the Instance struct to facilitate the mocking of the HALAL.\+Struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_u_a_r_t_a51f65b3257373c8bfb3fcb85f511766e}{inscribe}} (\mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} \&\mbox{\hyperlink{class_packet_value}{uart}})
+\begin{DoxyCompactList}\small\item\em Registers a new \doxylink{class_u_a_r_t}{UART}. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_a_r_t_a1076836d93bf3a8068b9127419068ee0}\label{class_u_a_r_t_a1076836d93bf3a8068b9127419068ee0} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\begin{DoxyCompactList}\small\item\em This method initializes all registered UARTs. The peripherals must be enrolled before calling this method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_a8574516a96e675c3ea96eedbed81120f}{transmit}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} data)
+\begin{DoxyCompactList}\small\item\em Transmits 1 byte by \doxylink{class_d_m_a}{DMA} and interrupts. To send various packets in a row you must check if the \doxylink{class_u_a_r_t}{UART} is busy using \doxylink{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}{is\+\_\+busy()}. All calls to this functions previous the bus is ready be ignored. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_a1a8d032b0974bc26d968e43fbf0a80ed}{transmit}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data)
+\begin{DoxyCompactList}\small\item\em Transmits size number of bytes by \doxylink{class_d_m_a}{DMA} and interrupts. To send various packets in a row you must check if the \doxylink{class_u_a_r_t}{UART} is busy using \doxylink{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}{is\+\_\+busy()}. All calls to this functions previous the bus is ready be ignored. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_a7b5934d48fa9195ad98399a3759357bd}{transmit\+\_\+polling}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} data)
+\begin{DoxyCompactList}\small\item\em Transmits 1 byte by polling. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_af2d0b75cd143f4c06bfb4f9520d80196}{transmit\+\_\+polling}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data)
+\begin{DoxyCompactList}\small\item\em Transmits size bytes by polling. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_a3e03037c333f6deea0b613193401a28d}{receive}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data)
+\begin{DoxyCompactList}\small\item\em This method request the receive of size bytes by \doxylink{class_d_m_a}{DMA} and interrupts. Thus the data should not be used until you have checked that the value is already available using the method has\+\_\+next\+\_\+paclet(). All calls to this functions previous the last packet is ready will be ignored. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_a83d22d782319c0830f94871afa4dd86e}{receive\+\_\+polling}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$ data)
+\begin{DoxyCompactList}\small\item\em This method receive size number of bytes by polling. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_a96326c5efce0f44024b2b0592ec88364}{has\+\_\+next\+\_\+packet}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method is used to check if the \doxylink{class_u_a_r_t}{UART} receive operation has finished and data is ready. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}{is\+\_\+busy}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method is used to check if the \doxylink{class_u_a_r_t}{UART} transmit operations busy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_u_a_r_t_af4cbf9f35ba082fdb85572290cce993f}{set\+\_\+up\+\_\+printf}} (\mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} \&\mbox{\hyperlink{class_packet_value}{uart}})
+\begin{DoxyCompactList}\small\item\em This method is used to set up the printf. It\textquotesingle{}s inscribe and configure the selected \doxylink{class_u_a_r_t}{UART} to work as standard and error output. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_u_a_r_t_af59cc81e79d0ca2bf10cbbb83674ecc6}{print\+\_\+by\+\_\+uart}} (\mbox{\hyperlink{class_packet_value}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{ptr}}, \mbox{\hyperlink{class_packet_value}{int}} \mbox{\hyperlink{class_packet_value}{len}})
+\begin{DoxyCompactList}\small\item\em This method is used to print a message through the uart configured for printf. It only works if it has been configured correctly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_u_a_r_t_a7e4fddbee16a75c599c8639e94e5f3a4}\label{class_u_a_r_t_a7e4fddbee16a75c599c8639e94e5f3a4} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries id\+\_\+counter}
+\item 
+\Hypertarget{class_u_a_r_t_a55bd74833be5d86943299b7b493399c5}\label{class_u_a_r_t_a55bd74833be5d86943299b7b493399c5} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, UART\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries registered\+\_\+uart}
+\item 
+\Hypertarget{class_u_a_r_t_a86a6ff0bfe62e80a0b4f98d04a9276b5}\label{class_u_a_r_t_a86a6ff0bfe62e80a0b4f98d04a9276b5} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}}, UART\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries available\+\_\+uarts}
+\item 
+\Hypertarget{class_u_a_r_t_add5e5f4a44f87a9b0f7479ee7fdf3887}\label{class_u_a_r_t_add5e5f4a44f87a9b0f7479ee7fdf3887} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries printf\+\_\+uart}
+\item 
+\Hypertarget{class_u_a_r_t_a7984304c2624424f02d45e45986ddf9c}\label{class_u_a_r_t_a7984304c2624424f02d45e45986ddf9c} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries printf\+\_\+ready}
+\item 
+\Hypertarget{class_u_a_r_t_a5428e4784759f2b04aa80d13f4c47f3c}\label{class_u_a_r_t_a5428e4784759f2b04aa80d13f4c47f3c} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart1}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_u_a_r_t}{UART} wrapper enum of the STM32\+H723. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_a_r_t_a01db9b42cdccadd5b7026ac6a9655256}\label{class_u_a_r_t_a01db9b42cdccadd5b7026ac6a9655256} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart2}
+\item 
+\Hypertarget{class_u_a_r_t_a7f2bd7c14e1914e6ec9d306b2cf74098}\label{class_u_a_r_t_a7f2bd7c14e1914e6ec9d306b2cf74098} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart3}
+\item 
+\Hypertarget{class_u_a_r_t_a17359a9b9a3ec56875d0c062cd22056d}\label{class_u_a_r_t_a17359a9b9a3ec56875d0c062cd22056d} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart4}
+\item 
+\Hypertarget{class_u_a_r_t_a9f9e07aea5bc5385506371cdf3636768}\label{class_u_a_r_t_a9f9e07aea5bc5385506371cdf3636768} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart5}
+\item 
+\Hypertarget{class_u_a_r_t_af55fdf3ca03a56372339a55028788950}\label{class_u_a_r_t_af55fdf3ca03a56372339a55028788950} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart6}
+\item 
+\Hypertarget{class_u_a_r_t_ad3ca3452ea0b411f0de30f27b9909c46}\label{class_u_a_r_t_ad3ca3452ea0b411f0de30f27b9909c46} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart7}
+\item 
+\Hypertarget{class_u_a_r_t_ac5d61a89843e7e09c2779e970a0d9a8d}\label{class_u_a_r_t_ac5d61a89843e7e09c2779e970a0d9a8d} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart8}
+\item 
+\Hypertarget{class_u_a_r_t_ac74db6fcbea1df42df4f687c4969c2bd}\label{class_u_a_r_t_ac74db6fcbea1df42df4f687c4969c2bd} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart9}
+\item 
+\Hypertarget{class_u_a_r_t_acc763f848c12e92d7a4d5a440ce92d2c}\label{class_u_a_r_t_acc763f848c12e92d7a4d5a440ce92d2c} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} {\bfseries uart10}
+\item 
+\Hypertarget{class_u_a_r_t_a899c9caa9baedaec938482b0a63aaa6c}\label{class_u_a_r_t_a899c9caa9baedaec938482b0a63aaa6c} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance1}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_u_a_r_t}{UART} instances of the STM32\+H723. \end{DoxyCompactList}\item 
+\Hypertarget{class_u_a_r_t_aad97b9731b072ee04bd3bc8b7f95823e}\label{class_u_a_r_t_aad97b9731b072ee04bd3bc8b7f95823e} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance2}
+\item 
+\Hypertarget{class_u_a_r_t_aeeb6fca3fcba6edee22218f8a92628b1}\label{class_u_a_r_t_aeeb6fca3fcba6edee22218f8a92628b1} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance3}
+\item 
+\Hypertarget{class_u_a_r_t_ab1b0dd71203f70b6295bf464d2a8f26b}\label{class_u_a_r_t_ab1b0dd71203f70b6295bf464d2a8f26b} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance4}
+\item 
+\Hypertarget{class_u_a_r_t_a91da1ce7eaa3d3a1636c42ed2b3fc89a}\label{class_u_a_r_t_a91da1ce7eaa3d3a1636c42ed2b3fc89a} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance5}
+\item 
+\Hypertarget{class_u_a_r_t_aff0bf7d510b600beaae39b55b3a2807b}\label{class_u_a_r_t_aff0bf7d510b600beaae39b55b3a2807b} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance6}
+\item 
+\Hypertarget{class_u_a_r_t_ac5899ce42791c56fed95e977dfe8eb24}\label{class_u_a_r_t_ac5899ce42791c56fed95e977dfe8eb24} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance7}
+\item 
+\Hypertarget{class_u_a_r_t_a95c820d57adce1f97f62779c1b72d0ba}\label{class_u_a_r_t_a95c820d57adce1f97f62779c1b72d0ba} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance8}
+\item 
+\Hypertarget{class_u_a_r_t_af161058574e3ffbd641fe9757d1b4cb9}\label{class_u_a_r_t_af161058574e3ffbd641fe9757d1b4cb9} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance9}
+\item 
+\Hypertarget{class_u_a_r_t_a978cf35e5f9388a634566a5541f925d0}\label{class_u_a_r_t_a978cf35e5f9388a634566a5541f925d0} 
+\mbox{\hyperlink{class_packet_value}{static}} UART\+::\+Instance {\bfseries instance10}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_u_a_r_t}{UART} service class. Abstracts the use of the \doxylink{class_u_a_r_t}{UART} service of the HAL library. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_a_r_t_a96326c5efce0f44024b2b0592ec88364}\label{class_u_a_r_t_a96326c5efce0f44024b2b0592ec88364} 
+\index{UART@{UART}!has\_next\_packet@{has\_next\_packet}}
+\index{has\_next\_packet@{has\_next\_packet}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{has\_next\_packet()}{has\_next\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::has\+\_\+next\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to check if the \doxylink{class_u_a_r_t}{UART} receive operation has finished and data is ready. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the packet is ready to use and false if not. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_a51f65b3257373c8bfb3fcb85f511766e}\label{class_u_a_r_t_a51f65b3257373c8bfb3fcb85f511766e} 
+\index{UART@{UART}!inscribe@{inscribe}}
+\index{inscribe@{inscribe}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{inscribe()}{inscribe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} UART\+::inscribe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} \&}]{uart }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers a new \doxylink{class_u_a_r_t}{UART}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uart} & \doxylink{class_u_a_r_t}{UART} peripheral to register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Id of the service. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}\label{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608} 
+\index{UART@{UART}!is\_busy@{is\_busy}}
+\index{is\_busy@{is\_busy}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{is\_busy()}{is\_busy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::is\+\_\+busy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to check if the \doxylink{class_u_a_r_t}{UART} transmit operations busy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the \doxylink{class_u_a_r_t}{UART} transmit operation is busy and false if not. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_af59cc81e79d0ca2bf10cbbb83674ecc6}\label{class_u_a_r_t_af59cc81e79d0ca2bf10cbbb83674ecc6} 
+\index{UART@{UART}!print\_by\_uart@{print\_by\_uart}}
+\index{print\_by\_uart@{print\_by\_uart}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{print\_by\_uart()}{print\_by\_uart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} UART\+::print\+\_\+by\+\_\+uart (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{char}} \texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{\mbox{\hyperlink{class_packet_value}{int}}}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to print a message through the uart configured for printf. It only works if it has been configured correctly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & Pointer to the character string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if everything went well. False if something has gone wrong. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_a3e03037c333f6deea0b613193401a28d}\label{class_u_a_r_t_a3e03037c333f6deea0b613193401a28d} 
+\index{UART@{UART}!receive@{receive}}
+\index{receive@{receive}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::receive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method request the receive of size bytes by \doxylink{class_d_m_a}{DMA} and interrupts. Thus the data should not be used until you have checked that the value is already available using the method has\+\_\+next\+\_\+paclet(). All calls to this functions previous the last packet is ready will be ignored. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_u_a_r_t_a96326c5efce0f44024b2b0592ec88364}{UART\+::has\+\_\+next\+\_\+packet()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+{\em data} & Where data will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the order to receive a new packet has been processed correctly. Return false if the \doxylink{class_u_a_r_t}{UART} is busy or a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_a83d22d782319c0830f94871afa4dd86e}\label{class_u_a_r_t_a83d22d782319c0830f94871afa4dd86e} 
+\index{UART@{UART}!receive\_polling@{receive\_polling}}
+\index{receive\_polling@{receive\_polling}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{receive\_polling()}{receive\_polling()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::receive\+\_\+polling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method receive size number of bytes by polling. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_u_a_r_t_a96326c5efce0f44024b2b0592ec88364}{UART\+::has\+\_\+next\+\_\+packet()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+{\em data} & Where data will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the data has been read successfully. Return false if the \doxylink{class_u_a_r_t}{UART} is busy or a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_af4cbf9f35ba082fdb85572290cce993f}\label{class_u_a_r_t_af4cbf9f35ba082fdb85572290cce993f} 
+\index{UART@{UART}!set\_up\_printf@{set\_up\_printf}}
+\index{set\_up\_printf@{set\_up\_printf}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{set\_up\_printf()}{set\_up\_printf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::set\+\_\+up\+\_\+printf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_u_a_r_t_ab66a3cc362b719b41466d3dc503d896f}{UART\+::\+Peripheral}} \&}]{uart }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to set up the printf. It\textquotesingle{}s inscribe and configure the selected \doxylink{class_u_a_r_t}{UART} to work as standard and error output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uart} & Uart peripheral to be configured. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if everything went well. False if something has gone wrong. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_a1a8d032b0974bc26d968e43fbf0a80ed}\label{class_u_a_r_t_a1a8d032b0974bc26d968e43fbf0a80ed} 
+\index{UART@{UART}!transmit@{transmit}}
+\index{transmit@{transmit}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{transmit()}{transmit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::transmit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits size number of bytes by \doxylink{class_d_m_a}{DMA} and interrupts. To send various packets in a row you must check if the \doxylink{class_u_a_r_t}{UART} is busy using \doxylink{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}{is\+\_\+busy()}. All calls to this functions previous the bus is ready be ignored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+{\em data} & Data to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the request to send the packet has been done successfully. Returns false if the \doxylink{class_u_a_r_t}{UART} is busy or a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_a8574516a96e675c3ea96eedbed81120f}\label{class_u_a_r_t_a8574516a96e675c3ea96eedbed81120f} 
+\index{UART@{UART}!transmit@{transmit}}
+\index{transmit@{transmit}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{transmit()}{transmit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::transmit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits 1 byte by \doxylink{class_d_m_a}{DMA} and interrupts. To send various packets in a row you must check if the \doxylink{class_u_a_r_t}{UART} is busy using \doxylink{class_u_a_r_t_aad8e1473678ce8f326a4532529b8f608}{is\+\_\+busy()}. All calls to this functions previous the bus is ready be ignored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+{\em data} & data to be send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the request to send the packet has been done successfully. Returns false if the \doxylink{class_u_a_r_t}{UART} is busy or a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_af2d0b75cd143f4c06bfb4f9520d80196}\label{class_u_a_r_t_af2d0b75cd143f4c06bfb4f9520d80196} 
+\index{UART@{UART}!transmit\_polling@{transmit\_polling}}
+\index{transmit\_polling@{transmit\_polling}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{transmit\_polling()}{transmit\_polling()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::transmit\+\_\+polling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{span$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} $>$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits size bytes by polling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+{\em data} & Data to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the packet has been send successfully. Returns false if the \doxylink{class_u_a_r_t}{UART} is busy or a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_u_a_r_t_a7b5934d48fa9195ad98399a3759357bd}\label{class_u_a_r_t_a7b5934d48fa9195ad98399a3759357bd} 
+\index{UART@{UART}!transmit\_polling@{transmit\_polling}}
+\index{transmit\_polling@{transmit\_polling}!UART@{UART}}
+\doxysubsubsection{\texorpdfstring{transmit\_polling()}{transmit\_polling()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} UART\+::transmit\+\_\+polling (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits 1 byte by polling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+{\em data} & Data to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the request to send the packet has been done successfully. Returns false if the \doxylink{class_u_a_r_t}{UART} is busy or a problem has occurred. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Communication/\+UART/UART.\+hpp\end{DoxyCompactItemize}

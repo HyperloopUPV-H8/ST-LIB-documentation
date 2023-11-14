@@ -1,5 +1,5 @@
 \doxysection{CORDIC.\+hpp}
-\hypertarget{_c_o_r_d_i_c_8hpp_source}{}\label{_c_o_r_d_i_c_8hpp_source}\index{Inc/HALAL/Services/CORDIC/CORDIC.hpp@{Inc/HALAL/Services/CORDIC/CORDIC.hpp}}
+\hypertarget{_c_o_r_d_i_c_8hpp_source}{}\label{_c_o_r_d_i_c_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/CORDIC/CORDIC.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/CORDIC/CORDIC.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -21,40 +21,40 @@
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ MODULUS\_CONFIG\ 0x00100053}}
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ PHASE\_MODULUS\_CONFIG\ 0x00180052}}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{Operation\_Computation}}\{}
-\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{COSINE}},}
-\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{SINE}},}
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{SINE\_COSINE}},}
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PHASE}},}
-\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{MODULUS}},}
-\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{PHASE\_MODULUS}},}
-\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{NONE}}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{enum}\ Operation\_Computation\{}
+\DoxyCodeLine{00047\ \ \ \ \ COSINE,}
+\DoxyCodeLine{00048\ \ \ \ \ SINE,}
+\DoxyCodeLine{00049\ \ \ \ \ SINE\_COSINE,}
+\DoxyCodeLine{00050\ \ \ \ \ PHASE,}
+\DoxyCodeLine{00051\ \ \ \ \ MODULUS,}
+\DoxyCodeLine{00052\ \ \ \ \ PHASE\_MODULUS,}
+\DoxyCodeLine{00053\ \ \ \ \ NONE}
 \DoxyCodeLine{00054\ \ \ \ \ \};}
 \DoxyCodeLine{00055\ }
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{RotationComputer}}\{}
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rotation_computer}{RotationComputer}}\{}
 \DoxyCodeLine{00058\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ cos(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{out}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rotation_computer_a1e1a98d933ef19975077ea463e26573c}{cos}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{out}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
 \DoxyCodeLine{00071\ }
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ sin(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{out}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rotation_computer_a2c54886b644b5a4343e4e5060a518e1d}{sin}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{out}},\mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
 \DoxyCodeLine{00077\ }
 \DoxyCodeLine{00078\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{cos\_and\_sin}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{cos\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{sin\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rotation_computer_a08a806664315cf682b11a35eda40bd06}{cos\_and\_sin}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{cos\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{sin\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
 \DoxyCodeLine{00094\ }
 \DoxyCodeLine{00095\ }
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ phase(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{x}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{y}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rotation_computer_a206ba5b3efab4c18eb817ae9a25d4a6f}{phase}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{x}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{y}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
 \DoxyCodeLine{00103\ }
 \DoxyCodeLine{00104\ }
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ modulus(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{x}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{y}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rotation_computer_a551998eba55a7d631790719fe49a9b48}{modulus}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{x}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{y}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
 \DoxyCodeLine{00116\ }
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{phase\_and\_modulus}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{x}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{y}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{mod\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{q31\_to\_radian\_f32}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{in}});}
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ \mbox{\hyperlink{class_packet_value}{radian\_f32\_to\_q31}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_packet_value}{in}});}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rotation_computer_a17a20ac2f6f8458f60722af7308e060c}{phase\_and\_modulus}}(\mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{x}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{y}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{angle\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ *\mbox{\hyperlink{class_packet_value}{mod\_out}},\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ size);}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_rotation_computer_a8096ab9fb0c1e8b9f6a1423d7587fa7d}{q31\_to\_radian\_f32}}(\mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{in}});}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{int32\_t}}\ \mbox{\hyperlink{class_rotation_computer_a9576b462c0e56079bc8ad0704be3bb35}{radian\_f32\_to\_q31}}(\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_packet_value}{in}});}
 \DoxyCodeLine{00137\ }
 \DoxyCodeLine{00138\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{Operation\_Computation}}\ mode;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{static}\ Operation\_Computation\ mode;}
 \DoxyCodeLine{00143\ \};}
 \DoxyCodeLine{00144\ }
 \DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif}}

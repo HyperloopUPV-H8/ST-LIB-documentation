@@ -1,5 +1,5 @@
 \doxysection{I2\+C.\+hpp}
-\hypertarget{_i2_c_8hpp_source}{}\label{_i2_c_8hpp_source}\index{Inc/HALAL/Services/Communication/I2C/I2C.hpp@{Inc/HALAL/Services/Communication/I2C/I2C.hpp}}
+\hypertarget{_i2_c_8hpp_source}{}\label{_i2_c_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/I2C/I2C.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/I2C/I2C.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -20,67 +20,67 @@
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifdef\ HAL\_I2C\_MODULE\_ENABLED}}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{I2C}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i2_c}{I2C}}\ \{}
 \DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{Instance}}\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{SCL}};}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ \mbox{\hyperlink{class_packet_value}{SDA}};}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{I2C\_HandleTypeDef}}\ *\mbox{\hyperlink{class_packet_value}{hi2c}};}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{I2C\_TypeDef}}\ *\mbox{\hyperlink{class_packet_value}{instance}};}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ DMA::Stream\ \mbox{\hyperlink{class_packet_value}{RX\_DMA}};}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ DMA::Stream\ \mbox{\hyperlink{class_packet_value}{TX\_DMA}};}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{address}}\ =\ 0;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{speed\_frequency\_kHz}}\ =\ 100;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{data\_length\_in\_bits}}\ =\ 8;}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_receive\_ready}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_initialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }Instance\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ SCL;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pin}{Pin}}\ SDA;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{I2C\_HandleTypeDef}}\ *hi2c;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{I2C\_TypeDef}}\ *instance;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ DMA::Stream\ RX\_DMA;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ DMA::Stream\ TX\_DMA;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ address\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ speed\_frequency\_kHz\ =\ 100;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ data\_length\_in\_bits\ =\ 8;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_receive\_ready\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_initialized\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00043\ }
 \DoxyCodeLine{00044\ \ \ \ \ \};}
 \DoxyCodeLine{00045\ }
 \DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_packet_value}{Peripheral}}\ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{peripheral2}}\ =\ 2,}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{Peripheral}}\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ peripheral2\ =\ 2,}
 \DoxyCodeLine{00053\ \ \ \ \ \};}
 \DoxyCodeLine{00054\ }
 \DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ id\_counter;}
 \DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ I2C::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{active\_i2c}};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint8\_t,\ I2C::Instance*>}}\ active\_i2c;}
 \DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<I2C::Peripheral,\ I2C::Instance*>}}\ \mbox{\hyperlink{class_packet_value}{available\_i2cs}};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<I2C::Peripheral,\ I2C::Instance*>}}\ available\_i2cs;}
 \DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint32\_t,\ uint32\_t>}}\ \mbox{\hyperlink{class_packet_value}{available\_speed\_frequencies}};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{unordered\_map<uint32\_t,\ uint32\_t>}}\ available\_speed\_frequencies;}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ I2C::Peripheral\ \mbox{\hyperlink{class_packet_value}{i2c2}};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2C::Peripheral}}\ \mbox{\hyperlink{class_i2_c_a272d0b4535ab02045cdf71f0eafa4247}{i2c2}};}
 \DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{DMA\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{hdma\_i2c2\_rx}};}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{DMA\_HandleTypeDef}}\ \mbox{\hyperlink{class_packet_value}{hdma\_i2c2\_tx}};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{DMA\_HandleTypeDef}}\ hdma\_i2c2\_rx;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{DMA\_HandleTypeDef}}\ hdma\_i2c2\_tx;}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ I2C::Instance\ \mbox{\hyperlink{class_packet_value}{instance2}};}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ I2C::Instance\ \mbox{\hyperlink{class_i2_c_ab79945b523f6eafa38274c2c57438d36}{instance2}};}
 \DoxyCodeLine{00078\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(I2C::Peripheral\ \&\mbox{\hyperlink{class_packet_value}{i2c}});}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(I2C::Peripheral\ \&\mbox{\hyperlink{class_packet_value}{i2c}},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_packet_value}{address}});}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_i2_c_a8f1763a59943b0982c94738447d16da4}{inscribe}}(\mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2C::Peripheral}}\ \&\mbox{\hyperlink{class_packet_value}{i2c}});}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_i2_c_a8f1763a59943b0982c94738447d16da4}{inscribe}}(\mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2C::Peripheral}}\ \&\mbox{\hyperlink{class_packet_value}{i2c}},\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ address);}
 \DoxyCodeLine{00087\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ start();}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i2_c_ac0189e5c80f62bb5ed3f9687908809ba}{start}}();}
 \DoxyCodeLine{00094\ }
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{transmit\_next\_packet\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_c_a00c826558459fc49b98621203eedd000}{transmit\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ transmit\_next\_packet\_polling(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
 \DoxyCodeLine{00105\ }
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{receive\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
-\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{receive\_next\_packet\_polling}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_c_a2370d7ed375fd08099705197d68b5ae5}{receive\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ receive\_next\_packet\_polling(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}});}
 \DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{read\_from}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}},\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{mem\_addr}},}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ read\_from(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}},\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{mem\_addr}},}
 \DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{mem\_size}});}
 \DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{write\_to}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}},\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{mem\_addr}},}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ write\_to(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{class_i2_c_packet}{I2CPacket}}\ \&\mbox{\hyperlink{class_packet_value}{packet}},\ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{mem\_addr}},}
 \DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \mbox{\hyperlink{class_packet_value}{mem\_size}});}
 \DoxyCodeLine{00123\ }
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{has\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_c_ad0a102a079d4b82fbd33592fb6a8c458}{has\_next\_packet}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00131\ }
-\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_busy}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_c_acf9ba0f2d2983e4247b5b071d791365e}{is\_busy}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00139\ }
 \DoxyCodeLine{00140\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{init}}(I2C::Instance\ *\mbox{\hyperlink{class_packet_value}{i2c}});}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ init(I2C::Instance\ *\mbox{\hyperlink{class_packet_value}{i2c}});}
 \DoxyCodeLine{00147\ \};}
 \DoxyCodeLine{00148\ }
 \DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif}}

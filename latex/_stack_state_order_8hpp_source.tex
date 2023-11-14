@@ -1,5 +1,5 @@
 \doxysection{Stack\+State\+Order.\+hpp}
-\hypertarget{_stack_state_order_8hpp_source}{}\label{_stack_state_order_8hpp_source}\index{Inc/ST-\/LIB\_LOW/StateMachine/StackStateOrder.hpp@{Inc/ST-\/LIB\_LOW/StateMachine/StackStateOrder.hpp}}
+\hypertarget{_stack_state_order_8hpp_source}{}\label{_stack_state_order_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_LOW/StateMachine/StackStateOrder.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_LOW/StateMachine/StackStateOrder.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -8,12 +8,12 @@
 \DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_packet_value}{BufferLength}},\textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{Types}}>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_not_callable_pack}{NotCallablePack}}<\mbox{\hyperlink{class_packet_value}{Types}}*...>}
 \DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stack_state_order}{StackStateOrder}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_stack_order}{StackOrder}}<BufferLength,Types...>\{}
 \DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ state\_machine;}
-\DoxyCodeLine{00008\ \ \ \ \ StateMachine::state\_id\ state;}
-\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_stack_state_order}{StackStateOrder}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ \mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ state\_machine,\ StateMachine::state\_id\ state,\mbox{\hyperlink{class_packet_value}{Types}}*...\ values)\ :\ \mbox{\hyperlink{class_stack_order}{StackOrder}}<\mbox{\hyperlink{class_packet_value}{BufferLength}},\mbox{\hyperlink{class_packet_value}{Types}}...>(id,callback,values...),}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{class_state_machine}{StateMachine}}\&\ state\_machine;}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{StateMachine::state\_id}}\ state;}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_stack_state_order}{StackStateOrder}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ \mbox{\hyperlink{class_state_machine}{StateMachine}}\&\ state\_machine,\ \mbox{\hyperlink{class_packet_value}{StateMachine::state\_id}}\ state,\mbox{\hyperlink{class_packet_value}{Types}}*...\ values)\ :\ \mbox{\hyperlink{class_stack_order}{StackOrder}}<\mbox{\hyperlink{class_packet_value}{BufferLength}},\mbox{\hyperlink{class_packet_value}{Types}}...>(id,callback,values...),}
 \DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ state\_machine(state\_machine),\ state(state)\ \{}
 \DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{not}}\ state\_machine.get\_states().contains(state))\{}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}State\ Machine\ does\ not\ contain\ state,\ cannot\ add\ StateOrder"{}});}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ErrorHandler}}(\textcolor{stringliteral}{"{}State\ Machine\ does\ not\ contain\ state,\ cannot\ add\ StateOrder"{}});}
 \DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ state\_machine.get\_states()[state].add\_state\_order(\textcolor{keywordtype}{id});}
@@ -31,7 +31,7 @@
 \DoxyCodeLine{00027\ }
 \DoxyCodeLine{00028\ \textcolor{preprocessor}{\#if\ \_\_cpp\_deduction\_guides\ >=\ 201606}}
 \DoxyCodeLine{00029\ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ \mbox{\hyperlink{class_packet_value}{Types}}>\ \textcolor{keyword}{requires}\ \mbox{\hyperlink{concept_not_callable_pack}{NotCallablePack}}<\mbox{\hyperlink{class_packet_value}{Types}}*...>}
-\DoxyCodeLine{00030\ \mbox{\hyperlink{class_stack_state_order}{StackStateOrder}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ \mbox{\hyperlink{class_packet_value}{StateMachine}}\&\ state\_machine,\ StateMachine::state\_id\ state,\mbox{\hyperlink{class_packet_value}{Types}}*...\ values)-\/>StackStateOrder<(!\mbox{\hyperlink{structhas__container}{has\_container}}<\mbox{\hyperlink{class_packet_value}{Types}}...>::value)*\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof<Types...>::value}},\ \mbox{\hyperlink{class_packet_value}{Types}}...>;}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{class_stack_state_order}{StackStateOrder}}(\mbox{\hyperlink{class_packet_value}{uint16\_t}}\ \textcolor{keywordtype}{id},\textcolor{keywordtype}{void}(*callback)(\textcolor{keywordtype}{void}),\ \mbox{\hyperlink{class_state_machine}{StateMachine}}\&\ state\_machine,\ \mbox{\hyperlink{class_packet_value}{StateMachine::state\_id}}\ state,\mbox{\hyperlink{class_packet_value}{Types}}*...\ values)-\/>StackStateOrder<(!\mbox{\hyperlink{structhas__container}{has\_container}}<\mbox{\hyperlink{class_packet_value}{Types}}...>::value)*\mbox{\hyperlink{structtotal__sizeof}{total\_sizeof<Types...>::value}},\ \mbox{\hyperlink{class_packet_value}{Types}}...>;}
 \DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

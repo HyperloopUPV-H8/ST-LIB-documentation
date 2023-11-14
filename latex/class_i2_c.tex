@@ -1,0 +1,181 @@
+\doxysection{I2C Class Reference}
+\hypertarget{class_i2_c}{}\label{class_i2_c}\index{I2C@{I2C}}
+
+
+\doxylink{class_i2_c}{I2C} service class. Abstracts the use of the \doxylink{class_u_a_r_t}{UART} service of the HAL library.  
+
+
+
+
+{\ttfamily \#include $<$I2\+C.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}\label{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2} 
+enum \mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{Peripheral}} \{ {\bfseries peripheral2} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Enum which abstracts the use of the Instance struct to facilitate the mocking of the HALAL.\+Struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} \mbox{\hyperlink{class_i2_c_a8f1763a59943b0982c94738447d16da4}{inscribe}} (\mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2\+C\+::\+Peripheral}} \&\mbox{\hyperlink{class_packet_value}{i2c}})
+\begin{DoxyCompactList}\small\item\em Registers a new \doxylink{class_i2_c}{I2C}. \end{DoxyCompactList}\item 
+\Hypertarget{class_i2_c_aaaa3b8ffc46853f9251d55599e80a599}\label{class_i2_c_aaaa3b8ffc46853f9251d55599e80a599} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries inscribe} (\mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2\+C\+::\+Peripheral}} \&\mbox{\hyperlink{class_packet_value}{i2c}}, \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} address)
+\item 
+\Hypertarget{class_i2_c_ac0189e5c80f62bb5ed3f9687908809ba}\label{class_i2_c_ac0189e5c80f62bb5ed3f9687908809ba} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\begin{DoxyCompactList}\small\item\em This method initializes all registered I2\+Cs. The peripherals must be enrolled before calling this method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_i2_c_a00c826558459fc49b98621203eedd000}{transmit\+\_\+next\+\_\+packet}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&\mbox{\hyperlink{class_packet_value}{packet}})
+\begin{DoxyCompactList}\small\item\em Transmits 1 \doxylink{class_raw_packet}{Raw\+Packet} of any size by DMAs. Handles the packet size automatically. \end{DoxyCompactList}\item 
+\Hypertarget{class_i2_c_a14e0a6a409fe68608725f72d5eec627d}\label{class_i2_c_a14e0a6a409fe68608725f72d5eec627d} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries transmit\+\_\+next\+\_\+packet\+\_\+polling} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&\mbox{\hyperlink{class_packet_value}{packet}})
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_i2_c_a2370d7ed375fd08099705197d68b5ae5}{receive\+\_\+next\+\_\+packet}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&\mbox{\hyperlink{class_packet_value}{packet}})
+\begin{DoxyCompactList}\small\item\em This method request the receive of a new \doxylink{class_raw_packet}{Raw\+Packet} of any size by \doxylink{class_d_m_a}{DMA}. \end{DoxyCompactList}\item 
+\Hypertarget{class_i2_c_acd19ab9c1e807a582f974cec59553517}\label{class_i2_c_acd19ab9c1e807a582f974cec59553517} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries receive\+\_\+next\+\_\+packet\+\_\+polling} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&\mbox{\hyperlink{class_packet_value}{packet}})
+\item 
+\Hypertarget{class_i2_c_aa0459169bada683337d72be8a47f2d7a}\label{class_i2_c_aa0459169bada683337d72be8a47f2d7a} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries read\+\_\+from} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&\mbox{\hyperlink{class_packet_value}{packet}}, \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{mem\+\_\+addr}}, \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{mem\+\_\+size}})
+\item 
+\Hypertarget{class_i2_c_a07a6a9205f8f1d244b0b0d3db5614726}\label{class_i2_c_a07a6a9205f8f1d244b0b0d3db5614726} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries write\+\_\+to} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id, \mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&\mbox{\hyperlink{class_packet_value}{packet}}, \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{mem\+\_\+addr}}, \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} \mbox{\hyperlink{class_packet_value}{mem\+\_\+size}})
+\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_i2_c_ad0a102a079d4b82fbd33592fb6a8c458}{has\+\_\+next\+\_\+packet}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method is used to check if the \doxylink{class_u_a_r_t}{UART} receive operation has finished and data is ready. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_i2_c_acf9ba0f2d2983e4247b5b071d791365e}{is\+\_\+busy}} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em This method is used to check if the \doxylink{class_u_a_r_t}{UART} transmit operations busy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_i2_c_a50b14c45a837d8dee4a0e3d4641eb4fd}\label{class_i2_c_a50b14c45a837d8dee4a0e3d4641eb4fd} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries id\+\_\+counter}
+\item 
+\Hypertarget{class_i2_c_a0a90c76b70dbb2e9c023e98ee080ccf5}\label{class_i2_c_a0a90c76b70dbb2e9c023e98ee080ccf5} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, I2\+C\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries active\+\_\+i2c}
+\item 
+\Hypertarget{class_i2_c_a05099a6d859eb1444013d8d3cbd04a28}\label{class_i2_c_a05099a6d859eb1444013d8d3cbd04a28} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2\+C\+::\+Peripheral}}, I2\+C\+::\+Instance \texorpdfstring{$\ast$}{*} $>$ {\bfseries available\+\_\+i2cs}
+\item 
+\Hypertarget{class_i2_c_a76b83eca682611135e132ee094bb5d63}\label{class_i2_c_a76b83eca682611135e132ee094bb5d63} 
+\mbox{\hyperlink{class_packet_value}{static}} unordered\+\_\+map$<$ \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} $>$ {\bfseries available\+\_\+speed\+\_\+frequencies}
+\item 
+\Hypertarget{class_i2_c_a272d0b4535ab02045cdf71f0eafa4247}\label{class_i2_c_a272d0b4535ab02045cdf71f0eafa4247} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2\+C\+::\+Peripheral}} {\bfseries i2c2}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_i2_c}{I2C} 2 wrapper enum of the STM32\+H723. \end{DoxyCompactList}\item 
+\Hypertarget{class_i2_c_a620700ee416dc9c3ffd96fe1e52a1588}\label{class_i2_c_a620700ee416dc9c3ffd96fe1e52a1588} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{DMA\+\_\+\+Handle\+Type\+Def}} {\bfseries hdma\+\_\+i2c2\+\_\+rx}
+\item 
+\Hypertarget{class_i2_c_ab479e3f4822347d9a47f92fa7e9ead50}\label{class_i2_c_ab479e3f4822347d9a47f92fa7e9ead50} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{DMA\+\_\+\+Handle\+Type\+Def}} {\bfseries hdma\+\_\+i2c2\+\_\+tx}
+\item 
+\Hypertarget{class_i2_c_ab79945b523f6eafa38274c2c57438d36}\label{class_i2_c_ab79945b523f6eafa38274c2c57438d36} 
+\mbox{\hyperlink{class_packet_value}{static}} I2\+C\+::\+Instance {\bfseries instance2}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_i2_c}{I2C} 2 instance of the STM32\+H723. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_i2_c}{I2C} service class. Abstracts the use of the \doxylink{class_u_a_r_t}{UART} service of the HAL library. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i2_c_ad0a102a079d4b82fbd33592fb6a8c458}\label{class_i2_c_ad0a102a079d4b82fbd33592fb6a8c458} 
+\index{I2C@{I2C}!has\_next\_packet@{has\_next\_packet}}
+\index{has\_next\_packet@{has\_next\_packet}!I2C@{I2C}}
+\doxysubsubsection{\texorpdfstring{has\_next\_packet()}{has\_next\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} I2\+C\+::has\+\_\+next\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to check if the \doxylink{class_u_a_r_t}{UART} receive operation has finished and data is ready. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the packet is ready to use and false if not. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_a8f1763a59943b0982c94738447d16da4}\label{class_i2_c_a8f1763a59943b0982c94738447d16da4} 
+\index{I2C@{I2C}!inscribe@{inscribe}}
+\index{inscribe@{inscribe}!I2C@{I2C}}
+\doxysubsubsection{\texorpdfstring{inscribe()}{inscribe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} I2\+C\+::inscribe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i2_c_a5124156f6aaa9ac50a65a1afa43249b2}{I2\+C\+::\+Peripheral}} \&}]{i2c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers a new \doxylink{class_i2_c}{I2C}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uart} & \doxylink{class_i2_c}{I2C} peripheral to register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Id of the service. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_acf9ba0f2d2983e4247b5b071d791365e}\label{class_i2_c_acf9ba0f2d2983e4247b5b071d791365e} 
+\index{I2C@{I2C}!is\_busy@{is\_busy}}
+\index{is\_busy@{is\_busy}!I2C@{I2C}}
+\doxysubsubsection{\texorpdfstring{is\_busy()}{is\_busy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} I2\+C\+::is\+\_\+busy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method is used to check if the \doxylink{class_u_a_r_t}{UART} transmit operations busy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_u_a_r_t}{UART} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the \doxylink{class_u_a_r_t}{UART} transmit operation is busy and false if not. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_a2370d7ed375fd08099705197d68b5ae5}\label{class_i2_c_a2370d7ed375fd08099705197d68b5ae5} 
+\index{I2C@{I2C}!receive\_next\_packet@{receive\_next\_packet}}
+\index{receive\_next\_packet@{receive\_next\_packet}!I2C@{I2C}}
+\doxysubsubsection{\texorpdfstring{receive\_next\_packet()}{receive\_next\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} I2\+C\+::receive\+\_\+next\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This method request the receive of a new \doxylink{class_raw_packet}{Raw\+Packet} of any size by \doxylink{class_d_m_a}{DMA}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_i2_c}{I2C} \\
+\hline
+{\em packet} & \doxylink{class_raw_packet}{Raw\+Packet} in which the data will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Return true if the order to receive a new packet has been processed correctly. Return false if the \doxylink{class_i2_c}{I2C} is busy or a problem has occurred. 
+\end{DoxyReturn}
+\Hypertarget{class_i2_c_a00c826558459fc49b98621203eedd000}\label{class_i2_c_a00c826558459fc49b98621203eedd000} 
+\index{I2C@{I2C}!transmit\_next\_packet@{transmit\_next\_packet}}
+\index{transmit\_next\_packet@{transmit\_next\_packet}!I2C@{I2C}}
+\doxysubsubsection{\texorpdfstring{transmit\_next\_packet()}{transmit\_next\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} I2\+C\+::transmit\+\_\+next\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}}]{id,  }\item[{\mbox{\hyperlink{class_i2_c_packet}{I2\+CPacket}} \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transmits 1 \doxylink{class_raw_packet}{Raw\+Packet} of any size by DMAs. Handles the packet size automatically. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the \doxylink{class_i2_c}{I2C} \\
+\hline
+{\em packet} & \doxylink{class_packet}{Packet} to be send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool Returns true if the request to send the packet has been done successfully. Returns false if the \doxylink{class_i2_c}{I2C} is busy or a problem has occurred. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+Communication/\+I2\+C/I2\+C.\+hpp\end{DoxyCompactItemize}

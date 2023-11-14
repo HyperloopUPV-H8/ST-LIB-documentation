@@ -1,5 +1,5 @@
 \doxysection{Digital\+Input\+Service.\+hpp}
-\hypertarget{_digital_input_service_8hpp_source}{}\label{_digital_input_service_8hpp_source}\index{Inc/HALAL/Services/DigitalInputService/DigitalInputService.hpp@{Inc/HALAL/Services/DigitalInputService/DigitalInputService.hpp}}
+\hypertarget{_digital_input_service_8hpp_source}{}\label{_digital_input_service_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/DigitalInputService/DigitalInputService.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/DigitalInputService/DigitalInputService.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -13,13 +13,13 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifdef\ HAL\_GPIO\_MODULE\_ENABLED}}
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{DigitalInput}}\{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_digital_input}{DigitalInput}}\{}
 \DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{map<uint8\_t,Pin>}}\ service\_ids;}
 \DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id\_counter;}
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ inscribe(\mbox{\hyperlink{class_pin}{Pin}}\&\ pin);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ PinState\ \mbox{\hyperlink{class_packet_value}{read\_pin\_state}}(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ PinState\ read\_pin\_state(\mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \textcolor{keywordtype}{id});}
 \DoxyCodeLine{00019\ \};}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
 

@@ -1,0 +1,97 @@
+\doxysection{State\+Machine Class Reference}
+\hypertarget{class_state_machine}{}\label{class_state_machine}\index{StateMachine@{StateMachine}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_machine_a534edd7a9ef09afb86b70b2db008466f}\label{class_state_machine_a534edd7a9ef09afb86b70b2db008466f} 
+\mbox{\hyperlink{class_packet_value}{typedef}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries state\+\_\+id}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_machine_abd1c0404d321ffe65dc86d967293d6a1}\label{class_state_machine_abd1c0404d321ffe65dc86d967293d6a1} 
+{\bfseries State\+Machine} (state\+\_\+id initial\+\_\+state)
+\item 
+\Hypertarget{class_state_machine_a4566933dcd18cadf5eb469035f11a738}\label{class_state_machine_a4566933dcd18cadf5eb469035f11a738} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+state} (state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_ac586ce1bca991e8fe126a45b05f13050}\label{class_state_machine_ac586ce1bca991e8fe126a45b05f13050} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+transition} (state\+\_\+id \mbox{\hyperlink{class_packet_value}{old\+\_\+state}}, state\+\_\+id \mbox{\hyperlink{class_packet_value}{new\+\_\+state}}, function$<$ \mbox{\hyperlink{class_packet_value}{bool}}()$>$ \mbox{\hyperlink{class_packet_value}{transition}})
+\item 
+\Hypertarget{class_state_machine_a533812fc3c8e91e99c706b4a19d0471c}\label{class_state_machine_a533812fc3c8e91e99c706b4a19d0471c} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+low\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_a8f946679a1abdb1da9aca9eadef00c4f}\label{class_state_machine_a8f946679a1abdb1da9aca9eadef00c4f} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+low\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, vector$<$ state\+\_\+id $>$ states)
+\item 
+\Hypertarget{class_state_machine_a417addcee66e17fa3baaa069e5aae271}\label{class_state_machine_a417addcee66e17fa3baaa069e5aae271} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+low\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period)
+\item 
+\Hypertarget{class_state_machine_afa3db54d74d0a71a9a269b9baa4fa360}\label{class_state_machine_afa3db54d74d0a71a9a269b9baa4fa360} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+mid\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_a73c9a8cde05034d7a8520740359800ad}\label{class_state_machine_a73c9a8cde05034d7a8520740359800ad} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+mid\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, vector$<$ state\+\_\+id $>$ states)
+\item 
+\Hypertarget{class_state_machine_a21c123da5e33f1b878d26d725bcc0a73}\label{class_state_machine_a21c123da5e33f1b878d26d725bcc0a73} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+mid\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period)
+\item 
+\Hypertarget{class_state_machine_aaafce7ce78a22a198f201f3103380a78}\label{class_state_machine_aaafce7ce78a22a198f201f3103380a78} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+high\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period)
+\item 
+\Hypertarget{class_state_machine_a572497e21f698fe6a2e6aecd1832f522}\label{class_state_machine_a572497e21f698fe6a2e6aecd1832f522} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+high\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_aabfaf7ae6aff6fc4077a592065fae8d2}\label{class_state_machine_aabfaf7ae6aff6fc4077a592065fae8d2} 
+{\footnotesize template$<$\mbox{\hyperlink{class_packet_value}{class}} \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ }\\\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*} {\bfseries add\+\_\+high\+\_\+precision\+\_\+cyclic\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, chrono\+::duration$<$ \mbox{\hyperlink{class_packet_value}{int64\+\_\+t}}, \mbox{\hyperlink{class_packet_value}{Time\+Unit}} $>$ period, vector$<$ state\+\_\+id $>$ states)
+\item 
+\Hypertarget{class_state_machine_a786c01c24182196e938d797f1fb3b012}\label{class_state_machine_a786c01c24182196e938d797f1fb3b012} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries remove\+\_\+cyclic\+\_\+action} (\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{timed\+\_\+action}})
+\item 
+\Hypertarget{class_state_machine_aa9354a9d7e98ddbfc212908879697d25}\label{class_state_machine_aa9354a9d7e98ddbfc212908879697d25} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries remove\+\_\+cyclic\+\_\+action} (\mbox{\hyperlink{class_timed_action}{Timed\+Action}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_packet_value}{timed\+\_\+action}}, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_ae939662203276b9ced8912f333bf105a}\label{class_state_machine_ae939662203276b9ced8912f333bf105a} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+enter\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action)
+\item 
+\Hypertarget{class_state_machine_ac3ad0dd4d614eefad0ad343bbf385044}\label{class_state_machine_ac3ad0dd4d614eefad0ad343bbf385044} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+enter\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_a17c69f76be3d1b3782f534a15c385459}\label{class_state_machine_a17c69f76be3d1b3782f534a15c385459} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+exit\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action)
+\item 
+\Hypertarget{class_state_machine_ab4baef8e829a75972d94cb72c1bbf19f}\label{class_state_machine_ab4baef8e829a75972d94cb72c1bbf19f} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+exit\+\_\+action} (function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ action, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_a2f1f0166235d76f741ca851dfdefef02}\label{class_state_machine_a2f1f0166235d76f741ca851dfdefef02} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries force\+\_\+change\+\_\+state} (state\+\_\+id \mbox{\hyperlink{class_packet_value}{new\+\_\+state}})
+\item 
+\Hypertarget{class_state_machine_a2e1a1910d2d283eb7db5a98632efd009}\label{class_state_machine_a2e1a1910d2d283eb7db5a98632efd009} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries check\+\_\+transitions} ()
+\item 
+\Hypertarget{class_state_machine_ab92f647410bb813f4c737619de571e51}\label{class_state_machine_ab92f647410bb813f4c737619de571e51} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries add\+\_\+state\+\_\+machine} (\mbox{\hyperlink{class_state_machine}{State\+Machine}} \&state\+\_\+machine, state\+\_\+id state)
+\item 
+\Hypertarget{class_state_machine_ad4b5048d83fa942ec49633416a46c650}\label{class_state_machine_ad4b5048d83fa942ec49633416a46c650} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries refresh\+\_\+state\+\_\+orders} ()
+\item 
+\Hypertarget{class_state_machine_a21b747315c7a9749a0f7dec0230ae530}\label{class_state_machine_a21b747315c7a9749a0f7dec0230ae530} 
+unordered\+\_\+map$<$ state\+\_\+id, \mbox{\hyperlink{class_state}{State}} $>$ \& {\bfseries get\+\_\+states} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_state_machine_a0856cbfe5adc044ca1f989f59a740af9}\label{class_state_machine_a0856cbfe5adc044ca1f989f59a740af9} 
+state\+\_\+id {\bfseries initial\+\_\+state} = 0
+\item 
+\Hypertarget{class_state_machine_a895b56d6a87e226f060f3c619fa59bcc}\label{class_state_machine_a895b56d6a87e226f060f3c619fa59bcc} 
+state\+\_\+id {\bfseries current\+\_\+state} = 0
+\item 
+\Hypertarget{class_state_machine_ac4381b6c7f7cd637196ae8e6e46f2516}\label{class_state_machine_ac4381b6c7f7cd637196ae8e6e46f2516} 
+\mbox{\hyperlink{class_packet_value}{bool}} {\bfseries is\+\_\+on} = \mbox{\hyperlink{class_packet_value}{true}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+State\+Machine/State\+Machine.\+hpp\end{DoxyCompactItemize}

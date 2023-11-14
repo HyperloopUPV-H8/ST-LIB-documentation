@@ -1,5 +1,5 @@
 \doxysection{State\+Order.\+hpp}
-\hypertarget{_state_order_8hpp_source}{}\label{_state_order_8hpp_source}\index{Inc/ST-\/LIB\_LOW/StateMachine/StateOrder.hpp@{Inc/ST-\/LIB\_LOW/StateMachine/StateOrder.hpp}}
+\hypertarget{_state_order_8hpp_source}{}\label{_state_order_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_LOW/StateMachine/StateOrder.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_LOW/StateMachine/StateOrder.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -24,7 +24,7 @@
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ add\_state\_orders(\mbox{\hyperlink{class_packet_value}{vector<uint16\_t>}}\&\ \mbox{\hyperlink{class_packet_value}{new\_ids}})\{}
 \DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(informer\_socket\ ==\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Informer\ Socket\ has\ not\ been\ set"{}});}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ErrorHandler}}(\textcolor{stringliteral}{"{}Informer\ Socket\ has\ not\ been\ set"{}});}
 \DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ add\_state\_orders\_order.set\_pointer(1,\ \&\mbox{\hyperlink{class_packet_value}{new\_ids}});}
@@ -34,7 +34,7 @@
 \DoxyCodeLine{00030\ }
 \DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ remove\_state\_orders(\mbox{\hyperlink{class_packet_value}{vector<uint16\_t>}}\&\ \mbox{\hyperlink{class_packet_value}{old\_ids}})\{}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(informer\_socket\ ==\ \textcolor{keyword}{nullptr})\{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ ErrorHandler(\textcolor{stringliteral}{"{}Informer\ Socket\ has\ not\ been\ set"{}});}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{ErrorHandler}}(\textcolor{stringliteral}{"{}Informer\ Socket\ has\ not\ been\ set"{}});}
 \DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ remove\_state\_orders\_order.set\_pointer(1,\ \&\mbox{\hyperlink{class_packet_value}{old\_ids}});}

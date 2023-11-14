@@ -1,5 +1,5 @@
 \doxysection{Flash\+Storer.\+hpp}
-\hypertarget{_flash_storer_8hpp_source}{}\label{_flash_storer_8hpp_source}\index{Inc/ST-\/LIB\_HIGH/FlashStorer/FlashStorer.hpp@{Inc/ST-\/LIB\_HIGH/FlashStorer/FlashStorer.hpp}}
+\hypertarget{_flash_storer_8hpp_source}{}\label{_flash_storer_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/FlashStorer/FlashStorer.hpp@{D:/hyperloop/ST-\/LIB/Inc/ST-\/LIB\_HIGH/FlashStorer/FlashStorer.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -40,7 +40,7 @@
 \DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}}\ =\ ((FlashStorer::total\_size\ +\ \mbox{\hyperlink{class_packet_value}{FLASH\_32BITS\_WORLD}}\ -\/\ 1)\ /\ \mbox{\hyperlink{class_packet_value}{FLASH\_32BITS\_WORLD}});\ \textcolor{comment}{//Fast\ ceiling\ the\ dvision\ result}}
 \DoxyCodeLine{00037\ }
 \DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}*\ data\ =\ (\mbox{\hyperlink{class_packet_value}{uint32\_t}}*)\mbox{\hyperlink{class_packet_value}{malloc}}(\mbox{\hyperlink{class_packet_value}{number\_of\_words}}\ *\ \mbox{\hyperlink{class_packet_value}{FLASH\_32BITS\_WORLD}});}
-\DoxyCodeLine{00039\ \ \ \ \ Flash::read(FLASH\_STORER\_START\_ADDRESS,\ (\mbox{\hyperlink{class_packet_value}{uint32\_t}}*)data,\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}});}
+\DoxyCodeLine{00039\ \ \ \ \ Flash::read(\mbox{\hyperlink{class_packet_value}{FLASH\_STORER\_START\_ADDRESS}},\ (\mbox{\hyperlink{class_packet_value}{uint32\_t}}*)data,\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}});}
 \DoxyCodeLine{00040\ }
 \DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ offset\ =\ 0;}
 \DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{class_flash_variable}{FlashVariable}}\&\ \mbox{\hyperlink{class_packet_value}{v}}:\ \mbox{\hyperlink{class_flash_storer}{FlashStorer}}::variable\_list)\{}
@@ -51,7 +51,7 @@
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ offset\ +=\ \mbox{\hyperlink{class_packet_value}{v}}.get\_size();}
 \DoxyCodeLine{00048\ \ \ \ \ \}}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{not}}\ Flash::write(data,\ FLASH\_STORER\_START\_ADDRESS,\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}}))\{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_packet_value}{not}}\ Flash::write(data,\ \mbox{\hyperlink{class_packet_value}{FLASH\_STORER\_START\_ADDRESS}},\ \mbox{\hyperlink{class_packet_value}{number\_of\_words}}))\{}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00052\ \ \ \ \ \}}
 \DoxyCodeLine{00053\ }
@@ -69,7 +69,7 @@
 \DoxyCodeLine{00065\ \ \ \ \ (FlashStorer::variable\_list.push\_back(\mbox{\hyperlink{class_flash_variable}{FlashVariable}}(\mbox{\hyperlink{class_packet_value}{var}})),\ ...);}
 \DoxyCodeLine{00066\ \ \ \ \ FlashStorer::total\_size\ =\ \mbox{\hyperlink{structtotal__sizeof}{total\_sizeof}}<\mbox{\hyperlink{class_packet_value}{Type}}...>::value;}
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ FlashStorer::total\_size\ >=\ FLASH\_STORER\_MAX\_SIZE;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ FlashStorer::total\_size\ >=\ \mbox{\hyperlink{class_packet_value}{FLASH\_STORER\_MAX\_SIZE}};}
 \DoxyCodeLine{00069\ \}}
 \DoxyCodeLine{00070\ }
 \DoxyCodeLine{00071\ }

@@ -1,5 +1,5 @@
 \doxysection{Datagram\+Socket.\+hpp}
-\hypertarget{_datagram_socket_8hpp_source}{}\label{_datagram_socket_8hpp_source}\index{Inc/HALAL/Services/Communication/Ethernet/UDP/DatagramSocket.hpp@{Inc/HALAL/Services/Communication/Ethernet/UDP/DatagramSocket.hpp}}
+\hypertarget{_datagram_socket_8hpp_source}{}\label{_datagram_socket_8hpp_source}\index{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/Ethernet/UDP/DatagramSocket.hpp@{D:/hyperloop/ST-\/LIB/Inc/HALAL/Services/Communication/Ethernet/UDP/DatagramSocket.hpp}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -10,41 +10,41 @@
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifdef\ HAL\_ETH\_MODULE\_ENABLED}}
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ PBUF\_POOL\_MEMORY\_DESC\_POSITION\ 8}}
 \DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_packet_value}{DatagramSocket}}\{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}\{}
 \DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{udp\_pcb}}*\ \mbox{\hyperlink{class_packet_value}{udp\_control\_block}};}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{local\_ip}};}
-\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{local\_port}};}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{remote\_ip}};}
-\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{remote\_port}};}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{is\_disconnected}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{udp\_pcb}}*\ udp\_control\_block;}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_i_p_v4}{IPV4}}\ local\_ip;}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ local\_port;}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_i_p_v4}{IPV4}}\ remote\_ip;}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ remote\_port;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_disconnected\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DatagramSocket}}();}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DatagramSocket}}(\mbox{\hyperlink{class_packet_value}{DatagramSocket}}\&\&\ \mbox{\hyperlink{class_packet_value}{other}});}
-\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DatagramSocket}}(\mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{local\_ip}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{local\_port}},\ \mbox{\hyperlink{class_packet_value}{IPV4}}\ \mbox{\hyperlink{class_packet_value}{remote\_ip}},\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ \mbox{\hyperlink{class_packet_value}{remote\_port}});}
-\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{DatagramSocket}}(\mbox{\hyperlink{class_packet_value}{EthernetNode}}\ \mbox{\hyperlink{class_packet_value}{local\_node}},\ \mbox{\hyperlink{class_packet_value}{EthernetNode}}\ \mbox{\hyperlink{class_packet_value}{remote\_node}});}
-\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{\string~DatagramSocket}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}(\mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}\&\&\ \mbox{\hyperlink{class_packet_value}{other}});}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}(\mbox{\hyperlink{class_i_p_v4}{IPV4}}\ local\_ip,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ local\_port,\ \mbox{\hyperlink{class_i_p_v4}{IPV4}}\ remote\_ip,\ \mbox{\hyperlink{class_packet_value}{uint32\_t}}\ remote\_port);}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}(\mbox{\hyperlink{struct_ethernet_node}{EthernetNode}}\ \mbox{\hyperlink{class_packet_value}{local\_node}},\ \mbox{\hyperlink{struct_ethernet_node}{EthernetNode}}\ \mbox{\hyperlink{class_packet_value}{remote\_node}});}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_datagram_socket}{\string~DatagramSocket}}();}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{operator=}}(\mbox{\hyperlink{class_packet_value}{DatagramSocket}}\&\&);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_datagram_socket}{DatagramSocket}}\&\&);}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_packet_value}{send}}(\mbox{\hyperlink{class_packet}{Packet}}\&\ \mbox{\hyperlink{class_packet_value}{packet}})\{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ send(\mbox{\hyperlink{class_packet}{Packet}}\&\ \mbox{\hyperlink{class_packet_value}{packet}})\{}
 \DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}*\ \mbox{\hyperlink{class_packet_value}{packet\_buffer}}\ =\ \mbox{\hyperlink{class_packet_value}{packet}}.build();}
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_packet_value}{pbuf}}*\ \mbox{\hyperlink{class_packet_value}{tx\_buffer}}\ =\ \mbox{\hyperlink{class_packet_value}{pbuf\_alloc}}(\mbox{\hyperlink{class_packet_value}{PBUF\_TRANSPORT}},\ \mbox{\hyperlink{class_packet_value}{packet}}.size,\ \mbox{\hyperlink{class_packet_value}{PBUF\_RAM}});}
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{pbuf\_take}}(\mbox{\hyperlink{class_packet_value}{tx\_buffer}},\ \mbox{\hyperlink{class_packet_value}{packet\_buffer}},\ \mbox{\hyperlink{class_packet_value}{packet}}.size);}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{udp\_send}}(\mbox{\hyperlink{class_packet_value}{udp\_control\_block}},\ \mbox{\hyperlink{class_packet_value}{tx\_buffer}});}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{udp\_send}}(udp\_control\_block,\ \mbox{\hyperlink{class_packet_value}{tx\_buffer}});}
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_packet_value}{pbuf\_free}}(\mbox{\hyperlink{class_packet_value}{tx\_buffer}});}
 \DoxyCodeLine{00034\ }
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00036\ \ \ \ \ \}}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{reconnect}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ reconnect();}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{close}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ close();}
 \DoxyCodeLine{00041\ }
 \DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_packet_value}{receive\_callback}}(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{args}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{udp\_pcb}}\ *\mbox{\hyperlink{class_packet_value}{udp\_control\_block}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{pbuf}}\ *\mbox{\hyperlink{class_packet_value}{packet\_buffer}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{ip\_addr\_t}}\ *\mbox{\hyperlink{class_packet_value}{remote\_address}},\ \mbox{\hyperlink{class_packet_value}{u16\_t}}\ port);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ receive\_callback(\textcolor{keywordtype}{void}\ *\mbox{\hyperlink{class_packet_value}{args}},\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{udp\_pcb}}\ *udp\_control\_block,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{class_packet_value}{pbuf}}\ *\mbox{\hyperlink{class_packet_value}{packet\_buffer}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_packet_value}{ip\_addr\_t}}\ *\mbox{\hyperlink{class_packet_value}{remote\_address}},\ \mbox{\hyperlink{class_packet_value}{u16\_t}}\ port);}
 \DoxyCodeLine{00044\ \ \ \ \ }
 \DoxyCodeLine{00045\ \};}
 \DoxyCodeLine{00046\ }

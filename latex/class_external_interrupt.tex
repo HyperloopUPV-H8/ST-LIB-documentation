@@ -1,0 +1,50 @@
+\doxysection{External\+Interrupt Class Reference}
+\hypertarget{class_external_interrupt}{}\label{class_external_interrupt}\index{ExternalInterrupt@{ExternalInterrupt}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_external_interrupt_1_1_instance}{Instance}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_external_interrupt_a7826eb16e1ecf93100cf0a884e5808de}\label{class_external_interrupt_a7826eb16e1ecf93100cf0a884e5808de} 
+enum {\bfseries TRIGGER} \{ {\bfseries RISING}
+, {\bfseries FALLING}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_external_interrupt_a839f6ebc56b3ca8ef19d505d45a98492}\label{class_external_interrupt_a839f6ebc56b3ca8ef19d505d45a98492} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries inscribe} (\mbox{\hyperlink{class_pin}{Pin}} \&pin, function$<$ \mbox{\hyperlink{class_packet_value}{void}}()$>$ \&\&action, TRIGGER \mbox{\hyperlink{class_packet_value}{trigger}}=RISING)
+\item 
+\Hypertarget{class_external_interrupt_a8af1a2ebf6c5e0a0050ec76efc626b77}\label{class_external_interrupt_a8af1a2ebf6c5e0a0050ec76efc626b77} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries start} ()
+\item 
+\Hypertarget{class_external_interrupt_aca575e46f57caf17401a8276fbd5ac31}\label{class_external_interrupt_aca575e46f57caf17401a8276fbd5ac31} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries turn\+\_\+on} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\item 
+\Hypertarget{class_external_interrupt_a15691314587a51a8309a7eb925568a33}\label{class_external_interrupt_a15691314587a51a8309a7eb925568a33} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries turn\+\_\+off} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\item 
+\Hypertarget{class_external_interrupt_a97202f7e806a77c5908fd7623983f1b4}\label{class_external_interrupt_a97202f7e806a77c5908fd7623983f1b4} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{bool}} {\bfseries get\+\_\+pin\+\_\+value} (\mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_external_interrupt_acbb801dfa32841a0ad5d44a91dd75362}\label{class_external_interrupt_acbb801dfa32841a0ad5d44a91dd75362} 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}}, \mbox{\hyperlink{class_pin}{Pin}} $>$ {\bfseries service\+\_\+ids}
+\item 
+\Hypertarget{class_external_interrupt_aaa6ede1bc8410f61484430fd00626435}\label{class_external_interrupt_aaa6ede1bc8410f61484430fd00626435} 
+\mbox{\hyperlink{class_packet_value}{static}} map$<$ \mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}}, \mbox{\hyperlink{class_external_interrupt_1_1_instance}{Instance}} $>$ {\bfseries instances}
+\item 
+\Hypertarget{class_external_interrupt_a3066c774ec87734758ef8283972b6720}\label{class_external_interrupt_a3066c774ec87734758ef8283972b6720} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{uint8\+\_\+t}} {\bfseries id\+\_\+counter}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+HALAL/\+Services/\+EXTI/EXTI.\+hpp\end{DoxyCompactItemize}
