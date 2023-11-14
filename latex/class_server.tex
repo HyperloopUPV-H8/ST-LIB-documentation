@@ -1,0 +1,67 @@
+\doxysection{Server Class Reference}
+\hypertarget{class_server}{}\label{class_server}\index{Server@{Server}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_ae33997a8dcf19c2e21b0bb6da66fd7ed}\label{class_server_ae33997a8dcf19c2e21b0bb6da66fd7ed} 
+enum {\bfseries Server\+State} \{ {\bfseries RUNNING}
+, {\bfseries CLOSING}
+, {\bfseries CLOSED}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_a57854305909ad003a704245849985202}\label{class_server_a57854305909ad003a704245849985202} 
+{\bfseries Server} (\mbox{\hyperlink{class_i_p_v4}{IPV4}} local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
+\item 
+\Hypertarget{class_server_af7b0a4370ac2c1e573f292870adfa81c}\label{class_server_af7b0a4370ac2c1e573f292870adfa81c} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries update} ()
+\item 
+\Hypertarget{class_server_a610cb9cc4078da1add1c471d960839f2}\label{class_server_a610cb9cc4078da1add1c471d960839f2} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries broadcast\+\_\+order} (\mbox{\hyperlink{class_order}{Order}} \&order)
+\item 
+\Hypertarget{class_server_aea006e7add88a23dc3af9d6c15eade78}\label{class_server_aea006e7add88a23dc3af9d6c15eade78} 
+\mbox{\hyperlink{class_packet_value}{void}} {\bfseries close\+\_\+all} ()
+\item 
+\Hypertarget{class_server_a0ec521c6570c9cdff1efecb677236b22}\label{class_server_a0ec521c6570c9cdff1efecb677236b22} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries connections\+\_\+count} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_afafbe733379fef4456e5c440991a03e8}\label{class_server_afafbe733379fef4456e5c440991a03e8} 
+\mbox{\hyperlink{class_packet_value}{static}} \mbox{\hyperlink{class_packet_value}{void}} {\bfseries update\+\_\+servers} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_adce8715ef1f5ca008616b2651068b35a}\label{class_server_adce8715ef1f5ca008616b2651068b35a} 
+\mbox{\hyperlink{class_server_socket}{Server\+Socket}} \texorpdfstring{$\ast$}{*} {\bfseries open\+\_\+connection}
+\item 
+\Hypertarget{class_server_a52d72de00ebde8b3d6d9aa5696a08003}\label{class_server_a52d72de00ebde8b3d6d9aa5696a08003} 
+array$<$ \mbox{\hyperlink{class_server_socket}{Server\+Socket}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{class_packet_value}{MAX\+\_\+\+CONNECTIONS\+\_\+\+TCP\+\_\+\+SERVER}} $>$ {\bfseries running\+\_\+connections}
+\item 
+\Hypertarget{class_server_ad8c2e7e4ccd69b3211e4da91ff5b7948}\label{class_server_ad8c2e7e4ccd69b3211e4da91ff5b7948} 
+\mbox{\hyperlink{class_packet_value}{uint16\+\_\+t}} {\bfseries running\+\_\+connections\+\_\+count}
+\item 
+\Hypertarget{class_server_adb9a869a496f5455adc4c20f44873463}\label{class_server_adb9a869a496f5455adc4c20f44873463} 
+\mbox{\hyperlink{class_i_p_v4}{IPV4}} {\bfseries local\+\_\+ip}
+\item 
+\Hypertarget{class_server_a3bf2b288074c4cda7aea680a661257ee}\label{class_server_a3bf2b288074c4cda7aea680a661257ee} 
+\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries local\+\_\+port}
+\item 
+\Hypertarget{class_server_a51c78032e625012c77970d1ccb6cec16}\label{class_server_a51c78032e625012c77970d1ccb6cec16} 
+Server\+State {\bfseries status}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_server_a19ed8eff0d384fd4bc13e4b69f08e66b}\label{class_server_a19ed8eff0d384fd4bc13e4b69f08e66b} 
+\mbox{\hyperlink{class_packet_value}{static}} vector$<$ \mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries running\+\_\+servers}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/hyperloop/\+ST-\/\+LIB/\+Inc/\+ST-\/\+LIB\+\_\+\+LOW/\+Communication/\+Server/Server.\+hpp\end{DoxyCompactItemize}

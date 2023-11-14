@@ -15,61 +15,69 @@
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ErrorHandler/ErrorHandler.hpp"{}}}
 \DoxyCodeLine{00012\ }
 \DoxyCodeLine{00013\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_linear_sensor}{LinearSensor}}\{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_linear_sensor}{LinearSensor}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_linear_sensor}{LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *value);}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_linear_sensor}{LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&value);}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ read();}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ get\_id();}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_offset(\mbox{\hyperlink{class_packet_value}{Type}}\ \mbox{\hyperlink{class_packet_value}{new\_offset}});}
-\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ get\_offset();}
-\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ get\_value\_pointer();}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
-\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ slope;}
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ offset;}
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ *value;}
-\DoxyCodeLine{00030\ \};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00033\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *value)}
-\DoxyCodeLine{00034\ :\ slope(slope),\ offset(offset),\ value(value)\{}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_a_d_c_aae06b1594b4fb09236ff4551e053e74c}{ADC::inscribe}}(pin);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ Sensor::adc\_id\_list.push\_back(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00038\ \}}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00041\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&value):\mbox{\hyperlink{class_linear_sensor}{LinearSensor}}::\mbox{\hyperlink{class_linear_sensor}{LinearSensor}}(pin,slope,offset,\&value)\{\}}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ Type>}
-\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::read}}()\{}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{val}}\ =\ \mbox{\hyperlink{class_a_d_c_a3ec92984d918de516efc0ebbdc98d95f}{ADC::get\_value}}(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ *value\ =\ slope\ *\ (\mbox{\hyperlink{class_packet_value}{Type}})\ \mbox{\hyperlink{class_packet_value}{val}}\ +\ offset;}
-\DoxyCodeLine{00048\ \}}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00051\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::get\_id}}()\{}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
-\DoxyCodeLine{00053\ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00056\ \mbox{\hyperlink{class_packet_value}{Type}}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::get\_offset}}()\{}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ offset;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_linear_sensor}{LinearSensor}}\{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_linear_sensor}{LinearSensor}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_linear_sensor}{LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *value);}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_linear_sensor}{LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&value);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ read();}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ get\_id();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_offset(\mbox{\hyperlink{class_packet_value}{Type}}\ \mbox{\hyperlink{class_packet_value}{new\_offset}});}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ get\_offset();}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}*\ get\_value\_pointer();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ id;}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ slope;}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ offset;}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_packet_value}{Type}}\ *value;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00034\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00035\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ *value)}
+\DoxyCodeLine{00036\ :\ slope(slope),\ offset(offset),\ value(value)\{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_a_d_c_aae06b1594b4fb09236ff4551e053e74c}{ADC::inscribe}}(pin);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ Sensor::adc\_id\_list.push\_back(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00043\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00044\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::LinearSensor}}(\mbox{\hyperlink{class_pin}{Pin}}\ \&pin,\ \mbox{\hyperlink{class_packet_value}{Type}}\ slope,\ \mbox{\hyperlink{class_packet_value}{Type}}\ offset,\ \mbox{\hyperlink{class_packet_value}{Type}}\ \&value):\mbox{\hyperlink{class_linear_sensor}{LinearSensor}}::\mbox{\hyperlink{class_linear_sensor}{LinearSensor}}(pin,slope,offset,\&value)\{\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::read}}()\{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_packet_value}{val}}\ =\ \mbox{\hyperlink{class_a_d_c_a3ec92984d918de516efc0ebbdc98d95f}{ADC::get\_value}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ *value\ =\ slope\ *\ (\mbox{\hyperlink{class_packet_value}{Type}})\ \mbox{\hyperlink{class_packet_value}{val}}\ +\ offset;}
+\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00055\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00056\ \mbox{\hyperlink{class_packet_value}{uint8\_t}}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::get\_id}}()\{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
 \DoxyCodeLine{00058\ \}}
 \DoxyCodeLine{00059\ }
 \DoxyCodeLine{00060\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::set\_offset}}(\mbox{\hyperlink{class_packet_value}{Type}}\ \mbox{\hyperlink{class_packet_value}{new\_offset}})\{}
-\DoxyCodeLine{00062\ \ \ \ \ offset\ =\ \mbox{\hyperlink{class_packet_value}{new\_offset}};}
-\DoxyCodeLine{00063\ \}}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
-\DoxyCodeLine{00066\ \mbox{\hyperlink{class_packet_value}{Type}}*\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::get\_value\_pointer}}()\{}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
-\DoxyCodeLine{00068\ \}}
-\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00062\ \mbox{\hyperlink{class_packet_value}{Type}}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::get\_offset}}()\{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ offset;}
+\DoxyCodeLine{00064\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00067\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::set\_offset}}(\mbox{\hyperlink{class_packet_value}{Type}}\ \mbox{\hyperlink{class_packet_value}{new\_offset}})\{}
+\DoxyCodeLine{00069\ \ \ \ \ offset\ =\ \mbox{\hyperlink{class_packet_value}{new\_offset}};}
+\DoxyCodeLine{00070\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Type>}
+\DoxyCodeLine{00073\ \textcolor{keyword}{requires}\ std::is\_integral\_v<Type>\ ||\ std::is\_floating\_point\_v<Type>}
+\DoxyCodeLine{00074\ \mbox{\hyperlink{class_packet_value}{Type}}*\ \mbox{\hyperlink{class_linear_sensor}{LinearSensor<Type>::get\_value\_pointer}}()\{}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00076\ \}}
+\DoxyCodeLine{00077\ }
 
 \end{DoxyCode}

@@ -2,7 +2,7 @@
 \hypertarget{class_server_socket}{}\label{class_server_socket}\index{ServerSocket@{ServerSocket}}
 
 
-\doxylink{class_server_socket}{Server\+Socket} class.  
+class that handles a single point to point server client connection, emulating the server side.  
 
 
 
@@ -19,10 +19,13 @@ Inheritance diagram for Server\+Socket\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_server_socket_a72f889b2ecad78bd159f67bc7cc9e331}\label{class_server_socket_a72f889b2ecad78bd159f67bc7cc9e331} 
-enum {\bfseries Server\+State} \{ {\bfseries INACTIVE}
+enum {\bfseries Server\+State} \{ \newline
+{\bfseries INACTIVE}
 , {\bfseries LISTENING}
 , {\bfseries ACCEPTED}
 , {\bfseries CLOSING}
+, \newline
+{\bfseries CLOSED}
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
@@ -31,15 +34,12 @@ enum {\bfseries Server\+State} \{ {\bfseries INACTIVE}
 \Hypertarget{class_server_socket_a4737f4c3ebf195531874af679b556174}\label{class_server_socket_a4737f4c3ebf195531874af679b556174} 
 {\bfseries Server\+Socket} (\mbox{\hyperlink{class_server_socket}{Server\+Socket}} \&\&\mbox{\hyperlink{class_packet_value}{other}})
 \item 
-\Hypertarget{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc}\label{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc} 
-{\bfseries Server\+Socket} (\mbox{\hyperlink{class_i_p_v4}{IPV4}} local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
-\item 
-\Hypertarget{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1}\label{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1} 
-{\bfseries Server\+Socket} (string local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
-\item 
-\Hypertarget{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d}\label{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d} 
-{\bfseries Server\+Socket} (\mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}} \mbox{\hyperlink{class_packet_value}{local\+\_\+node}})
-\item 
+\mbox{\hyperlink{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc}{Server\+Socket}} (\mbox{\hyperlink{class_i_p_v4}{IPV4}} local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_server_socket}{Server\+Socket} constructor that receives the server ip on the net as a binary value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1}{Server\+Socket}} (string local\+\_\+ip, \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} local\+\_\+port)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_server_socket}{Server\+Socket} constructor that receives the server ip on the net as a string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d}{Server\+Socket}} (\mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}} \mbox{\hyperlink{class_packet_value}{local\+\_\+node}})
+\begin{DoxyCompactList}\small\item\em \doxylink{class_server_socket}{Server\+Socket} constructor that uses the \doxylink{struct_ethernet_node}{Ethernet\+Node} class as a parameter. \end{DoxyCompactList}\item 
 \Hypertarget{class_server_socket_a5188398bd3d29c061fde8046c01758ca}\label{class_server_socket_a5188398bd3d29c061fde8046c01758ca} 
 \mbox{\hyperlink{class_packet_value}{void}} {\bfseries operator=} (\mbox{\hyperlink{class_server_socket}{Server\+Socket}} \&\&\mbox{\hyperlink{class_packet_value}{other}})
 \item 
@@ -52,11 +52,10 @@ enum {\bfseries Server\+State} \{ {\bfseries INACTIVE}
 \begin{DoxyCompactList}\small\item\em saves the order data into the tx\+\_\+packet\+\_\+buffer so it can be sent when a connection is accepted \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4}{send\+\_\+order}} (\mbox{\hyperlink{class_order}{Order}} \&order) \mbox{\hyperlink{class_packet_value}{override}}
 \begin{DoxyCompactList}\small\item\em puts the order data into the tx\+\_\+packet\+\_\+buffer and sends all the data in the buffer to the client \end{DoxyCompactList}\item 
-\Hypertarget{class_server_socket_a85086cebc9e62f6c211fa6c937d84012}\label{class_server_socket_a85086cebc9e62f6c211fa6c937d84012} 
-\mbox{\hyperlink{class_packet_value}{void}} {\bfseries send} ()
+\mbox{\hyperlink{class_packet_value}{void}} \mbox{\hyperlink{class_server_socket_a85086cebc9e62f6c211fa6c937d84012}{send}} ()
 \begin{DoxyCompactList}\small\item\em sends all the binary data saved in the tx\+\_\+packet\+\_\+buffer to the connected client. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_packet_value}{bool}} \mbox{\hyperlink{class_server_socket_a3a99a5c9b6f0b8588c43a660fb1f19fb}{is\+\_\+connected}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em function that returns wether or not a client is connected to the \doxylink{class_server_socket}{Server\+Socket} \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,6 +73,9 @@ queue$<$ \mbox{\hyperlink{class_packet_value}{struct}} \mbox{\hyperlink{class_pa
 \item 
 \Hypertarget{class_server_socket_a39043d70f2162a168e8c0d8952d1f09c}\label{class_server_socket_a39043d70f2162a168e8c0d8952d1f09c} 
 \mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}} {\bfseries local\+\_\+port}
+\item 
+\Hypertarget{class_server_socket_ab75d40d86f68a01b49db8e3f7477f3ba}\label{class_server_socket_ab75d40d86f68a01b49db8e3f7477f3ba} 
+\mbox{\hyperlink{class_i_p_v4}{IPV4}} {\bfseries remote\+\_\+ip}
 \item 
 \Hypertarget{class_server_socket_a61bee3756a6533dfe344b678bb930082}\label{class_server_socket_a61bee3756a6533dfe344b678bb930082} 
 Server\+State {\bfseries state}
@@ -98,7 +100,77 @@ Server\+State {\bfseries state}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{class_server_socket}{Server\+Socket} class. 
+class that handles a single point to point server client connection, emulating the server side. 
+
+The flow of this class goes as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item When the constructor is called, the listener is activated and starts working immediately
+\item After a client issues a connection to the \doxylink{class_server_socket}{Server\+Socket} and \doxylink{class_ethernet_a1f9f9e49fb6985a3e5b18f249cf92dae}{Ethernet\+::update} is executed, the \doxylink{class_server_socket}{Server\+Socket} accepts the request
+\item Accepting the request raises an interrupt that calls accept\+\_\+callback, which closes the listener socket (on server\+\_\+control\+\_\+block) and opens the connection socket (on client\+\_\+control\+\_\+block)
+\item The connection goes on until one of the ends closes it, which calls the Error\+Handler to send the board into fault as a default behaviour.
+\end{DoxyEnumerate}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_ethernet_a1f9f9e49fb6985a3e5b18f249cf92dae}{Ethernet\+::update} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc}\label{class_server_socket_a2523e9abc190c7fa853bc0a999696dfc} 
+\index{ServerSocket@{ServerSocket}!ServerSocket@{ServerSocket}}
+\index{ServerSocket@{ServerSocket}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{ServerSocket()}{ServerSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Server\+Socket\+::\+Server\+Socket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_p_v4}{IPV4}}}]{local\+\_\+ip,  }\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{local\+\_\+port }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_server_socket}{Server\+Socket} constructor that receives the server ip on the net as a binary value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+\_\+ip} & the server ip on. \\
+\hline
+{\em local\+\_\+port} & the port number that the server listens for connections. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1}\label{class_server_socket_aeb993fa48ff19a64a2827a037add9cc1} 
+\index{ServerSocket@{ServerSocket}!ServerSocket@{ServerSocket}}
+\index{ServerSocket@{ServerSocket}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{ServerSocket()}{ServerSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Server\+Socket\+::\+Server\+Socket (\begin{DoxyParamCaption}\item[{string}]{local\+\_\+ip,  }\item[{\mbox{\hyperlink{class_packet_value}{uint32\+\_\+t}}}]{local\+\_\+port }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_server_socket}{Server\+Socket} constructor that receives the server ip on the net as a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+\_\+ip} & the server ip on the ipv4 format "{}aaa.\+bbb.\+ccc.\+ddd"{} as a string. \\
+\hline
+{\em local\+\_\+port} & the port number that the server listens for connections. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d}\label{class_server_socket_acfab55f58aef7f7ef78b0b39eb8cbd0d} 
+\index{ServerSocket@{ServerSocket}!ServerSocket@{ServerSocket}}
+\index{ServerSocket@{ServerSocket}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{ServerSocket()}{ServerSocket()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Server\+Socket\+::\+Server\+Socket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_ethernet_node}{Ethernet\+Node}}}]{local\+\_\+node }\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_server_socket}{Server\+Socket} constructor that uses the \doxylink{struct_ethernet_node}{Ethernet\+Node} class as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+\_\+node} & the \doxylink{struct_ethernet_node}{Ethernet\+Node} to listen to\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{struct_ethernet_node}{Ethernet\+Node} 
+\end{DoxySeeAlso}
+
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_server_socket_affd8f413a7fe7e33d2c8b180b03f58ab}\label{class_server_socket_affd8f413a7fe7e33d2c8b180b03f58ab} 
@@ -125,6 +197,12 @@ true if the data could be allocated in the buffer, false otherwise
 \doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{bool}} Server\+Socket\+::is\+\_\+connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+function that returns wether or not a client is connected to the \doxylink{class_server_socket}{Server\+Socket} 
+
+This functions returns a comparison to the state of the \doxylink{class_server_socket}{Server\+Socket}, checking wether or not it is on the ACCEPTED state This function is equivalent to doing instance-\/\texorpdfstring{$>$}{>}state == Server\+Socket\+::\+ACCEPT
+
 \begin{DoxyReturn}{Returns}
 true if a connection with the client was established, false otherwise 
 \end{DoxyReturn}
@@ -138,7 +216,17 @@ true if a connection with the client was established, false otherwise
 
 process the data received by the client orders. It is meant to be called only by Lwip on the receive\+\_\+callback 
 
-reads all the data received by the server in the ethernet buffer, packet by packet. Then, for each packet, it processes it depending on the order id (default behavior is not process) and removes it from the buffer. This makes so the receive\+\_\+callback (and thus the \doxylink{class_socket}{Socket}) can only process declared orders, and ignores all other packets. \Hypertarget{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4}\label{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4} 
+reads all the data received by the server in the ethernet buffer, packet by packet. Then, for each packet, it processes it depending on the order id (default behavior is not process) and removes it from the buffer. This makes so the receive\+\_\+callback (and thus the \doxylink{class_socket}{Socket}) can only process declared orders, and ignores all other packets. \Hypertarget{class_server_socket_a85086cebc9e62f6c211fa6c937d84012}\label{class_server_socket_a85086cebc9e62f6c211fa6c937d84012} 
+\index{ServerSocket@{ServerSocket}!send@{send}}
+\index{send@{send}!ServerSocket@{ServerSocket}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_packet_value}{void}} Server\+Socket\+::send (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sends all the binary data saved in the tx\+\_\+packet\+\_\+buffer to the connected client. 
+
+This function is the one that actually handles outgoing communication, sending one by one the packets in the tx\+\_\+packet\+\_\+buffer The messages in the buffer are all immediately sent after calling this function, unless an error of any kind happened, in which case Error\+Handler is raised \Hypertarget{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4}\label{class_server_socket_a79fa2f9da0efacbc479eefa13df9c8b4} 
 \index{ServerSocket@{ServerSocket}!send\_order@{send\_order}}
 \index{send\_order@{send\_order}!ServerSocket@{ServerSocket}}
 \doxysubsubsection{\texorpdfstring{send\_order()}{send\_order()}}

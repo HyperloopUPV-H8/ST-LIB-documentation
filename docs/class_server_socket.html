@@ -79,7 +79,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_server_socket.html" title="ServerSocket class.">ServerSocket</a> class.  
+<p>class that handles a single point to point server client connection, emulating the server side.  
  <a href="class_server_socket.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_server_socket_8hpp_source.html">ServerSocket.hpp</a>&gt;</code></p>
@@ -95,10 +95,14 @@ Inheritance diagram for ServerSocket:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a72f889b2ecad78bd159f67bc7cc9e331" id="r_a72f889b2ecad78bd159f67bc7cc9e331"><td class="memItemLeft" align="right" valign="top"><a id="a72f889b2ecad78bd159f67bc7cc9e331" name="a72f889b2ecad78bd159f67bc7cc9e331"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ServerState</b> { <b>INACTIVE</b>
+<tr class="memitem:a72f889b2ecad78bd159f67bc7cc9e331" id="r_a72f889b2ecad78bd159f67bc7cc9e331"><td class="memItemLeft" align="right" valign="top"><a id="a72f889b2ecad78bd159f67bc7cc9e331" name="a72f889b2ecad78bd159f67bc7cc9e331"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ServerState</b> { <br />
+&#160;&#160;<b>INACTIVE</b>
 , <b>LISTENING</b>
 , <b>ACCEPTED</b>
 , <b>CLOSING</b>
+, <br />
+&#160;&#160;<b>CLOSED</b>
+<br />
  }</td></tr>
 <tr class="separator:a72f889b2ecad78bd159f67bc7cc9e331"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -107,14 +111,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4737f4c3ebf195531874af679b556174" id="r_a4737f4c3ebf195531874af679b556174"><td class="memItemLeft" align="right" valign="top"><a id="a4737f4c3ebf195531874af679b556174" name="a4737f4c3ebf195531874af679b556174"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ServerSocket</b> (<a class="el" href="class_server_socket.html">ServerSocket</a> &amp;&amp;<a class="el" href="class_packet_value.html">other</a>)</td></tr>
 <tr class="separator:a4737f4c3ebf195531874af679b556174"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2523e9abc190c7fa853bc0a999696dfc" id="r_a2523e9abc190c7fa853bc0a999696dfc"><td class="memItemLeft" align="right" valign="top"><a id="a2523e9abc190c7fa853bc0a999696dfc" name="a2523e9abc190c7fa853bc0a999696dfc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServerSocket</b> (<a class="el" href="class_i_p_v4.html">IPV4</a> local_ip, <a class="el" href="class_packet_value.html">uint32_t</a> local_port)</td></tr>
+<tr class="memitem:a2523e9abc190c7fa853bc0a999696dfc" id="r_a2523e9abc190c7fa853bc0a999696dfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_socket.html#a2523e9abc190c7fa853bc0a999696dfc">ServerSocket</a> (<a class="el" href="class_i_p_v4.html">IPV4</a> local_ip, <a class="el" href="class_packet_value.html">uint32_t</a> local_port)</td></tr>
+<tr class="memdesc:a2523e9abc190c7fa853bc0a999696dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> constructor that receives the server ip on the net as a binary value.  <br /></td></tr>
 <tr class="separator:a2523e9abc190c7fa853bc0a999696dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb993fa48ff19a64a2827a037add9cc1" id="r_aeb993fa48ff19a64a2827a037add9cc1"><td class="memItemLeft" align="right" valign="top"><a id="aeb993fa48ff19a64a2827a037add9cc1" name="aeb993fa48ff19a64a2827a037add9cc1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServerSocket</b> (string local_ip, <a class="el" href="class_packet_value.html">uint32_t</a> local_port)</td></tr>
+<tr class="memitem:aeb993fa48ff19a64a2827a037add9cc1" id="r_aeb993fa48ff19a64a2827a037add9cc1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_socket.html#aeb993fa48ff19a64a2827a037add9cc1">ServerSocket</a> (string local_ip, <a class="el" href="class_packet_value.html">uint32_t</a> local_port)</td></tr>
+<tr class="memdesc:aeb993fa48ff19a64a2827a037add9cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> constructor that receives the server ip on the net as a string.  <br /></td></tr>
 <tr class="separator:aeb993fa48ff19a64a2827a037add9cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfab55f58aef7f7ef78b0b39eb8cbd0d" id="r_acfab55f58aef7f7ef78b0b39eb8cbd0d"><td class="memItemLeft" align="right" valign="top"><a id="acfab55f58aef7f7ef78b0b39eb8cbd0d" name="acfab55f58aef7f7ef78b0b39eb8cbd0d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServerSocket</b> (<a class="el" href="struct_ethernet_node.html">EthernetNode</a> <a class="el" href="class_packet_value.html">local_node</a>)</td></tr>
+<tr class="memitem:acfab55f58aef7f7ef78b0b39eb8cbd0d" id="r_acfab55f58aef7f7ef78b0b39eb8cbd0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_socket.html#acfab55f58aef7f7ef78b0b39eb8cbd0d">ServerSocket</a> (<a class="el" href="struct_ethernet_node.html">EthernetNode</a> <a class="el" href="class_packet_value.html">local_node</a>)</td></tr>
+<tr class="memdesc:acfab55f58aef7f7ef78b0b39eb8cbd0d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> constructor that uses the <a class="el" href="struct_ethernet_node.html">EthernetNode</a> class as a parameter.  <br /></td></tr>
 <tr class="separator:acfab55f58aef7f7ef78b0b39eb8cbd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5188398bd3d29c061fde8046c01758ca" id="r_a5188398bd3d29c061fde8046c01758ca"><td class="memItemLeft" align="right" valign="top"><a id="a5188398bd3d29c061fde8046c01758ca" name="a5188398bd3d29c061fde8046c01758ca"></a>
 <a class="el" href="class_packet_value.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="class_server_socket.html">ServerSocket</a> &amp;&amp;<a class="el" href="class_packet_value.html">other</a>)</td></tr>
@@ -132,11 +136,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a79fa2f9da0efacbc479eefa13df9c8b4" id="r_a79fa2f9da0efacbc479eefa13df9c8b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_packet_value.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_socket.html#a79fa2f9da0efacbc479eefa13df9c8b4">send_order</a> (<a class="el" href="class_order.html">Order</a> &amp;order) <a class="el" href="class_packet_value.html">override</a></td></tr>
 <tr class="memdesc:a79fa2f9da0efacbc479eefa13df9c8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">puts the order data into the tx_packet_buffer and sends all the data in the buffer to the client  <br /></td></tr>
 <tr class="separator:a79fa2f9da0efacbc479eefa13df9c8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85086cebc9e62f6c211fa6c937d84012" id="r_a85086cebc9e62f6c211fa6c937d84012"><td class="memItemLeft" align="right" valign="top"><a id="a85086cebc9e62f6c211fa6c937d84012" name="a85086cebc9e62f6c211fa6c937d84012"></a>
-<a class="el" href="class_packet_value.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> ()</td></tr>
-<tr class="memdesc:a85086cebc9e62f6c211fa6c937d84012"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends all the binary data saved in the tx_packet_buffer to the connected client. <br /></td></tr>
+<tr class="memitem:a85086cebc9e62f6c211fa6c937d84012" id="r_a85086cebc9e62f6c211fa6c937d84012"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_packet_value.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_socket.html#a85086cebc9e62f6c211fa6c937d84012">send</a> ()</td></tr>
+<tr class="memdesc:a85086cebc9e62f6c211fa6c937d84012"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends all the binary data saved in the tx_packet_buffer to the connected client.  <br /></td></tr>
 <tr class="separator:a85086cebc9e62f6c211fa6c937d84012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a99a5c9b6f0b8588c43a660fb1f19fb" id="r_a3a99a5c9b6f0b8588c43a660fb1f19fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_packet_value.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server_socket.html#a3a99a5c9b6f0b8588c43a660fb1f19fb">is_connected</a> ()</td></tr>
+<tr class="memdesc:a3a99a5c9b6f0b8588c43a660fb1f19fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">function that returns wether or not a client is connected to the <a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a>  <br /></td></tr>
 <tr class="separator:a3a99a5c9b6f0b8588c43a660fb1f19fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -156,6 +160,9 @@ queue&lt; <a class="el" href="class_packet_value.html">struct</a> <a class="el" 
 <tr class="memitem:a39043d70f2162a168e8c0d8952d1f09c" id="r_a39043d70f2162a168e8c0d8952d1f09c"><td class="memItemLeft" align="right" valign="top"><a id="a39043d70f2162a168e8c0d8952d1f09c" name="a39043d70f2162a168e8c0d8952d1f09c"></a>
 <a class="el" href="class_packet_value.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>local_port</b></td></tr>
 <tr class="separator:a39043d70f2162a168e8c0d8952d1f09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab75d40d86f68a01b49db8e3f7477f3ba" id="r_ab75d40d86f68a01b49db8e3f7477f3ba"><td class="memItemLeft" align="right" valign="top"><a id="ab75d40d86f68a01b49db8e3f7477f3ba" name="ab75d40d86f68a01b49db8e3f7477f3ba"></a>
+<a class="el" href="class_i_p_v4.html">IPV4</a>&#160;</td><td class="memItemRight" valign="bottom"><b>remote_ip</b></td></tr>
+<tr class="separator:ab75d40d86f68a01b49db8e3f7477f3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61bee3756a6533dfe344b678bb930082" id="r_a61bee3756a6533dfe344b678bb930082"><td class="memItemLeft" align="right" valign="top"><a id="a61bee3756a6533dfe344b678bb930082" name="a61bee3756a6533dfe344b678bb930082"></a>
 ServerState&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:a61bee3756a6533dfe344b678bb930082"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,8 +184,118 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a416207ca53a588e05fb2560e42a8dcaa inherit pub_static_attribs_class_order_protocol"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_server_socket.html" title="ServerSocket class.">ServerSocket</a> class. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>class that handles a single point to point server client connection, emulating the server side. </p>
+<p>The flow of this class goes as follows:</p>
+<ol type="1">
+<li>When the constructor is called, the listener is activated and starts working immediately</li>
+<li>After a client issues a connection to the <a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> and <a class="el" href="class_ethernet.html#a1f9f9e49fb6985a3e5b18f249cf92dae" title="handles the received messages by ethernet">Ethernet::update</a> is executed, the <a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> accepts the request</li>
+<li>Accepting the request raises an interrupt that calls accept_callback, which closes the listener socket (on server_control_block) and opens the connection socket (on client_control_block)</li>
+<li>The connection goes on until one of the ends closes it, which calls the ErrorHandler to send the board into fault as a default behaviour.</li>
+</ol>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_ethernet.html#a1f9f9e49fb6985a3e5b18f249cf92dae" title="handles the received messages by ethernet">Ethernet::update</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2523e9abc190c7fa853bc0a999696dfc" name="a2523e9abc190c7fa853bc0a999696dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2523e9abc190c7fa853bc0a999696dfc">&#9670;&#160;</a></span>ServerSocket() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ServerSocket::ServerSocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_i_p_v4.html">IPV4</a>&#160;</td>
+          <td class="paramname"><em>local_ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_packet_value.html">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>local_port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> constructor that receives the server ip on the net as a binary value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local_ip</td><td>the server ip on. </td></tr>
+    <tr><td class="paramname">local_port</td><td>the port number that the server listens for connections. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeb993fa48ff19a64a2827a037add9cc1" name="aeb993fa48ff19a64a2827a037add9cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb993fa48ff19a64a2827a037add9cc1">&#9670;&#160;</a></span>ServerSocket() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ServerSocket::ServerSocket </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>local_ip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_packet_value.html">uint32_t</a>&#160;</td>
+          <td class="paramname"><em>local_port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> constructor that receives the server ip on the net as a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local_ip</td><td>the server ip on the ipv4 format "aaa.bbb.ccc.ddd" as a string. </td></tr>
+    <tr><td class="paramname">local_port</td><td>the port number that the server listens for connections. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acfab55f58aef7f7ef78b0b39eb8cbd0d" name="acfab55f58aef7f7ef78b0b39eb8cbd0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfab55f58aef7f7ef78b0b39eb8cbd0d">&#9670;&#160;</a></span>ServerSocket() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ServerSocket::ServerSocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_ethernet_node.html">EthernetNode</a>&#160;</td>
+          <td class="paramname"><em>local_node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> constructor that uses the <a class="el" href="struct_ethernet_node.html">EthernetNode</a> class as a parameter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local_node</td><td>the <a class="el" href="struct_ethernet_node.html">EthernetNode</a> to listen to</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_ethernet_node.html">EthernetNode</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="affd8f413a7fe7e33d2c8b180b03f58ab" name="affd8f413a7fe7e33d2c8b180b03f58ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#affd8f413a7fe7e33d2c8b180b03f58ab">&#9670;&#160;</a></span>add_order_to_queue()</h2>
 
@@ -220,6 +337,9 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>function that returns wether or not a client is connected to the <a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a> </p>
+<p>This functions returns a comparison to the state of the <a class="el" href="class_server_socket.html" title="class that handles a single point to point server client connection, emulating the server side.">ServerSocket</a>, checking wether or not it is on the ACCEPTED state This function is equivalent to doing instance-&gt;state == ServerSocket::ACCEPT</p>
 <dl class="section return"><dt>Returns</dt><dd>true if a connection with the client was established, false otherwise </dd></dl>
 
 </div>
@@ -241,6 +361,26 @@ Static Public Attributes</h2></td></tr>
 
 <p>process the data received by the client orders. It is meant to be called only by Lwip on the receive_callback </p>
 <p>reads all the data received by the server in the ethernet buffer, packet by packet. Then, for each packet, it processes it depending on the order id (default behavior is not process) and removes it from the buffer. This makes so the receive_callback (and thus the <a class="el" href="class_socket.html">Socket</a>) can only process declared orders, and ignores all other packets. </p>
+
+</div>
+</div>
+<a id="a85086cebc9e62f6c211fa6c937d84012" name="a85086cebc9e62f6c211fa6c937d84012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85086cebc9e62f6c211fa6c937d84012">&#9670;&#160;</a></span>send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_packet_value.html">void</a> ServerSocket::send </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sends all the binary data saved in the tx_packet_buffer to the connected client. </p>
+<p>This function is the one that actually handles outgoing communication, sending one by one the packets in the tx_packet_buffer The messages in the buffer are all immediately sent after calling this function, unless an error of any kind happened, in which case ErrorHandler is raised </p>
 
 </div>
 </div>
